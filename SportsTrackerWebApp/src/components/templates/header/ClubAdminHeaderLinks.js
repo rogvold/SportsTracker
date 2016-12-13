@@ -47,17 +47,24 @@ var ClubAdminHeaderLinks = React.createClass({
             },
 
             {
-                displayName: 'Команды',
-                name: 'teams',
-                icon: '',
-                url: '/teams'
-            },
-
-            {
                 displayName: 'Игроки',
                 name: 'users',
                 icon: '',
                 url: '/users'
+            },
+
+            {
+                displayName: 'Тренеры',
+                name: 'trainers',
+                icon: '',
+                url: '/trainers'
+            },
+
+            {
+                displayName: 'Команды',
+                name: 'teams',
+                icon: '',
+                url: '/teams'
             },
 
             {

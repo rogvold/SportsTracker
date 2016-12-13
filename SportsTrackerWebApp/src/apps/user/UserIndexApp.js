@@ -79,7 +79,9 @@ var UserIndexApp = React.createClass({
             <div style={this.componentStyle.placeholder} >
 
                 <div>
+
                     <CalendarPanel />
+
                 </div>
 
             </div>

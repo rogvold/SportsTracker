@@ -73767,7 +73767,7 @@ var ParseAPI = {
 
 module.exports = ParseAPI;
 
-},{"../Constants":698,"parse":272}],580:[function(require,module,exports){
+},{"../Constants":699,"parse":272}],580:[function(require,module,exports){
 /**
  * Created by sabir on 20.06.16.
  */
@@ -74363,6 +74363,7 @@ var App = React.createClass({displayName: "App",
         if (isLoggedIn == true){
             //if (role == 'airfieldAdmin'){
             if (role == 'admin'){
+            //if (role == 'trainer'){
                 content = this.getAdminRoute();
             }
             if (role == 'user'){
@@ -74387,7 +74388,7 @@ ReactDOM.render(
     document.getElementById('main')
 );
 
-},{"../api/UserAPI":580,"../flux/actions/FieldsActions":700,"../flux/actions/GroupsActions":701,"../flux/actions/OrganizationActions":702,"../flux/actions/OrganizationUsersActions":703,"../flux/actions/PusherActions":704,"../flux/actions/RealTimeActions":705,"../flux/actions/TrainersActions":706,"../flux/actions/UsersActions":707,"../flux/stores/OrganizationStore":708,"../flux/stores/PusherStore":709,"../flux/stores/RealTimeStore":710,"../flux/stores/UsersStore":711,"./DevApp":582,"./admin/AdminGroupsApp":583,"./admin/AdminHelpApp":584,"./admin/AdminIndexApp":585,"./admin/AdminSettingsApp":586,"./admin/AdminTrainersApp":587,"./admin/AdminUsersApp":588,"./guest/APIPlaygroundApp":589,"./guest/EnglishApp":590,"./guest/LoginApp":591,"./guest/NewOrganizationApp":592,"./guest/RealTimeApp":593,"./user/UserDocsApp":594,"./user/UserIndexApp":595,"fluxxor":117,"history":142,"object-assign":270,"react":577,"react-dom":374,"react-router":409}],582:[function(require,module,exports){
+},{"../api/UserAPI":580,"../flux/actions/FieldsActions":701,"../flux/actions/GroupsActions":702,"../flux/actions/OrganizationActions":703,"../flux/actions/OrganizationUsersActions":704,"../flux/actions/PusherActions":705,"../flux/actions/RealTimeActions":706,"../flux/actions/TrainersActions":707,"../flux/actions/UsersActions":708,"../flux/stores/OrganizationStore":709,"../flux/stores/PusherStore":710,"../flux/stores/RealTimeStore":711,"../flux/stores/UsersStore":712,"./DevApp":582,"./admin/AdminGroupsApp":583,"./admin/AdminHelpApp":584,"./admin/AdminIndexApp":585,"./admin/AdminSettingsApp":586,"./admin/AdminTrainersApp":587,"./admin/AdminUsersApp":588,"./guest/APIPlaygroundApp":589,"./guest/EnglishApp":590,"./guest/LoginApp":591,"./guest/NewOrganizationApp":592,"./guest/RealTimeApp":593,"./user/UserDocsApp":594,"./user/UserIndexApp":595,"fluxxor":117,"history":142,"object-assign":270,"react":577,"react-dom":374,"react-router":409}],582:[function(require,module,exports){
 /**
  * Created by sabir on 08.07.16.
  */
@@ -74431,6 +74432,8 @@ var SuperLineChart = require('../components/chart/SuperLineChart');
 
 var TrainingTeamFieldPanel = require('../components/field/TrainingTeamFieldPanel');
 
+var VkTemplate = require('../components/templates/vk/VkTemplate');
+
 var DevApp = React.createClass({displayName: "DevApp",
     mixins: [FluxMixin],
 
@@ -74456,23 +74459,7 @@ var DevApp = React.createClass({displayName: "DevApp",
     render: function(){
 
         return (
-            React.createElement("div", null, 
-
-
-                React.createElement("div", {style: {width: 960, margin: '0 auto', paddingTop: 20}}, 
-
-                    true == true ? null :
-                        React.createElement(FieldTeamPanel, null), 
-                    
-
-
-                    React.createElement(TrainingTeamFieldPanel, {trainingId: 'tUxb46t6pg'})
-
-
-                )
-
-
-            )
+            React.createElement(VkTemplate, null)
         );
     }
 
@@ -74480,7 +74467,7 @@ var DevApp = React.createClass({displayName: "DevApp",
 
 module.exports = DevApp;
 
-},{"../api/UserAPI":580,"../components/chart/SuperLineChart":607,"../components/field/FieldTeamPanel":614,"../components/field/TestField":615,"../components/field/TrainingTeamFieldPanel":616,"../components/field/gate/Gate":623,"../components/field/heatmap/HeatMap":627,"../components/field/heatmap/HeatMapPanel":628,"../components/field/slider/HeatMapRangeSlider":631,"../components/heart/AnimatedHeart":645,"../components/preloader/BallPreloader":667,"../components/preloader/CoolPreloader":668,"../flux/actions/UsersActions":707,"../flux/stores/UsersStore":711,"fluxxor":117,"object-assign":270,"react":577,"react-dom":374}],583:[function(require,module,exports){
+},{"../api/UserAPI":580,"../components/chart/SuperLineChart":607,"../components/field/FieldTeamPanel":614,"../components/field/TestField":615,"../components/field/TrainingTeamFieldPanel":616,"../components/field/gate/Gate":623,"../components/field/heatmap/HeatMap":627,"../components/field/heatmap/HeatMapPanel":628,"../components/field/slider/HeatMapRangeSlider":631,"../components/heart/AnimatedHeart":645,"../components/preloader/BallPreloader":667,"../components/preloader/CoolPreloader":668,"../components/templates/vk/VkTemplate":681,"../flux/actions/UsersActions":708,"../flux/stores/UsersStore":712,"fluxxor":117,"object-assign":270,"react":577,"react-dom":374}],583:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -74878,7 +74865,7 @@ var AdminIndexApp = React.createClass({displayName: "AdminIndexApp",
 
 module.exports = AdminIndexApp;
 
-},{"../../components/field/calendar/CalendarPanel":620,"../../components/organization/OrganizationBootstrap":648,"../../components/preloader/BallPreloader":667,"../../components/templates/header/ClubAdminHeaderLinks":675,"../../components/templates/header/UserHeaderLinks":677,"../../components/templates/user/UserPageTemplate":680,"../../components/trainings/calendar/TrainingsCalendar":690,"fluxxor":117,"object-assign":270,"react":577}],586:[function(require,module,exports){
+},{"../../components/field/calendar/CalendarPanel":620,"../../components/organization/OrganizationBootstrap":648,"../../components/preloader/BallPreloader":667,"../../components/templates/header/ClubAdminHeaderLinks":675,"../../components/templates/header/UserHeaderLinks":677,"../../components/templates/user/UserPageTemplate":680,"../../components/trainings/calendar/TrainingsCalendar":691,"fluxxor":117,"object-assign":270,"react":577}],586:[function(require,module,exports){
 /**
  * Created by sabir on 15.07.16.
  */
@@ -74977,12 +74964,7 @@ var AdminSettingsApp = React.createClass({displayName: "AdminSettingsApp",
             React.createElement("div", {style: this.componentStyle.placeholder}, 
 
                 React.createElement("div", {style: this.componentStyle.content}, 
-                    React.createElement("div", {style: {marginBottom: 10}}, 
-                        React.createElement("div", {style: {fontWeight: 'bold', fontSize: 18, marginBottom: 5}}, 
-                            "Тренеры"
-                        ), 
-                        React.createElement(TrainersPanel, null)
-                    ), 
+                    
 
                     React.createElement("div", {style: {marginTop: 10}}, 
                         React.createElement("div", {style: {fontWeight: 'bold', fontSize: 18, marginBottom: 5}}, 
@@ -75037,7 +75019,7 @@ var AdminSettingsApp = React.createClass({displayName: "AdminSettingsApp",
 
 module.exports = AdminSettingsApp;
 
-},{"../../components/organization/OrganizationBootstrap":648,"../../components/organization/fields/FieldsPanel":651,"../../components/preloader/BallPreloader":667,"../../components/templates/header/ClubAdminHeaderLinks":675,"../../components/templates/header/UserHeaderLinks":677,"../../components/templates/user/UserPageTemplate":680,"../../components/trainers/TrainersPanel":686,"fluxxor":117,"object-assign":270,"react":577}],587:[function(require,module,exports){
+},{"../../components/organization/OrganizationBootstrap":648,"../../components/organization/fields/FieldsPanel":651,"../../components/preloader/BallPreloader":667,"../../components/templates/header/ClubAdminHeaderLinks":675,"../../components/templates/header/UserHeaderLinks":677,"../../components/templates/user/UserPageTemplate":680,"../../components/trainers/TrainersPanel":687,"fluxxor":117,"object-assign":270,"react":577}],587:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -75169,7 +75151,7 @@ var AdminTrainersApp = React.createClass({displayName: "AdminTrainersApp",
 
 module.exports = AdminTrainersApp;
 
-},{"../../components/organization/OrganizationBootstrap":648,"../../components/preloader/BallPreloader":667,"../../components/templates/header/ClubAdminHeaderLinks":675,"../../components/templates/header/UserHeaderLinks":677,"../../components/templates/user/UserPageTemplate":680,"../../components/trainers/TrainersPanel":686,"fluxxor":117,"object-assign":270,"react":577}],588:[function(require,module,exports){
+},{"../../components/organization/OrganizationBootstrap":648,"../../components/preloader/BallPreloader":667,"../../components/templates/header/ClubAdminHeaderLinks":675,"../../components/templates/header/UserHeaderLinks":677,"../../components/templates/user/UserPageTemplate":680,"../../components/trainers/TrainersPanel":687,"fluxxor":117,"object-assign":270,"react":577}],588:[function(require,module,exports){
 /**
  * Created by sabir on 15.07.16.
  */
@@ -75591,7 +75573,7 @@ var LoginApp = React.createClass({displayName: "LoginApp",
 
 module.exports = LoginApp;
 
-},{"../../api/UserAPI":580,"../../components/user/AuthForm":691,"../../helpers/CommonHelper":713,"fluxxor":117,"object-assign":270,"react":577}],592:[function(require,module,exports){
+},{"../../api/UserAPI":580,"../../components/user/AuthForm":692,"../../helpers/CommonHelper":714,"fluxxor":117,"object-assign":270,"react":577}],592:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -75934,7 +75916,9 @@ var UserIndexApp = React.createClass({displayName: "UserIndexApp",
             React.createElement("div", {style: this.componentStyle.placeholder}, 
 
                 React.createElement("div", null, 
+
                     React.createElement(CalendarPanel, null)
+
                 )
 
             )
@@ -77175,7 +77159,7 @@ var SavePointsComponent = React.createClass({displayName: "SavePointsComponent",
 
 module.exports = SavePointsComponent;
 
-},{"../../api/ParseAPI":579,"../../helpers/LocationHelper":714,"../preloader/CoolPreloader":668,"object-assign":270,"react":577}],603:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../../helpers/LocationHelper":715,"../preloader/CoolPreloader":668,"object-assign":270,"react":577}],603:[function(require,module,exports){
 /**
  * Created by sabir on 07.07.16.
  */
@@ -78697,7 +78681,7 @@ var FieldPlayer = React.createClass({displayName: "FieldPlayer",
 
 module.exports = FieldPlayer;
 
-},{"../../helpers/SportHelper":715,"./Field":611,"./TestField":615,"./slider/FieldSlider":630,"moment":269,"object-assign":270,"react":577}],613:[function(require,module,exports){
+},{"../../helpers/SportHelper":716,"./Field":611,"./TestField":615,"./slider/FieldSlider":630,"moment":269,"object-assign":270,"react":577}],613:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */
@@ -78929,7 +78913,7 @@ var FieldTeamPanel = React.createClass({displayName: "FieldTeamPanel",
 
 module.exports = FieldTeamPanel;
 
-},{"../../helpers/SportHelper":715,"../dialog/Dialog":608,"./FieldPlayer":612,"./users/PlayersList":632,"./users/UserTrainingPanel":634,"object-assign":270,"react":577}],615:[function(require,module,exports){
+},{"../../helpers/SportHelper":716,"../dialog/Dialog":608,"./FieldPlayer":612,"./users/PlayersList":632,"./users/UserTrainingPanel":634,"object-assign":270,"react":577}],615:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */
@@ -79132,7 +79116,7 @@ var TrainingTeamFieldPanel = React.createClass({displayName: "TrainingTeamFieldP
 
 module.exports = TrainingTeamFieldPanel;
 
-},{"../../helpers/SportHelper":715,"../preloader/BallPreloader":667,"./FieldTeamPanel":614,"fluxxor":117,"object-assign":270,"react":577}],617:[function(require,module,exports){
+},{"../../helpers/SportHelper":716,"../preloader/BallPreloader":667,"./FieldTeamPanel":614,"fluxxor":117,"object-assign":270,"react":577}],617:[function(require,module,exports){
 /**
  * Created by sabir on 17.06.16.
  */
@@ -79243,7 +79227,7 @@ var ActivityMonthCalendar = React.createClass({displayName: "ActivityMonthCalend
 
 module.exports = ActivityMonthCalendar;
 
-},{"../../../helpers/CalendarHelper":712,"../../../helpers/SportHelper":715,"./CalendarDayPanel":618,"./CalendarHeaderRow":619,"./CalendarWeekRow":621,"./MonthSwitcherPanel":622,"object-assign":270,"react":577}],618:[function(require,module,exports){
+},{"../../../helpers/CalendarHelper":713,"../../../helpers/SportHelper":716,"./CalendarDayPanel":618,"./CalendarHeaderRow":619,"./CalendarWeekRow":621,"./MonthSwitcherPanel":622,"object-assign":270,"react":577}],618:[function(require,module,exports){
 /**
  * Created by sabir on 17.06.16.
  */
@@ -79614,7 +79598,7 @@ var CalendarPanel = React.createClass({displayName: "CalendarPanel",
 
 module.exports = CalendarPanel;
 
-},{"../../../helpers/CalendarHelper":712,"../../../helpers/SportHelper":715,"../../dialog/Dialog":608,"../session/DaySessionsList":629,"./ActivityMonthCalendar":617,"moment":269,"object-assign":270,"react":577}],621:[function(require,module,exports){
+},{"../../../helpers/CalendarHelper":713,"../../../helpers/SportHelper":716,"../../dialog/Dialog":608,"../session/DaySessionsList":629,"./ActivityMonthCalendar":617,"moment":269,"object-assign":270,"react":577}],621:[function(require,module,exports){
 /**
  * Created by sabir on 17.06.16.
  */
@@ -79868,7 +79852,7 @@ var MonthSwitcherPanel = React.createClass({displayName: "MonthSwitcherPanel",
 
 module.exports = MonthSwitcherPanel;
 
-},{"../../../helpers/CalendarHelper":712,"moment":269,"object-assign":270,"react":577}],623:[function(require,module,exports){
+},{"../../../helpers/CalendarHelper":713,"moment":269,"object-assign":270,"react":577}],623:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -79957,7 +79941,7 @@ var Gate = React.createClass({displayName: "Gate",
 
 module.exports = Gate;
 
-},{"../../../helpers/SportHelper":715,"./GateCorner":624,"object-assign":270,"react":577}],624:[function(require,module,exports){
+},{"../../../helpers/SportHelper":716,"./GateCorner":624,"object-assign":270,"react":577}],624:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -80241,7 +80225,7 @@ var UserShotsPanel = React.createClass({displayName: "UserShotsPanel",
 
 module.exports = UserShotsPanel;
 
-},{"../../../helpers/SportHelper":715,"./Gate":623,"object-assign":270,"react":577}],627:[function(require,module,exports){
+},{"../../../helpers/SportHelper":716,"./Gate":623,"object-assign":270,"react":577}],627:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */
@@ -80478,7 +80462,7 @@ var HeatMapPanel = React.createClass({displayName: "HeatMapPanel",
 
 module.exports = HeatMapPanel;
 
-},{"../../../helpers/SportHelper":715,"../slider/HeatMapRangeSlider":631,"./HeatMap":627,"object-assign":270,"react":577}],629:[function(require,module,exports){
+},{"../../../helpers/SportHelper":716,"../slider/HeatMapRangeSlider":631,"./HeatMap":627,"object-assign":270,"react":577}],629:[function(require,module,exports){
 /**
  * Created by sabir on 11.07.16.
  */
@@ -81073,7 +81057,7 @@ var UserItem = React.createClass({displayName: "UserItem",
 
 module.exports = UserItem;
 
-},{"../../../helpers/SportHelper":715,"../../image/BackgroundImageContainer":647,"object-assign":270,"react":577}],634:[function(require,module,exports){
+},{"../../../helpers/SportHelper":716,"../../image/BackgroundImageContainer":647,"object-assign":270,"react":577}],634:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */
@@ -81280,7 +81264,7 @@ var UserTrainingPanel = React.createClass({displayName: "UserTrainingPanel",
 
 module.exports = UserTrainingPanel;
 
-},{"../../../helpers/SportHelper":715,"../../image/BackgroundImageContainer":647,"../FieldPlayer":612,"../gate/UserShotsPanel":626,"../heatmap/HeatMapPanel":628,"object-assign":270,"react":577}],635:[function(require,module,exports){
+},{"../../../helpers/SportHelper":716,"../../image/BackgroundImageContainer":647,"../FieldPlayer":612,"../gate/UserShotsPanel":626,"../heatmap/HeatMapPanel":628,"object-assign":270,"react":577}],635:[function(require,module,exports){
 /**
  * Created by sabir on 16.12.15.
  */
@@ -84601,7 +84585,7 @@ var ClubRegistrationForm = React.createClass({displayName: "ClubRegistrationForm
 
 module.exports = ClubRegistrationForm;
 
-},{"../../../api/UserAPI":580,"../../../helpers/CommonHelper":713,"../../preloader/CoolPreloader":668,"fluxxor":117,"object-assign":270,"react":577}],658:[function(require,module,exports){
+},{"../../../api/UserAPI":580,"../../../helpers/CommonHelper":714,"../../preloader/CoolPreloader":668,"fluxxor":117,"object-assign":270,"react":577}],658:[function(require,module,exports){
 /**
  * Created by sabir on 21.06.16.
  */
@@ -84910,7 +84894,7 @@ var CreateNewUserPanel = React.createClass({displayName: "CreateNewUserPanel",
 
 module.exports = CreateNewUserPanel;
 
-},{"../../../helpers/CommonHelper":713,"../../preloader/CoolPreloader":668,"fluxxor":117,"object-assign":270,"react":577}],660:[function(require,module,exports){
+},{"../../../helpers/CommonHelper":714,"../../preloader/CoolPreloader":668,"fluxxor":117,"object-assign":270,"react":577}],660:[function(require,module,exports){
 /**
  * Created by sabir on 24.06.16.
  */
@@ -86082,7 +86066,7 @@ var UserUpdatePanel = React.createClass({displayName: "UserUpdatePanel",
 
 module.exports = UserUpdatePanel;
 
-},{"../../../preloader/CoolPreloader":668,"../../../trainers/TrainerForm":682,"../group/UserGroupsPanel":664,"fluxxor":117,"object-assign":270,"react":577}],667:[function(require,module,exports){
+},{"../../../preloader/CoolPreloader":668,"../../../trainers/TrainerForm":683,"../group/UserGroupsPanel":664,"fluxxor":117,"object-assign":270,"react":577}],667:[function(require,module,exports){
 /**
  * Created by sabir on 15.07.16.
  */
@@ -86419,7 +86403,7 @@ var UserProfilePanel = React.createClass({displayName: "UserProfilePanel",
 
 module.exports = UserProfilePanel;
 
-},{"../image/BackgroundImageContainer":647,"../user/UserInfoHeader":697,"fluxxor":117,"object-assign":270,"react":577}],671:[function(require,module,exports){
+},{"../image/BackgroundImageContainer":647,"../user/UserInfoHeader":698,"fluxxor":117,"object-assign":270,"react":577}],671:[function(require,module,exports){
 /**
  * Created by sabir on 29.04.16.
  */
@@ -87223,7 +87207,7 @@ var RealTimePlayer = React.createClass({displayName: "RealTimePlayer",
 
 module.exports = RealTimePlayer;
 
-},{"../../helpers/SportHelper":715,"../preloader/CoolPreloader":668,"fluxxor":117,"object-assign":270,"react":577,"react-player":381,"react-slider":436}],675:[function(require,module,exports){
+},{"../../helpers/SportHelper":716,"../preloader/CoolPreloader":668,"fluxxor":117,"object-assign":270,"react":577,"react-player":381,"react-slider":436}],675:[function(require,module,exports){
 /**
  * Created by sabir on 21.06.16.
  */
@@ -87273,17 +87257,24 @@ var ClubAdminHeaderLinks = React.createClass({displayName: "ClubAdminHeaderLinks
             },
 
             {
-                displayName: 'Команды',
-                name: 'teams',
-                icon: '',
-                url: '/teams'
-            },
-
-            {
                 displayName: 'Игроки',
                 name: 'users',
                 icon: '',
                 url: '/users'
+            },
+
+            {
+                displayName: 'Тренеры',
+                name: 'trainers',
+                icon: '',
+                url: '/trainers'
+            },
+
+            {
+                displayName: 'Команды',
+                name: 'teams',
+                icon: '',
+                url: '/teams'
             },
 
             {
@@ -87446,7 +87437,7 @@ var HeaderLinks = React.createClass({displayName: "HeaderLinks",
 
 module.exports = HeaderLinks;
 
-},{"../../../helpers/CommonHelper":713,"object-assign":270,"react":577,"react-router":409}],677:[function(require,module,exports){
+},{"../../../helpers/CommonHelper":714,"object-assign":270,"react":577,"react-router":409}],677:[function(require,module,exports){
 /**
  * Created by sabir on 20.06.16.
  */
@@ -88000,6 +87991,101 @@ module.exports = UserPageTemplate;
 
 },{"../../../api/UserAPI":580,"../../image/BackgroundImageContainer":647,"../../profile/UserNameSpan":669,"./CurrentUserMenu":678,"fluxxor":117,"object-assign":270,"react":577}],681:[function(require,module,exports){
 /**
+ * Created by sabir on 13.12.16.
+ */
+
+var React = require('react');
+var assign = require('object-assign');
+
+var Fluxxor = require('fluxxor');
+var FluxMixin = Fluxxor.FluxMixin(React);
+var StoreWatchMixin = Fluxxor.StoreWatchMixin;
+
+var VkTemplate = React.createClass({displayName: "VkTemplate",
+    mixins: [FluxMixin, StoreWatchMixin('UsersStore')],
+    getDefaultProps: function(){
+        return {
+            logo: 'assets/images/sport_logo.png',
+            //companyName: 'Sport Tracker'
+            companyName: undefined
+        }
+    },
+
+    getStateFromFlux: function(){
+        var flux = this.getFlux();
+        var store = flux.store('UsersStore');
+        return {
+            loading: store.loading
+        }
+    },
+
+    getInitialState: function(){
+        return {
+
+        }
+    },
+
+    componentWillReceiveProps: function(nextProps){
+
+    },
+
+    componentDidMount: function(){
+
+    },
+
+    componentStyle: {
+        placeholder: {
+
+        }
+    },
+
+    render: function(){
+        var avatar = 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRZQpnK3MkA60LqFsxhcwnjag8qjJ7eeFked-7w77-oLt2HfHXQrg';
+
+        return (
+            React.createElement("div", {style: this.componentStyle.placeholder, className: 'vk_template'}, 
+
+                React.createElement("div", {className: 'header_placeholder'}, 
+
+                    React.createElement("div", {className: 'template_header'}, 
+
+                        React.createElement("div", {className: 'logo_placeholder'}, 
+
+                            React.createElement("img", {src: this.props.logo}), 
+
+                            this.props.companyName == undefined ? null :
+                                React.createElement("div", {className: 'logo_slogan'}, 
+                                    this.props.companyName
+                                )
+                            
+
+                        ), 
+
+                        React.createElement("div", {className: 'current_user_placeholder'}, 
+
+                            React.createElement("div", {className: 'current_user_name'}, 
+                                "Audrey Tauto"
+                            ), 
+
+                            React.createElement("div", {style: {backgroundImage: 'url("' + avatar + '")'}, className: 'user_avatar'})
+
+                        )
+
+                    )
+
+
+                )
+
+            )
+        );
+    }
+
+});
+
+module.exports = VkTemplate;
+
+},{"fluxxor":117,"object-assign":270,"react":577}],682:[function(require,module,exports){
+/**
  * Created by sabir on 14.07.16.
  */
 
@@ -88085,7 +88171,7 @@ var CreateTrainerPanel = React.createClass({displayName: "CreateTrainerPanel",
 
 module.exports = CreateTrainerPanel;
 
-},{"../preloader/CoolPreloader":668,"./TrainerForm":682,"fluxxor":117,"object-assign":270,"react":577}],682:[function(require,module,exports){
+},{"../preloader/CoolPreloader":668,"./TrainerForm":683,"fluxxor":117,"object-assign":270,"react":577}],683:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -88308,7 +88394,7 @@ var TrainerForm = React.createClass({displayName: "TrainerForm",
 
 module.exports = TrainerForm;
 
-},{"../../helpers/CommonHelper":713,"object-assign":270,"react":577}],683:[function(require,module,exports){
+},{"../../helpers/CommonHelper":714,"object-assign":270,"react":577}],684:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -88395,7 +88481,7 @@ var TrainerPanel = React.createClass({displayName: "TrainerPanel",
 
 module.exports = TrainerPanel;
 
-},{"./update/UpdateTrainerButton":688,"fluxxor":117,"object-assign":270,"react":577}],684:[function(require,module,exports){
+},{"./update/UpdateTrainerButton":689,"fluxxor":117,"object-assign":270,"react":577}],685:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -88547,7 +88633,7 @@ var TrainersItem = React.createClass({displayName: "TrainersItem",
 
 module.exports = TrainersItem;
 
-},{"../image/BackgroundImageContainer":647,"fluxxor":117,"moment":269,"object-assign":270,"react":577}],685:[function(require,module,exports){
+},{"../image/BackgroundImageContainer":647,"fluxxor":117,"moment":269,"object-assign":270,"react":577}],686:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -88691,7 +88777,7 @@ var TrainersList = React.createClass({displayName: "TrainersList",
 
 module.exports = TrainersList;
 
-},{"../dialog/Dialog":608,"./TrainerPanel":683,"./TrainersItem":684,"fluxxor":117,"object-assign":270,"react":577}],686:[function(require,module,exports){
+},{"../dialog/Dialog":608,"./TrainerPanel":684,"./TrainersItem":685,"fluxxor":117,"object-assign":270,"react":577}],687:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -88875,7 +88961,7 @@ var TrainersListPanel = React.createClass({displayName: "TrainersListPanel",
 
 module.exports = TrainersListPanel;
 
-},{"../dialog/Dialog":608,"../preloader/CoolPreloader":668,"./CreateTrainerPanel":681,"./TrainersList":685,"fluxxor":117,"object-assign":270,"react":577}],687:[function(require,module,exports){
+},{"../dialog/Dialog":608,"../preloader/CoolPreloader":668,"./CreateTrainerPanel":682,"./TrainersList":686,"fluxxor":117,"object-assign":270,"react":577}],688:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -89142,7 +89228,7 @@ var TrainerGroupsPanel = React.createClass({displayName: "TrainerGroupsPanel",
 
 module.exports = TrainerGroupsPanel;
 
-},{"../../dialog/Dialog":608,"../../preloader/CoolPreloader":668,"fluxxor":117,"object-assign":270,"react":577}],688:[function(require,module,exports){
+},{"../../dialog/Dialog":608,"../../preloader/CoolPreloader":668,"fluxxor":117,"object-assign":270,"react":577}],689:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -89267,7 +89353,7 @@ var UpdateTrainerButton = React.createClass({displayName: "UpdateTrainerButton",
 
 module.exports = UpdateTrainerButton;
 
-},{"../../dialog/Dialog":608,"./UpdateTrainerPanel":689,"object-assign":270,"react":577}],689:[function(require,module,exports){
+},{"../../dialog/Dialog":608,"./UpdateTrainerPanel":690,"object-assign":270,"react":577}],690:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -89388,7 +89474,7 @@ var UpdateTrainerPanel = React.createClass({displayName: "UpdateTrainerPanel",
 
 module.exports = UpdateTrainerPanel;
 
-},{"../../preloader/CoolPreloader":668,"../TrainerForm":682,"../group/TrainerGroupsPanel":687,"fluxxor":117,"object-assign":270,"react":577}],690:[function(require,module,exports){
+},{"../../preloader/CoolPreloader":668,"../TrainerForm":683,"../group/TrainerGroupsPanel":688,"fluxxor":117,"object-assign":270,"react":577}],691:[function(require,module,exports){
 /**
  * Created by sabir on 05.10.16.
  */
@@ -89474,7 +89560,7 @@ var TrainingsCalendar = React.createClass({displayName: "TrainingsCalendar",
 
 module.exports = TrainingsCalendar;
 
-},{"../../field/calendar/CalendarPanel":620,"../../preloader/BallPreloader":667,"fluxxor":117,"object-assign":270,"react":577}],691:[function(require,module,exports){
+},{"../../field/calendar/CalendarPanel":620,"../../preloader/BallPreloader":667,"fluxxor":117,"object-assign":270,"react":577}],692:[function(require,module,exports){
 /**
  * Created by sabir on 02.10.15.
  */
@@ -89643,7 +89729,7 @@ var AuthForm = React.createClass({displayName: "AuthForm",
 
 module.exports = AuthForm;
 
-},{"./LoginForm":692,"./RecoverPasswordButton":693,"./SignupForm":696,"react":577}],692:[function(require,module,exports){
+},{"./LoginForm":693,"./RecoverPasswordButton":694,"./SignupForm":697,"react":577}],693:[function(require,module,exports){
 /**
  * Created by sabir on 02.10.15.
  */
@@ -89843,7 +89929,7 @@ var LoginForm = React.createClass({displayName: "LoginForm",
 
 module.exports = LoginForm;
 
-},{"../../api/UserAPI":580,"react":577}],693:[function(require,module,exports){
+},{"../../api/UserAPI":580,"react":577}],694:[function(require,module,exports){
 /**
  * Created by sabir on 24.01.16.
  */
@@ -89933,7 +90019,7 @@ var RecoverPasswordButton = React.createClass({displayName: "RecoverPasswordButt
 
 module.exports = RecoverPasswordButton;
 
-},{"./RecoverPasswordDialog":694,"object-assign":270,"react":577}],694:[function(require,module,exports){
+},{"./RecoverPasswordDialog":695,"object-assign":270,"react":577}],695:[function(require,module,exports){
 /**
  * Created by sabir on 24.01.16.
  */
@@ -90124,7 +90210,7 @@ var RecoverPasswordDialog = React.createClass({displayName: "RecoverPasswordDial
 
 module.exports = RecoverPasswordDialog;
 
-},{"../../api/UserAPI":580,"../preloader/CoolPreloader":668,"object-assign":270,"react":577}],695:[function(require,module,exports){
+},{"../../api/UserAPI":580,"../preloader/CoolPreloader":668,"object-assign":270,"react":577}],696:[function(require,module,exports){
 /**
  * Created by sabir on 05.11.15.
  */
@@ -90200,7 +90286,7 @@ var RoleSelector = React.createClass({displayName: "RoleSelector",
 
 module.exports = RoleSelector;
 
-},{"object-assign":270,"react":577}],696:[function(require,module,exports){
+},{"object-assign":270,"react":577}],697:[function(require,module,exports){
 /**
  * Created by sabir on 02.10.15.
  */
@@ -90492,7 +90578,7 @@ var SignupForm = React.createClass({displayName: "SignupForm",
 
 module.exports = SignupForm;
 
-},{"../../api/UserAPI":580,"./RoleSelector":695,"object-assign":270,"react":577}],697:[function(require,module,exports){
+},{"../../api/UserAPI":580,"./RoleSelector":696,"object-assign":270,"react":577}],698:[function(require,module,exports){
 /**
  * Created by sabir on 28.04.16.
  */
@@ -90666,7 +90752,7 @@ var UserInfoHeader = React.createClass({displayName: "UserInfoHeader",
 
 module.exports = UserInfoHeader;
 
-},{"../image/BackgroundImageContainer":647,"../preloader/CoolPreloader":668,"../profile/UserUpdateProfileButton":671,"fluxxor":117,"moment":269,"object-assign":270,"react":577}],698:[function(require,module,exports){
+},{"../image/BackgroundImageContainer":647,"../preloader/CoolPreloader":668,"../profile/UserUpdateProfileButton":671,"fluxxor":117,"moment":269,"object-assign":270,"react":577}],699:[function(require,module,exports){
 /**
  * Created by sabir on 20.06.16.
  */
@@ -90696,7 +90782,7 @@ var constants = {
 
 module.exports = constants;
 
-},{}],699:[function(require,module,exports){
+},{}],700:[function(require,module,exports){
 /**
  * Created by sabir on 20.06.16.
  */
@@ -91012,7 +91098,7 @@ var Constants = {
 
 module.exports = Constants;
 
-},{"object-assign":270,"react":577}],700:[function(require,module,exports){
+},{"object-assign":270,"react":577}],701:[function(require,module,exports){
 /**
  * Created by sabir on 16.07.16.
  */
@@ -91082,7 +91168,7 @@ var FieldsActions = {
 
 module.exports = FieldsActions;
 
-},{"../../api/ParseAPI":579,"../FluxConstants":699}],701:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../FluxConstants":700}],702:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -91167,7 +91253,7 @@ var GroupsActions = {
 
 module.exports = GroupsActions;
 
-},{"../../api/ParseAPI":579,"../FluxConstants":699}],702:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../FluxConstants":700}],703:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -91243,7 +91329,7 @@ var OrganizationActions = {
 
 module.exports = OrganizationActions;
 
-},{"../../api/ParseAPI":579,"../FluxConstants":699}],703:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../FluxConstants":700}],704:[function(require,module,exports){
 /**
  * Created by sabir on 15.07.16.
  */
@@ -91353,7 +91439,7 @@ var OrganizationUsersActions = {
 
 module.exports = OrganizationUsersActions;
 
-},{"../../api/ParseAPI":579,"../FluxConstants":699}],704:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../FluxConstants":700}],705:[function(require,module,exports){
 /**
  * Created by sabir on 17.07.16.
  */
@@ -91371,7 +91457,7 @@ var PusherActions = {
 
 module.exports = PusherActions;
 
-},{"../FluxConstants":699}],705:[function(require,module,exports){
+},{"../FluxConstants":700}],706:[function(require,module,exports){
 /**
  * Created by sabir on 16.07.16.
  */
@@ -91388,7 +91474,7 @@ var RealTimeActions = {
 
 module.exports = RealTimeActions;
 
-},{"../FluxConstants":699}],706:[function(require,module,exports){
+},{"../FluxConstants":700}],707:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -91455,7 +91541,7 @@ var TrainersActions = {
 
 module.exports = TrainersActions;
 
-},{"../../api/ParseAPI":579,"../FluxConstants":699}],707:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../FluxConstants":700}],708:[function(require,module,exports){
 /**
  * Created by sabir on 22.02.16.
  */
@@ -91545,7 +91631,7 @@ var UsersActions = {
 
 module.exports = UsersActions;
 
-},{"../../api/ParseAPI":579,"../../api/UserAPI":580,"../../helpers/CommonHelper":713,"../FluxConstants":699,"object-assign":270}],708:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../../api/UserAPI":580,"../../helpers/CommonHelper":714,"../FluxConstants":700,"object-assign":270}],709:[function(require,module,exports){
 /**
  * Created by sabir on 12.07.16.
  */
@@ -92142,7 +92228,7 @@ var OrganizationStore = Fluxxor.createStore({
 
 module.exports = OrganizationStore;
 
-},{"../FluxConstants":699,"fluxxor":117}],709:[function(require,module,exports){
+},{"../FluxConstants":700,"fluxxor":117}],710:[function(require,module,exports){
 /**
  * Created by sabir on 17.07.16.
  */
@@ -92252,7 +92338,7 @@ var PuserStore = Fluxxor.createStore({
 
 module.exports = PuserStore;
 
-},{"../../api/ParseAPI":579,"../FluxConstants":699,"fluxxor":117,"parse":272,"pusher-js":316}],710:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../FluxConstants":700,"fluxxor":117,"parse":272,"pusher-js":316}],711:[function(require,module,exports){
 /**
  * Created by sabir on 15.07.16.
  */
@@ -92341,7 +92427,7 @@ var RealTimeStore = Fluxxor.createStore({
 
 module.exports = RealTimeStore;
 
-},{"../FluxConstants":699,"fluxxor":117}],711:[function(require,module,exports){
+},{"../FluxConstants":700,"fluxxor":117}],712:[function(require,module,exports){
 /**
  * Created by sabir on 22.02.16.
  */
@@ -92572,7 +92658,7 @@ var UsersStore = Fluxxor.createStore({
 
 module.exports = UsersStore;
 
-},{"../../api/UserAPI":580,"../FluxConstants":699,"fluxxor":117}],712:[function(require,module,exports){
+},{"../../api/UserAPI":580,"../FluxConstants":700,"fluxxor":117}],713:[function(require,module,exports){
 /**
  * Created by sabir on 11.07.16.
  */
@@ -92697,7 +92783,7 @@ var CalendarHelper = {
 
 module.exports = CalendarHelper;
 
-},{"moment":269,"object-assign":270}],713:[function(require,module,exports){
+},{"moment":269,"object-assign":270}],714:[function(require,module,exports){
 /**
  * Created by sabir on 20.06.16.
  */
@@ -92881,7 +92967,7 @@ var CommonHelper = {
 
 module.exports = CommonHelper;
 
-},{}],714:[function(require,module,exports){
+},{}],715:[function(require,module,exports){
 /**
  * Created by sabir on 07.07.16.
  */
@@ -92935,7 +93021,7 @@ var LocationHelper = {
 
 module.exports = LocationHelper;
 
-},{}],715:[function(require,module,exports){
+},{}],716:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */

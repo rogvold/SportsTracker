@@ -41,6 +41,8 @@ var SuperLineChart = require('../components/chart/SuperLineChart');
 
 var TrainingTeamFieldPanel = require('../components/field/TrainingTeamFieldPanel');
 
+var VkTemplate = require('../components/templates/vk/VkTemplate');
+
 var DevApp = React.createClass({
     mixins: [FluxMixin],
 
@@ -66,23 +68,7 @@ var DevApp = React.createClass({
     render: function(){
 
         return (
-            <div>
-
-
-                <div style={{width: 960, margin: '0 auto', paddingTop: 20}} >
-
-                    {true == true ? null :
-                        <FieldTeamPanel />
-                    }
-
-
-                    <TrainingTeamFieldPanel trainingId={'tUxb46t6pg'} />
-
-
-                </div>
-
-
-            </div>
+            <VkTemplate />
         );
     }
 

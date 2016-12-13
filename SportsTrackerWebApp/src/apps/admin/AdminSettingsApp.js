@@ -96,12 +96,7 @@ var AdminSettingsApp = React.createClass({
             <div style={this.componentStyle.placeholder} >
 
                 <div style={this.componentStyle.content}>
-                    <div style={{marginBottom: 10}}>
-                        <div style={{fontWeight: 'bold', fontSize: 18, marginBottom: 5}} >
-                            Тренеры
-                        </div>
-                        <TrainersPanel />
-                    </div>
+                    
 
                     <div style={{marginTop: 10}} >
                         <div style={{fontWeight: 'bold', fontSize: 18, marginBottom: 5}} >
