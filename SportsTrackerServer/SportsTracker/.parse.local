@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "SportsTracker": {
+      "applicationId": "DY9RPeNTtxZoi4rkuHU5VQpx6iZiqVj0EPdTPUDE"
+    },
+    "_default": {
+      "link": "SportsTracker"
+    }
+  }
+}
