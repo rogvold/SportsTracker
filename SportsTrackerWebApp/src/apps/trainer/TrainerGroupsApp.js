@@ -1,5 +1,5 @@
 /**
- * Created by sabir on 15.07.16.
+ * Created by sabir on 13.07.16.
  */
 
 var React = require('react');
@@ -9,18 +9,20 @@ var Fluxxor = require('fluxxor');
 var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
-var BallPreloader = require('../../components/preloader/BallPreloader');
+var CoolPreloader = require('../../components/preloader/CoolPreloader');
 
 var UserPageTemplate = require('../../components/templates/user/UserPageTemplate');
 var UserHeaderLinks = require('../../components/templates/header/UserHeaderLinks');
-var ClubAdminHeaderLinks = require('../../components/templates/header/ClubAdminHeaderLinks');
-
-var TrainersPanel = require('../../components/trainers/TrainersPanel');
-var FieldsPanel = require('../../components/organization/fields/FieldsPanel');
+var TrainerHeaderLinks = require('../../components/templates/header/TrainerHeaderLinks');
 
 var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
 
-var AdminSettingsApp = React.createClass({
+var UserPagePanel = require('../../components/profile_page/UserPagePanel');
+
+var GroupsPanel = require('../../components/groups/GroupsPanel');
+var BallPreloader = require('../../components/preloader/BallPreloader');
+
+var TrainerGroupsApp = React.createClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore', 'OrganizationStore')],
 
     getDefaultProps: function(){
@@ -68,18 +70,7 @@ var AdminSettingsApp = React.createClass({
     componentStyle: {
         placeholder: {
 
-        },
-
-        content: {
-            backgroundColor: 'white',
-            padding: 10,
-            width: 850,
-            margin: '0 auto',
-            marginTop: 10,
-            border: '1px solid rgb(239, 240, 241)',
-            borderRadius: 3
         }
-
     },
 
     getContent: function(){
@@ -90,28 +81,16 @@ var AdminSettingsApp = React.createClass({
 
         var adminId = (user == undefined) ? undefined : user.id;
 
-        console.log('AdminTrainersApp: getContent: adminId = ', adminId);
+        console.log('AdminGroupsApp: getContent: adminId = ', adminId);
 
         return (
             <div style={this.componentStyle.placeholder} >
 
-                <div style={this.componentStyle.content}>
-
-
-                    <div style={{marginTop: 10}} >
-                        <div style={{fontWeight: 'bold', fontSize: 18, marginBottom: 5}} >
-                            Поля
-                        </div>
-                        <FieldsPanel />
-                    </div>
-
+                <div>
+                    <GroupsPanel />
                 </div>
 
 
-
-                {user == undefined ? null :
-                    <OrganizationBootstrap adminId={adminId} />
-                }
 
                 {this.state.loading == false ? null :
                     <BallPreloader />
@@ -126,7 +105,7 @@ var AdminSettingsApp = React.createClass({
 
         return (
             <div>
-                <ClubAdminHeaderLinks active={'settings'} />
+                <TrainerHeaderLinks active={'teams'} />
             </div>
         );
     },
@@ -149,4 +128,4 @@ var AdminSettingsApp = React.createClass({
 
 });
 
-module.exports = AdminSettingsApp;
+module.exports = TrainerGroupsApp;

@@ -7,6 +7,45 @@ var constants = require('../FluxConstants');
 
 var OrganizationActions = {
 
+    loadTotalOrganizationLazily: function(id, callback){
+        console.log('loadTotalOrganizationLazily: id = ', id);
+        if (id == undefined){
+            console.log('id is not defined');
+            return;
+        }
+        var store = this.flux.store('OrganizationStore');
+        var org = store.organization;
+        console.log('org = ', org);
+        if (org == undefined){
+            if (store.loading == true){
+                return;
+            }
+            setTimeout(function(){
+                this.flux.actions.loadTotalOrganization(id, callback);
+            }.bind(this), 10);
+        }
+    },
+
+    loadTotalOrganization: function(id,callback){
+        console.log('loadTotalOrganization: id = ', id);
+        if (id == undefined){
+            console.log('id is not defined');
+            return;
+        }
+        this.dispatch(constants.LOAD_TOTAL_ORGANIZATION, {id: id});
+        console.log('now will load org');
+        ParseAPI.runCloudFunction("loadTotalOrganization", {id: id}, function(data){
+            if (callback != undefined){
+                setTimeout(function(){
+                    callback();
+                }, 100);
+            }
+            this.dispatch(constants.LOAD_TOTAL_ORGANIZATION_SUCCESS, {data: data});
+        }.bind(this), function(error){
+            this.dispatch(constants.LOAD_TOTAL_ORGANIZATION_FAIL, {errorMessage: error.message});
+        }.bind(this));
+    },
+
     loadTotalOrganizationByAdminId: function(adminId, callback){
         console.log('OrganizationActions: loadTotalOrganizationByAdminId: adminId = ' + adminId);
         if (adminId == undefined){
@@ -57,6 +96,23 @@ var OrganizationActions = {
         }.bind(this));
 
         //this.loadOrganizationTrainings
+    },
+
+    loadUserTrainings: function(id, callback){
+        if (id == undefined){
+            return;
+        }
+        this.dispatch(constants.LOAD_USER_TRAININGS, {id: id});
+        ParseAPI.runCloudFunction('loadUserTrainings', {id: id}, function(trainings){
+            if (callback != undefined){
+                setTimeout(function(){
+                    callback();
+                }, 10);
+            }
+            this.dispatch(constants.LOAD_USER_TRAININGS_SUCCESS, {trainings: trainings});
+        }.bind(this), function(err){
+            this.dispatch(constants.LOAD_USER_TRAININGS_FAIL, {error: err});
+        }.bind(this))
     },
 
     loadTrainingSessions: function(trainingId){

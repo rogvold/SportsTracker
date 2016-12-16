@@ -22,6 +22,7 @@ var NewOrganizationApp = require('./guest/NewOrganizationApp');
 
 var UserIndexApp = require('./user/UserIndexApp');
 var UserDocsApp = require('./user/UserDocsApp');
+var UserHelpApp = require('./user/UserHelpApp');
 
 //admin
 var AdminIndexApp = require('./admin/AdminIndexApp');
@@ -34,6 +35,12 @@ var AdminHelpApp = require('./admin/AdminHelpApp');
 var DevApp = require('./DevApp');
 var RealTimeApp = require('./guest/RealTimeApp');
 var EnglishApp = require('./guest/EnglishApp');
+
+//trainer
+var TrainerIndexApp = require('./trainer/TrainerIndexApp');
+var TrainerGroupsApp = require('./trainer/TrainerGroupsApp');
+var TrainerUsersApp = require('./trainer/TrainerUsersApp');
+var TrainerHelpApp = require('./trainer/TrainerHelpApp');
 
 /*
  FLUX
@@ -90,6 +97,7 @@ var App = React.createClass({
 
     componentDidMount: function(){
         document.title = 'SportsTracker';
+
     },
 
     componentStyle: {
@@ -160,6 +168,10 @@ var App = React.createClass({
                     <IndexRoute component={UserDocsApp} />
                 </Route>
 
+                <Route path="/help" component={UserHelpApp}>
+                    <IndexRoute component={UserHelpApp} />
+                </Route>
+
                 <Route path="/api" component={APIPlaygroundApp}>
                     <IndexRoute component={APIPlaygroundApp} />
                 </Route>
@@ -168,17 +180,7 @@ var App = React.createClass({
                     <IndexRoute component={DevApp} />
                 </Route>
 
-                <Route path="/realtime" component={RealTimeApp}>
-                    <IndexRoute component={RealTimeApp} />
-                </Route>
 
-                <Route path="/hrm" component={RealTimeApp}>
-                    <IndexRoute component={RealTimeApp} />
-                </Route>
-
-                <Route path="/english" component={EnglishApp}>
-                    <IndexRoute component={EnglishApp} />
-                </Route>
 
             </Router>
         );
@@ -233,6 +235,34 @@ var App = React.createClass({
         );
     },
 
+    getTrainerRoute: function(){
+        return (
+            <Router createElement={this.createFluxComponent} history={createHashHistory({queryKey: false})}>
+
+                <Route useAutoKeys={false} path="/" component={TrainerIndexApp} >
+                    <IndexRoute component={TrainerIndexApp} />
+                </Route>
+
+                <Route path="/dev" component={DevApp}>
+                    <IndexRoute component={DevApp} />
+                </Route>
+
+                <Route path="/teams" component={TrainerGroupsApp}>
+                    <IndexRoute component={TrainerGroupsApp} />
+                </Route>
+
+                <Route path="/users" component={TrainerUsersApp}>
+                    <IndexRoute component={TrainerUsersApp} />
+                </Route>
+
+                <Route path="/help" component={TrainerHelpApp}>
+                    <IndexRoute component={TrainerHelpApp} />
+                </Route>
+
+            </Router>
+        );
+    },
+
     render: function(){
         var currentUser = UserAPI.getCurrentUser();
         var role = (currentUser == undefined) ? undefined : currentUser.userRole;
@@ -249,6 +279,9 @@ var App = React.createClass({
             }
             if (role == 'user'){
                 content = this.getUserRoute();
+            }
+            if (role == 'trainer'){
+                content = this.getTrainerRoute();
             }
         }else {
             //content = this.getLoginContent();

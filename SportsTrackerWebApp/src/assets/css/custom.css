@@ -835,3 +835,35 @@ body{
 .edit_user_button_placeholder .update_profile_button:hover{
     background-color: #dfe6ed;
 }
+
+.trainings_list{
+
+}
+
+.trainings_list .training_item {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid rgb(239, 240, 241);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.trainings_list .training_item .avatar_placeholder {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 5px;
+}
+
+.trainings_list .training_item .avatar_placeholder > .avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.trainings_list .training_item .right_placeholder{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.trainings_list .training_item .name_placeholder{
+    font-weight: bold;
+}

@@ -120,6 +120,40 @@ Parse.Cloud.define("loadTotalOrganizationByAdminId", function(request, response)
 
 });
 
+Parse.Cloud.define("loadTotalOrganization", function(request, response) {
+    var data = request.params.data;
+    if (data == undefined || data.id == undefined){
+        response.error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'loadTotalOrganization: incorrect input data'});
+        return;
+    }
+    //var adminId = data.adminId;
+    OrganizationsModule.loadOrganization(data.id, function(org){
+        UsersModule.loadAllOrganizationUsers(org.id, function(d){
+            GroupsModule.loadOrganizationGroups({organizationId: org.id}, function(groups){
+                FieldsModule.loadOrganizationFields(org.id, function(fields){
+                    UsersModule.loadUser(org.adminId, function(admin){
+                        response.success({
+                            organization: org,
+                            users: d.users,
+                            trainers: d.trainers,
+                            groups: groups,
+                            fields: fields,
+                            admin: admin
+                        });
+                    }, function(err){
+                        response.error(err);
+                    }, true);
+                });
+            }, function(err){
+                response.error(err);
+            })
+        });
+    }, function(err){
+        response.error(err);
+    });
+
+});
+
 Parse.Cloud.define("updateOrganization", function(request, response) {
     var data = request.params.data;
     OrganizationsModule.updateOrganization(data, function(org){
@@ -195,6 +229,8 @@ Parse.Cloud.define("loadTrainerFields", function(request, response) {
         response.error(err);
     });
 });
+
+//getTrainerSportsmen
 
 //groups
 
@@ -303,6 +339,16 @@ Parse.Cloud.define("loadTrainerTrainings", function(request, response) {
     });
 });
 
+Parse.Cloud.define("loadUserTrainings", function(request, response) {
+    var data = request.params.data;
+    TrainingsModule.loadUserTrainings(data, function(d){
+        response.success(d);
+    }, function(err){
+        response.error(err);
+    });
+});
+
+
 Parse.Cloud.define("loadOrganizationTrainings", function(request, response) {
     var data = request.params.data;
     TrainingsModule.loadOrganizationTrainings(data, function(trainings){
@@ -385,6 +431,8 @@ Parse.Cloud.define("saveUsersPoints", function(request, response) {
         response.success(sessions);
     });
 });
+
+
 
 Parse.Cloud.define('authorizePusherChannel', function (request, response) {
     var user = request.user;

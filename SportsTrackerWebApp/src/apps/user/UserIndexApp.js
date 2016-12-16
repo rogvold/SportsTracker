@@ -14,11 +14,14 @@ var CoolPreloader = require('../../components/preloader/CoolPreloader');
 
 var UserPageTemplate = require('../../components/templates/user/UserPageTemplate');
 var UserHeaderLinks = require('../../components/templates/header/UserHeaderLinks');
+var TrainerHeaderLinks = require('../../components/templates/header/TrainerHeaderLinks');
 
-var CalendarPanel = require('../../components/field/calendar/CalendarPanel');
+var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
+
+var UserPagePanel = require('../../components/profile_page/UserPagePanel');
 
 var UserIndexApp = React.createClass({
-    mixins: [FluxMixin, StoreWatchMixin('UsersStore')],
+    mixins: [FluxMixin, StoreWatchMixin('UsersStore', 'OrganizationStore')],
 
     getDefaultProps: function(){
         return {
@@ -35,11 +38,13 @@ var UserIndexApp = React.createClass({
     getStateFromFlux: function(){
         var flux = this.getFlux();
         var store = flux.store('UsersStore');
-        var loading = store.loading;
+        var orgStore = flux.store('OrganizationStore');
+        var loading = (store.loading || orgStore.loading);
         var user = this.getFlux().store('UsersStore').getCurrentUser();
         return {
             loading: loading,
-            user: user
+            user: user,
+            organization: orgStore.organization
         }
     },
 
@@ -54,9 +59,9 @@ var UserIndexApp = React.createClass({
             try{
                 this.getFlux().actions.loadUser(this.getFlux().store('UsersStore').getCurrentUserId());
             }catch(ee){
-                setTimeout(function(){
-                    this.getFlux().actions.loadUser(this.getFlux().store('UsersStore').getCurrentUserId());
-                }.bind(this), 500);
+                //setTimeout(function(){
+                //    this.getFlux().actions.loadUser(this.getFlux().store('UsersStore').getCurrentUserId());
+                //}.bind(this), 500);
             }
         }
     },
@@ -64,25 +69,26 @@ var UserIndexApp = React.createClass({
     componentStyle: {
         placeholder: {
 
+        },
+
+        content: {
+            backgroundColor: 'white',
+            padding: 10,
+            width: 850,
+            margin: '0 auto',
+            marginTop: 10,
+            border: '1px solid rgb(239, 240, 241)',
+            borderRadius: 3
         }
+
     },
 
     getContent: function(){
-        var user = this.state.user;
-        var loading = this.state.loading;
-        console.log('UserIndexApp: getContent: user, loading = ', user, loading);
-        console.log('typeof loading = ', (typeof loading));
-
-        console.log('loading == false : ', (loading == false));
 
         return (
             <div style={this.componentStyle.placeholder} >
 
-                <div>
-
-                    <CalendarPanel />
-
-                </div>
+                <UserPagePanel user={this.state.user} organization={this.state.organization} />
 
             </div>
         );
@@ -90,9 +96,6 @@ var UserIndexApp = React.createClass({
 
     getCenterLinksContent: function(){
         var user = this.state.user;
-        if (user == undefined){
-            return null;
-        }
 
         return (
             <div>
@@ -103,7 +106,6 @@ var UserIndexApp = React.createClass({
 
     render: function(){
         var centerLinksContent = this.getCenterLinksContent();
-        console.log('UserIndexApp: render: this.state.loading = ', this.state.loading);
 
         return (
             <div style={this.componentStyle.placeholder} >

@@ -26,7 +26,7 @@ var DaySessionsList = React.createClass({
     getDefaultProps: function () {
         return {
 
-            trainingId: undefined,
+            trainerId: undefined,
 
             day: undefined
         }
@@ -124,24 +124,43 @@ var DaySessionsList = React.createClass({
         });
     },
 
+    getSessions: function(){
+        var day = this.props.day;
+        if (day == undefined){
+            return [];
+        }
+        var sessions = day.sessions;
+        sessions.sort(function(a, b){
+            return (b.start - a.start);
+        });
+        var trainerId = this.props.trainerId;
+        if (trainerId != undefined){
+            sessions = sessions.filter(function(a){return (a.trainerId == trainerId)});
+        }
+        return sessions;
+    },
+
     render: function () {
         var day = this.props.day;
         if (day == undefined){
             return null;
         }
 
-        var sessions = day.sessions;
+        var sessions = this.getSessions();
+        //var sessions = day.sessions;
 
         console.log('DaySessionsList: day = ', day);
 
         var store = this.getFlux().store('OrganizationStore')
 
-        sessions.sort(function(a, b){
-            return (b.start - a.start);
-        });
+        //sessions.sort(function(a, b){
+        //    return (b.start - a.start);
+        //});
+
+        console.log('DaySessionsList: render: sessions = ', sessions);
 
         return (
-            <div>
+            <div >
                 <div style={{fontSize: 16, fontWeight: 'bold', textAlign: 'center', marginBottom: 5}} >
                     {moment(day.start).format('DD.MM.YYYY')}
                 </div>
@@ -153,7 +172,7 @@ var DaySessionsList = React.createClass({
                     </span>
                 </div>
 
-                <div>
+                <div className={'trainings_list'} >
 
                     {sessions.map(function(session, k){
                         var key = 'session_' + k;
@@ -161,8 +180,8 @@ var DaySessionsList = React.createClass({
                         var trainer = store.getTrainer(session.trainerId);
 
                         return (
-                            <div style={this.componentStyle.item} onClick={onClick}
-                                 key={key} className={'hoverYellowBackground'} >
+                            <div onClick={onClick}
+                                 key={key} className={'training_item hoverYellowBackground'} >
 
                                 <div style={this.componentStyle.avatarPlaceholder}>
                                     <div style={this.componentStyle.avatar}>
@@ -175,10 +194,9 @@ var DaySessionsList = React.createClass({
                                     </div>
                                 </div>
 
-                                <div style={this.componentStyle.rightPlaceholder}>
+                                <div style={this.componentStyle.rightPlaceholder} className={'right_placeholder'} >
                                     <div style={this.componentStyle.namePlaceholder}>
                                         {trainer.firstName} {trainer.lastName}
-
                                     </div>
                                     <div style={this.componentStyle.timePlaceholder}>
                                         <span>

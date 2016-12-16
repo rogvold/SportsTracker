@@ -20,7 +20,8 @@ var TrainingsModule = {
             endTimestamp: tr.get('endTimestamp'),
             trainerId: tr.get('trainerId'),
             groupId: tr.get('groupId'),
-            fieldId: tr.get('fieldId')
+            fieldId: tr.get('fieldId'),
+            name: tr.get('name')
         }
     },
 
@@ -343,6 +344,9 @@ var TrainingsModule = {
         if (data.fieldId != undefined){
             tr.set('fieldId', data.fieldId);
         }
+        if (data.name != undefined){
+            tr.set('name', data.name);
+        }
         tr.save().then(function(savedTraining){
             success(self.transformTraining(savedTraining));
         });
@@ -584,6 +588,39 @@ var TrainingsModule = {
 
                 });
 
+            });
+        });
+    },
+
+    loadUserTrainings: function(data, success, error){
+        if (data == undefined){
+            error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'loadUserTrainings: data is not defined'});
+            return;
+        }
+        if (data.id == undefined){
+            error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'loadUserTrainings: id is not defined'});
+            return;
+        }
+        var self = this;
+        var q = new Parse.Query('Session');
+        q.equalTo('userId', data.id);
+        q.limit(1000);
+        q.find(function(results){
+            if (results == undefined){
+                results = [];
+            }
+            results = results.map(function(r){return self.transformSession(r)});
+            var ids = results.map(function(d){return d.trainingId});
+            var q2 = new Parse.Query('Training');
+            q2.limit(1000);
+            q2.addDescending('startTimestamp');
+            q2.containedIn('objectId', ids);
+            q2.find(function(trainings){
+                if (trainings == undefined){
+                    trainings = [];
+                }
+                trainings = trainings.map(function(m){return self.transformTraining(m)});
+                success({trainings: trainings, sessions: results});
             });
         });
     }

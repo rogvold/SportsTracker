@@ -1,12 +1,16 @@
 /**
- * Created by sabir on 20.06.16.
+ * Created by sabir on 14.12.16.
+ */
+
+/**
+ * Created by sabir on 21.06.16.
  */
 var React = require('react');
 var assign = require('object-assign');
 
 var HeaderLinks = require('./HeaderLinks');
 
-var UserHeaderLinks = React.createClass({
+var TrainerHeaderLinks = React.createClass({
     getDefaultProps: function () {
         return {
             active: undefined
@@ -30,33 +34,37 @@ var UserHeaderLinks = React.createClass({
     },
 
     render: function () {
-        var links = [{
-            name: 'calendar',
-            displayName: 'Календарь',
-            icon: '',
-            url: '/'
-        },
+        var links = [
 
             //{
-            //    displayName: 'Команды',
-            //    name: 'teams',
+            //    name: 'users',
+            //    displayName: 'Клиенты',
             //    icon: '',
-            //    url: '/teams'
+            //    url: '/'
             //},
-            //
-            //{
-            //    displayName: 'Тренеры',
-            //    name: 'coaches',
-            //    icon: '',
-            //    url: '/coaches'
-            //}
 
-            //{
-            //    displayName: 'Настройки',
-            //    name: 'settings',
-            //    icon: '',
-            //    url: '/settings'
-            //}
+            {
+                displayName: 'Мои тренировки',
+                name: 'index',
+                icon: '',
+                url: '/'
+            },
+
+            {
+                displayName: 'Команды',
+                name: 'teams',
+                icon: '',
+                url: '/teams'
+            },
+
+            {
+                displayName: 'Игроки',
+                name: 'users',
+                icon: '',
+                url: '/users'
+            },
+
+
 
             {
                 displayName: 'Помощь',
@@ -64,7 +72,6 @@ var UserHeaderLinks = React.createClass({
                 icon: '',
                 url: '/help'
             }
-
         ];
 
         return (
@@ -76,4 +83,4 @@ var UserHeaderLinks = React.createClass({
 
 });
 
-module.exports = UserHeaderLinks;
+module.exports = TrainerHeaderLinks;

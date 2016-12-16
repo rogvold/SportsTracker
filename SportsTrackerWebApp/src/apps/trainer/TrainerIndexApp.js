@@ -1,5 +1,5 @@
 /**
- * Created by sabir on 15.07.16.
+ * Created by sabir on 14.12.16.
  */
 
 var React = require('react');
@@ -9,18 +9,17 @@ var Fluxxor = require('fluxxor');
 var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
-var BallPreloader = require('../../components/preloader/BallPreloader');
+var CoolPreloader = require('../../components/preloader/CoolPreloader');
 
 var UserPageTemplate = require('../../components/templates/user/UserPageTemplate');
 var UserHeaderLinks = require('../../components/templates/header/UserHeaderLinks');
-var ClubAdminHeaderLinks = require('../../components/templates/header/ClubAdminHeaderLinks');
-
-var TrainersPanel = require('../../components/trainers/TrainersPanel');
-var FieldsPanel = require('../../components/organization/fields/FieldsPanel');
+var TrainerHeaderLinks = require('../../components/templates/header/TrainerHeaderLinks');
 
 var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
 
-var AdminSettingsApp = React.createClass({
+var UserPagePanel = require('../../components/profile_page/UserPagePanel');
+
+var TrainerIndexApp = React.createClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore', 'OrganizationStore')],
 
     getDefaultProps: function(){
@@ -43,7 +42,8 @@ var AdminSettingsApp = React.createClass({
         var user = this.getFlux().store('UsersStore').getCurrentUser();
         return {
             loading: loading,
-            user: user
+            user: user,
+            organization: orgStore.organization
         }
     },
 
@@ -83,39 +83,11 @@ var AdminSettingsApp = React.createClass({
     },
 
     getContent: function(){
-        var user = this.state.user;
-        var loading = this.state.loading;
-
-        var user = this.state.user;
-
-        var adminId = (user == undefined) ? undefined : user.id;
-
-        console.log('AdminTrainersApp: getContent: adminId = ', adminId);
 
         return (
             <div style={this.componentStyle.placeholder} >
 
-                <div style={this.componentStyle.content}>
-
-
-                    <div style={{marginTop: 10}} >
-                        <div style={{fontWeight: 'bold', fontSize: 18, marginBottom: 5}} >
-                            Поля
-                        </div>
-                        <FieldsPanel />
-                    </div>
-
-                </div>
-
-
-
-                {user == undefined ? null :
-                    <OrganizationBootstrap adminId={adminId} />
-                }
-
-                {this.state.loading == false ? null :
-                    <BallPreloader />
-                }
+                <UserPagePanel user={this.state.user} organization={this.state.organization} />
 
             </div>
         );
@@ -126,7 +98,7 @@ var AdminSettingsApp = React.createClass({
 
         return (
             <div>
-                <ClubAdminHeaderLinks active={'settings'} />
+                <TrainerHeaderLinks active={'index'} />
             </div>
         );
     },
@@ -149,4 +121,4 @@ var AdminSettingsApp = React.createClass({
 
 });
 
-module.exports = AdminSettingsApp;
+module.exports = TrainerIndexApp;

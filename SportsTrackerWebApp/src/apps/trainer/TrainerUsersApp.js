@@ -1,5 +1,5 @@
 /**
- * Created by sabir on 15.07.16.
+ * Created by sabir on 15.12.16.
  */
 
 var React = require('react');
@@ -14,13 +14,13 @@ var BallPreloader = require('../../components/preloader/BallPreloader');
 var UserPageTemplate = require('../../components/templates/user/UserPageTemplate');
 var UserHeaderLinks = require('../../components/templates/header/UserHeaderLinks');
 var ClubAdminHeaderLinks = require('../../components/templates/header/ClubAdminHeaderLinks');
-
-var TrainersPanel = require('../../components/trainers/TrainersPanel');
-var FieldsPanel = require('../../components/organization/fields/FieldsPanel');
+var TrainerHeaderLinks = require('../../components/templates/header/TrainerHeaderLinks');
 
 var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
 
-var AdminSettingsApp = React.createClass({
+var OrganizationUsersPanel = require('../../components/organization/users/OrganizationUsersPanel');
+
+var TrainerUsersApp = React.createClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore', 'OrganizationStore')],
 
     getDefaultProps: function(){
@@ -71,13 +71,13 @@ var AdminSettingsApp = React.createClass({
         },
 
         content: {
-            backgroundColor: 'white',
-            padding: 10,
-            width: 850,
+            //backgroundColor: 'white',
+            //padding: 10,
+            width: 960,
             margin: '0 auto',
-            marginTop: 10,
-            border: '1px solid rgb(239, 240, 241)',
-            borderRadius: 3
+            //marginTop: 10,
+            //border: '1px solid rgb(239, 240, 241)',
+            //borderRadius: 3
         }
 
     },
@@ -90,28 +90,18 @@ var AdminSettingsApp = React.createClass({
 
         var adminId = (user == undefined) ? undefined : user.id;
 
-        console.log('AdminTrainersApp: getContent: adminId = ', adminId);
-
         return (
             <div style={this.componentStyle.placeholder} >
 
                 <div style={this.componentStyle.content}>
+                    <div style={{marginBottom: 10, marginTop: 10}}>
 
+                        <OrganizationUsersPanel />
 
-                    <div style={{marginTop: 10}} >
-                        <div style={{fontWeight: 'bold', fontSize: 18, marginBottom: 5}} >
-                            Поля
-                        </div>
-                        <FieldsPanel />
                     </div>
 
                 </div>
 
-
-
-                {user == undefined ? null :
-                    <OrganizationBootstrap adminId={adminId} />
-                }
 
                 {this.state.loading == false ? null :
                     <BallPreloader />
@@ -126,7 +116,7 @@ var AdminSettingsApp = React.createClass({
 
         return (
             <div>
-                <ClubAdminHeaderLinks active={'settings'} />
+                <TrainerHeaderLinks active={'users'} />
             </div>
         );
     },
@@ -149,4 +139,4 @@ var AdminSettingsApp = React.createClass({
 
 });
 
-module.exports = AdminSettingsApp;
+module.exports = TrainerUsersApp;

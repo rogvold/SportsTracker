@@ -115,6 +115,14 @@ var OrganizationStore = Fluxxor.createStore({
             constants.LOAD_ORGANIZATION_TRAININGS_SUCCESS, this.loadOrganizationTrainingsSuccess,
             constants.LOAD_ORGANIZATION_TRAININGS_FAIL, this.stopLoading,
 
+            constants.LOAD_USER_TRAININGS, this.startLoading,
+            constants.LOAD_USER_TRAININGS_SUCCESS, this.loadUserTrainingsSuccess,
+            constants.LOAD_USER_TRAININGS_FAIL, this.stopLoading,
+
+            constants.LOAD_TRAININGS, this.startLoading,
+            constants.LOAD_TRAININGS_FAIL, this.stopLoading,
+            constants.LOAD_TRAININGS_SUCCESS, this.loadOrganizationTrainingsSuccess,
+
             constants.LOAD_SESSIONS, this.startLoading,
             constants.LOAD_SESSIONS_FAIL, this.stopLoading,
             constants.LOAD_SESSIONS_SUCCESS, this.sessionsLoaded
@@ -129,6 +137,13 @@ var OrganizationStore = Fluxxor.createStore({
 
     stopLoading: function(){
         this.loading = true;
+        this.emit('change');
+    },
+
+    loadUserTrainingsSuccess: function(payload){
+        this.loading = false;
+        this.sessions = payload.sessions;
+        this.trainings = payload.trainings;
         this.emit('change');
     },
 

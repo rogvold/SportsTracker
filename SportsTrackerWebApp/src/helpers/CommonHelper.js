@@ -147,7 +147,8 @@ var CommonHelper = {
 
     forceTransitionTo: function(url){
         var isLocalhost = this.isLocalhost();
-        var base = 'http://www.cardiofirst.net/app';
+        //var base = 'http://www.cardiofirst.net/app';
+        var base = '';
         if (isLocalhost == false){
             url = base + url;
         }

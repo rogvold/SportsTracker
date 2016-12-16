@@ -62,7 +62,7 @@ var CalendarPanel = React.createClass({
 
         return (
             <div>
-                <DaySessionsList day={day}  />
+                <DaySessionsList day={day} />
             </div>
         );
 

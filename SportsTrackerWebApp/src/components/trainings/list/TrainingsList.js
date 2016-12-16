@@ -1,61 +1,46 @@
 /**
- * Created by sabir on 18.07.16.
+ * Created by sabir on 16.12.16.
  */
 
 var React = require('react');
 var assign = require('object-assign');
 
+var moment = require('moment');
+
 var Fluxxor = require('fluxxor');
 var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
-var moment = require('moment');
-
-var BackgroundImageContainer = require('../image/BackgroundImageContainer');
-
 var TrainingsList = React.createClass({
-    mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
-    getDefaultProps: function(){
+    mixins: [FluxMixin],
+    getDefaultProps: function () {
         return {
-            dayTimestamp: undefined
-        }
-    },
 
-    getStateFromFlux: function(){
-        var flux = this.getFlux();
-        var store = flux.store('OrganizationStore');
-        return {
-            loading: store.loading
-        }
-    },
+            trainings: [],
 
-    getTrainings: function(){
-        var trainings = this.getFlux().store('OrganizationStore').trainings;
-        var arr = [];
-        var start = moment(this.props.dayTimestamp).startOf('day').format('x');
-        var end = moment(this.props.dayTimestamp).endOf('day').format('x');
-        for (var i in trainings){
-            var tr = trainings[i];
-            var t = tr.startTimestamp;
-            if (t > start && t < end){
-                arr.push(tr);
+            onTrainingClick: function(tr){
+
             }
-        }
-        return arr;
-    },
-
-    getInitialState: function(){
-        return {
 
         }
     },
 
-    componentWillReceiveProps: function(nextProps){
+    getInitialState: function () {
+        return {}
+    },
+
+    componentWillReceiveProps: function (nextProps) {
 
     },
 
-    componentDidMount: function(){
+    componentDidMount: function () {
 
+    },
+
+    getTrainer: function(trainerId){
+        var store = this.getFlux().store('OrganizationStore');
+        var trainer = store.getTrainer(trainerId);
+        return trainer;
     },
 
     componentStyle: {
@@ -98,20 +83,17 @@ var TrainingsList = React.createClass({
             width: 40,
             height: 40
         }
-
     },
 
-    getTrainer: function(trainerId){
-        var store = this.getFlux().store('OrganizationStore');
-        var trainer = store.getTrainer(trainerId);
-        return trainer;
+    onClick: function(tr){
+        this.props.onTrainingClick(tr);
     },
 
-    render: function(){
-        var trainings = this.getTrainings();
+    render: function () {
+        var trainings = this.props.trainings;
 
         return (
-            <div style={this.componentStyle.placeholder} >
+            <div style={this.componentStyle.placeholder}>
 
                 <div style={this.componentStyle.listPlaceholder}>
 
@@ -122,7 +104,7 @@ var TrainingsList = React.createClass({
 
                         return (
                             <div style={this.componentStyle.item} onClick={onClick}
-                                 key={key} className={' hoverYellowBackground '} >
+                                 key={key} className={'hoverYellowBackground'} >
 
                                 <div style={this.componentStyle.avatarPlaceholder}>
                                     <div style={this.componentStyle.avatar}>

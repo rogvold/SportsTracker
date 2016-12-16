@@ -33,7 +33,9 @@ var UsersStore = Fluxxor.createStore({
 
             constants.LOAD_USER_BY_EMAIL, this.loadUserByEmail,
             constants.LOAD_USER_BY_EMAIL_SUCCESS, this.loadedUserByEmail,
-            constants.LOAD_USER_BY_EMAIL_FAIL, this.loadUserByEmailFail
+            constants.LOAD_USER_BY_EMAIL_FAIL, this.loadUserByEmailFail,
+
+            constants.CONSUME_USERS, this.consumeGoodUsers
 
 
         );
@@ -54,6 +56,9 @@ var UsersStore = Fluxxor.createStore({
             return;
         }
         for (var i in users){
+            if (this.usersMap[users[i].id] != undefined){
+                continue;
+            }
             this.usersMap[users[i].id] = users[i];
         }
         this.emit('change');
@@ -90,11 +95,8 @@ var UsersStore = Fluxxor.createStore({
     },
 
     loadUserSuccess: function(payload){
-        console.log('UsersStore: loadUserSuccess: payload = ', payload);
         var user = payload.user;
         if (user == undefined){
-            this.loading = false;
-            this.emit('change');
             return;
         }
         this.usersMap[user.id] = user;
@@ -153,11 +155,7 @@ var UsersStore = Fluxxor.createStore({
     },
 
     getCurrentUser: function(){
-        console.log('UsersStore: getCurrentUser');
-        console.log('this.usersMap = ', this.usersMap);
         var id = UserAPI.getCurrentUserId();
-        var user = this.usersMap[id];
-        console.log('returning ', user);
         return this.usersMap[id];
     },
 
@@ -221,6 +219,21 @@ var UsersStore = Fluxxor.createStore({
             }
         }
         return arr;
+    },
+
+    consumeGoodUsers: function(payload){
+        this.consumeUsers(payload.users);
+    },
+
+    isMe: function(userId){
+        if (userId == undefined){
+            return false;
+        }
+        var currentUserId = this.getCurrentUserId();
+        if (currentUserId == undefined){
+            return false;
+        }
+        return (currentUserId == userId);
     }
 
 });

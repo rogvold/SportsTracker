@@ -73767,7 +73767,7 @@ var ParseAPI = {
 
 module.exports = ParseAPI;
 
-},{"../Constants":699,"parse":272}],580:[function(require,module,exports){
+},{"../Constants":709,"parse":272}],580:[function(require,module,exports){
 /**
  * Created by sabir on 20.06.16.
  */
@@ -73943,12 +73943,24 @@ var UserAPI = {
     },
 
     getCurrentUserId: function(){
+        if (this.currentUserId != undefined){
+            return this.currentUserId;
+        }
         var u = this.getCurrentUser();
         if (u == undefined){
             return undefined;
         }
+        this.currentUserId = u.id;
         return u.id;
     },
+
+    //getCurrentUserId: function(){
+    //    var u = this.getCurrentUser();
+    //    if (u == undefined){
+    //        return undefined;
+    //    }
+    //    return u.id;
+    //},
 
     isLoggedIn: function(){
         return (Parse.User.current() != undefined);
@@ -74141,6 +74153,7 @@ var NewOrganizationApp = require('./guest/NewOrganizationApp');
 
 var UserIndexApp = require('./user/UserIndexApp');
 var UserDocsApp = require('./user/UserDocsApp');
+var UserHelpApp = require('./user/UserHelpApp');
 
 //admin
 var AdminIndexApp = require('./admin/AdminIndexApp');
@@ -74153,6 +74166,12 @@ var AdminHelpApp = require('./admin/AdminHelpApp');
 var DevApp = require('./DevApp');
 var RealTimeApp = require('./guest/RealTimeApp');
 var EnglishApp = require('./guest/EnglishApp');
+
+//trainer
+var TrainerIndexApp = require('./trainer/TrainerIndexApp');
+var TrainerGroupsApp = require('./trainer/TrainerGroupsApp');
+var TrainerUsersApp = require('./trainer/TrainerUsersApp');
+var TrainerHelpApp = require('./trainer/TrainerHelpApp');
 
 /*
  FLUX
@@ -74209,6 +74228,7 @@ var App = React.createClass({displayName: "App",
 
     componentDidMount: function(){
         document.title = 'SportsTracker';
+
     },
 
     componentStyle: {
@@ -74279,25 +74299,19 @@ var App = React.createClass({displayName: "App",
                     React.createElement(IndexRoute, {component: UserDocsApp})
                 ), 
 
+                React.createElement(Route, {path: "/help", component: UserHelpApp}, 
+                    React.createElement(IndexRoute, {component: UserHelpApp})
+                ), 
+
                 React.createElement(Route, {path: "/api", component: APIPlaygroundApp}, 
                     React.createElement(IndexRoute, {component: APIPlaygroundApp})
                 ), 
 
                 React.createElement(Route, {path: "/dev", component: DevApp}, 
                     React.createElement(IndexRoute, {component: DevApp})
-                ), 
-
-                React.createElement(Route, {path: "/realtime", component: RealTimeApp}, 
-                    React.createElement(IndexRoute, {component: RealTimeApp})
-                ), 
-
-                React.createElement(Route, {path: "/hrm", component: RealTimeApp}, 
-                    React.createElement(IndexRoute, {component: RealTimeApp})
-                ), 
-
-                React.createElement(Route, {path: "/english", component: EnglishApp}, 
-                    React.createElement(IndexRoute, {component: EnglishApp})
                 )
+
+
 
             )
         );
@@ -74352,6 +74366,34 @@ var App = React.createClass({displayName: "App",
         );
     },
 
+    getTrainerRoute: function(){
+        return (
+            React.createElement(Router, {createElement: this.createFluxComponent, history: createHashHistory({queryKey: false})}, 
+
+                React.createElement(Route, {useAutoKeys: false, path: "/", component: TrainerIndexApp}, 
+                    React.createElement(IndexRoute, {component: TrainerIndexApp})
+                ), 
+
+                React.createElement(Route, {path: "/dev", component: DevApp}, 
+                    React.createElement(IndexRoute, {component: DevApp})
+                ), 
+
+                React.createElement(Route, {path: "/teams", component: TrainerGroupsApp}, 
+                    React.createElement(IndexRoute, {component: TrainerGroupsApp})
+                ), 
+
+                React.createElement(Route, {path: "/users", component: TrainerUsersApp}, 
+                    React.createElement(IndexRoute, {component: TrainerUsersApp})
+                ), 
+
+                React.createElement(Route, {path: "/help", component: TrainerHelpApp}, 
+                    React.createElement(IndexRoute, {component: TrainerHelpApp})
+                )
+
+            )
+        );
+    },
+
     render: function(){
         var currentUser = UserAPI.getCurrentUser();
         var role = (currentUser == undefined) ? undefined : currentUser.userRole;
@@ -74368,6 +74410,9 @@ var App = React.createClass({displayName: "App",
             }
             if (role == 'user'){
                 content = this.getUserRoute();
+            }
+            if (role == 'trainer'){
+                content = this.getTrainerRoute();
             }
         }else {
             //content = this.getLoginContent();
@@ -74388,7 +74433,7 @@ ReactDOM.render(
     document.getElementById('main')
 );
 
-},{"../api/UserAPI":580,"../flux/actions/FieldsActions":701,"../flux/actions/GroupsActions":702,"../flux/actions/OrganizationActions":703,"../flux/actions/OrganizationUsersActions":704,"../flux/actions/PusherActions":705,"../flux/actions/RealTimeActions":706,"../flux/actions/TrainersActions":707,"../flux/actions/UsersActions":708,"../flux/stores/OrganizationStore":709,"../flux/stores/PusherStore":710,"../flux/stores/RealTimeStore":711,"../flux/stores/UsersStore":712,"./DevApp":582,"./admin/AdminGroupsApp":583,"./admin/AdminHelpApp":584,"./admin/AdminIndexApp":585,"./admin/AdminSettingsApp":586,"./admin/AdminTrainersApp":587,"./admin/AdminUsersApp":588,"./guest/APIPlaygroundApp":589,"./guest/EnglishApp":590,"./guest/LoginApp":591,"./guest/NewOrganizationApp":592,"./guest/RealTimeApp":593,"./user/UserDocsApp":594,"./user/UserIndexApp":595,"fluxxor":117,"history":142,"object-assign":270,"react":577,"react-dom":374,"react-router":409}],582:[function(require,module,exports){
+},{"../api/UserAPI":580,"../flux/actions/FieldsActions":711,"../flux/actions/GroupsActions":712,"../flux/actions/OrganizationActions":713,"../flux/actions/OrganizationUsersActions":714,"../flux/actions/PusherActions":715,"../flux/actions/RealTimeActions":716,"../flux/actions/TrainersActions":717,"../flux/actions/UsersActions":718,"../flux/stores/OrganizationStore":719,"../flux/stores/PusherStore":720,"../flux/stores/RealTimeStore":721,"../flux/stores/UsersStore":722,"./DevApp":582,"./admin/AdminGroupsApp":583,"./admin/AdminHelpApp":584,"./admin/AdminIndexApp":585,"./admin/AdminSettingsApp":586,"./admin/AdminTrainersApp":587,"./admin/AdminUsersApp":588,"./guest/APIPlaygroundApp":589,"./guest/EnglishApp":590,"./guest/LoginApp":591,"./guest/NewOrganizationApp":592,"./guest/RealTimeApp":593,"./trainer/TrainerGroupsApp":594,"./trainer/TrainerHelpApp":595,"./trainer/TrainerIndexApp":596,"./trainer/TrainerUsersApp":597,"./user/UserDocsApp":598,"./user/UserHelpApp":599,"./user/UserIndexApp":600,"fluxxor":117,"history":142,"object-assign":270,"react":577,"react-dom":374,"react-router":409}],582:[function(require,module,exports){
 /**
  * Created by sabir on 08.07.16.
  */
@@ -74467,7 +74512,7 @@ var DevApp = React.createClass({displayName: "DevApp",
 
 module.exports = DevApp;
 
-},{"../api/UserAPI":580,"../components/chart/SuperLineChart":607,"../components/field/FieldTeamPanel":614,"../components/field/TestField":615,"../components/field/TrainingTeamFieldPanel":616,"../components/field/gate/Gate":623,"../components/field/heatmap/HeatMap":627,"../components/field/heatmap/HeatMapPanel":628,"../components/field/slider/HeatMapRangeSlider":631,"../components/heart/AnimatedHeart":645,"../components/preloader/BallPreloader":667,"../components/preloader/CoolPreloader":668,"../components/templates/vk/VkTemplate":681,"../flux/actions/UsersActions":708,"../flux/stores/UsersStore":712,"fluxxor":117,"object-assign":270,"react":577,"react-dom":374}],583:[function(require,module,exports){
+},{"../api/UserAPI":580,"../components/chart/SuperLineChart":612,"../components/field/FieldTeamPanel":619,"../components/field/TestField":620,"../components/field/TrainingTeamFieldPanel":621,"../components/field/gate/Gate":628,"../components/field/heatmap/HeatMap":632,"../components/field/heatmap/HeatMapPanel":633,"../components/field/slider/HeatMapRangeSlider":636,"../components/heart/AnimatedHeart":650,"../components/preloader/BallPreloader":672,"../components/preloader/CoolPreloader":673,"../components/templates/vk/VkTemplate":691,"../flux/actions/UsersActions":718,"../flux/stores/UsersStore":722,"fluxxor":117,"object-assign":270,"react":577,"react-dom":374}],583:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -74602,7 +74647,7 @@ var AdminGroupsApp = React.createClass({displayName: "AdminGroupsApp",
 
 module.exports = AdminGroupsApp;
 
-},{"../../components/groups/GroupsPanel":640,"../../components/organization/OrganizationBootstrap":648,"../../components/preloader/BallPreloader":667,"../../components/templates/header/ClubAdminHeaderLinks":675,"../../components/templates/header/UserHeaderLinks":677,"../../components/templates/user/UserPageTemplate":680,"fluxxor":117,"object-assign":270,"react":577}],584:[function(require,module,exports){
+},{"../../components/groups/GroupsPanel":645,"../../components/organization/OrganizationBootstrap":653,"../../components/preloader/BallPreloader":672,"../../components/templates/header/ClubAdminHeaderLinks":684,"../../components/templates/header/UserHeaderLinks":687,"../../components/templates/user/UserPageTemplate":690,"fluxxor":117,"object-assign":270,"react":577}],584:[function(require,module,exports){
 /**
  * Created by sabir on 15.07.16.
  */
@@ -74726,7 +74771,7 @@ var AdminHelpApp = React.createClass({displayName: "AdminHelpApp",
 
 module.exports = AdminHelpApp;
 
-},{"../../components/organization/OrganizationBootstrap":648,"../../components/preloader/CoolPreloader":668,"../../components/templates/header/ClubAdminHeaderLinks":675,"../../components/templates/header/UserHeaderLinks":677,"../../components/templates/user/UserPageTemplate":680,"fluxxor":117,"object-assign":270,"react":577}],585:[function(require,module,exports){
+},{"../../components/organization/OrganizationBootstrap":653,"../../components/preloader/CoolPreloader":673,"../../components/templates/header/ClubAdminHeaderLinks":684,"../../components/templates/header/UserHeaderLinks":687,"../../components/templates/user/UserPageTemplate":690,"fluxxor":117,"object-assign":270,"react":577}],585:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -74865,7 +74910,7 @@ var AdminIndexApp = React.createClass({displayName: "AdminIndexApp",
 
 module.exports = AdminIndexApp;
 
-},{"../../components/field/calendar/CalendarPanel":620,"../../components/organization/OrganizationBootstrap":648,"../../components/preloader/BallPreloader":667,"../../components/templates/header/ClubAdminHeaderLinks":675,"../../components/templates/header/UserHeaderLinks":677,"../../components/templates/user/UserPageTemplate":680,"../../components/trainings/calendar/TrainingsCalendar":691,"fluxxor":117,"object-assign":270,"react":577}],586:[function(require,module,exports){
+},{"../../components/field/calendar/CalendarPanel":625,"../../components/organization/OrganizationBootstrap":653,"../../components/preloader/BallPreloader":672,"../../components/templates/header/ClubAdminHeaderLinks":684,"../../components/templates/header/UserHeaderLinks":687,"../../components/templates/user/UserPageTemplate":690,"../../components/trainings/calendar/TrainingsCalendar":701,"fluxxor":117,"object-assign":270,"react":577}],586:[function(require,module,exports){
 /**
  * Created by sabir on 15.07.16.
  */
@@ -74964,7 +75009,7 @@ var AdminSettingsApp = React.createClass({displayName: "AdminSettingsApp",
             React.createElement("div", {style: this.componentStyle.placeholder}, 
 
                 React.createElement("div", {style: this.componentStyle.content}, 
-                    
+
 
                     React.createElement("div", {style: {marginTop: 10}}, 
                         React.createElement("div", {style: {fontWeight: 'bold', fontSize: 18, marginBottom: 5}}, 
@@ -75019,7 +75064,7 @@ var AdminSettingsApp = React.createClass({displayName: "AdminSettingsApp",
 
 module.exports = AdminSettingsApp;
 
-},{"../../components/organization/OrganizationBootstrap":648,"../../components/organization/fields/FieldsPanel":651,"../../components/preloader/BallPreloader":667,"../../components/templates/header/ClubAdminHeaderLinks":675,"../../components/templates/header/UserHeaderLinks":677,"../../components/templates/user/UserPageTemplate":680,"../../components/trainers/TrainersPanel":687,"fluxxor":117,"object-assign":270,"react":577}],587:[function(require,module,exports){
+},{"../../components/organization/OrganizationBootstrap":653,"../../components/organization/fields/FieldsPanel":656,"../../components/preloader/BallPreloader":672,"../../components/templates/header/ClubAdminHeaderLinks":684,"../../components/templates/header/UserHeaderLinks":687,"../../components/templates/user/UserPageTemplate":690,"../../components/trainers/TrainersPanel":697,"fluxxor":117,"object-assign":270,"react":577}],587:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -75151,7 +75196,7 @@ var AdminTrainersApp = React.createClass({displayName: "AdminTrainersApp",
 
 module.exports = AdminTrainersApp;
 
-},{"../../components/organization/OrganizationBootstrap":648,"../../components/preloader/BallPreloader":667,"../../components/templates/header/ClubAdminHeaderLinks":675,"../../components/templates/header/UserHeaderLinks":677,"../../components/templates/user/UserPageTemplate":680,"../../components/trainers/TrainersPanel":687,"fluxxor":117,"object-assign":270,"react":577}],588:[function(require,module,exports){
+},{"../../components/organization/OrganizationBootstrap":653,"../../components/preloader/BallPreloader":672,"../../components/templates/header/ClubAdminHeaderLinks":684,"../../components/templates/header/UserHeaderLinks":687,"../../components/templates/user/UserPageTemplate":690,"../../components/trainers/TrainersPanel":697,"fluxxor":117,"object-assign":270,"react":577}],588:[function(require,module,exports){
 /**
  * Created by sabir on 15.07.16.
  */
@@ -75299,7 +75344,7 @@ var AdminUsersApp = React.createClass({displayName: "AdminUsersApp",
 
 module.exports = AdminUsersApp;
 
-},{"../../components/organization/OrganizationBootstrap":648,"../../components/organization/users/OrganizationUsersPanel":660,"../../components/preloader/BallPreloader":667,"../../components/templates/header/ClubAdminHeaderLinks":675,"../../components/templates/header/UserHeaderLinks":677,"../../components/templates/user/UserPageTemplate":680,"fluxxor":117,"object-assign":270,"react":577}],589:[function(require,module,exports){
+},{"../../components/organization/OrganizationBootstrap":653,"../../components/organization/users/OrganizationUsersPanel":665,"../../components/preloader/BallPreloader":672,"../../components/templates/header/ClubAdminHeaderLinks":684,"../../components/templates/header/UserHeaderLinks":687,"../../components/templates/user/UserPageTemplate":690,"fluxxor":117,"object-assign":270,"react":577}],589:[function(require,module,exports){
 /**
  * Created by sabir on 06.07.16.
  */
@@ -75429,7 +75474,7 @@ var APIPlaygroundApp = React.createClass({displayName: "APIPlaygroundApp",
 
 module.exports = APIPlaygroundApp;
 
-},{"../../components/api_playground/CreateAircraftComponent":596,"../../components/api_playground/DeleteAircraftComponent":597,"../../components/api_playground/LoadAllOrganizationsComponent":598,"../../components/api_playground/LoadSessionPointsComponent":599,"../../components/api_playground/LoadUserAircraftsComponent":600,"../../components/api_playground/LoadUserSessionsComponent":601,"../../components/api_playground/SavePointsComponent":602,"../../components/api_playground/UpdateAircraftComponent":603,"../../components/api_playground/UpdateUserComponent":604,"../../components/preloader/CoolPreloader":668,"../../components/templates/header/UserHeaderLinks":677,"../../components/templates/user/UserPageTemplate":680,"fluxxor":117,"object-assign":270,"react":577}],590:[function(require,module,exports){
+},{"../../components/api_playground/CreateAircraftComponent":601,"../../components/api_playground/DeleteAircraftComponent":602,"../../components/api_playground/LoadAllOrganizationsComponent":603,"../../components/api_playground/LoadSessionPointsComponent":604,"../../components/api_playground/LoadUserAircraftsComponent":605,"../../components/api_playground/LoadUserSessionsComponent":606,"../../components/api_playground/SavePointsComponent":607,"../../components/api_playground/UpdateAircraftComponent":608,"../../components/api_playground/UpdateUserComponent":609,"../../components/preloader/CoolPreloader":673,"../../components/templates/header/UserHeaderLinks":687,"../../components/templates/user/UserPageTemplate":690,"fluxxor":117,"object-assign":270,"react":577}],590:[function(require,module,exports){
 /**
  * Created by sabir on 17.07.16.
  */
@@ -75489,7 +75534,7 @@ var EnglishApp = React.createClass({displayName: "EnglishApp",
 
 module.exports = EnglishApp;
 
-},{"../../components/pusher/PusherPanel":673,"../../components/pusher/RealTimePlayer":674,"fluxxor":117,"object-assign":270,"react":577}],591:[function(require,module,exports){
+},{"../../components/pusher/PusherPanel":682,"../../components/pusher/RealTimePlayer":683,"fluxxor":117,"object-assign":270,"react":577}],591:[function(require,module,exports){
 /**
  * Created by sabir on 20.06.16.
  */
@@ -75573,7 +75618,7 @@ var LoginApp = React.createClass({displayName: "LoginApp",
 
 module.exports = LoginApp;
 
-},{"../../api/UserAPI":580,"../../components/user/AuthForm":692,"../../helpers/CommonHelper":714,"fluxxor":117,"object-assign":270,"react":577}],592:[function(require,module,exports){
+},{"../../api/UserAPI":580,"../../components/user/AuthForm":702,"../../helpers/CommonHelper":724,"fluxxor":117,"object-assign":270,"react":577}],592:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -75636,7 +75681,7 @@ var NewOrganizationApp = React.createClass({displayName: "NewOrganizationApp",
 
 module.exports = NewOrganizationApp;
 
-},{"../../components/organization/signup/OrganizationSignUpPanel":658,"../../components/preloader/CoolPreloader":668,"../../components/templates/header/UserHeaderLinks":677,"../../components/templates/user/UserPageTemplate":680,"fluxxor":117,"object-assign":270,"react":577}],593:[function(require,module,exports){
+},{"../../components/organization/signup/OrganizationSignUpPanel":663,"../../components/preloader/CoolPreloader":673,"../../components/templates/header/UserHeaderLinks":687,"../../components/templates/user/UserPageTemplate":690,"fluxxor":117,"object-assign":270,"react":577}],593:[function(require,module,exports){
 /**
  * Created by sabir on 15.07.16.
  */
@@ -75700,7 +75745,536 @@ var RealTimeApp = React.createClass({displayName: "RealTimeApp",
 
 module.exports = RealTimeApp;
 
-},{"../../components/heart/AnimatedHeart":645,"../../components/heart/HeartPanel":646,"fluxxor":117,"object-assign":270,"react":577}],594:[function(require,module,exports){
+},{"../../components/heart/AnimatedHeart":650,"../../components/heart/HeartPanel":651,"fluxxor":117,"object-assign":270,"react":577}],594:[function(require,module,exports){
+/**
+ * Created by sabir on 13.07.16.
+ */
+
+var React = require('react');
+var assign = require('object-assign');
+
+var Fluxxor = require('fluxxor');
+var FluxMixin = Fluxxor.FluxMixin(React);
+var StoreWatchMixin = Fluxxor.StoreWatchMixin;
+
+var CoolPreloader = require('../../components/preloader/CoolPreloader');
+
+var UserPageTemplate = require('../../components/templates/user/UserPageTemplate');
+var UserHeaderLinks = require('../../components/templates/header/UserHeaderLinks');
+var TrainerHeaderLinks = require('../../components/templates/header/TrainerHeaderLinks');
+
+var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
+
+var UserPagePanel = require('../../components/profile_page/UserPagePanel');
+
+var GroupsPanel = require('../../components/groups/GroupsPanel');
+var BallPreloader = require('../../components/preloader/BallPreloader');
+
+var TrainerGroupsApp = React.createClass({displayName: "TrainerGroupsApp",
+    mixins: [FluxMixin, StoreWatchMixin('UsersStore', 'OrganizationStore')],
+
+    getDefaultProps: function(){
+        return {
+
+        }
+    },
+
+    getInitialState: function(){
+        return {
+
+        }
+    },
+
+    getStateFromFlux: function(){
+        var flux = this.getFlux();
+        var store = flux.store('UsersStore');
+        var orgStore = flux.store('OrganizationStore');
+        var loading = (store.loading || orgStore.loading);
+        var user = this.getFlux().store('UsersStore').getCurrentUser();
+        return {
+            loading: loading,
+            user: user
+        }
+    },
+
+    componentWillReceiveProps: function(nextProps){
+
+    },
+
+    componentDidMount: function(){
+        var user = this.getFlux().store('UsersStore').getCurrentUser();
+        console.log('UserIndexApp: componentDidMount occured');
+        if (user == undefined){
+            try{
+                this.getFlux().actions.loadUser(this.getFlux().store('UsersStore').getCurrentUserId());
+            }catch(ee){
+                //setTimeout(function(){
+                //    this.getFlux().actions.loadUser(this.getFlux().store('UsersStore').getCurrentUserId());
+                //}.bind(this), 500);
+            }
+        }
+    },
+
+    componentStyle: {
+        placeholder: {
+
+        }
+    },
+
+    getContent: function(){
+        var user = this.state.user;
+        var loading = this.state.loading;
+
+        var user = this.state.user;
+
+        var adminId = (user == undefined) ? undefined : user.id;
+
+        console.log('AdminGroupsApp: getContent: adminId = ', adminId);
+
+        return (
+            React.createElement("div", {style: this.componentStyle.placeholder}, 
+
+                React.createElement("div", null, 
+                    React.createElement(GroupsPanel, null)
+                ), 
+
+
+
+                this.state.loading == false ? null :
+                    React.createElement(BallPreloader, null)
+                
+
+            )
+        );
+    },
+
+    getCenterLinksContent: function(){
+        var user = this.state.user;
+
+        return (
+            React.createElement("div", null, 
+                React.createElement(TrainerHeaderLinks, {active: 'teams'})
+            )
+        );
+    },
+
+    render: function(){
+        var centerLinksContent = this.getCenterLinksContent();
+
+        return (
+            React.createElement("div", {style: this.componentStyle.placeholder}, 
+
+                React.createElement(UserPageTemplate, {
+                    centerLinksContent: centerLinksContent, 
+                    contentStyle: {width: '100%'}, 
+                    content: this.getContent()}
+                    )
+
+            )
+        );
+    }
+
+});
+
+module.exports = TrainerGroupsApp;
+
+},{"../../components/groups/GroupsPanel":645,"../../components/organization/OrganizationBootstrap":653,"../../components/preloader/BallPreloader":672,"../../components/preloader/CoolPreloader":673,"../../components/profile_page/UserPagePanel":681,"../../components/templates/header/TrainerHeaderLinks":686,"../../components/templates/header/UserHeaderLinks":687,"../../components/templates/user/UserPageTemplate":690,"fluxxor":117,"object-assign":270,"react":577}],595:[function(require,module,exports){
+/**
+ * Created by sabir on 15.12.16.
+ */
+
+
+var React = require('react');
+var assign = require('object-assign');
+
+var Fluxxor = require('fluxxor');
+var FluxMixin = Fluxxor.FluxMixin(React);
+var StoreWatchMixin = Fluxxor.StoreWatchMixin;
+
+var CoolPreloader = require('../../components/preloader/CoolPreloader');
+
+var UserPageTemplate = require('../../components/templates/user/UserPageTemplate');
+var UserHeaderLinks = require('../../components/templates/header/UserHeaderLinks');
+var ClubAdminHeaderLinks = require('../../components/templates/header/ClubAdminHeaderLinks');
+var TrainerHeaderLinks = require('../../components/templates/header/TrainerHeaderLinks');
+
+var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
+
+var TrainerHelpApp = React.createClass({displayName: "TrainerHelpApp",
+
+    getDefaultProps: function(){
+        return {
+
+        }
+    },
+
+    getInitialState: function(){
+        return {
+
+        }
+    },
+
+    componentWillReceiveProps: function(nextProps){
+
+    },
+
+    componentDidMount: function(){
+        var user = this.getFlux().store('UsersStore').getCurrentUser();
+        console.log('UserIndexApp: componentDidMount occured');
+        if (user == undefined){
+            try{
+                this.getFlux().actions.loadUser(this.getFlux().store('UsersStore').getCurrentUserId());
+            }catch(ee){
+                //setTimeout(function(){
+                //    this.getFlux().actions.loadUser(this.getFlux().store('UsersStore').getCurrentUserId());
+                //}.bind(this), 500);
+            }
+        }
+    },
+
+    componentStyle: {
+        placeholder: {
+
+        },
+
+        content: {
+            backgroundColor: 'white',
+            padding: 10,
+            width: 850,
+            margin: '0 auto',
+            marginTop: 10,
+            border: '1px solid rgb(239, 240, 241)',
+            borderRadius: 3
+        }
+
+    },
+
+    getContent: function(){
+
+        return (
+            React.createElement("div", {style: this.componentStyle.placeholder}, 
+
+                React.createElement("div", {style: this.componentStyle.content}, 
+                    React.createElement("div", {style: {marginBottom: 10}}, 
+                        React.createElement("div", {style: {fontWeight: 'bold', fontSize: 18, marginBottom: 5}}, 
+                            "Помощь"
+                        ), 
+
+                        React.createElement("div", null, 
+                            React.createElement("p", null, 
+                                "Will be available soon"
+                            )
+                        )
+
+                    )
+
+                )
+
+            )
+        );
+    },
+
+    getCenterLinksContent: function(){
+        var user = this.state.user;
+
+        return (
+            React.createElement("div", null, 
+                React.createElement(TrainerHeaderLinks, {active: 'help'})
+            )
+        );
+    },
+
+    render: function(){
+        var centerLinksContent = this.getCenterLinksContent();
+
+        return (
+            React.createElement("div", {style: this.componentStyle.placeholder}, 
+
+                React.createElement(UserPageTemplate, {
+                    centerLinksContent: centerLinksContent, 
+                    contentStyle: {width: '100%'}, 
+                    content: this.getContent()}
+                    )
+
+            )
+        );
+    }
+
+});
+
+module.exports = TrainerHelpApp;
+
+},{"../../components/organization/OrganizationBootstrap":653,"../../components/preloader/CoolPreloader":673,"../../components/templates/header/ClubAdminHeaderLinks":684,"../../components/templates/header/TrainerHeaderLinks":686,"../../components/templates/header/UserHeaderLinks":687,"../../components/templates/user/UserPageTemplate":690,"fluxxor":117,"object-assign":270,"react":577}],596:[function(require,module,exports){
+/**
+ * Created by sabir on 14.12.16.
+ */
+
+var React = require('react');
+var assign = require('object-assign');
+
+var Fluxxor = require('fluxxor');
+var FluxMixin = Fluxxor.FluxMixin(React);
+var StoreWatchMixin = Fluxxor.StoreWatchMixin;
+
+var CoolPreloader = require('../../components/preloader/CoolPreloader');
+
+var UserPageTemplate = require('../../components/templates/user/UserPageTemplate');
+var UserHeaderLinks = require('../../components/templates/header/UserHeaderLinks');
+var TrainerHeaderLinks = require('../../components/templates/header/TrainerHeaderLinks');
+
+var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
+
+var UserPagePanel = require('../../components/profile_page/UserPagePanel');
+
+var TrainerIndexApp = React.createClass({displayName: "TrainerIndexApp",
+    mixins: [FluxMixin, StoreWatchMixin('UsersStore', 'OrganizationStore')],
+
+    getDefaultProps: function(){
+        return {
+
+        }
+    },
+
+    getInitialState: function(){
+        return {
+
+        }
+    },
+
+    getStateFromFlux: function(){
+        var flux = this.getFlux();
+        var store = flux.store('UsersStore');
+        var orgStore = flux.store('OrganizationStore');
+        var loading = (store.loading || orgStore.loading);
+        var user = this.getFlux().store('UsersStore').getCurrentUser();
+        return {
+            loading: loading,
+            user: user,
+            organization: orgStore.organization
+        }
+    },
+
+    componentWillReceiveProps: function(nextProps){
+
+    },
+
+    componentDidMount: function(){
+        var user = this.getFlux().store('UsersStore').getCurrentUser();
+        console.log('UserIndexApp: componentDidMount occured');
+        if (user == undefined){
+            try{
+                this.getFlux().actions.loadUser(this.getFlux().store('UsersStore').getCurrentUserId());
+            }catch(ee){
+                //setTimeout(function(){
+                //    this.getFlux().actions.loadUser(this.getFlux().store('UsersStore').getCurrentUserId());
+                //}.bind(this), 500);
+            }
+        }
+    },
+
+    componentStyle: {
+        placeholder: {
+
+        },
+
+        content: {
+            backgroundColor: 'white',
+            padding: 10,
+            width: 850,
+            margin: '0 auto',
+            marginTop: 10,
+            border: '1px solid rgb(239, 240, 241)',
+            borderRadius: 3
+        }
+
+    },
+
+    getContent: function(){
+
+        return (
+            React.createElement("div", {style: this.componentStyle.placeholder}, 
+
+                React.createElement(UserPagePanel, {user: this.state.user, organization: this.state.organization})
+
+            )
+        );
+    },
+
+    getCenterLinksContent: function(){
+        var user = this.state.user;
+
+        return (
+            React.createElement("div", null, 
+                React.createElement(TrainerHeaderLinks, {active: 'index'})
+            )
+        );
+    },
+
+    render: function(){
+        var centerLinksContent = this.getCenterLinksContent();
+
+        return (
+            React.createElement("div", {style: this.componentStyle.placeholder}, 
+
+                React.createElement(UserPageTemplate, {
+                    centerLinksContent: centerLinksContent, 
+                    contentStyle: {width: '100%'}, 
+                    content: this.getContent()}
+                    )
+
+            )
+        );
+    }
+
+});
+
+module.exports = TrainerIndexApp;
+
+},{"../../components/organization/OrganizationBootstrap":653,"../../components/preloader/CoolPreloader":673,"../../components/profile_page/UserPagePanel":681,"../../components/templates/header/TrainerHeaderLinks":686,"../../components/templates/header/UserHeaderLinks":687,"../../components/templates/user/UserPageTemplate":690,"fluxxor":117,"object-assign":270,"react":577}],597:[function(require,module,exports){
+/**
+ * Created by sabir on 15.12.16.
+ */
+
+var React = require('react');
+var assign = require('object-assign');
+
+var Fluxxor = require('fluxxor');
+var FluxMixin = Fluxxor.FluxMixin(React);
+var StoreWatchMixin = Fluxxor.StoreWatchMixin;
+
+var BallPreloader = require('../../components/preloader/BallPreloader');
+
+var UserPageTemplate = require('../../components/templates/user/UserPageTemplate');
+var UserHeaderLinks = require('../../components/templates/header/UserHeaderLinks');
+var ClubAdminHeaderLinks = require('../../components/templates/header/ClubAdminHeaderLinks');
+var TrainerHeaderLinks = require('../../components/templates/header/TrainerHeaderLinks');
+
+var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
+
+var OrganizationUsersPanel = require('../../components/organization/users/OrganizationUsersPanel');
+
+var TrainerUsersApp = React.createClass({displayName: "TrainerUsersApp",
+    mixins: [FluxMixin, StoreWatchMixin('UsersStore', 'OrganizationStore')],
+
+    getDefaultProps: function(){
+        return {
+
+        }
+    },
+
+    getInitialState: function(){
+        return {
+
+        }
+    },
+
+    getStateFromFlux: function(){
+        var flux = this.getFlux();
+        var store = flux.store('UsersStore');
+        var orgStore = flux.store('OrganizationStore');
+        var loading = (store.loading || orgStore.loading);
+        var user = this.getFlux().store('UsersStore').getCurrentUser();
+        return {
+            loading: loading,
+            user: user
+        }
+    },
+
+    componentWillReceiveProps: function(nextProps){
+
+    },
+
+    componentDidMount: function(){
+        var user = this.getFlux().store('UsersStore').getCurrentUser();
+        console.log('UserIndexApp: componentDidMount occured');
+        if (user == undefined){
+            try{
+                this.getFlux().actions.loadUser(this.getFlux().store('UsersStore').getCurrentUserId());
+            }catch(ee){
+                //setTimeout(function(){
+                //    this.getFlux().actions.loadUser(this.getFlux().store('UsersStore').getCurrentUserId());
+                //}.bind(this), 500);
+            }
+        }
+    },
+
+    componentStyle: {
+        placeholder: {
+
+        },
+
+        content: {
+            //backgroundColor: 'white',
+            //padding: 10,
+            width: 960,
+            margin: '0 auto',
+            //marginTop: 10,
+            //border: '1px solid rgb(239, 240, 241)',
+            //borderRadius: 3
+        }
+
+    },
+
+    getContent: function(){
+        var user = this.state.user;
+        var loading = this.state.loading;
+
+        var user = this.state.user;
+
+        var adminId = (user == undefined) ? undefined : user.id;
+
+        return (
+            React.createElement("div", {style: this.componentStyle.placeholder}, 
+
+                React.createElement("div", {style: this.componentStyle.content}, 
+                    React.createElement("div", {style: {marginBottom: 10, marginTop: 10}}, 
+
+                        React.createElement(OrganizationUsersPanel, null)
+
+                    )
+
+                ), 
+
+
+                this.state.loading == false ? null :
+                    React.createElement(BallPreloader, null)
+                
+
+            )
+        );
+    },
+
+    getCenterLinksContent: function(){
+        var user = this.state.user;
+
+        return (
+            React.createElement("div", null, 
+                React.createElement(TrainerHeaderLinks, {active: 'users'})
+            )
+        );
+    },
+
+    render: function(){
+        var centerLinksContent = this.getCenterLinksContent();
+
+        return (
+            React.createElement("div", {style: this.componentStyle.placeholder}, 
+
+                React.createElement(UserPageTemplate, {
+                    centerLinksContent: centerLinksContent, 
+                    contentStyle: {width: '100%'}, 
+                    content: this.getContent()}
+                    )
+
+            )
+        );
+    }
+
+});
+
+module.exports = TrainerUsersApp;
+
+},{"../../components/organization/OrganizationBootstrap":653,"../../components/organization/users/OrganizationUsersPanel":665,"../../components/preloader/BallPreloader":672,"../../components/templates/header/ClubAdminHeaderLinks":684,"../../components/templates/header/TrainerHeaderLinks":686,"../../components/templates/header/UserHeaderLinks":687,"../../components/templates/user/UserPageTemplate":690,"fluxxor":117,"object-assign":270,"react":577}],598:[function(require,module,exports){
 /**
  * Created by sabir on 20.06.16.
  */
@@ -75834,7 +76408,133 @@ var UserDocsApp = React.createClass({displayName: "UserDocsApp",
 
 module.exports = UserDocsApp;
 
-},{"../../components/preloader/CoolPreloader":668,"../../components/profile/UserProfilePanel":670,"../../components/templates/header/UserHeaderLinks":677,"../../components/templates/user/UserPageTemplate":680,"object-assign":270,"react":577}],595:[function(require,module,exports){
+},{"../../components/preloader/CoolPreloader":673,"../../components/profile/UserProfilePanel":675,"../../components/templates/header/UserHeaderLinks":687,"../../components/templates/user/UserPageTemplate":690,"object-assign":270,"react":577}],599:[function(require,module,exports){
+/**
+ * Created by sabir on 15.12.16.
+ */
+
+
+var React = require('react');
+var assign = require('object-assign');
+
+var Fluxxor = require('fluxxor');
+var FluxMixin = Fluxxor.FluxMixin(React);
+var StoreWatchMixin = Fluxxor.StoreWatchMixin;
+
+var CoolPreloader = require('../../components/preloader/CoolPreloader');
+
+var UserPageTemplate = require('../../components/templates/user/UserPageTemplate');
+var UserHeaderLinks = require('../../components/templates/header/UserHeaderLinks');
+var ClubAdminHeaderLinks = require('../../components/templates/header/ClubAdminHeaderLinks');
+var TrainerHeaderLinks = require('../../components/templates/header/TrainerHeaderLinks');
+
+var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
+
+var UserHelpApp = React.createClass({displayName: "UserHelpApp",
+
+    getDefaultProps: function(){
+        return {
+
+        }
+    },
+
+    getInitialState: function(){
+        return {
+
+        }
+    },
+
+    componentWillReceiveProps: function(nextProps){
+
+    },
+
+    componentDidMount: function(){
+        var user = this.getFlux().store('UsersStore').getCurrentUser();
+        console.log('UserIndexApp: componentDidMount occured');
+        if (user == undefined){
+            try{
+                this.getFlux().actions.loadUser(this.getFlux().store('UsersStore').getCurrentUserId());
+            }catch(ee){
+                //setTimeout(function(){
+                //    this.getFlux().actions.loadUser(this.getFlux().store('UsersStore').getCurrentUserId());
+                //}.bind(this), 500);
+            }
+        }
+    },
+
+    componentStyle: {
+        placeholder: {
+
+        },
+
+        content: {
+            backgroundColor: 'white',
+            padding: 10,
+            width: 850,
+            margin: '0 auto',
+            marginTop: 10,
+            border: '1px solid rgb(239, 240, 241)',
+            borderRadius: 3
+        }
+
+    },
+
+    getContent: function(){
+
+        return (
+            React.createElement("div", {style: this.componentStyle.placeholder}, 
+
+                React.createElement("div", {style: this.componentStyle.content}, 
+                    React.createElement("div", {style: {marginBottom: 10}}, 
+                        React.createElement("div", {style: {fontWeight: 'bold', fontSize: 18, marginBottom: 5}}, 
+                            "Помощь"
+                        ), 
+
+                        React.createElement("div", null, 
+                            React.createElement("p", null, 
+                                "Will be available soon"
+                            )
+                        )
+
+                    )
+
+                )
+
+            )
+        );
+    },
+
+    getCenterLinksContent: function(){
+        var user = this.state.user;
+
+        return (
+            React.createElement("div", null, 
+                React.createElement(UserHeaderLinks, {active: 'help'})
+            )
+        );
+    },
+
+    render: function(){
+        var centerLinksContent = this.getCenterLinksContent();
+
+        return (
+            React.createElement("div", {style: this.componentStyle.placeholder}, 
+
+                React.createElement(UserPageTemplate, {
+                    centerLinksContent: centerLinksContent, 
+                    contentStyle: {width: '100%'}, 
+                    content: this.getContent()}
+                    )
+
+            )
+        );
+    }
+
+});
+
+module.exports = UserHelpApp;
+
+},{"../../components/organization/OrganizationBootstrap":653,"../../components/preloader/CoolPreloader":673,"../../components/templates/header/ClubAdminHeaderLinks":684,"../../components/templates/header/TrainerHeaderLinks":686,"../../components/templates/header/UserHeaderLinks":687,"../../components/templates/user/UserPageTemplate":690,"fluxxor":117,"object-assign":270,"react":577}],600:[function(require,module,exports){
 /**
  * Created by sabir on 20.06.16.
  */
@@ -75851,11 +76551,14 @@ var CoolPreloader = require('../../components/preloader/CoolPreloader');
 
 var UserPageTemplate = require('../../components/templates/user/UserPageTemplate');
 var UserHeaderLinks = require('../../components/templates/header/UserHeaderLinks');
+var TrainerHeaderLinks = require('../../components/templates/header/TrainerHeaderLinks');
 
-var CalendarPanel = require('../../components/field/calendar/CalendarPanel');
+var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
+
+var UserPagePanel = require('../../components/profile_page/UserPagePanel');
 
 var UserIndexApp = React.createClass({displayName: "UserIndexApp",
-    mixins: [FluxMixin, StoreWatchMixin('UsersStore')],
+    mixins: [FluxMixin, StoreWatchMixin('UsersStore', 'OrganizationStore')],
 
     getDefaultProps: function(){
         return {
@@ -75872,11 +76575,13 @@ var UserIndexApp = React.createClass({displayName: "UserIndexApp",
     getStateFromFlux: function(){
         var flux = this.getFlux();
         var store = flux.store('UsersStore');
-        var loading = store.loading;
+        var orgStore = flux.store('OrganizationStore');
+        var loading = (store.loading || orgStore.loading);
         var user = this.getFlux().store('UsersStore').getCurrentUser();
         return {
             loading: loading,
-            user: user
+            user: user,
+            organization: orgStore.organization
         }
     },
 
@@ -75891,9 +76596,9 @@ var UserIndexApp = React.createClass({displayName: "UserIndexApp",
             try{
                 this.getFlux().actions.loadUser(this.getFlux().store('UsersStore').getCurrentUserId());
             }catch(ee){
-                setTimeout(function(){
-                    this.getFlux().actions.loadUser(this.getFlux().store('UsersStore').getCurrentUserId());
-                }.bind(this), 500);
+                //setTimeout(function(){
+                //    this.getFlux().actions.loadUser(this.getFlux().store('UsersStore').getCurrentUserId());
+                //}.bind(this), 500);
             }
         }
     },
@@ -75901,25 +76606,26 @@ var UserIndexApp = React.createClass({displayName: "UserIndexApp",
     componentStyle: {
         placeholder: {
 
+        },
+
+        content: {
+            backgroundColor: 'white',
+            padding: 10,
+            width: 850,
+            margin: '0 auto',
+            marginTop: 10,
+            border: '1px solid rgb(239, 240, 241)',
+            borderRadius: 3
         }
+
     },
 
     getContent: function(){
-        var user = this.state.user;
-        var loading = this.state.loading;
-        console.log('UserIndexApp: getContent: user, loading = ', user, loading);
-        console.log('typeof loading = ', (typeof loading));
-
-        console.log('loading == false : ', (loading == false));
 
         return (
             React.createElement("div", {style: this.componentStyle.placeholder}, 
 
-                React.createElement("div", null, 
-
-                    React.createElement(CalendarPanel, null)
-
-                )
+                React.createElement(UserPagePanel, {user: this.state.user, organization: this.state.organization})
 
             )
         );
@@ -75927,9 +76633,6 @@ var UserIndexApp = React.createClass({displayName: "UserIndexApp",
 
     getCenterLinksContent: function(){
         var user = this.state.user;
-        if (user == undefined){
-            return null;
-        }
 
         return (
             React.createElement("div", null, 
@@ -75940,7 +76643,6 @@ var UserIndexApp = React.createClass({displayName: "UserIndexApp",
 
     render: function(){
         var centerLinksContent = this.getCenterLinksContent();
-        console.log('UserIndexApp: render: this.state.loading = ', this.state.loading);
 
         return (
             React.createElement("div", {style: this.componentStyle.placeholder}, 
@@ -75959,7 +76661,7 @@ var UserIndexApp = React.createClass({displayName: "UserIndexApp",
 
 module.exports = UserIndexApp;
 
-},{"../../components/field/calendar/CalendarPanel":620,"../../components/preloader/CoolPreloader":668,"../../components/templates/header/UserHeaderLinks":677,"../../components/templates/user/UserPageTemplate":680,"fluxxor":117,"object-assign":270,"react":577}],596:[function(require,module,exports){
+},{"../../components/organization/OrganizationBootstrap":653,"../../components/preloader/CoolPreloader":673,"../../components/profile_page/UserPagePanel":681,"../../components/templates/header/TrainerHeaderLinks":686,"../../components/templates/header/UserHeaderLinks":687,"../../components/templates/user/UserPageTemplate":690,"fluxxor":117,"object-assign":270,"react":577}],601:[function(require,module,exports){
 /**
  * Created by sabir on 07.07.16.
  */
@@ -76173,7 +76875,7 @@ var CreateAircraftComponent = React.createClass({displayName: "CreateAircraftCom
 
 module.exports = CreateAircraftComponent;
 
-},{"../../api/ParseAPI":579,"../preloader/CoolPreloader":668,"object-assign":270,"react":577}],597:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../preloader/CoolPreloader":673,"object-assign":270,"react":577}],602:[function(require,module,exports){
 /**
  * Created by sabir on 06.07.16.
  */
@@ -76335,7 +77037,7 @@ var DeleteAircraftComponent = React.createClass({displayName: "DeleteAircraftCom
 
 module.exports = DeleteAircraftComponent;
 
-},{"../../api/ParseAPI":579,"../preloader/CoolPreloader":668,"object-assign":270,"react":577}],598:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../preloader/CoolPreloader":673,"object-assign":270,"react":577}],603:[function(require,module,exports){
 /**
  * Created by sabir on 06.07.16.
  */
@@ -76485,7 +77187,7 @@ var LoadAllOrganizationsComponent = React.createClass({displayName: "LoadAllOrga
 
 module.exports = LoadAllOrganizationsComponent;
 
-},{"../../api/ParseAPI":579,"../preloader/CoolPreloader":668,"object-assign":270,"react":577}],599:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../preloader/CoolPreloader":673,"object-assign":270,"react":577}],604:[function(require,module,exports){
 /**
  * Created by sabir on 07.07.16.
  */
@@ -76648,7 +77350,7 @@ var LoadSessionPointsComponent = React.createClass({displayName: "LoadSessionPoi
 
 module.exports = LoadSessionPointsComponent;
 
-},{"../../api/ParseAPI":579,"../preloader/CoolPreloader":668,"object-assign":270,"react":577}],600:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../preloader/CoolPreloader":673,"object-assign":270,"react":577}],605:[function(require,module,exports){
 /**
  * Created by sabir on 06.07.16.
  */
@@ -76811,7 +77513,7 @@ var LoadUserAircraftsComponent = React.createClass({displayName: "LoadUserAircra
 
 module.exports = LoadUserAircraftsComponent;
 
-},{"../../api/ParseAPI":579,"../preloader/CoolPreloader":668,"object-assign":270,"react":577}],601:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../preloader/CoolPreloader":673,"object-assign":270,"react":577}],606:[function(require,module,exports){
 /**
  * Created by sabir on 07.07.16.
  */
@@ -76974,7 +77676,7 @@ var LoadUserSessionsComponent = React.createClass({displayName: "LoadUserSession
 
 module.exports = LoadUserSessionsComponent;
 
-},{"../../api/ParseAPI":579,"../preloader/CoolPreloader":668,"object-assign":270,"react":577}],602:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../preloader/CoolPreloader":673,"object-assign":270,"react":577}],607:[function(require,module,exports){
 /**
  * Created by sabir on 07.07.16.
  */
@@ -77159,7 +77861,7 @@ var SavePointsComponent = React.createClass({displayName: "SavePointsComponent",
 
 module.exports = SavePointsComponent;
 
-},{"../../api/ParseAPI":579,"../../helpers/LocationHelper":715,"../preloader/CoolPreloader":668,"object-assign":270,"react":577}],603:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../../helpers/LocationHelper":725,"../preloader/CoolPreloader":673,"object-assign":270,"react":577}],608:[function(require,module,exports){
 /**
  * Created by sabir on 07.07.16.
  */
@@ -77372,7 +78074,7 @@ var UpdateAircraftComponent = React.createClass({displayName: "UpdateAircraftCom
 
 module.exports = UpdateAircraftComponent;
 
-},{"../../api/ParseAPI":579,"../preloader/CoolPreloader":668,"object-assign":270,"react":577}],604:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../preloader/CoolPreloader":673,"object-assign":270,"react":577}],609:[function(require,module,exports){
 /**
  * Created by sabir on 07.07.16.
  */
@@ -77577,7 +78279,7 @@ var UpdateUserComponent = React.createClass({displayName: "UpdateUserComponent",
 
 module.exports = UpdateUserComponent;
 
-},{"../../api/ParseAPI":579,"../preloader/CoolPreloader":668,"object-assign":270,"react":577}],605:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../preloader/CoolPreloader":673,"object-assign":270,"react":577}],610:[function(require,module,exports){
 /**
  * Created by sabir on 06.03.16.
  */
@@ -77696,7 +78398,7 @@ var DeleteButton = React.createClass({displayName: "DeleteButton",
 
 module.exports = DeleteButton;
 
-},{"object-assign":270,"react":577}],606:[function(require,module,exports){
+},{"object-assign":270,"react":577}],611:[function(require,module,exports){
 /**
  * Created by sabir on 16.07.16.
  */
@@ -77776,7 +78478,7 @@ var RealTimeHeartRateChart = React.createClass({displayName: "RealTimeHeartRateC
 
 module.exports = RealTimeHeartRateChart;
 
-},{"object-assign":270,"react":577,"react-d3":348}],607:[function(require,module,exports){
+},{"object-assign":270,"react":577,"react-d3":348}],612:[function(require,module,exports){
 /**
  * Created by sabir on 16.07.16.
  */
@@ -77838,7 +78540,7 @@ var SuperLineChart = React.createClass({displayName: "SuperLineChart",
 
 module.exports = SuperLineChart;
 
-},{"object-assign":270,"react":577,"react-d3":348}],608:[function(require,module,exports){
+},{"object-assign":270,"react":577,"react-d3":348}],613:[function(require,module,exports){
 /**
  * Created by sabir on 10.10.15.
  */
@@ -77927,7 +78629,7 @@ var Dialog = React.createClass({displayName: "Dialog",
 
 module.exports = Dialog;
 
-},{"./DialogOverlay":609,"./DialogPanel":610,"object-assign":270,"react":577}],609:[function(require,module,exports){
+},{"./DialogOverlay":614,"./DialogPanel":615,"object-assign":270,"react":577}],614:[function(require,module,exports){
 /**
  * Created by sabir on 10.10.15.
  */
@@ -78029,7 +78731,7 @@ var DialogOverlay = React.createClass({displayName: "DialogOverlay",
 });
 module.exports = DialogOverlay;
 
-},{"object-assign":270,"react":577}],610:[function(require,module,exports){
+},{"object-assign":270,"react":577}],615:[function(require,module,exports){
 /**
  * Created by sabir on 10.10.15.
  */
@@ -78245,7 +78947,7 @@ var DialogPanel = React.createClass({displayName: "DialogPanel",
 
 module.exports = DialogPanel;
 
-},{"object-assign":270,"react":577}],611:[function(require,module,exports){
+},{"object-assign":270,"react":577}],616:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */
@@ -78385,7 +79087,7 @@ var Field = React.createClass({displayName: "Field",
 
 module.exports = Field;
 
-},{"./FieldPoint":613,"object-assign":270,"react":577}],612:[function(require,module,exports){
+},{"./FieldPoint":618,"object-assign":270,"react":577}],617:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */
@@ -78681,7 +79383,7 @@ var FieldPlayer = React.createClass({displayName: "FieldPlayer",
 
 module.exports = FieldPlayer;
 
-},{"../../helpers/SportHelper":716,"./Field":611,"./TestField":615,"./slider/FieldSlider":630,"moment":269,"object-assign":270,"react":577}],613:[function(require,module,exports){
+},{"../../helpers/SportHelper":726,"./Field":616,"./TestField":620,"./slider/FieldSlider":635,"moment":269,"object-assign":270,"react":577}],618:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */
@@ -78765,7 +79467,7 @@ var FieldPoint = React.createClass({displayName: "FieldPoint",
 
 module.exports = FieldPoint;
 
-},{"object-assign":270,"react":577}],614:[function(require,module,exports){
+},{"object-assign":270,"react":577}],619:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */
@@ -78913,7 +79615,7 @@ var FieldTeamPanel = React.createClass({displayName: "FieldTeamPanel",
 
 module.exports = FieldTeamPanel;
 
-},{"../../helpers/SportHelper":716,"../dialog/Dialog":608,"./FieldPlayer":612,"./users/PlayersList":632,"./users/UserTrainingPanel":634,"object-assign":270,"react":577}],615:[function(require,module,exports){
+},{"../../helpers/SportHelper":726,"../dialog/Dialog":613,"./FieldPlayer":617,"./users/PlayersList":637,"./users/UserTrainingPanel":639,"object-assign":270,"react":577}],620:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */
@@ -79015,7 +79717,7 @@ var TestField = React.createClass({displayName: "TestField",
 
 module.exports = TestField;
 
-},{"./Field":611,"./slider/FieldSlider":630,"object-assign":270,"react":577}],616:[function(require,module,exports){
+},{"./Field":616,"./slider/FieldSlider":635,"object-assign":270,"react":577}],621:[function(require,module,exports){
 /**
  * Created by sabir on 05.10.16.
  */
@@ -79116,7 +79818,7 @@ var TrainingTeamFieldPanel = React.createClass({displayName: "TrainingTeamFieldP
 
 module.exports = TrainingTeamFieldPanel;
 
-},{"../../helpers/SportHelper":716,"../preloader/BallPreloader":667,"./FieldTeamPanel":614,"fluxxor":117,"object-assign":270,"react":577}],617:[function(require,module,exports){
+},{"../../helpers/SportHelper":726,"../preloader/BallPreloader":672,"./FieldTeamPanel":619,"fluxxor":117,"object-assign":270,"react":577}],622:[function(require,module,exports){
 /**
  * Created by sabir on 17.06.16.
  */
@@ -79227,7 +79929,7 @@ var ActivityMonthCalendar = React.createClass({displayName: "ActivityMonthCalend
 
 module.exports = ActivityMonthCalendar;
 
-},{"../../../helpers/CalendarHelper":713,"../../../helpers/SportHelper":716,"./CalendarDayPanel":618,"./CalendarHeaderRow":619,"./CalendarWeekRow":621,"./MonthSwitcherPanel":622,"object-assign":270,"react":577}],618:[function(require,module,exports){
+},{"../../../helpers/CalendarHelper":723,"../../../helpers/SportHelper":726,"./CalendarDayPanel":623,"./CalendarHeaderRow":624,"./CalendarWeekRow":626,"./MonthSwitcherPanel":627,"object-assign":270,"react":577}],623:[function(require,module,exports){
 /**
  * Created by sabir on 17.06.16.
  */
@@ -79425,7 +80127,7 @@ var CalendarDayPanel = React.createClass({displayName: "CalendarDayPanel",
 
 module.exports = CalendarDayPanel;
 
-},{"../../image/BackgroundImageContainer":647,"moment":269,"object-assign":270,"react":577}],619:[function(require,module,exports){
+},{"../../image/BackgroundImageContainer":652,"moment":269,"object-assign":270,"react":577}],624:[function(require,module,exports){
 /**
  * Created by sabir on 17.06.16.
  */
@@ -79502,7 +80204,7 @@ var CalendarHeaderRow = React.createClass({displayName: "CalendarHeaderRow",
 
 module.exports = CalendarHeaderRow;
 
-},{"object-assign":270,"react":577}],620:[function(require,module,exports){
+},{"object-assign":270,"react":577}],625:[function(require,module,exports){
 /**
  * Created by sabir on 18.06.16.
  */
@@ -79598,7 +80300,7 @@ var CalendarPanel = React.createClass({displayName: "CalendarPanel",
 
 module.exports = CalendarPanel;
 
-},{"../../../helpers/CalendarHelper":713,"../../../helpers/SportHelper":716,"../../dialog/Dialog":608,"../session/DaySessionsList":629,"./ActivityMonthCalendar":617,"moment":269,"object-assign":270,"react":577}],621:[function(require,module,exports){
+},{"../../../helpers/CalendarHelper":723,"../../../helpers/SportHelper":726,"../../dialog/Dialog":613,"../session/DaySessionsList":634,"./ActivityMonthCalendar":622,"moment":269,"object-assign":270,"react":577}],626:[function(require,module,exports){
 /**
  * Created by sabir on 17.06.16.
  */
@@ -79703,7 +80405,7 @@ var CalendarWeekRow = React.createClass({displayName: "CalendarWeekRow",
 
 module.exports = CalendarWeekRow;
 
-},{"./CalendarDayPanel":618,"moment":269,"object-assign":270,"react":577}],622:[function(require,module,exports){
+},{"./CalendarDayPanel":623,"moment":269,"object-assign":270,"react":577}],627:[function(require,module,exports){
 /**
  * Created by sabir on 17.06.16.
  */
@@ -79852,7 +80554,7 @@ var MonthSwitcherPanel = React.createClass({displayName: "MonthSwitcherPanel",
 
 module.exports = MonthSwitcherPanel;
 
-},{"../../../helpers/CalendarHelper":713,"moment":269,"object-assign":270,"react":577}],623:[function(require,module,exports){
+},{"../../../helpers/CalendarHelper":723,"moment":269,"object-assign":270,"react":577}],628:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -79941,7 +80643,7 @@ var Gate = React.createClass({displayName: "Gate",
 
 module.exports = Gate;
 
-},{"../../../helpers/SportHelper":716,"./GateCorner":624,"object-assign":270,"react":577}],624:[function(require,module,exports){
+},{"../../../helpers/SportHelper":726,"./GateCorner":629,"object-assign":270,"react":577}],629:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -80068,7 +80770,7 @@ var GateCorner = React.createClass({displayName: "GateCorner",
 
 module.exports = GateCorner;
 
-},{"./GatePoint":625,"object-assign":270,"react":577}],625:[function(require,module,exports){
+},{"./GatePoint":630,"object-assign":270,"react":577}],630:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -80154,7 +80856,7 @@ var GatePoint = React.createClass({displayName: "GatePoint",
 
 module.exports = GatePoint;
 
-},{"object-assign":270,"react":577}],626:[function(require,module,exports){
+},{"object-assign":270,"react":577}],631:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -80225,7 +80927,7 @@ var UserShotsPanel = React.createClass({displayName: "UserShotsPanel",
 
 module.exports = UserShotsPanel;
 
-},{"../../../helpers/SportHelper":716,"./Gate":623,"object-assign":270,"react":577}],627:[function(require,module,exports){
+},{"../../../helpers/SportHelper":726,"./Gate":628,"object-assign":270,"react":577}],632:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */
@@ -80302,7 +81004,7 @@ var HeatMap = React.createClass({displayName: "HeatMap",
 
 module.exports = HeatMap;
 
-},{"object-assign":270,"react":577,"react-heatmap":380}],628:[function(require,module,exports){
+},{"object-assign":270,"react":577,"react-heatmap":380}],633:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */
@@ -80462,7 +81164,7 @@ var HeatMapPanel = React.createClass({displayName: "HeatMapPanel",
 
 module.exports = HeatMapPanel;
 
-},{"../../../helpers/SportHelper":716,"../slider/HeatMapRangeSlider":631,"./HeatMap":627,"object-assign":270,"react":577}],629:[function(require,module,exports){
+},{"../../../helpers/SportHelper":726,"../slider/HeatMapRangeSlider":636,"./HeatMap":632,"object-assign":270,"react":577}],634:[function(require,module,exports){
 /**
  * Created by sabir on 11.07.16.
  */
@@ -80491,7 +81193,7 @@ var DaySessionsList = React.createClass({displayName: "DaySessionsList",
     getDefaultProps: function () {
         return {
 
-            trainingId: undefined,
+            trainerId: undefined,
 
             day: undefined
         }
@@ -80589,21 +81291,40 @@ var DaySessionsList = React.createClass({displayName: "DaySessionsList",
         });
     },
 
+    getSessions: function(){
+        var day = this.props.day;
+        if (day == undefined){
+            return [];
+        }
+        var sessions = day.sessions;
+        sessions.sort(function(a, b){
+            return (b.start - a.start);
+        });
+        var trainerId = this.props.trainerId;
+        if (trainerId != undefined){
+            sessions = sessions.filter(function(a){return (a.trainerId == trainerId)});
+        }
+        return sessions;
+    },
+
     render: function () {
         var day = this.props.day;
         if (day == undefined){
             return null;
         }
 
-        var sessions = day.sessions;
+        var sessions = this.getSessions();
+        //var sessions = day.sessions;
 
         console.log('DaySessionsList: day = ', day);
 
         var store = this.getFlux().store('OrganizationStore')
 
-        sessions.sort(function(a, b){
-            return (b.start - a.start);
-        });
+        //sessions.sort(function(a, b){
+        //    return (b.start - a.start);
+        //});
+
+        console.log('DaySessionsList: render: sessions = ', sessions);
 
         return (
             React.createElement("div", null, 
@@ -80618,7 +81339,7 @@ var DaySessionsList = React.createClass({displayName: "DaySessionsList",
                     )
                 ), 
 
-                React.createElement("div", null, 
+                React.createElement("div", {className: 'trainings_list'}, 
 
                     sessions.map(function(session, k){
                         var key = 'session_' + k;
@@ -80626,8 +81347,8 @@ var DaySessionsList = React.createClass({displayName: "DaySessionsList",
                         var trainer = store.getTrainer(session.trainerId);
 
                         return (
-                            React.createElement("div", {style: this.componentStyle.item, onClick: onClick, 
-                                 key: key, className: 'hoverYellowBackground'}, 
+                            React.createElement("div", {onClick: onClick, 
+                                 key: key, className: 'training_item hoverYellowBackground'}, 
 
                                 React.createElement("div", {style: this.componentStyle.avatarPlaceholder}, 
                                     React.createElement("div", {style: this.componentStyle.avatar}, 
@@ -80640,10 +81361,9 @@ var DaySessionsList = React.createClass({displayName: "DaySessionsList",
                                     )
                                 ), 
 
-                                React.createElement("div", {style: this.componentStyle.rightPlaceholder}, 
+                                React.createElement("div", {style: this.componentStyle.rightPlaceholder, className: 'right_placeholder'}, 
                                     React.createElement("div", {style: this.componentStyle.namePlaceholder}, 
                                         trainer.firstName, " ", trainer.lastName
-
                                     ), 
                                     React.createElement("div", {style: this.componentStyle.timePlaceholder}, 
                                         React.createElement("span", null, 
@@ -80690,7 +81410,7 @@ var DaySessionsList = React.createClass({displayName: "DaySessionsList",
 
 module.exports = DaySessionsList;
 
-},{"../../dialog/Dialog":608,"../../image/BackgroundImageContainer":647,"../FieldTeamPanel":614,"../TrainingTeamFieldPanel":616,"fluxxor":117,"moment":269,"object-assign":270,"react":577}],630:[function(require,module,exports){
+},{"../../dialog/Dialog":613,"../../image/BackgroundImageContainer":652,"../FieldTeamPanel":619,"../TrainingTeamFieldPanel":621,"fluxxor":117,"moment":269,"object-assign":270,"react":577}],635:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */
@@ -80752,7 +81472,7 @@ var FieldSlider = React.createClass({displayName: "FieldSlider",
 
 module.exports = FieldSlider;
 
-},{"object-assign":270,"react":577,"react-slider":436}],631:[function(require,module,exports){
+},{"object-assign":270,"react":577,"react-slider":436}],636:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */
@@ -80818,7 +81538,7 @@ var HeatMapRangeSlider = React.createClass({displayName: "HeatMapRangeSlider",
 
 module.exports = HeatMapRangeSlider;
 
-},{"object-assign":270,"react":577,"react-slider":436}],632:[function(require,module,exports){
+},{"object-assign":270,"react":577,"react-slider":436}],637:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */
@@ -80907,7 +81627,7 @@ var PlayersList = React.createClass({displayName: "PlayersList",
 
 module.exports = PlayersList;
 
-},{"./UserItem":633,"object-assign":270,"react":577}],633:[function(require,module,exports){
+},{"./UserItem":638,"object-assign":270,"react":577}],638:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */
@@ -81057,7 +81777,7 @@ var UserItem = React.createClass({displayName: "UserItem",
 
 module.exports = UserItem;
 
-},{"../../../helpers/SportHelper":716,"../../image/BackgroundImageContainer":647,"object-assign":270,"react":577}],634:[function(require,module,exports){
+},{"../../../helpers/SportHelper":726,"../../image/BackgroundImageContainer":652,"object-assign":270,"react":577}],639:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */
@@ -81264,7 +81984,7 @@ var UserTrainingPanel = React.createClass({displayName: "UserTrainingPanel",
 
 module.exports = UserTrainingPanel;
 
-},{"../../../helpers/SportHelper":716,"../../image/BackgroundImageContainer":647,"../FieldPlayer":612,"../gate/UserShotsPanel":626,"../heatmap/HeatMapPanel":628,"object-assign":270,"react":577}],635:[function(require,module,exports){
+},{"../../../helpers/SportHelper":726,"../../image/BackgroundImageContainer":652,"../FieldPlayer":617,"../gate/UserShotsPanel":631,"../heatmap/HeatMapPanel":633,"object-assign":270,"react":577}],640:[function(require,module,exports){
 /**
  * Created by sabir on 16.12.15.
  */
@@ -81341,7 +82061,7 @@ var FileUploadButton = React.createClass({displayName: "FileUploadButton",
 
 module.exports = FileUploadButton;
 
-},{"./FileUploader":636,"object-assign":270,"react":577}],636:[function(require,module,exports){
+},{"./FileUploader":641,"object-assign":270,"react":577}],641:[function(require,module,exports){
 /**
  * Created by sabir on 13.10.15.
  */
@@ -81616,7 +82336,7 @@ var FileUploader = React.createClass({displayName: "FileUploader",
 
 module.exports = FileUploader;
 
-},{"object-assign":270,"react":577,"react-dom/server":375,"react-dropzone-component":376}],637:[function(require,module,exports){
+},{"object-assign":270,"react":577,"react-dom/server":375,"react-dropzone-component":376}],642:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -81697,7 +82417,7 @@ var GroupItem = React.createClass({displayName: "GroupItem",
 
 module.exports = GroupItem;
 
-},{"fluxxor":117,"object-assign":270,"react":577}],638:[function(require,module,exports){
+},{"fluxxor":117,"object-assign":270,"react":577}],643:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -81815,7 +82535,7 @@ var GroupPanel = React.createClass({displayName: "GroupPanel",
 
 module.exports = GroupPanel;
 
-},{"./UpdateGroupButton":641,"fluxxor":117,"object-assign":270,"react":577}],639:[function(require,module,exports){
+},{"./UpdateGroupButton":646,"fluxxor":117,"object-assign":270,"react":577}],644:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -81958,7 +82678,7 @@ var GroupsListPanel = React.createClass({displayName: "GroupsListPanel",
 
 module.exports = GroupsListPanel;
 
-},{"../dialog/Dialog":608,"./GroupItem":637,"./GroupPanel":638,"fluxxor":117,"object-assign":270,"react":577}],640:[function(require,module,exports){
+},{"../dialog/Dialog":613,"./GroupItem":642,"./GroupPanel":643,"fluxxor":117,"object-assign":270,"react":577}],645:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -82140,7 +82860,7 @@ var GroupsPanel = React.createClass({displayName: "GroupsPanel",
 
 module.exports = GroupsPanel;
 
-},{"../dialog/Dialog":608,"../preloader/CoolPreloader":668,"./GroupsListPanel":639,"./new/CreateGroupPanel":643,"fluxxor":117,"object-assign":270,"react":577}],641:[function(require,module,exports){
+},{"../dialog/Dialog":613,"../preloader/CoolPreloader":673,"./GroupsListPanel":644,"./new/CreateGroupPanel":648,"fluxxor":117,"object-assign":270,"react":577}],646:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -82275,7 +82995,7 @@ var UpdateGroupButton = React.createClass({displayName: "UpdateGroupButton",
 
 module.exports = UpdateGroupButton;
 
-},{"../dialog/Dialog":608,"./UpdateGroupPanel":642,"object-assign":270,"react":577}],642:[function(require,module,exports){
+},{"../dialog/Dialog":613,"./UpdateGroupPanel":647,"object-assign":270,"react":577}],647:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -82408,7 +83128,7 @@ var UpdateGroupPanel = React.createClass({displayName: "UpdateGroupPanel",
 
 module.exports = UpdateGroupPanel;
 
-},{"../button/DeleteButton":605,"../preloader/CoolPreloader":668,"./new/GroupForm":644,"fluxxor":117,"object-assign":270,"react":577}],643:[function(require,module,exports){
+},{"../button/DeleteButton":610,"../preloader/CoolPreloader":673,"./new/GroupForm":649,"fluxxor":117,"object-assign":270,"react":577}],648:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -82500,7 +83220,7 @@ var CreateGroupPanel = React.createClass({displayName: "CreateGroupPanel",
 
 module.exports = CreateGroupPanel;
 
-},{"../../preloader/CoolPreloader":668,"./GroupForm":644,"fluxxor":117,"object-assign":270,"react":577}],644:[function(require,module,exports){
+},{"../../preloader/CoolPreloader":673,"./GroupForm":649,"fluxxor":117,"object-assign":270,"react":577}],649:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -82622,7 +83342,7 @@ var GroupForm = React.createClass({displayName: "GroupForm",
 
 module.exports = GroupForm;
 
-},{"object-assign":270,"react":577}],645:[function(require,module,exports){
+},{"object-assign":270,"react":577}],650:[function(require,module,exports){
 /**
  * Created by sabir on 15.07.16.
  */
@@ -82777,7 +83497,7 @@ var AnimatedHeart = React.createClass({displayName: "AnimatedHeart",
 
 module.exports = AnimatedHeart;
 
-},{"mo-js":248,"object-assign":270,"react":577}],646:[function(require,module,exports){
+},{"mo-js":248,"object-assign":270,"react":577}],651:[function(require,module,exports){
 /**
  * Created by sabir on 16.07.16.
  */
@@ -82916,7 +83636,7 @@ var HeartPanel = React.createClass({displayName: "HeartPanel",
 
 module.exports = HeartPanel;
 
-},{"../chart/RealTimeHeartRateChart":606,"../heart/AnimatedHeart":645,"../image/BackgroundImageContainer":647,"fluxxor":117,"object-assign":270,"react":577}],647:[function(require,module,exports){
+},{"../chart/RealTimeHeartRateChart":611,"../heart/AnimatedHeart":650,"../image/BackgroundImageContainer":652,"fluxxor":117,"object-assign":270,"react":577}],652:[function(require,module,exports){
 /**
  * Created by sabir on 22.02.16.
  */
@@ -82974,7 +83694,7 @@ var BackgroundImageContainer = React.createClass({displayName: "BackgroundImageC
 
 module.exports = BackgroundImageContainer;
 
-},{"object-assign":270,"react":577}],648:[function(require,module,exports){
+},{"object-assign":270,"react":577}],653:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -82993,6 +83713,7 @@ var OrganizationBootstrap = React.createClass({displayName: "OrganizationBootstr
     getDefaultProps: function(){
         return {
             adminId: undefined,
+
 
             reloadMode: false
 
@@ -83089,7 +83810,7 @@ var OrganizationBootstrap = React.createClass({displayName: "OrganizationBootstr
 
 module.exports = OrganizationBootstrap;
 
-},{"../preloader/BallPreloader":667,"fluxxor":117,"object-assign":270,"react":577}],649:[function(require,module,exports){
+},{"../preloader/BallPreloader":672,"fluxxor":117,"object-assign":270,"react":577}],654:[function(require,module,exports){
 /**
  * Created by sabir on 16.07.16.
  */
@@ -83171,7 +83892,7 @@ var FieldsItem = React.createClass({displayName: "FieldsItem",
 
 module.exports = FieldsItem;
 
-},{"fluxxor":117,"object-assign":270,"react":577}],650:[function(require,module,exports){
+},{"fluxxor":117,"object-assign":270,"react":577}],655:[function(require,module,exports){
 /**
  * Created by sabir on 16.07.16.
  */
@@ -83330,7 +84051,7 @@ var FieldsList = React.createClass({displayName: "FieldsList",
 
 module.exports = FieldsList;
 
-},{"../../dialog/Dialog":608,"./FieldsItem":649,"./update/UpdateFieldButton":654,"fluxxor":117,"object-assign":270,"react":577}],651:[function(require,module,exports){
+},{"../../dialog/Dialog":613,"./FieldsItem":654,"./update/UpdateFieldButton":659,"fluxxor":117,"object-assign":270,"react":577}],656:[function(require,module,exports){
 /**
  * Created by sabir on 16.07.16.
  */
@@ -83501,7 +84222,7 @@ var FieldsPanel = React.createClass({displayName: "FieldsPanel",
 
 module.exports = FieldsPanel;
 
-},{"../../dialog/Dialog":608,"./FieldsList":650,"./update/CreateFieldPanel":652,"fluxxor":117,"object-assign":270,"react":577}],652:[function(require,module,exports){
+},{"../../dialog/Dialog":613,"./FieldsList":655,"./update/CreateFieldPanel":657,"fluxxor":117,"object-assign":270,"react":577}],657:[function(require,module,exports){
 /**
  * Created by sabir on 16.07.16.
  */
@@ -83591,7 +84312,7 @@ var CreateFieldPanel = React.createClass({displayName: "CreateFieldPanel",
 
 module.exports = CreateFieldPanel;
 
-},{"../../../preloader/CoolPreloader":668,"./FieldForm":653,"fluxxor":117,"object-assign":270,"react":577}],653:[function(require,module,exports){
+},{"../../../preloader/CoolPreloader":673,"./FieldForm":658,"fluxxor":117,"object-assign":270,"react":577}],658:[function(require,module,exports){
 /**
  * Created by sabir on 16.07.16.
  */
@@ -83774,7 +84495,7 @@ var FieldForm = React.createClass({displayName: "FieldForm",
 
 module.exports = FieldForm;
 
-},{"object-assign":270,"react":577}],654:[function(require,module,exports){
+},{"object-assign":270,"react":577}],659:[function(require,module,exports){
 /**
  * Created by sabir on 18.07.16.
  */
@@ -83912,7 +84633,7 @@ var UpdateFieldButton = React.createClass({displayName: "UpdateFieldButton",
 
 module.exports = UpdateFieldButton;
 
-},{"../../../dialog/Dialog":608,"./UpdateFieldPanel":655,"object-assign":270,"react":577}],655:[function(require,module,exports){
+},{"../../../dialog/Dialog":613,"./UpdateFieldPanel":660,"object-assign":270,"react":577}],660:[function(require,module,exports){
 /**
  * Created by sabir on 18.07.16.
  */
@@ -84029,7 +84750,7 @@ var UpdateFieldPanel = React.createClass({displayName: "UpdateFieldPanel",
 
 module.exports = UpdateFieldPanel;
 
-},{"../../../button/DeleteButton":605,"./FieldForm":653,"fluxxor":117,"object-assign":270,"react":577}],656:[function(require,module,exports){
+},{"../../../button/DeleteButton":610,"./FieldForm":658,"fluxxor":117,"object-assign":270,"react":577}],661:[function(require,module,exports){
 /**
  * Created by sabir on 21.06.16.
  */
@@ -84177,7 +84898,7 @@ var ClubCoolSlider = React.createClass({displayName: "ClubCoolSlider",
 
 module.exports = ClubCoolSlider;
 
-},{"../../image/BackgroundImageContainer":647,"object-assign":270,"react":577}],657:[function(require,module,exports){
+},{"../../image/BackgroundImageContainer":652,"object-assign":270,"react":577}],662:[function(require,module,exports){
 /**
  * Created by sabir on 21.06.16.
  */
@@ -84585,7 +85306,7 @@ var ClubRegistrationForm = React.createClass({displayName: "ClubRegistrationForm
 
 module.exports = ClubRegistrationForm;
 
-},{"../../../api/UserAPI":580,"../../../helpers/CommonHelper":714,"../../preloader/CoolPreloader":668,"fluxxor":117,"object-assign":270,"react":577}],658:[function(require,module,exports){
+},{"../../../api/UserAPI":580,"../../../helpers/CommonHelper":724,"../../preloader/CoolPreloader":673,"fluxxor":117,"object-assign":270,"react":577}],663:[function(require,module,exports){
 /**
  * Created by sabir on 21.06.16.
  */
@@ -84669,7 +85390,7 @@ var ClubSignUpPanel = React.createClass({displayName: "ClubSignUpPanel",
 
 module.exports = ClubSignUpPanel;
 
-},{"./OrganizationCoolSlider":656,"./OrganizationRegistrationForm":657,"object-assign":270,"react":577}],659:[function(require,module,exports){
+},{"./OrganizationCoolSlider":661,"./OrganizationRegistrationForm":662,"object-assign":270,"react":577}],664:[function(require,module,exports){
 /**
  * Created by sabir on 25.06.16.
  */
@@ -84894,7 +85615,7 @@ var CreateNewUserPanel = React.createClass({displayName: "CreateNewUserPanel",
 
 module.exports = CreateNewUserPanel;
 
-},{"../../../helpers/CommonHelper":714,"../../preloader/CoolPreloader":668,"fluxxor":117,"object-assign":270,"react":577}],660:[function(require,module,exports){
+},{"../../../helpers/CommonHelper":724,"../../preloader/CoolPreloader":673,"fluxxor":117,"object-assign":270,"react":577}],665:[function(require,module,exports){
 /**
  * Created by sabir on 24.06.16.
  */
@@ -85112,7 +85833,7 @@ var OrganizationUsersPanel = React.createClass({displayName: "OrganizationUsersP
 
 module.exports = OrganizationUsersPanel;
 
-},{"../../dialog/Dialog":608,"../../preloader/CoolPreloader":668,"./CreateNewUserPanel":659,"./SearchableUsersList":662,"./update/UserUpdateButton":665,"fluxxor":117,"object-assign":270,"react":577}],661:[function(require,module,exports){
+},{"../../dialog/Dialog":613,"../../preloader/CoolPreloader":673,"./CreateNewUserPanel":664,"./SearchableUsersList":667,"./update/UserUpdateButton":670,"fluxxor":117,"object-assign":270,"react":577}],666:[function(require,module,exports){
 /**
  * Created by sabir on 24.06.16.
  */
@@ -85273,7 +85994,7 @@ var PagedUsersList = React.createClass({displayName: "PagedUsersList",
 
 module.exports = PagedUsersList;
 
-},{"./UsersList":663,"object-assign":270,"react":577}],662:[function(require,module,exports){
+},{"./UsersList":668,"object-assign":270,"react":577}],667:[function(require,module,exports){
 /**
  * Created by sabir on 24.06.16.
  */
@@ -85431,7 +86152,7 @@ var SearchableUsersList = React.createClass({displayName: "SearchableUsersList",
 
 module.exports = SearchableUsersList;
 
-},{"./PagedUsersList":661,"object-assign":270,"react":577}],663:[function(require,module,exports){
+},{"./PagedUsersList":666,"object-assign":270,"react":577}],668:[function(require,module,exports){
 /**
  * Created by sabir on 24.06.16.
  */
@@ -85563,7 +86284,7 @@ var UsersList = React.createClass({displayName: "UsersList",
 
 module.exports = UsersList;
 
-},{"moment":269,"object-assign":270,"react":577}],664:[function(require,module,exports){
+},{"moment":269,"object-assign":270,"react":577}],669:[function(require,module,exports){
 /**
  * Created by sabir on 15.07.16.
  */
@@ -85830,7 +86551,7 @@ var UserGroupsPanel = React.createClass({displayName: "UserGroupsPanel",
 
 module.exports = UserGroupsPanel;
 
-},{"../../../dialog/Dialog":608,"../../../preloader/CoolPreloader":668,"fluxxor":117,"object-assign":270,"react":577}],665:[function(require,module,exports){
+},{"../../../dialog/Dialog":613,"../../../preloader/CoolPreloader":673,"fluxxor":117,"object-assign":270,"react":577}],670:[function(require,module,exports){
 /**
  * Created by sabir on 15.07.16.
  */
@@ -85949,7 +86670,7 @@ var UserUpdateButton = React.createClass({displayName: "UserUpdateButton",
 
 module.exports = UserUpdateButton;
 
-},{"../../../dialog/Dialog":608,"./UserUpdatePanel":666,"object-assign":270,"react":577}],666:[function(require,module,exports){
+},{"../../../dialog/Dialog":613,"./UserUpdatePanel":671,"object-assign":270,"react":577}],671:[function(require,module,exports){
 /**
  * Created by sabir on 15.07.16.
  */
@@ -86066,7 +86787,7 @@ var UserUpdatePanel = React.createClass({displayName: "UserUpdatePanel",
 
 module.exports = UserUpdatePanel;
 
-},{"../../../preloader/CoolPreloader":668,"../../../trainers/TrainerForm":683,"../group/UserGroupsPanel":664,"fluxxor":117,"object-assign":270,"react":577}],667:[function(require,module,exports){
+},{"../../../preloader/CoolPreloader":673,"../../../trainers/TrainerForm":693,"../group/UserGroupsPanel":669,"fluxxor":117,"object-assign":270,"react":577}],672:[function(require,module,exports){
 /**
  * Created by sabir on 15.07.16.
  */
@@ -86131,7 +86852,7 @@ var BallPreloader = React.createClass({displayName: "BallPreloader",
 
 module.exports = BallPreloader;
 
-},{"object-assign":270,"react":577}],668:[function(require,module,exports){
+},{"object-assign":270,"react":577}],673:[function(require,module,exports){
 /**
  * Created by sabir on 14.01.16.
  */
@@ -86181,7 +86902,7 @@ var CoolPreloader = React.createClass({displayName: "CoolPreloader",
 
 module.exports = CoolPreloader;
 
-},{"object-assign":270,"react":577}],669:[function(require,module,exports){
+},{"object-assign":270,"react":577}],674:[function(require,module,exports){
 /**
  * Created by sabir on 30.04.16.
  */
@@ -86285,7 +87006,7 @@ var UserNameSpan = React.createClass({displayName: "UserNameSpan",
 
 module.exports = UserNameSpan;
 
-},{"../../api/UserAPI":580,"fluxxor":117,"object-assign":270,"react":577}],670:[function(require,module,exports){
+},{"../../api/UserAPI":580,"fluxxor":117,"object-assign":270,"react":577}],675:[function(require,module,exports){
 /**
  * Created by sabir on 07.03.16.
  */
@@ -86403,7 +87124,7 @@ var UserProfilePanel = React.createClass({displayName: "UserProfilePanel",
 
 module.exports = UserProfilePanel;
 
-},{"../image/BackgroundImageContainer":647,"../user/UserInfoHeader":698,"fluxxor":117,"object-assign":270,"react":577}],671:[function(require,module,exports){
+},{"../image/BackgroundImageContainer":652,"../user/UserInfoHeader":708,"fluxxor":117,"object-assign":270,"react":577}],676:[function(require,module,exports){
 /**
  * Created by sabir on 29.04.16.
  */
@@ -86510,7 +87231,7 @@ var UserUpdateProfileButton = React.createClass({displayName: "UserUpdateProfile
 
 module.exports = UserUpdateProfileButton;
 
-},{"../dialog/Dialog":608,"./UserUpdateProfilePanel":672,"object-assign":270,"react":577}],672:[function(require,module,exports){
+},{"../dialog/Dialog":613,"./UserUpdateProfilePanel":677,"object-assign":270,"react":577}],677:[function(require,module,exports){
 /**
  * Created by sabir on 29.04.16.
  */
@@ -86757,7 +87478,570 @@ var UserUpdateProfilePanel = React.createClass({displayName: "UserUpdateProfileP
 
 module.exports = UserUpdateProfilePanel;
 
-},{"../file/FileUploadButton":635,"../image/BackgroundImageContainer":647,"../preloader/CoolPreloader":668,"fluxxor":117,"object-assign":270,"react":577}],673:[function(require,module,exports){
+},{"../file/FileUploadButton":640,"../image/BackgroundImageContainer":652,"../preloader/CoolPreloader":673,"fluxxor":117,"object-assign":270,"react":577}],678:[function(require,module,exports){
+/**
+ * Created by sabir on 26.09.16.
+ */
+
+var React = require('react');
+var assign = require('object-assign');
+
+var Dialog = require('../../dialog/Dialog');
+
+var UserUpdateProfilePanel = require('./UserUpdateProfilePanel');
+
+var UpdateUserWrapper = React.createClass({displayName: "UpdateUserWrapper",
+    getDefaultProps: function () {
+        return {
+
+            userId: undefined,
+
+            style: {
+
+            },
+
+            level: 100
+
+        }
+    },
+
+    getInitialState: function () {
+        return {
+            dialogVisible: false
+        }
+    },
+
+    componentWillReceiveProps: function (nextProps) {
+
+    },
+
+    componentDidMount: function () {
+
+    },
+
+    componentStyle: {
+        placeholder: {
+
+        },
+
+        buttonStyle: {
+            display: 'inline-block'
+        },
+
+        dialogPanelStyle: {
+            padding: 15,
+            width: 830
+        }
+
+    },
+
+    getContent: function () {
+        return (
+            React.createElement("div", null, 
+                React.createElement(UserUpdateProfilePanel, {userId: this.props.userId})
+            )
+        );
+    },
+
+    onClose: function () {
+        this.setState({
+            dialogVisible: false
+        });
+    },
+
+    show: function () {
+        this.setState({
+            dialogVisible: true
+        });
+    },
+
+    render: function () {
+        var st = assign({}, this.componentStyle.buttonStyle, this.props.style);
+        var content = this.getContent();
+
+        return (
+            React.createElement("div", {style: this.componentStyle.placeholder}, 
+
+                React.createElement("div", {style: st, onClick: this.show}, 
+                    this.props.children
+                ), 
+
+                this.state.dialogVisible == false ? null :
+                    React.createElement(Dialog, {content: content, level: this.props.level, onClose: this.onClose, 
+                            dialogPanelStyle: this.componentStyle.dialogPanelStyle}
+                        )
+                
+
+            )
+        );
+    }
+
+});
+
+module.exports = UpdateUserWrapper;
+
+},{"../../dialog/Dialog":613,"./UserUpdateProfilePanel":680,"object-assign":270,"react":577}],679:[function(require,module,exports){
+/**
+ * Created by sabir on 25.06.16.
+ */
+
+var React = require('react');
+var assign = require('object-assign');
+
+var UserUpdateProfileForm = React.createClass({displayName: "UserUpdateProfileForm",
+    getDefaultProps: function () {
+        return {
+            firstName: undefined,
+            lastName: undefined,
+            phone: undefined,
+
+            onSubmit: function(data){
+
+            }
+
+        }
+    },
+
+    getInitialState: function () {
+        return {
+            isChanged: false,
+            firstName: this.props.firstName,
+            lastName: this.props.lastName,
+            phone: this.props.phone
+        }
+    },
+
+    componentWillReceiveProps: function (nextProps) {
+        this.setState({
+            firstName: nextProps.firstName,
+            lastName: nextProps.lastName,
+            phone: nextProps.phone,
+            isChanged: false
+        });
+    },
+
+    componentDidMount: function () {
+
+    },
+
+    onFirstNameChange: function(evt){
+        this.setState({
+            firstName: evt.target.value,
+            isChanged: true
+        });
+    },
+
+    onLastNameChange: function(evt){
+        this.setState({
+            lastName: evt.target.value,
+            isChanged: true
+        });
+    },
+
+    onPhoneChange: function(evt){
+        this.setState({
+            phone: evt.target.value,
+            isChanged: true
+        });
+    },
+
+    getSubmitData: function(){
+        return {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            phone: this.state.phone
+        }
+    },
+
+    isEmpty: function(s){
+        return (s == undefined || s.trim() == '');
+    },
+
+    canSubmit: function(){
+        if (this.state.isChanged == false){
+            return false;
+        }
+        var d = this.getSubmitData();
+        if (this.isEmpty(d.firstName) || this.isEmpty(d.lastName) || this.isEmpty(d.phone)){
+            return false;
+        }
+
+        return true;
+    },
+
+    componentStyle: {
+        placeholder: {
+
+        },
+
+        inputPlaceholder: {
+            marginTop: 10
+        },
+
+        buttonPlaceholder: {
+            marginTop: 10,
+            textAlign: 'right'
+        }
+    },
+
+    onSubmit: function(){
+        var data = this.getSubmitData();
+        this.props.onSubmit(data);
+    },
+
+    render: function () {
+        var canSubmit = this.canSubmit();
+
+        return (
+            React.createElement("div", {style: this.componentStyle.placeholder}, 
+
+                React.createElement("div", {className: 'ui form'}, 
+
+                    React.createElement("div", {style: this.componentStyle.inputPlaceholder, className: 'field'}, 
+                        React.createElement("label", null, 
+                            "Имя"
+                        ), 
+                        React.createElement("input", {type: 'text', onChange: this.onFirstNameChange, value: this.state.firstName, placeholder: 'Имя'})
+                    ), 
+
+                    React.createElement("div", {style: this.componentStyle.inputPlaceholder, className: 'field'}, 
+                        React.createElement("label", null, 
+                            "Фамилия"
+                        ), 
+                        React.createElement("input", {type: 'text', onChange: this.onLastNameChange, value: this.state.lastName, placeholder: 'Фамилия'})
+                    ), 
+
+                    React.createElement("div", {style: this.componentStyle.inputPlaceholder, className: 'field'}, 
+                        React.createElement("label", null, 
+                            "Телефон"
+                        ), 
+                        React.createElement("input", {type: 'text', onChange: this.onPhoneChange, value: this.state.phone, placeholder: 'Телефон'})
+                    )
+
+                ), 
+
+                React.createElement("div", {style: this.componentStyle.buttonPlaceholder}, 
+                    React.createElement("button", {disabled: !canSubmit, className: 'ui patientPrimary mini button', onClick: this.onSubmit}, 
+                        React.createElement("i", {className: 'icon save'}), 
+                        "Сохранить"
+                    )
+                )
+
+            )
+        );
+    }
+
+});
+
+module.exports = UserUpdateProfileForm;
+
+},{"object-assign":270,"react":577}],680:[function(require,module,exports){
+/**
+ * Created by sabir on 25.06.16.
+ */
+
+var React = require('react');
+var assign = require('object-assign');
+
+var Fluxxor = require('fluxxor');
+var FluxMixin = Fluxxor.FluxMixin(React);
+var StoreWatchMixin = Fluxxor.StoreWatchMixin;
+
+var UserUpdateProfileForm = require('./UserUpdateProfileForm');
+
+var CoolPreloader = require('../../preloader/CoolPreloader');
+
+var UserUpdateProfilePanel = React.createClass({displayName: "UserUpdateProfilePanel",
+    mixins: [FluxMixin, StoreWatchMixin('UsersStore')],
+    getDefaultProps: function(){
+        return {
+
+        }
+    },
+
+    getStateFromFlux: function(){
+        var flux = this.getFlux();
+        var store = flux.store('UsersStore');
+        return {
+            loading: store.loading,
+            user: store.getCurrentUser()
+        }
+    },
+
+    getInitialState: function(){
+        return {
+
+        }
+    },
+
+    componentWillReceiveProps: function(nextProps){
+
+    },
+
+    componentDidMount: function(){
+
+    },
+
+    componentStyle: {
+        placeholder: {
+            position: 'relative',
+            minHeight: 200
+        }
+    },
+
+    onSubmit: function(data){
+        this.getFlux().actions.updateUser(data);
+    },
+
+    render: function(){
+        var user = this.state.user;
+        var loading = this.state.loading;
+        console.log('rendering UserUpdateProfilePanel: user, loading = ', user, loading);
+
+        return (
+            React.createElement("div", {style: this.componentStyle.placeholder}, 
+
+                user == undefined ? null :
+                    React.createElement(UserUpdateProfileForm, {firstName: user.firstName, lastName: user.lastName, 
+                                           phone: user.phone, onSubmit: this.onSubmit}
+                        ), 
+                
+
+                (user == undefined || this.state.loading == true) ?
+                    React.createElement(CoolPreloader, null) : null
+                
+
+            )
+        );
+    }
+
+});
+
+module.exports = UserUpdateProfilePanel;
+
+},{"../../preloader/CoolPreloader":673,"./UserUpdateProfileForm":679,"fluxxor":117,"object-assign":270,"react":577}],681:[function(require,module,exports){
+/**
+ * Created by sabir on 14.12.16.
+ */
+
+/**
+ * Created by sabir on 22.09.16.
+ */
+
+var React = require('react');
+var assign = require('object-assign');
+
+var moment = require('moment');
+
+var Fluxxor = require('fluxxor');
+var FluxMixin = Fluxxor.FluxMixin(React);
+
+var UpdateUserWrapper = require('../profile/user/UpdateUserWrapper');
+
+var TrainingsCalendar = require('../../components/trainings/calendar/TrainingsCalendar');
+
+var UserPagePanel = React.createClass({displayName: "UserPagePanel",
+    mixins: [FluxMixin],
+
+    getDefaultProps: function () {
+        return {
+            organization: undefined,
+            user: undefined,
+            defaultAvatar: 'http://app.flytrack.net/assets/images/empty_ava_pilot.jpg'
+
+        }
+    },
+
+    getInitialState: function () {
+        return {}
+    },
+
+    componentWillReceiveProps: function (nextProps) {
+        if (this.props.user != undefined){
+            return;
+        }
+        this.loadOrganization(nextProps.user);
+    },
+
+    componentDidMount: function () {
+        this.loadOrganization(this.props.user);
+    },
+
+    loadOrganization: function(user){
+        console.log('UserPagePanel: loadOrganization: user = ', user);
+        if (user == undefined){
+            return;
+        }
+        this.getFlux().actions.loadTotalOrganizationLazily(user.organizationId, function(d){
+            console.log('loaded: d = ', d);
+            this.getFlux().actions.loadOrganizationTrainings();
+        }.bind(this));
+    },
+
+    componentStyle: {
+        placeholder: {
+
+        }
+    },
+
+    isMe: function(){
+        if (this.props.user == undefined){
+            return false;
+        }
+        var store = this.getFlux().store('UsersStore');
+        return store.isMe(this.props.user.id);
+    },
+
+    render: function () {
+        console.log('UserPagePanel: render: user = ', this.props.user);
+        var user = this.props.user;
+
+        if (user == undefined){
+            return null;
+        }
+        var avatar = (user.avatar == undefined) ? this.props.defaultAvatar : user.avatar;
+        var isMe = this.isMe();
+
+        console.log('isMe = ', isMe);
+
+        var org = this.props.organization;
+        if (org == undefined){
+            org = {};
+        }
+        var role = user.userRole;
+
+        return (
+            React.createElement("div", {style: this.componentStyle.placeholder, className: 'user_home_page'}, 
+
+                React.createElement("div", {className: 'left_part'}, 
+                    React.createElement("div", {className: 'avatar_section'}, 
+                        React.createElement("div", {className: 'avatar_placeholder'}, 
+                            React.createElement("img", {src: avatar})
+                        ), 
+
+                        isMe == false ? null :
+                            React.createElement("div", {className: 'edit_user_button_placeholder'}, 
+                                React.createElement(UpdateUserWrapper, {
+                                    style: {display: 'block'}, 
+                                    userId: user.id}, 
+                                    React.createElement("div", {className: 'update_profile_button'}, 
+                                        "Редактировать"
+                                    )
+                                )
+                            )
+                        
+
+                    ), 
+
+                    true == true ? null :
+                        React.createElement("div", {className: 'friends_panel_placeholder'}, 
+                            React.createElement("div", {className: 'friends_panel'}, 
+                                React.createElement("div", {className: 'friends_header'}, 
+                                    "Игроки"
+                                )
+                            ), 
+                            React.createElement("div", null
+
+                            )
+
+                        )
+                    
+
+                ), 
+
+                React.createElement("div", {className: 'right_part'}, 
+
+                    React.createElement("div", {className: 'user_info_block'}, 
+                        React.createElement("div", {className: 'user_name'}, 
+                            user.firstName, " ", user.lastName
+                        ), 
+
+                        React.createElement("div", {className: 'user_details'}, 
+
+                            React.createElement("div", {className: 'detail_row'}, 
+                                React.createElement("div", {className: 'detail_name'}, 
+                                    "Школа"
+                                ), 
+                                React.createElement("div", {className: 'detail_value'}, 
+                                    org.name
+                                )
+                            ), 
+
+
+                            React.createElement("div", {className: 'detail_row'}, 
+                                React.createElement("div", {className: 'detail_name'}, 
+                                    "Дата регистрации"
+                                ), 
+                                React.createElement("div", {className: 'detail_value'}, 
+                                    moment(user.timestamp).format('DD MMMM YYYY')
+                                )
+                            ), 
+
+                            user.aboutMe == undefined ? null :
+                                React.createElement("div", {className: 'detail_row'}, 
+                                    React.createElement("div", {className: 'detail_name'}, 
+                                        "Обо мне"
+                                    ), 
+                                    React.createElement("div", {className: 'detail_value'}, 
+                                        React.createElement("div", {dangerouslySetInnerHTML: {__html: user.aboutMe.replace(/\n/g, '<br/>')}})
+                                    )
+                                )
+                            
+
+                        )
+
+                    ), 
+
+                    React.createElement("div", {className: 'photos_panel_placeholder'}, 
+
+                        role != 'trainer' ? null :
+                            React.createElement("div", {className: 'photos_panel'}, 
+
+                                React.createElement("div", {className: "photos_header", style: {fontSize: 19}}, 
+                                    "Календарь тренировок"
+                                ), 
+
+                                React.createElement("div", {className: 'photos_list_placeholder'}, 
+                                    React.createElement(TrainingsCalendar, null)
+                                )
+
+                            ), 
+                        
+
+                        (org == undefined || role != 'user') ? null :
+                            React.createElement("div", {className: 'photos_panel'}, 
+
+                                React.createElement("div", {className: "photos_header", style: {fontSize: 19}}, 
+                                    "Мои тренировки"
+                                ), 
+
+                                React.createElement("div", {className: 'photos_list_placeholder'}, 
+                                    "trainings list goes here"
+                                )
+
+                            )
+                        
+
+
+                    ), 
+
+                    React.createElement("div", {className: 'sessions_placeholder'}
+
+                    )
+
+                )
+
+
+
+            )
+        );
+    }
+
+});
+
+module.exports = UserPagePanel;
+
+},{"../../components/trainings/calendar/TrainingsCalendar":701,"../profile/user/UpdateUserWrapper":678,"fluxxor":117,"moment":269,"object-assign":270,"react":577}],682:[function(require,module,exports){
 /**
  * Created by sabir on 17.07.16.
  */
@@ -86860,7 +88144,7 @@ var PusherPanel = React.createClass({displayName: "PusherPanel",
 
 module.exports = PusherPanel;
 
-},{"fluxxor":117,"object-assign":270,"react":577,"react-player":381}],674:[function(require,module,exports){
+},{"fluxxor":117,"object-assign":270,"react":577,"react-player":381}],683:[function(require,module,exports){
 /**
  * Created by sabir on 20.07.16.
  */
@@ -87207,7 +88491,7 @@ var RealTimePlayer = React.createClass({displayName: "RealTimePlayer",
 
 module.exports = RealTimePlayer;
 
-},{"../../helpers/SportHelper":716,"../preloader/CoolPreloader":668,"fluxxor":117,"object-assign":270,"react":577,"react-player":381,"react-slider":436}],675:[function(require,module,exports){
+},{"../../helpers/SportHelper":726,"../preloader/CoolPreloader":673,"fluxxor":117,"object-assign":270,"react":577,"react-player":381,"react-slider":436}],684:[function(require,module,exports){
 /**
  * Created by sabir on 21.06.16.
  */
@@ -87317,7 +88601,7 @@ var ClubAdminHeaderLinks = React.createClass({displayName: "ClubAdminHeaderLinks
 
 module.exports = ClubAdminHeaderLinks;
 
-},{"./HeaderLinks":676,"object-assign":270,"react":577}],676:[function(require,module,exports){
+},{"./HeaderLinks":685,"object-assign":270,"react":577}],685:[function(require,module,exports){
 /**
  * Created by sabir on 20.06.16.
  */
@@ -87437,7 +88721,95 @@ var HeaderLinks = React.createClass({displayName: "HeaderLinks",
 
 module.exports = HeaderLinks;
 
-},{"../../../helpers/CommonHelper":714,"object-assign":270,"react":577,"react-router":409}],677:[function(require,module,exports){
+},{"../../../helpers/CommonHelper":724,"object-assign":270,"react":577,"react-router":409}],686:[function(require,module,exports){
+/**
+ * Created by sabir on 14.12.16.
+ */
+
+/**
+ * Created by sabir on 21.06.16.
+ */
+var React = require('react');
+var assign = require('object-assign');
+
+var HeaderLinks = require('./HeaderLinks');
+
+var TrainerHeaderLinks = React.createClass({displayName: "TrainerHeaderLinks",
+    getDefaultProps: function () {
+        return {
+            active: undefined
+        }
+    },
+
+    getInitialState: function () {
+        return {}
+    },
+
+    componentWillReceiveProps: function (nextProps) {
+
+    },
+
+    componentDidMount: function () {
+
+    },
+
+    componentStyle: {
+        placeholder: {}
+    },
+
+    render: function () {
+        var links = [
+
+            //{
+            //    name: 'users',
+            //    displayName: 'Клиенты',
+            //    icon: '',
+            //    url: '/'
+            //},
+
+            {
+                displayName: 'Мои тренировки',
+                name: 'index',
+                icon: '',
+                url: '/'
+            },
+
+            {
+                displayName: 'Команды',
+                name: 'teams',
+                icon: '',
+                url: '/teams'
+            },
+
+            {
+                displayName: 'Игроки',
+                name: 'users',
+                icon: '',
+                url: '/users'
+            },
+
+
+
+            {
+                displayName: 'Помощь',
+                name: 'help',
+                icon: '',
+                url: '/help'
+            }
+        ];
+
+        return (
+            React.createElement("div", {style: this.componentStyle.placeholder}, 
+                React.createElement(HeaderLinks, {items: links, active: this.props.active})
+            )
+        );
+    }
+
+});
+
+module.exports = TrainerHeaderLinks;
+
+},{"./HeaderLinks":685,"object-assign":270,"react":577}],687:[function(require,module,exports){
 /**
  * Created by sabir on 20.06.16.
  */
@@ -87477,33 +88849,33 @@ var UserHeaderLinks = React.createClass({displayName: "UserHeaderLinks",
             url: '/'
         },
 
-            {
-                displayName: 'Команды',
-                name: 'teams',
-                icon: '',
-                url: '/teams'
-            },
-
-            {
-                displayName: 'Тренеры',
-                name: 'coaches',
-                icon: '',
-                url: '/coaches'
-            },
-
-            {
-                displayName: 'Настройки',
-                name: 'settings',
-                icon: '',
-                url: '/settings'
-            }
+            //{
+            //    displayName: 'Команды',
+            //    name: 'teams',
+            //    icon: '',
+            //    url: '/teams'
+            //},
+            //
+            //{
+            //    displayName: 'Тренеры',
+            //    name: 'coaches',
+            //    icon: '',
+            //    url: '/coaches'
+            //}
 
             //{
-            //    displayName: 'Помощь',
-            //    name: 'docs',
+            //    displayName: 'Настройки',
+            //    name: 'settings',
             //    icon: '',
-            //    url: '/docs'
+            //    url: '/settings'
             //}
+
+            {
+                displayName: 'Помощь',
+                name: 'help',
+                icon: '',
+                url: '/help'
+            }
 
         ];
 
@@ -87518,7 +88890,7 @@ var UserHeaderLinks = React.createClass({displayName: "UserHeaderLinks",
 
 module.exports = UserHeaderLinks;
 
-},{"./HeaderLinks":676,"object-assign":270,"react":577}],678:[function(require,module,exports){
+},{"./HeaderLinks":685,"object-assign":270,"react":577}],688:[function(require,module,exports){
 /**
  * Created by sabir on 22.02.16.
  */
@@ -87666,7 +89038,7 @@ var CurrentUserMenu = React.createClass({displayName: "CurrentUserMenu",
 
 module.exports = CurrentUserMenu;
 
-},{"../../profile/UserUpdateProfileButton":671,"./TopbarSettingsMenu":679,"fluxxor":117,"object-assign":270,"react":577}],679:[function(require,module,exports){
+},{"../../profile/UserUpdateProfileButton":676,"./TopbarSettingsMenu":689,"fluxxor":117,"object-assign":270,"react":577}],689:[function(require,module,exports){
 /**
  * Created by sabir on 22.02.16.
  */
@@ -87795,7 +89167,7 @@ var TopbarSettingsMenu = React.createClass({displayName: "TopbarSettingsMenu",
 
 module.exports = enhanceWithClickOutside(TopbarSettingsMenu);
 
-},{"object-assign":270,"react":577,"react-click-outside":318}],680:[function(require,module,exports){
+},{"object-assign":270,"react":577,"react-click-outside":318}],690:[function(require,module,exports){
 /**
  * Created by sabir on 22.02.16.
  */
@@ -87919,7 +89291,8 @@ var UserPageTemplate = React.createClass({displayName: "UserPageTemplate",
 
 
     getNameComponent: function(){
-        var currentUser = UserAPI.getCurrentUser();
+        //var currentUser = UserAPI.getCurrentUser();
+        var currentUser = this.getFlux().store('UsersStore').getCurrentUser();
 
         return (
             React.createElement("div", {style: {display: 'inline-block'}}, 
@@ -87989,7 +89362,7 @@ var UserPageTemplate = React.createClass({displayName: "UserPageTemplate",
 
 module.exports = UserPageTemplate;
 
-},{"../../../api/UserAPI":580,"../../image/BackgroundImageContainer":647,"../../profile/UserNameSpan":669,"./CurrentUserMenu":678,"fluxxor":117,"object-assign":270,"react":577}],681:[function(require,module,exports){
+},{"../../../api/UserAPI":580,"../../image/BackgroundImageContainer":652,"../../profile/UserNameSpan":674,"./CurrentUserMenu":688,"fluxxor":117,"object-assign":270,"react":577}],691:[function(require,module,exports){
 /**
  * Created by sabir on 13.12.16.
  */
@@ -88084,7 +89457,7 @@ var VkTemplate = React.createClass({displayName: "VkTemplate",
 
 module.exports = VkTemplate;
 
-},{"fluxxor":117,"object-assign":270,"react":577}],682:[function(require,module,exports){
+},{"fluxxor":117,"object-assign":270,"react":577}],692:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -88171,7 +89544,7 @@ var CreateTrainerPanel = React.createClass({displayName: "CreateTrainerPanel",
 
 module.exports = CreateTrainerPanel;
 
-},{"../preloader/CoolPreloader":668,"./TrainerForm":683,"fluxxor":117,"object-assign":270,"react":577}],683:[function(require,module,exports){
+},{"../preloader/CoolPreloader":673,"./TrainerForm":693,"fluxxor":117,"object-assign":270,"react":577}],693:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -88394,7 +89767,7 @@ var TrainerForm = React.createClass({displayName: "TrainerForm",
 
 module.exports = TrainerForm;
 
-},{"../../helpers/CommonHelper":714,"object-assign":270,"react":577}],684:[function(require,module,exports){
+},{"../../helpers/CommonHelper":724,"object-assign":270,"react":577}],694:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -88481,7 +89854,7 @@ var TrainerPanel = React.createClass({displayName: "TrainerPanel",
 
 module.exports = TrainerPanel;
 
-},{"./update/UpdateTrainerButton":689,"fluxxor":117,"object-assign":270,"react":577}],685:[function(require,module,exports){
+},{"./update/UpdateTrainerButton":699,"fluxxor":117,"object-assign":270,"react":577}],695:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -88633,7 +90006,7 @@ var TrainersItem = React.createClass({displayName: "TrainersItem",
 
 module.exports = TrainersItem;
 
-},{"../image/BackgroundImageContainer":647,"fluxxor":117,"moment":269,"object-assign":270,"react":577}],686:[function(require,module,exports){
+},{"../image/BackgroundImageContainer":652,"fluxxor":117,"moment":269,"object-assign":270,"react":577}],696:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -88777,7 +90150,7 @@ var TrainersList = React.createClass({displayName: "TrainersList",
 
 module.exports = TrainersList;
 
-},{"../dialog/Dialog":608,"./TrainerPanel":684,"./TrainersItem":685,"fluxxor":117,"object-assign":270,"react":577}],687:[function(require,module,exports){
+},{"../dialog/Dialog":613,"./TrainerPanel":694,"./TrainersItem":695,"fluxxor":117,"object-assign":270,"react":577}],697:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -88961,7 +90334,7 @@ var TrainersListPanel = React.createClass({displayName: "TrainersListPanel",
 
 module.exports = TrainersListPanel;
 
-},{"../dialog/Dialog":608,"../preloader/CoolPreloader":668,"./CreateTrainerPanel":682,"./TrainersList":686,"fluxxor":117,"object-assign":270,"react":577}],688:[function(require,module,exports){
+},{"../dialog/Dialog":613,"../preloader/CoolPreloader":673,"./CreateTrainerPanel":692,"./TrainersList":696,"fluxxor":117,"object-assign":270,"react":577}],698:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -89228,7 +90601,7 @@ var TrainerGroupsPanel = React.createClass({displayName: "TrainerGroupsPanel",
 
 module.exports = TrainerGroupsPanel;
 
-},{"../../dialog/Dialog":608,"../../preloader/CoolPreloader":668,"fluxxor":117,"object-assign":270,"react":577}],689:[function(require,module,exports){
+},{"../../dialog/Dialog":613,"../../preloader/CoolPreloader":673,"fluxxor":117,"object-assign":270,"react":577}],699:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -89353,7 +90726,7 @@ var UpdateTrainerButton = React.createClass({displayName: "UpdateTrainerButton",
 
 module.exports = UpdateTrainerButton;
 
-},{"../../dialog/Dialog":608,"./UpdateTrainerPanel":690,"object-assign":270,"react":577}],690:[function(require,module,exports){
+},{"../../dialog/Dialog":613,"./UpdateTrainerPanel":700,"object-assign":270,"react":577}],700:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -89474,7 +90847,7 @@ var UpdateTrainerPanel = React.createClass({displayName: "UpdateTrainerPanel",
 
 module.exports = UpdateTrainerPanel;
 
-},{"../../preloader/CoolPreloader":668,"../TrainerForm":683,"../group/TrainerGroupsPanel":688,"fluxxor":117,"object-assign":270,"react":577}],691:[function(require,module,exports){
+},{"../../preloader/CoolPreloader":673,"../TrainerForm":693,"../group/TrainerGroupsPanel":698,"fluxxor":117,"object-assign":270,"react":577}],701:[function(require,module,exports){
 /**
  * Created by sabir on 05.10.16.
  */
@@ -89560,7 +90933,7 @@ var TrainingsCalendar = React.createClass({displayName: "TrainingsCalendar",
 
 module.exports = TrainingsCalendar;
 
-},{"../../field/calendar/CalendarPanel":620,"../../preloader/BallPreloader":667,"fluxxor":117,"object-assign":270,"react":577}],692:[function(require,module,exports){
+},{"../../field/calendar/CalendarPanel":625,"../../preloader/BallPreloader":672,"fluxxor":117,"object-assign":270,"react":577}],702:[function(require,module,exports){
 /**
  * Created by sabir on 02.10.15.
  */
@@ -89729,7 +91102,7 @@ var AuthForm = React.createClass({displayName: "AuthForm",
 
 module.exports = AuthForm;
 
-},{"./LoginForm":693,"./RecoverPasswordButton":694,"./SignupForm":697,"react":577}],693:[function(require,module,exports){
+},{"./LoginForm":703,"./RecoverPasswordButton":704,"./SignupForm":707,"react":577}],703:[function(require,module,exports){
 /**
  * Created by sabir on 02.10.15.
  */
@@ -89929,7 +91302,7 @@ var LoginForm = React.createClass({displayName: "LoginForm",
 
 module.exports = LoginForm;
 
-},{"../../api/UserAPI":580,"react":577}],694:[function(require,module,exports){
+},{"../../api/UserAPI":580,"react":577}],704:[function(require,module,exports){
 /**
  * Created by sabir on 24.01.16.
  */
@@ -90019,7 +91392,7 @@ var RecoverPasswordButton = React.createClass({displayName: "RecoverPasswordButt
 
 module.exports = RecoverPasswordButton;
 
-},{"./RecoverPasswordDialog":695,"object-assign":270,"react":577}],695:[function(require,module,exports){
+},{"./RecoverPasswordDialog":705,"object-assign":270,"react":577}],705:[function(require,module,exports){
 /**
  * Created by sabir on 24.01.16.
  */
@@ -90210,7 +91583,7 @@ var RecoverPasswordDialog = React.createClass({displayName: "RecoverPasswordDial
 
 module.exports = RecoverPasswordDialog;
 
-},{"../../api/UserAPI":580,"../preloader/CoolPreloader":668,"object-assign":270,"react":577}],696:[function(require,module,exports){
+},{"../../api/UserAPI":580,"../preloader/CoolPreloader":673,"object-assign":270,"react":577}],706:[function(require,module,exports){
 /**
  * Created by sabir on 05.11.15.
  */
@@ -90286,7 +91659,7 @@ var RoleSelector = React.createClass({displayName: "RoleSelector",
 
 module.exports = RoleSelector;
 
-},{"object-assign":270,"react":577}],697:[function(require,module,exports){
+},{"object-assign":270,"react":577}],707:[function(require,module,exports){
 /**
  * Created by sabir on 02.10.15.
  */
@@ -90578,7 +91951,7 @@ var SignupForm = React.createClass({displayName: "SignupForm",
 
 module.exports = SignupForm;
 
-},{"../../api/UserAPI":580,"./RoleSelector":696,"object-assign":270,"react":577}],698:[function(require,module,exports){
+},{"../../api/UserAPI":580,"./RoleSelector":706,"object-assign":270,"react":577}],708:[function(require,module,exports){
 /**
  * Created by sabir on 28.04.16.
  */
@@ -90752,7 +92125,7 @@ var UserInfoHeader = React.createClass({displayName: "UserInfoHeader",
 
 module.exports = UserInfoHeader;
 
-},{"../image/BackgroundImageContainer":647,"../preloader/CoolPreloader":668,"../profile/UserUpdateProfileButton":671,"fluxxor":117,"moment":269,"object-assign":270,"react":577}],699:[function(require,module,exports){
+},{"../image/BackgroundImageContainer":652,"../preloader/CoolPreloader":673,"../profile/UserUpdateProfileButton":676,"fluxxor":117,"moment":269,"object-assign":270,"react":577}],709:[function(require,module,exports){
 /**
  * Created by sabir on 20.06.16.
  */
@@ -90782,7 +92155,7 @@ var constants = {
 
 module.exports = constants;
 
-},{}],700:[function(require,module,exports){
+},{}],710:[function(require,module,exports){
 /**
  * Created by sabir on 20.06.16.
  */
@@ -90889,6 +92262,10 @@ var Constants = {
     LOAD_ORGANIZATION_TRAININGS_SUCCESS: 'LOAD_ORGANIZATION_TRAININGS_SUCCESS',
     LOAD_ORGANIZATION_TRAININGS_FAIL: 'LOAD_ORGANIZATION_TRAININGS_FAIL',
 
+    LOAD_TRAININGS: "LOAD_TRAININGS",
+    LOAD_TRAININGS_SUCCESS: "LOAD_TRAININGS_SUCCESS",
+    LOAD_TRAININGS_FAIL: "LOAD_TRAININGS_FAIL",
+
     LOAD_USER_SESSIONS: 'LOAD_USER_SESSIONS',
     LOAD_USER_SESSIONS_SUCCESS: 'LOAD_USER_SESSIONS_SUCCESS',
     LOAD_USER_SESSIONS_FAIL: 'LOAD_USER_SESSIONS_FAIL',
@@ -90944,6 +92321,9 @@ var Constants = {
 
 
     //users
+
+    CONSUME_USERS: 'CONSUME_USERS',
+
     LOAD_USER: 'LOAD_USER',
     LOAD_USER_SUCCESS: 'LOAD_USER_SUCCESS',
     LOAD_USER_FAIL: 'LOAD_USER_FAIL',
@@ -91098,7 +92478,7 @@ var Constants = {
 
 module.exports = Constants;
 
-},{"object-assign":270,"react":577}],701:[function(require,module,exports){
+},{"object-assign":270,"react":577}],711:[function(require,module,exports){
 /**
  * Created by sabir on 16.07.16.
  */
@@ -91168,7 +92548,7 @@ var FieldsActions = {
 
 module.exports = FieldsActions;
 
-},{"../../api/ParseAPI":579,"../FluxConstants":700}],702:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../FluxConstants":710}],712:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -91253,7 +92633,7 @@ var GroupsActions = {
 
 module.exports = GroupsActions;
 
-},{"../../api/ParseAPI":579,"../FluxConstants":700}],703:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../FluxConstants":710}],713:[function(require,module,exports){
 /**
  * Created by sabir on 13.07.16.
  */
@@ -91262,6 +92642,45 @@ var ParseAPI = require('../../api/ParseAPI');
 var constants = require('../FluxConstants');
 
 var OrganizationActions = {
+
+    loadTotalOrganizationLazily: function(id, callback){
+        console.log('loadTotalOrganizationLazily: id = ', id);
+        if (id == undefined){
+            console.log('id is not defined');
+            return;
+        }
+        var store = this.flux.store('OrganizationStore');
+        var org = store.organization;
+        console.log('org = ', org);
+        if (org == undefined){
+            if (store.loading == true){
+                return;
+            }
+            setTimeout(function(){
+                this.flux.actions.loadTotalOrganization(id, callback);
+            }.bind(this), 10);
+        }
+    },
+
+    loadTotalOrganization: function(id,callback){
+        console.log('loadTotalOrganization: id = ', id);
+        if (id == undefined){
+            console.log('id is not defined');
+            return;
+        }
+        this.dispatch(constants.LOAD_TOTAL_ORGANIZATION, {id: id});
+        console.log('now will load org');
+        ParseAPI.runCloudFunction("loadTotalOrganization", {id: id}, function(data){
+            if (callback != undefined){
+                setTimeout(function(){
+                    callback();
+                }, 100);
+            }
+            this.dispatch(constants.LOAD_TOTAL_ORGANIZATION_SUCCESS, {data: data});
+        }.bind(this), function(error){
+            this.dispatch(constants.LOAD_TOTAL_ORGANIZATION_FAIL, {errorMessage: error.message});
+        }.bind(this));
+    },
 
     loadTotalOrganizationByAdminId: function(adminId, callback){
         console.log('OrganizationActions: loadTotalOrganizationByAdminId: adminId = ' + adminId);
@@ -91315,6 +92734,23 @@ var OrganizationActions = {
         //this.loadOrganizationTrainings
     },
 
+    loadUserTrainings: function(id, callback){
+        if (id == undefined){
+            return;
+        }
+        this.dispatch(constants.LOAD_TRAININGS, {id: id});
+        ParseAPI.runCloudFunction('loadUserTrainings', {id: id}, function(trainings){
+            if (callback != undefined){
+                setTimeout(function(){
+                    callback();
+                }, 10);
+            }
+            this.dispatch(constants.LOAD_TRAININGS_SUCCESS, {trainings: trainings});
+        }.bind(this), function(err){
+            this.dispatch(constants.LOAD_TRAININGS_FAIL, {error: err});
+        }.bind(this))
+    },
+
     loadTrainingSessions: function(trainingId){
         this.dispatch(constants.LOAD_SESSIONS, {trainingId: trainingId});
         ParseAPI.runCloudFunction("loadTrainingSessions", {trainingId: trainingId}, function(list){
@@ -91329,7 +92765,7 @@ var OrganizationActions = {
 
 module.exports = OrganizationActions;
 
-},{"../../api/ParseAPI":579,"../FluxConstants":700}],704:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../FluxConstants":710}],714:[function(require,module,exports){
 /**
  * Created by sabir on 15.07.16.
  */
@@ -91439,7 +92875,7 @@ var OrganizationUsersActions = {
 
 module.exports = OrganizationUsersActions;
 
-},{"../../api/ParseAPI":579,"../FluxConstants":700}],705:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../FluxConstants":710}],715:[function(require,module,exports){
 /**
  * Created by sabir on 17.07.16.
  */
@@ -91457,7 +92893,7 @@ var PusherActions = {
 
 module.exports = PusherActions;
 
-},{"../FluxConstants":700}],706:[function(require,module,exports){
+},{"../FluxConstants":710}],716:[function(require,module,exports){
 /**
  * Created by sabir on 16.07.16.
  */
@@ -91474,7 +92910,7 @@ var RealTimeActions = {
 
 module.exports = RealTimeActions;
 
-},{"../FluxConstants":700}],707:[function(require,module,exports){
+},{"../FluxConstants":710}],717:[function(require,module,exports){
 /**
  * Created by sabir on 14.07.16.
  */
@@ -91541,7 +92977,7 @@ var TrainersActions = {
 
 module.exports = TrainersActions;
 
-},{"../../api/ParseAPI":579,"../FluxConstants":700}],708:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../FluxConstants":710}],718:[function(require,module,exports){
 /**
  * Created by sabir on 22.02.16.
  */
@@ -91631,7 +93067,7 @@ var UsersActions = {
 
 module.exports = UsersActions;
 
-},{"../../api/ParseAPI":579,"../../api/UserAPI":580,"../../helpers/CommonHelper":714,"../FluxConstants":700,"object-assign":270}],709:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../../api/UserAPI":580,"../../helpers/CommonHelper":724,"../FluxConstants":710,"object-assign":270}],719:[function(require,module,exports){
 /**
  * Created by sabir on 12.07.16.
  */
@@ -91748,6 +93184,10 @@ var OrganizationStore = Fluxxor.createStore({
             constants.LOAD_ORGANIZATION_TRAININGS, this.startLoading,
             constants.LOAD_ORGANIZATION_TRAININGS_SUCCESS, this.loadOrganizationTrainingsSuccess,
             constants.LOAD_ORGANIZATION_TRAININGS_FAIL, this.stopLoading,
+
+            constants.LOAD_TRAININGS, this.startLoading,
+            constants.LOAD_TRAININGS_FAIL, this.stopLoading,
+            constants.LOAD_TRAININGS_SUCCESS, this.loadOrganizationTrainingsSuccess,
 
             constants.LOAD_SESSIONS, this.startLoading,
             constants.LOAD_SESSIONS_FAIL, this.stopLoading,
@@ -92228,7 +93668,7 @@ var OrganizationStore = Fluxxor.createStore({
 
 module.exports = OrganizationStore;
 
-},{"../FluxConstants":700,"fluxxor":117}],710:[function(require,module,exports){
+},{"../FluxConstants":710,"fluxxor":117}],720:[function(require,module,exports){
 /**
  * Created by sabir on 17.07.16.
  */
@@ -92338,7 +93778,7 @@ var PuserStore = Fluxxor.createStore({
 
 module.exports = PuserStore;
 
-},{"../../api/ParseAPI":579,"../FluxConstants":700,"fluxxor":117,"parse":272,"pusher-js":316}],711:[function(require,module,exports){
+},{"../../api/ParseAPI":579,"../FluxConstants":710,"fluxxor":117,"parse":272,"pusher-js":316}],721:[function(require,module,exports){
 /**
  * Created by sabir on 15.07.16.
  */
@@ -92427,7 +93867,7 @@ var RealTimeStore = Fluxxor.createStore({
 
 module.exports = RealTimeStore;
 
-},{"../FluxConstants":700,"fluxxor":117}],712:[function(require,module,exports){
+},{"../FluxConstants":710,"fluxxor":117}],722:[function(require,module,exports){
 /**
  * Created by sabir on 22.02.16.
  */
@@ -92463,7 +93903,9 @@ var UsersStore = Fluxxor.createStore({
 
             constants.LOAD_USER_BY_EMAIL, this.loadUserByEmail,
             constants.LOAD_USER_BY_EMAIL_SUCCESS, this.loadedUserByEmail,
-            constants.LOAD_USER_BY_EMAIL_FAIL, this.loadUserByEmailFail
+            constants.LOAD_USER_BY_EMAIL_FAIL, this.loadUserByEmailFail,
+
+            constants.CONSUME_USERS, this.consumeGoodUsers
 
 
         );
@@ -92484,6 +93926,9 @@ var UsersStore = Fluxxor.createStore({
             return;
         }
         for (var i in users){
+            if (this.usersMap[users[i].id] != undefined){
+                continue;
+            }
             this.usersMap[users[i].id] = users[i];
         }
         this.emit('change');
@@ -92520,11 +93965,8 @@ var UsersStore = Fluxxor.createStore({
     },
 
     loadUserSuccess: function(payload){
-        console.log('UsersStore: loadUserSuccess: payload = ', payload);
         var user = payload.user;
         if (user == undefined){
-            this.loading = false;
-            this.emit('change');
             return;
         }
         this.usersMap[user.id] = user;
@@ -92583,11 +94025,7 @@ var UsersStore = Fluxxor.createStore({
     },
 
     getCurrentUser: function(){
-        console.log('UsersStore: getCurrentUser');
-        console.log('this.usersMap = ', this.usersMap);
         var id = UserAPI.getCurrentUserId();
-        var user = this.usersMap[id];
-        console.log('returning ', user);
         return this.usersMap[id];
     },
 
@@ -92651,6 +94089,21 @@ var UsersStore = Fluxxor.createStore({
             }
         }
         return arr;
+    },
+
+    consumeGoodUsers: function(payload){
+        this.consumeUsers(payload.users);
+    },
+
+    isMe: function(userId){
+        if (userId == undefined){
+            return false;
+        }
+        var currentUserId = this.getCurrentUserId();
+        if (currentUserId == undefined){
+            return false;
+        }
+        return (currentUserId == userId);
     }
 
 });
@@ -92658,7 +94111,7 @@ var UsersStore = Fluxxor.createStore({
 
 module.exports = UsersStore;
 
-},{"../../api/UserAPI":580,"../FluxConstants":700,"fluxxor":117}],713:[function(require,module,exports){
+},{"../../api/UserAPI":580,"../FluxConstants":710,"fluxxor":117}],723:[function(require,module,exports){
 /**
  * Created by sabir on 11.07.16.
  */
@@ -92783,7 +94236,7 @@ var CalendarHelper = {
 
 module.exports = CalendarHelper;
 
-},{"moment":269,"object-assign":270}],714:[function(require,module,exports){
+},{"moment":269,"object-assign":270}],724:[function(require,module,exports){
 /**
  * Created by sabir on 20.06.16.
  */
@@ -92933,7 +94386,8 @@ var CommonHelper = {
 
     forceTransitionTo: function(url){
         var isLocalhost = this.isLocalhost();
-        var base = 'http://www.cardiofirst.net/app';
+        //var base = 'http://www.cardiofirst.net/app';
+        var base = '';
         if (isLocalhost == false){
             url = base + url;
         }
@@ -92967,7 +94421,7 @@ var CommonHelper = {
 
 module.exports = CommonHelper;
 
-},{}],715:[function(require,module,exports){
+},{}],725:[function(require,module,exports){
 /**
  * Created by sabir on 07.07.16.
  */
@@ -93021,7 +94475,7 @@ var LocationHelper = {
 
 module.exports = LocationHelper;
 
-},{}],716:[function(require,module,exports){
+},{}],726:[function(require,module,exports){
 /**
  * Created by sabir on 09.07.16.
  */

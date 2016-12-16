@@ -121,7 +121,8 @@ var UserPageTemplate = React.createClass({
 
 
     getNameComponent: function(){
-        var currentUser = UserAPI.getCurrentUser();
+        //var currentUser = UserAPI.getCurrentUser();
+        var currentUser = this.getFlux().store('UsersStore').getCurrentUser();
 
         return (
             <div style={{display: 'inline-block'}}>

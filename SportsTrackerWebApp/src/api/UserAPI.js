@@ -173,12 +173,24 @@ var UserAPI = {
     },
 
     getCurrentUserId: function(){
+        if (this.currentUserId != undefined){
+            return this.currentUserId;
+        }
         var u = this.getCurrentUser();
         if (u == undefined){
             return undefined;
         }
+        this.currentUserId = u.id;
         return u.id;
     },
+
+    //getCurrentUserId: function(){
+    //    var u = this.getCurrentUser();
+    //    if (u == undefined){
+    //        return undefined;
+    //    }
+    //    return u.id;
+    //},
 
     isLoggedIn: function(){
         return (Parse.User.current() != undefined);
