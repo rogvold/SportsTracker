@@ -92266,6 +92266,10 @@ var Constants = {
     LOAD_TRAININGS_SUCCESS: "LOAD_TRAININGS_SUCCESS",
     LOAD_TRAININGS_FAIL: "LOAD_TRAININGS_FAIL",
 
+    LOAD_USER_TRAININGS: "LOAD_USER_TRAININGS",
+    LOAD_USER_TRAININGS_SUCCESS: "LOAD_USER_TRAININGS_SUCCESS",
+    LOAD_USER_TRAININGS_FAIL: "LOAD_USER_TRAININGS_FAIL",
+
     LOAD_USER_SESSIONS: 'LOAD_USER_SESSIONS',
     LOAD_USER_SESSIONS_SUCCESS: 'LOAD_USER_SESSIONS_SUCCESS',
     LOAD_USER_SESSIONS_FAIL: 'LOAD_USER_SESSIONS_FAIL',
@@ -92738,16 +92742,16 @@ var OrganizationActions = {
         if (id == undefined){
             return;
         }
-        this.dispatch(constants.LOAD_TRAININGS, {id: id});
+        this.dispatch(constants.LOAD_USER_TRAININGS, {id: id});
         ParseAPI.runCloudFunction('loadUserTrainings', {id: id}, function(trainings){
             if (callback != undefined){
                 setTimeout(function(){
                     callback();
                 }, 10);
             }
-            this.dispatch(constants.LOAD_TRAININGS_SUCCESS, {trainings: trainings});
+            this.dispatch(constants.LOAD_USER_TRAININGS_SUCCESS, {trainings: trainings});
         }.bind(this), function(err){
-            this.dispatch(constants.LOAD_TRAININGS_FAIL, {error: err});
+            this.dispatch(constants.LOAD_USER_TRAININGS_FAIL, {error: err});
         }.bind(this))
     },
 
@@ -93093,6 +93097,8 @@ var OrganizationStore = Fluxxor.createStore({
 
         this.sessions = [];
 
+        this.sessionsMap = {};
+
         this.bindActions(
 
             constants.REGISTER_ADMIN_AND_CREATE_ORGANIZATION, this.startLoading,
@@ -93185,6 +93191,10 @@ var OrganizationStore = Fluxxor.createStore({
             constants.LOAD_ORGANIZATION_TRAININGS_SUCCESS, this.loadOrganizationTrainingsSuccess,
             constants.LOAD_ORGANIZATION_TRAININGS_FAIL, this.stopLoading,
 
+            constants.LOAD_USER_TRAININGS, this.startLoading,
+            constants.LOAD_USER_TRAININGS_SUCCESS, this.loadUserTrainingsSuccess,
+            constants.LOAD_USER_TRAININGS_FAIL, this.stopLoading,
+
             constants.LOAD_TRAININGS, this.startLoading,
             constants.LOAD_TRAININGS_FAIL, this.stopLoading,
             constants.LOAD_TRAININGS_SUCCESS, this.loadOrganizationTrainingsSuccess,
@@ -93203,6 +93213,26 @@ var OrganizationStore = Fluxxor.createStore({
 
     stopLoading: function(){
         this.loading = true;
+        this.emit('change');
+    },
+
+    consumeSessions: function(sessions){
+        console.log('consumeSessions occured: sessions = ', sessions);
+        if (sessions == undefined){
+            return;
+        }
+        for (var i in sessions){
+            var s = sessions[i];
+            this.sessionsMap[s.id] = s;
+        }
+    },
+
+    loadUserTrainingsSuccess: function(payload){
+        console.log('loadUserTrainingsSuccess: payload = ', payload);
+        this.loading = false;
+        this.sessions = payload.sessions;
+        this.consumeSessions(payload.sessions);
+        this.trainings = payload.trainings;
         this.emit('change');
     },
 
@@ -93622,6 +93652,7 @@ var OrganizationStore = Fluxxor.createStore({
         console.log('setting sessions = ', payload.list);
 
         this.sessions = payload.list;
+        this.consumeSessions(payload.list);
 
         console.log('EMITTTTTTTT    ');
         this.emit('change');

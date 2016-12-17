@@ -23,6 +23,8 @@ var OrganizationStore = Fluxxor.createStore({
 
         this.sessions = [];
 
+        this.sessionsMap = {};
+
         this.bindActions(
 
             constants.REGISTER_ADMIN_AND_CREATE_ORGANIZATION, this.startLoading,
@@ -140,9 +142,22 @@ var OrganizationStore = Fluxxor.createStore({
         this.emit('change');
     },
 
+    consumeSessions: function(sessions){
+        console.log('consumeSessions occured: sessions = ', sessions);
+        if (sessions == undefined){
+            return;
+        }
+        for (var i in sessions){
+            var s = sessions[i];
+            this.sessionsMap[s.id] = s;
+        }
+    },
+
     loadUserTrainingsSuccess: function(payload){
+        console.log('loadUserTrainingsSuccess: payload = ', payload);
         this.loading = false;
         this.sessions = payload.sessions;
+        this.consumeSessions(payload.sessions);
         this.trainings = payload.trainings;
         this.emit('change');
     },
@@ -563,6 +578,7 @@ var OrganizationStore = Fluxxor.createStore({
         console.log('setting sessions = ', payload.list);
 
         this.sessions = payload.list;
+        this.consumeSessions(payload.list);
 
         console.log('EMITTTTTTTT    ');
         this.emit('change');
