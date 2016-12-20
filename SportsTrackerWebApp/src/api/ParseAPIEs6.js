@@ -4,7 +4,8 @@
 
 import constants from '../constants.js'
 import Parse from 'parse'
-import CommonHelper from '../helpers/CommonHelper.js'
+
+import validator from 'validator';
 
 const ParseAPI = {
 
@@ -27,7 +28,8 @@ const ParseAPI = {
             firstName: u.get('firstName'),
             lastName: u.get('lastName'),
             userRole: u.get('userRole'),
-            avatar: u.get('avatar')
+            avatar: u.get('avatar'),
+            organizationId: u.get('organizationId')
         }
     },
 
@@ -78,7 +80,7 @@ const ParseAPI = {
     },
 
     logIn (email, password, success, error){
-        if (CommonHelper.isValidEmail(email) == false){
+        if (validator.isEmail(email) == false){
             error({message: 'email is not valid'});
             return;
         }
@@ -108,7 +110,7 @@ const ParseAPI = {
             data = {};
         }
 
-        if (CommonHelper.isValidEmail(data.email) == false){
+        if (validator.isEmail(data.email) == false){
             error({message: 'Incorrect email'});
             return;
         }
@@ -139,6 +141,7 @@ const ParseAPI = {
     logOutAsPromise: function(){
         return Parse.User.logOut();
     },
+
 
     logInAsPromise (email, password) {
         var self = this;

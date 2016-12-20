@@ -67,6 +67,20 @@ const UsersReducer =  (state = initialState, action = {}) => {
                 loading: false
             }
 
+        case types.CREATE_USER:
+            return startLoading(state,action)
+
+        case types.CREATE_USER_FAIL:
+            return stopLoading(state, action)
+
+        case types.CREATE_USER_SUCCESS:
+            var usersMap = Object.assign({}, state.usersMap, {[action.user.id]: action.user});
+            return {
+                ...state,
+                usersMap: usersMap,
+                loading: false
+            }
+
 
         case  types.LOGOUT:
             return startLoading(state, action)
@@ -103,6 +117,14 @@ const UsersReducer =  (state = initialState, action = {}) => {
                 ...state,
                 usersMap: newUsersMap,
                 loading: false
+            }
+
+        case types.LOAD_ORGANIZATION_SUCCESS:
+            let newUsersMap = Object.assign({}, consumeUsers(state, action.users), consumeUsers(state, action.trainers));
+
+            return {
+                ...state,
+                usersMap: newUsersMap
             }
 
 

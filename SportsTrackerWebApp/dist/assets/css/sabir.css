@@ -1,0 +1,270 @@
+/*Sabir React framework core styles*/
+
+/*loading*/
+.mini_loading{
+    opacity: 0.6;
+    text-align: center;
+    padding: 10px;
+}
+
+/*auth form*/
+.auth_form{
+
+}
+
+.auth_form .form_placeholder{
+
+}
+
+.auth_form .switcher_placeholder{
+    margin-top: 10px;
+}
+
+.auth_form .switcher_placeholder .switcher{
+    opacity: 0.7;
+    text-align: center;
+}
+
+.auth_form .switcher_placeholder .switcher .switcher_link{
+    cursor: pointer;
+    margin-left: 5px;
+    text-decoration: underline;
+}
+
+.auth_form .switcher_placeholder .switcher .switcher_link:hover{
+    font-weight: bold;
+}
+
+.auth_panel{
+    background: white;
+    position: relative;
+    padding: 10px;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 3px;
+}
+
+/*init placeholder*/
+
+.initializing_placeholder{
+    padding: 40px;
+    padding-top: 100px;
+    text-align: center;
+    font-size: 30px;
+    opacity: 0.4;
+}
+
+/*simple template*/
+/*header height: 100px */
+
+.simple_user_template {
+    height: 100vh;
+    width: 100vw;
+}
+.simple_user_template > .header{
+    height: 40px;
+    position: relative;
+    background-color: white;
+    /*border-bottom: 1px solid lightgray;*/
+    border-bottom: 1px solid #E7E9E9;
+}
+.simple_user_template > .header .header_inner{
+    width: 960px;
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+    /*text-align: center;*/
+}
+.simple_user_template > .header .logo_placeholder {
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+}
+
+.simple_user_template > .header .center_links_placeholder{
+    display: inline-block;
+    line-height: 40px;
+    vertical-align: top;
+    margin-left: 170px;
+}
+
+.simple_user_template > .header .center_links_placeholder .link_item{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    height: 40px;
+    color: #212121;
+}
+
+.simple_user_template > .header .center_links_placeholder .link_item:hover{
+    opacity: 0.8;
+    border-bottom: 3px solid #FC636B;
+}
+
+.simple_user_template > .header .center_links_placeholder .link_item.active{
+    border-bottom: 3px solid #FC636B;
+}
+
+.simple_user_template > .header .logo_placeholder > .logo_img_placeholder{
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+    padding: 6px;
+}
+
+.simple_user_template > .header .logo_placeholder > .logo_img_placeholder img.logo{
+    height: 100%;
+}
+
+.simple_user_template > .header .logo_placeholder .company_name{
+    display: inline-block;
+    margin-left: 10px;
+    line-height: 40px;
+    font-size: 20px;
+    vertical-align: top;
+}
+
+.simple_user_template > .content{
+    height: calc(100vh - 40);
+}
+
+.simple_user_template > .header .right_placeholder{
+    position: absolute;
+    right: 10px;
+    line-height: 40px;
+    font-size: 16px;
+    top: 0px;
+}
+
+.simple_user_template > .header .right_placeholder .current_user_placeholder{
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.simple_user_template > .header .right_placeholder .logout_placeholder{
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.simple_user_template > .header .right_placeholder .logout_placeholder .logout{
+    cursor: pointer;
+}
+
+.simple_user_template > .header .right_placeholder .logout_placeholder .logout:hover{
+    opacity: 0.8;
+}
+
+.simple_user_template > .header .right_placeholder .current_user_placeholder .name_placeholder{
+    display: inline-block;
+    vertical-align: top;
+    height: 50px;
+}
+
+.simple_user_template > .header .right_placeholder .current_user_placeholder .avatar_placeholder{
+    display: inline-block;
+    vertical-align: top;
+    height: 50px;
+    padding: 5px;
+}
+
+.simple_user_template > .header .right_placeholder .current_user_placeholder .avatar_placeholder img.avatar{
+    height: 100%;
+    border-radius: 1000px;
+}
+
+/*dialog*/
+.dialog{
+
+}
+
+.dialog > .dialog_overlay {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    /*background: rgba(150, 181, 116, 0.8);*/
+    background: rgba(0, 0, 0, 0.9);
+
+}
+
+.dialog > .main_panel{
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.dialog > .main_panel .dialog_content_placeholder{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.dialog > .main_panel .dialog_content_placeholder .dialog_content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dialog > .main_panel .dialog_content_placeholder .dialog_content > .inner_content{
+    width: 100%;
+    height: 100%;
+    max-height: 80vh;
+    /*overflow-y: ;*/
+    position: relative;
+}
+
+.dialog > .main_panel .dialog_content_placeholder .close_button_placeholder{
+    position: absolute;
+    right: -26px;
+    top: -26px;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 1000px;
+    /*background-color: white;*/
+    cursor: pointer;
+    opacity: 0.9;
+    color: white;
+    transition: all .3s ease-in-out;
+}
+
+.dialog > .main_panel .dialog_content_placeholder .close_button_placeholder:hover{
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.dialog > .main_panel .dialog_content_placeholder .close_button_placeholder i{
+    margin-right: 0px !important;
+    font-weight: 100 !important;
+    opacity: 0.7;
+    vertical-align: top;
+}
+
+.delete_button_placeholder > .button.ui{
+
+}
+
+.noMarginRight{
+    margin-right: 0px !important;
+}
+
+.simple_loading_placeholder{
+    padding: 10px;
+    text-align: center;
+    opacity: 0.6;
+}

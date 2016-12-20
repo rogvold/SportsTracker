@@ -140,12 +140,15 @@ var FieldForm = React.createClass({
                         <input type={'text'} value={this.state.name} onChange={this.onNameChange} placeholder={'Название поля'} />
                     </div>
 
-                    <div className={'field'}>
-                        <label>
-                            Описание поля
-                        </label>
-                        <textarea value={this.state.description} onChange={this.onDescriptionChange} placeholder={'Описание поля'} ></textarea>
-                    </div>
+                    {true == true ? null :
+                        <div className={'field'}>
+                            <label>
+                                Описание поля
+                            </label>
+                            <textarea value={this.state.description} onChange={this.onDescriptionChange} placeholder={'Описание поля'} ></textarea>
+                        </div>
+                    }
+
 
                     <div className={'field'}>
                         <label>

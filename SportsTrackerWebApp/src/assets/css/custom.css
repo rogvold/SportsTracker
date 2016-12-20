@@ -867,3 +867,184 @@ body{
 .trainings_list .training_item .name_placeholder{
     font-weight: bold;
 }
+
+.teams_panel{
+    /*width: 960px;*/
+    width: 940px;
+    margin: 0 auto;
+    background-color: white;
+    margin-top: 10px;
+    border-radius: 3px;
+    border: 1px solid rgb(239, 240, 241);
+}
+
+.teams_panel > .header{
+    padding: 5px;
+}
+
+.teams_panel > .header .amount_placeholder{
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+}
+
+.teams_panel > .header .add_team_placeholder{
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    text-align: right;
+}
+
+.teams_panel > .header .add_team_placeholder button{
+    margin-right: 0px !important;
+}
+
+.teams_list{
+
+}
+
+.teams_list .team_item{
+    display: inline-block;
+    vertical-align: top;
+    background-color: white;
+    border: 1px solid rgb(239, 240, 241);
+    border-radius: 3px;
+    padding: 7px;
+    margin: 5px;
+    cursor: pointer;
+    width: calc(33.3% - 10px);
+}
+
+.teams_list .team_item:hover{
+    background-color: #FFFDE7;
+}
+
+
+.teams_list .team_item > .header{
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.update_team_panel{
+    position: relative;
+    text-align: left;
+}
+
+.update_team_panel .delete_button_placeholder{
+    margin-top: 5px;
+    text-align: right;
+}
+
+.create_team_panel{
+    text-align: left;
+}
+
+.fields_panel{
+    width: 940px;
+    margin: 0 auto;
+    margin-top: 10px;
+    background-color: white;
+    /*padding: 5px;*/
+    padding: 2px;
+    border-radius: 3px;
+    border: 1px solid rgb(239, 240, 241);
+}
+
+.fields_list{
+
+}
+.fields_list .field_item{
+    padding: 5px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    background-color: white;
+    border-bottom: 1px solid rgb(239, 240, 241);
+}
+
+.fields_list .field_item:last-child{
+    border-bottom: none !important;
+}
+
+.fields_list .field_item > .name_placeholder{
+    display: inline-block;
+    vertical-align: top;
+    width: 60%;
+    font-weight: bold;
+}
+
+.fields_list .field_item > .dimensions_placeholder{
+    display: inline-block;
+    vertical-align: top;
+    width: 34%;
+}
+
+.fields_list .field_item > .edit_placeholder{
+    display: inline-block;
+    vertical-align: top;
+    width: 6%;
+    text-align: right;
+}
+
+.fields_list .field_item > .edit_placeholder i{
+    cursor: pointer;
+    margin-right: 0px !important;
+}
+
+.fields_list .field_item > .edit_placeholder i:hover{
+    opacity: 0.8;
+}
+
+.update_field_panel{
+    position: relative;
+}
+
+.update_field_panel .delete_button_placeholder{
+    margin-top: 10px;
+    text-align: right;
+}
+
+.fields_panel > .header{
+    padding: 5px
+}
+
+.fields_panel > .header .fields_number_placeholder{
+    width: 60%;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.fields_panel > .header .new_field_button_placeholder{
+    width: 40%;
+    vertical-align: top;
+    display: inline-block;
+    text-align: right;
+}
+
+.fields_panel > .header .new_field_button_placeholder button{
+    margin-right: 0px !important;
+}
+
+.create_field_panel{
+    position: relative;
+    min-height: 200px;
+}
+
+.create_user_panel{
+    position: relative;
+    min-height: 120px;
+}
+
+.users_panel{
+    position: relative;
+    width: 940px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 3px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.pl5{
+    padding-left: 5px;
+}

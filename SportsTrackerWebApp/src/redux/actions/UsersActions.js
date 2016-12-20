@@ -6,7 +6,7 @@
  */
 
 import * as types from '../ReduxConstants.js'
-import ParseAPI from '../../api/ParseAPI.js';
+import ParseAPI from '../../api/ParseAPIEs6.js';
 
 //LOGIN
 let startLoggingIn = () => {
@@ -127,5 +127,49 @@ export function initializeAuthorization(){
                 user => dispatch(authInitSuccess(user)),
                 err => dispatch(authInitFailed())
         );
+    }
+}
+
+//create user
+let createUser_ = () => {
+    return {
+        type: types.CREATE_USER
+    }
+}
+let createUserFail = (error) => {
+    return {
+        type: types.CREATE_USER_FAIL,
+        error: error
+    }
+}
+let createUserSuccess = (user) => {
+    return {
+        type: types.CREATE_USER_SUCCESS,
+        user: user
+    }
+}
+//thunk
+export function createUser(data){
+    return (dispatch, getState) => {
+        let org = getState().organization.organization;
+        if (org == undefined){
+            return Promise.resolve();
+        }
+        data.organizationId = org.id;
+        dispatch(createUser_());
+        return ParseAPI.runCloudFunctionAsPromise("createUser", data).then(
+            user => dispatch(createUserSuccess(user)),
+            error => dispatch(createUserFail(error))
+        )
+    }
+}
+//thunk
+export function updateUser(data){
+    return (dispatch, getState) => {
+        dispatch(createUser_());
+        return ParseAPI.runCloudFunctionAsPromise("updateUser", data).then(
+                user => dispatch(createUserSuccess(user)),
+                error => dispatch(createUserFail(error))
+        )
     }
 }

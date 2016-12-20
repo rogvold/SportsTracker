@@ -28,6 +28,7 @@ var GroupsModule = {
         }
         return {
             id: link.id,
+            organizationId: link.get('organizationId'), //for helping with requests
             userId: link.get('userId'),
             groupId: link.get('groupId')
         }
@@ -218,6 +219,10 @@ var GroupsModule = {
             error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'userId is not defined'});
             return;
         }
+        if (data.organizationId == undefined){
+            error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'organizationId is not defined // new for Redux'});
+            return;
+        }
         var self = this;
         this.loadGroupUserLink(data.groupId, data.userId, function(link){
             if (link != undefined){
@@ -228,6 +233,7 @@ var GroupsModule = {
             var lnk = new GroupUserLink();
             lnk.set('groupId', data.groupId);
             lnk.set('userId', data.userId);
+            lnk.set('organizationId', data.organizationId);
             lnk.save().then(function(savedLink){
                 success(self.transformGroupUserLink(savedLink));
             });
@@ -332,8 +338,6 @@ var GroupsModule = {
                 success(arr);
             });
         });
-
-
     }
 
 };

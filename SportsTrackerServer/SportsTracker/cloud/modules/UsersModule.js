@@ -133,7 +133,7 @@ var UsersModule = {
         var self = this;
         this.loadUser(data.userId, function(u){
             for (var key in data){
-                if (key == 'userId'){
+                if (key == 'userId' || key == 'timestamp' || key == 'id'){
                     continue;
                 }
                 u.set(key, data[key]);

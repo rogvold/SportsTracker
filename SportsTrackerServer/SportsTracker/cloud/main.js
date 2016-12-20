@@ -130,6 +130,7 @@ Parse.Cloud.define("loadTotalOrganization", function(request, response) {
     OrganizationsModule.loadOrganization(data.id, function(org){
         UsersModule.loadAllOrganizationUsers(org.id, function(d){
             GroupsModule.loadOrganizationGroups({organizationId: org.id}, function(groups){
+
                 FieldsModule.loadOrganizationFields(org.id, function(fields){
                     UsersModule.loadUser(org.adminId, function(admin){
                         response.success({
@@ -144,6 +145,8 @@ Parse.Cloud.define("loadTotalOrganization", function(request, response) {
                         response.error(err);
                     }, true);
                 });
+
+
             }, function(err){
                 response.error(err);
             })

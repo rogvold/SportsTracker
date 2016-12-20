@@ -76,7 +76,7 @@ var FieldsModule = {
         q.get(data.id, {
             success: function(f){
                 for (var key in data){
-                    if (key == 'id'){
+                    if (key == 'id' || key == 'timestamp'){
                         continue;
                     }
                     f.set(key, data[key]);
@@ -125,6 +125,7 @@ var FieldsModule = {
         q.limit(1000);
         q.addDescending('createdAt');
         q.equalTo('organizationId', orgId);
+        q.equalTo('deleted', false);
         var self = this;
         q.find(function(results){
             if (results == undefined){
