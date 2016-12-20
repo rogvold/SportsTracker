@@ -92,7 +92,7 @@ class FieldsPanel extends React.Component {
 
                 {this.props.loading == false ? null :
                     <div className={'simple_loading_placeholder'} >
-                        loading...
+                        загрузка...
                     </div>
                 }
 

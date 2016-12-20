@@ -8,9 +8,13 @@ import { reducer as formReducer } from 'redux-form'
 
 import UsersReducer from './UsersReducer.js';
 import OrganizationReducer from './OrganizationReducer.js';
+import TrainingsReducer from './TrainingsReducer.js';
+import PlayerReducer from './PlayerReducer.js';
 
 export const reducer = combineReducers({
     users: UsersReducer,
-    form: formReducer,
-    organization: OrganizationReducer
+    organization: OrganizationReducer,
+    trainings: TrainingsReducer,
+    player: PlayerReducer,
+    form: formReducer
 });

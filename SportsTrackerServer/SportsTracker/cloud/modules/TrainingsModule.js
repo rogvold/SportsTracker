@@ -573,6 +573,8 @@ var TrainingsModule = {
                     for (var i in sessions){
                         var session = sessions[i];
                         arr.push({
+                            id: session.id,
+                            trainingId: session.trainingId,
                             session: session,
                             points: chunkPointsSessionsMap[session.id].concat(map[session.id])
                         });

@@ -77,10 +77,11 @@ var AdminHelpApp = React.createClass({
                             Помощь
                         </div>
 
-                        <div>
-                            <p>
-                                Will be available soon
-                            </p>
+                        <div className={'under_construction_placeholder'} >
+                            <div className={'under_construction'} ></div>
+                            <div className={'under_construction_text'} >
+                                Страница находится в разработке...
+                            </div>
                         </div>
 
                     </div>

@@ -11,6 +11,8 @@ import LogoutWrapper from '../auth/buttons/LogoutWrapper.js'
 
 import CreateUserPanel from '../users/panels/CreateUserPanel.js'
 
+import CalendarPanel from '../new_calendar/panels/CalendarPanel.js'
+
 class DevApp extends React.Component {
 
     static defaultProps = {}
@@ -39,7 +41,7 @@ class DevApp extends React.Component {
 
                 this is a dev app
 
-                <CreateUserPanel />
+                <CalendarPanel />
 
             </div>
         )

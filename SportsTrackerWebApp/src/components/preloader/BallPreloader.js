@@ -8,7 +8,7 @@ var assign = require('object-assign');
 var BallPreloader = React.createClass({
     getDefaultProps: function () {
         return {
-            text: 'Загрузкa'
+            text: 'Загрузкa...'
         }
     },
 

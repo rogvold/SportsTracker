@@ -9,6 +9,8 @@ import * as actions from '../../../redux/actions/OrganizationActions.js'
 
 import SimpleUserTemplate from '../../templates/redux/SimpleUserTemplate.js'
 
+import TrainingsCalendarPanel from '../../new_trainings/panels/TrainingsCalendarPanel.js'
+
 class AdminIndexApp extends React.Component {
 
     static defaultProps = {
@@ -17,7 +19,8 @@ class AdminIndexApp extends React.Component {
 
     static propTypes = {
         currentUser: PropTypes.object.isRequired,
-        loadOrganization: PropTypes.func
+        loadOrganization: PropTypes.func,
+        organization: PropTypes.object
     }
 
     state = {
@@ -41,10 +44,19 @@ class AdminIndexApp extends React.Component {
 
     getContent = () => {
         var user = this.props.currentUser;
+        let org = this.props.organization;
 
         return (
             <div className={'user_index_app_content'} >
-                this is admin index app
+
+                {this.props.loading == false ? null :
+                    <div className={'simple_loading_placeholder'} >
+                        загрузка...
+                    </div>
+                }
+
+                {org && <TrainingsCalendarPanel />}
+
             </div>
         )
     }
@@ -60,7 +72,9 @@ class AdminIndexApp extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        currentUser: state.users.currentUser
+        currentUser: state.users.currentUser,
+        organization: state.organization.organization,
+        loading: state.organization.loading
     }
 }
 

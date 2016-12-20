@@ -848,6 +848,10 @@ body{
     cursor: pointer;
 }
 
+.trainings_list .training_item:hover{
+    background-color: lightgoldenrodyellow;
+}
+
 .trainings_list .training_item .avatar_placeholder {
     display: inline-block;
     vertical-align: top;
@@ -1048,3 +1052,139 @@ body{
 .pl5{
     padding-left: 5px;
 }
+
+.trainings_panel{
+    padding: 5px;
+    background-color: white;
+    position: relative;
+
+}
+
+.trainings_calendar_panel{
+    position: relative;
+    width: 940px;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 3px;
+    min-height: 200px;
+}
+
+.my_calendar .day_placeholder{
+    min-height: 60px !important;
+    height: 60px !important;
+    /*padding: 5px;*/
+}
+
+.trainings_number_bubble_placeholder{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.trainings_number_bubble_placeholder:hover{
+    background-color: lightgoldenrodyellow;
+}
+
+.trainings_number_bubble{
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    color: white;
+    /*display: inline-block;*/
+    border-radius: 100px;
+    background-color: rgb(252, 99, 107);
+    font-size: 18px;
+    margin: 0 auto;
+    /*margin-top: 10px;*/
+    text-align: center;
+}
+
+.my_calendar .dayNumber.today {
+    text-decoration: underline;
+    /*background-color: lightcyan;*/
+    /*padding: 2px;*/
+    /*border-bottom-right-radius: 3px;*/
+}
+
+.training_day_placeholder{
+    position: relative;
+}
+
+.training_day_placeholder > .header{
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.training_sessions_panel{
+    position: relative;
+    min-height: 200px;
+}
+
+.player_users_selector_panel{
+
+}
+
+.player_users_selector_panel .users_list{
+
+}
+
+.player_users_selector_panel .users_list .user_item {
+    display: inline-block;
+    margin: 5px;
+    width: calc(33.3% - 10px);
+    padding: 5px;
+    border-radius: 3px;
+    background-color: white;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid rgb(239, 240, 241);
+}
+
+.player_users_selector_panel .users_list .user_item:hover{
+    opacity: 0.8;
+}
+
+.player_users_selector_panel .users_list .user_item.selected{
+    background-color: floralwhite;
+}
+
+.player_users_selector_panel .users_list .user_item .left_placeholder{
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 5px;
+}
+
+.player_users_selector_panel .users_list .user_item .right_placeholder{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.player_users_selector_panel .users_list .user_item .left_placeholder .avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 1000px;
+}
+
+.player_users_selector_panel .users_list .user_item .right_placeholder .name{
+    font-weight: bold;
+}
+
+.player_users_selector_panel .users_list .user_item .bottom{
+    opacity: 0.6;
+}
+
+.player_users_selector_panel .users_list .user_item .right_placeholder .checkbox_placeholder{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.player_users_selector_panel .users_list .user_item .right_placeholder .checkbox_placeholder i{
+    margin-right: 0px !important;
+}
+

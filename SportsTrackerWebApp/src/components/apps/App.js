@@ -161,6 +161,10 @@ class App extends React.Component {
             return this.getAdminRoute();
         }
 
+        if (role == 'trainer'){
+            return this.getTrainerRoute();
+        }
+
 
         return this.getUserRoute();
     }
