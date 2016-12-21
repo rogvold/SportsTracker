@@ -56,9 +56,9 @@ class TrainingsCalendarPanel extends React.Component {
         var endTimestamp = +moment(timestamp).endOf('day');
         let arr = trainings.filter((tr) => {
             let t = tr.startTimestamp;
-            if (t < 248212422600){
-                t = t * 1000;
-            }
+            //if (t < 248212422600){
+            //    t = t * 1000;
+            //}
             return ((t > startTimestamp) && (t < endTimestamp));
         });
         return arr;
@@ -127,6 +127,7 @@ class TrainingsCalendarPanel extends React.Component {
             <div className={'trainings_calendar_panel'} >
 
                 <CalendarPanel
+                    selectedTimestamp={this.state.selectedTimestamp}
                     onDayClick={this.onDayClick}
                     contentFunction={this.getContent} />
 

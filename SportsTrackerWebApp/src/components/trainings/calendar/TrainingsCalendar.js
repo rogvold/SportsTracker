@@ -69,7 +69,7 @@ var TrainingsCalendar = React.createClass({
         return (
             <div style={this.componentStyle.placeholder} >
 
-                <CalendarPanel sessions={calSessions} />
+                <CalendarPanel sessions={calSessions}  />
 
                 {this.state.loading == false ? null :
                     <BallPreloader  />

@@ -75,6 +75,13 @@ body{
     transition-duration: 0.2s;
 }
 
+.transition04s{
+    -webkit-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
 .transition01s{
     -webkit-transition-duration: 0.1s;
     -moz-transition-duration: 0.1s;
@@ -848,6 +855,21 @@ body{
     cursor: pointer;
 }
 
+.trainings_list .training_item .field_name{
+    font-weight: bold;
+    line-height: 18px;
+}
+
+.trainings_list .training_item .time{
+    opacity: 0.4;
+    padding-left: 2px;
+}
+
+.trainings_list .training_item .delimiter_span{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 .trainings_list .training_item:hover{
     background-color: lightgoldenrodyellow;
 }
@@ -1125,6 +1147,18 @@ body{
     min-height: 200px;
 }
 
+.training_sessions_panel > .date{
+    font-weight: bold;
+    text-align: center;
+}
+
+.training_sessions_panel > .field_name{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    opacity: 0.6;
+}
+
 .player_users_selector_panel{
 
 }
@@ -1143,6 +1177,10 @@ body{
     position: relative;
     cursor: pointer;
     border: 1px solid rgb(239, 240, 241);
+}
+
+.player_users_selector_panel .users_list .user_item i.wait{
+    margin-right: 1px !important;
 }
 
 .player_users_selector_panel .users_list .user_item:hover{
@@ -1188,3 +1226,80 @@ body{
     margin-right: 0px !important;
 }
 
+.simple_user_point{
+    position: absolute;
+    margin-top: -20px;
+    margin-left: -30px;
+}
+
+.simple_user_point .name{
+    height: 30%;
+    font-size: 12px;
+    line-height: 10px;
+    width: 100%;
+    text-align: center;
+    color: whitesmoke;
+    opacity: 0.9;
+}
+
+.simple_user_point .clothes_placeholder{
+    height: 70%;
+}
+
+.simple_user_point .clothes_placeholder img{
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.simple_field{
+    position: relative;
+    width: 100%;
+    background-color: green;
+    /*height: 500px;*/
+    height: 440px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url(http://www.englishpatient.ru/img/football_pitch.png);
+}
+
+.empty_training{
+    padding: 10px;
+    text-align: center;
+}
+
+.training_field_player{
+
+}
+
+.training_field_player .controls_placeholder{
+    margin-top: 10px;
+}
+
+.training_field_player .controls_placeholder .buttons_placeholder{
+    width: 40px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 30px;
+    cursor: pointer;
+    opacity: 0.8;
+    padding-left: 5px;
+}
+
+.training_field_player .controls_placeholder .timer_placeholder{
+    width: 75px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    opacity: 0.8;
+    font-size: 16px;
+    text-align: center;
+}
+
+.slider_placeholder{
+    width: calc(100% - 120px);
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 5px;
+}

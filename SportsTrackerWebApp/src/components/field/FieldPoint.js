@@ -58,12 +58,12 @@ var FieldPoint = React.createClass({
         var centerX = this.props.x - (this.props.radius / 2.0);
         var centerY = this.props.y - (this.props.radius / 2.0);
 
-        var st = assign({}, this.componentStyle.placeholder,
+        var st = Object.assign({}, this.componentStyle.placeholder,
                         {left: centerX, top: centerY, width: this.props.radius, height: this.props.radius},
                         this.props.style);
 
         if (this.props.isTrace == false){
-            st = assign({}, st, {cursor: 'pointer'});
+            st = Object.assign({}, st, {cursor: 'pointer'});
         }
 
         var className = (this.props.isTrace == true) ? 'transition01s' : 'transition01s hoverYellowBackground ';

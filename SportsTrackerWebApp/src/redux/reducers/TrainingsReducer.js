@@ -13,8 +13,18 @@ const consumeTrainings = (state, trainings) => {
     if (trainings == undefined){
         return state;
     }
+    trainings = trainings.map((tr) => {
+        let t = tr.startTimestamp;
+        if (t < 248212422600){
+            t = t * 1000;
+        }
+        return Object.assign({}, tr, {startTimestamp: t})
+    });
     var trainingsMap = Object.assign({}, state.trainingsMap);
     for (let u of trainings){
+        if (u == undefined || u.fieldId == undefined){
+            continue;
+        }
         trainingsMap[u.id] = u;
     }
     return Object.assign({}, state.trainingsMap, trainingsMap);

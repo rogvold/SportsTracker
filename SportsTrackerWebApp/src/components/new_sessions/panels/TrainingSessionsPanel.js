@@ -12,6 +12,8 @@ import BallPreloader from '../../preloader/BallPreloader.js'
 
 import TrainingUsersPanel from './TrainingUsersPanel.js'
 
+import moment from 'moment'
+
 class TrainingSessionsPanel extends React.Component {
 
     static defaultProps = {
@@ -39,9 +41,23 @@ class TrainingSessionsPanel extends React.Component {
     }
 
     render = () => {
+        const {trainingsMap, trainingId, fieldsMap} = this.props;
+        const tr = trainingsMap[trainingId];
+        if (tr == undefined){
+            return null;
+        }
+        const field = fieldsMap[tr.fieldId];
+
 
         return (
             <div className={'training_sessions_panel'} >
+
+                <div className={'date'} >
+                    {moment(tr.startTimestamp).format('DD.MM.YYYY HH:mm')}
+                </div>
+                <div className={'field_name'} >
+                    {field.name}
+                </div>
 
                 <TrainingUsersPanel trainingId={this.props.trainingId} />
 
@@ -59,7 +75,9 @@ class TrainingSessionsPanel extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.trainings.loading
+        loading: state.trainings.loading,
+        trainingsMap: state.trainings.trainingsMap,
+        fieldsMap: state.organization.fieldsMap
     }
 }
 

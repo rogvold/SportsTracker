@@ -10,6 +10,8 @@ import * as TrainingsHelper from '../../../helpers/TrainingsHelper.js'
 
 import PlayerUsersSelectorPanel from '../../player_tools/panels/PlayerUsersSelectorPanel.js'
 
+import TrainingFieldPlayer from '../../new_field/panels/TrainingFieldPlayer.js'
+
 class TrainingUsersPanel extends React.Component {
 
     static defaultProps = {
@@ -58,10 +60,12 @@ class TrainingUsersPanel extends React.Component {
         const sessions = this.getSessions();
         const users = this.getUsers();
 
-        console.log('TrainingUsersPanel: render: sessions, users = ', sessions, users);
+        //console.log('TrainingUsersPanel: render: sessions, users = ', sessions, users);
 
         return (
             <div className={'training_users_panel'} >
+
+                <TrainingFieldPlayer />
 
                 <PlayerUsersSelectorPanel trainingId={this.props.trainingId} />
 

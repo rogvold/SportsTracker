@@ -50,6 +50,23 @@ class PlayerUsersSelectorPanel extends React.Component {
         return arr;
     }
 
+    getUserDuration = (userId) => {
+        let {trainingId, store} = this.props;
+        let sessions = TrainingsHelper.getTrainingSessions(trainingId, store);
+        for (var i in sessions){
+            let s = sessions[i];
+            if (s.session.userId != userId){
+                continue;
+            }
+            let pts = s.points;
+            if (pts == undefined || pts.length == 0){
+                return 0;
+            }
+            return (Math.floor((pts[pts.length - 1].t - pts[0].t) / 60000.0));
+        }
+        return 0;
+    }
+
 
     render = () => {
         let users = this.getUsers();
@@ -63,6 +80,7 @@ class PlayerUsersSelectorPanel extends React.Component {
                     {users.map( (u, k) => {
                         let isChecked = (selMap[u.id] != undefined);
                         let onClick = this.props.toggle.bind(this, u.id);
+                        let dur = this.getUserDuration(u.id);
                         return (
                             <div className={'user_item ' + (isChecked == true ? ' selected ' : '' ) } key={k + '_' + u.id} onClick={onClick} >
                                 <div className={'left_placeholder'} >
@@ -82,7 +100,7 @@ class PlayerUsersSelectorPanel extends React.Component {
                                         </div>
                                     </div>
                                     <div className={'bottom'} >
-                                        <i className={'icon wait'} ></i>
+                                        <i className={'icon wait'} ></i> {dur} мин.
                                     </div>
                                 </div>
                             </div>
