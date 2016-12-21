@@ -12,6 +12,10 @@ import PlayerUsersSelectorPanel from '../../player_tools/panels/PlayerUsersSelec
 
 import TrainingFieldPlayer from '../../new_field/panels/TrainingFieldPlayer.js'
 
+import TrainingSessionsTabbedPanel from '../../new_sessions/panels/TrainingSessionsTabbedPanel.js'
+
+import UserShotsPanel from '../../field/gate/UserShotsPanel.js'
+
 class TrainingUsersPanel extends React.Component {
 
     static defaultProps = {
@@ -63,11 +67,14 @@ class TrainingUsersPanel extends React.Component {
         //console.log('TrainingUsersPanel: render: sessions, users = ', sessions, users);
 
         return (
-            <div className={'training_users_panel'} >
+            <div className={''} >
 
-                <TrainingFieldPlayer />
+                <TrainingSessionsTabbedPanel trainingId={this.props.trainingId} />
 
-                <PlayerUsersSelectorPanel trainingId={this.props.trainingId} />
+
+                <div className={'shots_placeholder'} >
+                    <UserShotsPanel />
+                </div>
 
             </div>
         )

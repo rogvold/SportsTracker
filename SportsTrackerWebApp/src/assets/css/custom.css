@@ -1303,3 +1303,60 @@ body{
     vertical-align: top;
     padding-top: 5px;
 }
+
+.training_sessions_tabbed_panel{
+
+}
+
+.training_sessions_tabbed_panel .tabs_placeholder {
+    text-align: center;
+}
+
+.training_sessions_tabbed_panel .tabs_placeholder .tab{
+    padding: 7px;
+    margin-left: 15px;
+    margin-right: 15px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.training_sessions_tabbed_panel .tabs_placeholder .tab.active{
+    padding-bottom: 4px;
+    border-bottom: 3px solid #57BE85;
+    cursor: default;
+    font-weight: bold;
+}
+
+.training_heatmap_panel .controls_placeholder {
+    margin-top: 5px;
+}
+
+.training_heatmap_panel .controls_placeholder .slider_placeholder{
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 7px;
+    width: calc(100% - 150px)
+}
+
+.training_heatmap_panel .controls_placeholder .timer_placeholder{
+    width: 75px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    opacity: 0.8;
+    font-size: 16px;
+}
+
+.heatmap{
+    height: 440px;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url(http://www.englishpatient.ru/img/football_pitch.png);
+}
+
+.shots_placeholder{
+    margin-top: 20px;
+}
