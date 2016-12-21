@@ -82,7 +82,8 @@ export function loadTrainingSessions(id){
             return;
         }
         dispatch(loadSessions_())
-        return ParseAPI.runCloudFunctionAsPromise("loadTrainingSessions", {trainingId: id}).then(
+        //return ParseAPI.runCloudFunctionAsPromise("loadTrainingSessions", {trainingId: id}).then(
+        return ParseAPI.runCloudFunctionAsPromise("loadTrainingSessionsOptimized", {trainingId: id}).then(
                 sessions => dispatch(loadSessionsSuccess(sessions)),
                 error => dispatch(loadSessionsFail(error))
         )

@@ -79,10 +79,15 @@ class TrainingsList extends React.Component {
                                     <span style={{marginRight: 5}}>
                                          {moment(tr.startTimestamp).format('HH:mm')}
                                     </span>
-                                    {' - '}
-                                    <span style={{marginRight: 5, marginRight: 5}}>
-                                        {moment(tr.endTimestamp).format('HH:mm')}
+
+                                    {tr.endTimestamp == undefined ? null :
+                                        <span >
+                                        {' - '}
+                                        <span style={{marginRight: 5, marginRight: 5}}>
+                                            {moment(tr.endTimestamp).format('HH:mm')}
+                                        </span>
                                     </span>
+                                    }
 
                                     <span className={'delimiter_span'} >|</span>
 

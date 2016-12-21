@@ -24,27 +24,27 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cloud/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="450" column="24" selection-start-line="450" selection-start-column="24" selection-end-line="450" selection-end-column="24" />
+            <state vertical-scroll-proportion="-11.481482">
+              <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrainingsModule.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TrainingsModule.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cloud/modules/TrainingsModule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7487437">
-              <caret line="623" column="95" selection-start-line="623" selection-start-column="95" selection-end-line="623" selection-end-column="95" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="605" column="27" selection-start-line="605" selection-start-column="27" selection-end-line="605" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RealtimeTrainingsModule.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RealtimeTrainingsModule.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cloud/modules/RealtimeTrainingsModule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="0.40201005">
               <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
               <folding>
                 <element signature="e#0#40#0" expanded="false" />
@@ -67,7 +67,7 @@
         <entry file="file://$PROJECT_DIR$/cloud/modules/UsersModule.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="193" column="21" selection-start-line="193" selection-start-column="4" selection-end-line="193" selection-end-column="21" />
+              <caret line="133" column="29" selection-start-line="133" selection-start-column="29" selection-end-line="133" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -146,11 +146,11 @@
         <option value="$PROJECT_DIR$/cloud/modules/GroupsModule.js" />
         <option value="$PROJECT_DIR$/cloud/app.js" />
         <option value="$PROJECT_DIR$/cloud/modules/OrganizationsModule.js" />
-        <option value="$PROJECT_DIR$/cloud/modules/UsersModule.js" />
         <option value="$PROJECT_DIR$/cloud/modules/RealtimeTrainingsModule.js" />
-        <option value="$PROJECT_DIR$/cloud/main.js" />
         <option value="$PROJECT_DIR$/cloud/modules/FieldsModule.js" />
+        <option value="$PROJECT_DIR$/cloud/main.js" />
         <option value="$PROJECT_DIR$/cloud/modules/TrainingsModule.js" />
+        <option value="$PROJECT_DIR$/cloud/modules/UsersModule.js" />
       </list>
     </option>
   </component>
@@ -743,24 +743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cloud/modules/UsersModule.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="193" column="21" selection-start-line="193" selection-start-column="4" selection-end-line="193" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cloud/modules/RealtimeTrainingsModule.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cloud/modules/FieldsModule.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -771,19 +753,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cloud/main.js">
+    <entry file="file://$PROJECT_DIR$/cloud/modules/TrainingsModule.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="450" column="24" selection-start-line="450" selection-start-column="24" selection-end-line="450" selection-end-column="24" />
+          <caret line="605" column="27" selection-start-line="605" selection-start-column="27" selection-end-line="605" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cloud/modules/TrainingsModule.js">
+    <entry file="file://$PROJECT_DIR$/cloud/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7487437">
-          <caret line="623" column="95" selection-start-line="623" selection-start-column="95" selection-end-line="623" selection-end-column="95" />
+        <state vertical-scroll-proportion="-11.481482">
+          <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/modules/UsersModule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="133" column="29" selection-start-line="133" selection-start-column="29" selection-end-line="133" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/modules/RealtimeTrainingsModule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40201005">
+          <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

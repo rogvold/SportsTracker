@@ -13,6 +13,8 @@ import TrainingsPanel from '../new_trainings/panels/TrainingsPanel.js'
 
 import BallPreloader from '../preloader/BallPreloader.js'
 
+import UpdateUserReduxWrapper from '../profile/user/UpdateUserReduxWrapper.js'
+
 class ReduxUserPagePanel extends React.Component {
 
     static defaultProps = {
@@ -72,13 +74,11 @@ class ReduxUserPagePanel extends React.Component {
 
                         {canEdit == false ? null :
                             <div className={'edit_user_button_placeholder'} >
-                                <div
-                                    style={{display: 'block'}}
-                                    userId={user.id}>
+                                <UpdateUserReduxWrapper userId={userId} >
                                     <div className={'update_profile_button'} >
                                         Редактировать
                                     </div>
-                                </div>
+                                </UpdateUserReduxWrapper>
                             </div>
                         }
 

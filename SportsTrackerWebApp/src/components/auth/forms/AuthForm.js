@@ -62,15 +62,15 @@ class AuthForm extends React.Component {
 
                     {this.state.mode == 'login' ?
                         <div className={' switcher '} >
-                            Not registered yet?
+                            Нет аккаунта?
                             <span className={'switcher_link'} onClick={() => {this.setState({mode: 'signup'})}} >
-                                Sign up
+                                Регистрация
                             </span>
                         </div> :
                         <div className={' switcher '} >
-                            Have an account?
+                            Есть аккаунт?
                             <span className={'switcher_link'} onClick={() => {this.setState({mode: 'login'})}} >
-                                Log in
+                                Войти
                             </span>
                         </div>
                     }

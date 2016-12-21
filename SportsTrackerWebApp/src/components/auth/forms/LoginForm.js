@@ -83,16 +83,16 @@ class LoginForm extends React.Component {
 
                  <div className={'field'} >
                      <label>
-                         Password
+                         Пароль
                      </label>
                      <input value={this.state.password}  onKeyUp={this.onKeyUp}
-                            placeholder={'Password'} type={'password'}
+                            placeholder={'Пароль'} type={'password'}
                             onChange={(evt) => {this.setState({password: evt.target.value})}} />
                  </div>
 
                  <div className={'submit_button_placeholder'} >
-                    <button className={'ui button fluid'} onClick={this.onSubmit} disabled={!canSubmit} >
-                        Login
+                    <button className={'ui button fluid patientPrimary  '} onClick={this.onSubmit} disabled={!canSubmit} >
+                        Вход
                     </button>
                  </div>
 

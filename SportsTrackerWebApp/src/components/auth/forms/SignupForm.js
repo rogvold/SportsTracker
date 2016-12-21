@@ -87,8 +87,8 @@ class SignupForm extends React.Component {
 
                 {this.props.firstNameEnabled == false ? null :
                     <div className={'field'} >
-                        <label>First name</label>
-                        <input value={this.state.firstName} placeholder={'First name'}
+                        <label>Имя</label>
+                        <input value={this.state.firstName} placeholder={'Имя'}
                                onChange={(e) => {this.setState({firstName: e.target.value})}}
                             />
                     </div>
@@ -96,8 +96,8 @@ class SignupForm extends React.Component {
 
                 {this.props.lastNameEnabled == false ? null :
                     <div className={'field'} >
-                        <label>First name</label>
-                        <input value={this.state.lastName} placeholder={'Last name'}
+                        <label>Фамилия</label>
+                        <input value={this.state.lastName} placeholder={'Фамилия'}
                                onChange={(e) => {this.setState({lastName: e.target.value})}}
                             />
                     </div>
@@ -111,22 +111,22 @@ class SignupForm extends React.Component {
                 </div>
 
                 <div className={'field'} >
-                    <label>Password</label>
-                    <input value={this.state.password} placeholder={'Password'} type={'password'}
+                    <label>Пароль</label>
+                    <input value={this.state.password} placeholder={'Пароль'} type={'password'}
                            onChange={(e) => {this.setState({password: e.target.value})}}
                         />
                 </div>
 
                 <div className={'field'} >
-                    <label>Confirm password</label>
-                    <input value={this.state.passwordConfirmation} placeholder={'Confirm password'} type={'password'}
+                    <label>Пароль еще раз</label>
+                    <input value={this.state.passwordConfirmation} placeholder={'Пароль еще раз'} type={'password'}
                            onChange={(e) => {this.setState({passwordConfirmation: e.target.value})}}
                         />
                 </div>
 
                 <div className={'submit_button_placeholder'} >
-                    <button className={'ui button fluid'} onClick={this.onSubmit} disabled={!canSubmit} >
-                        SignUp
+                    <button className={'ui button fluid patientPrimary'} onClick={this.onSubmit} disabled={!canSubmit} >
+                        Зарегистрироваться
                     </button>
                 </div>
 

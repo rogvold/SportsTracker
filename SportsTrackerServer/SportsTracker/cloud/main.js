@@ -395,6 +395,13 @@ Parse.Cloud.define("loadTrainingSessions", function(request, response) {
     });
 });
 
+Parse.Cloud.define("loadTrainingSessionsOptimized", function(request, response) {
+    var data = request.params.data;
+    TrainingsModule.loadTrainingSessionsOptimized(data.trainingId, function(list){
+        response.success(list);
+    });
+});
+
 Parse.Cloud.define("savePoints", function(request, response) {
     var data = request.params.data;
     if (data == undefined){

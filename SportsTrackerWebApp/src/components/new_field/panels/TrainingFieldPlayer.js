@@ -120,14 +120,14 @@ class TrainingFieldPlayer extends React.Component {
     }
 
     getMaxT = () => {
-        console.log('TrainingsFieldPlayer: getMaxT occured');
+        //console.log('TrainingsFieldPlayer: getMaxT occured');
         let sessions = this.getSessions(false);
-        console.log('sessions = ', sessions);
+        //console.log('sessions = ', sessions);
         let max = 0;
         for (var i in sessions){
-            console.log('i = ', i);
+            //console.log('i = ', i);
             let pts = sessions[i].points;
-            console.log('pts = ', pts);
+            //console.log('pts = ', pts);
             if (pts == undefined || pts.length == 0){
                 continue;
             }

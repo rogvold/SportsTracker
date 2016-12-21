@@ -861,7 +861,7 @@ body{
 }
 
 .trainings_list .training_item .time{
-    opacity: 0.4;
+    opacity: 0.3;
     padding-left: 2px;
 }
 
@@ -1360,4 +1360,9 @@ body{
 
 .shots_placeholder{
     margin-top: 20px;
+}
+
+.update_user_panel{
+    position: relative;
+    min-height: 200px;
 }

@@ -11,7 +11,7 @@ import { Field, reduxForm } from 'redux-form';
 import validator from 'validator';
 
 let UserForm = (props) => {
-    const {handleSubmit, valid} = props;
+    const {handleSubmit, valid, hasPasswordSection, hasEmailSection} = props;
 
     return (
         <div className={'user_form ui form'} onSubmit={handleSubmit} >
@@ -30,29 +30,34 @@ let UserForm = (props) => {
 
             </div>
 
-            <div className={'field'} >
-                <label htmlFor="email">Email</label>
-                <Field
-                    placeholder={'Email'}
-                    name="email" component="input" type="email"/>
+            {hasEmailSection == false ? null :
+                <div className={'field'} >
+                    <label htmlFor="email">Email</label>
+                    <Field
+                        placeholder={'Email'}
+                        name="email" component="input" type="email"/>
 
-            </div>
+                </div>
+            }
 
-            <div className={'field'} >
-                <label htmlFor="password">Пароль</label>
-                <Field
-                    placeholder={'Пароль'}
-                    name="password" component="input" type="password"/>
 
-            </div>
+            {hasPasswordSection == false ? null :
+                <div className={'field'} >
+                    <label htmlFor="password">Пароль</label>
+                    <Field
+                        placeholder={'Пароль'}
+                        name="password" component="input" type="password"/>
+                </div>
+            }
 
-            <div className={'field'} >
-                <label htmlFor="passwordConfirmation">Повторите пароль</label>
-                <Field name="passwordConfirmation"
-                       placeholder={'Повторите пароль'}
-                       component="input" type="password"/>
-
-            </div>
+            {hasPasswordSection == false ? null :
+                <div className={'field'} >
+                    <label htmlFor="passwordConfirmation">Повторите пароль</label>
+                    <Field name="passwordConfirmation"
+                           placeholder={'Повторите пароль'}
+                           component="input" type="password"/>
+                </div>
+            }
 
             <button  type="submit" disabled={!valid} className={'ui button'} onClick={handleSubmit} >
                 <i className={'icon save'} ></i> Сохранить

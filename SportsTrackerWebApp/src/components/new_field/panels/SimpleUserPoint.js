@@ -67,7 +67,7 @@ class SimpleUserPoint extends React.Component {
         //    this.props.style);
 
         return (
-            <div className={'simple_user_point transition04s'} style={st} >
+            <div className={'simple_user_point transition02s'} style={st} >
                 <div className={'name'} >
                     {user.firstName}
                 </div>

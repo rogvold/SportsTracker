@@ -126,12 +126,12 @@ var UsersModule = {
             error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'data is not defined'});
             return;
         }
-        if (data.userId == undefined){
-            error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'userId is not defined'});
+        if (data.id == undefined){
+            error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'id is not defined'});
             return;
         }
         var self = this;
-        this.loadUser(data.userId, function(u){
+        this.loadUser(data.id, function(u){
             for (var key in data){
                 if (key == 'userId' || key == 'timestamp' || key == 'id'){
                     continue;

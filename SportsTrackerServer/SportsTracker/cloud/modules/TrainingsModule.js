@@ -544,8 +544,6 @@ var TrainingsModule = {
         })
     },
 
-
-
     loadTrainingSessions: function(trainingId, callback){
         var q = new Parse.Query('Session');
         q.equalTo('trainingId', trainingId);
@@ -587,6 +585,60 @@ var TrainingsModule = {
                         }
                         callback(arr);
                     });
+
+                });
+
+            });
+        });
+    },
+
+    loadTrainingSessionsOptimized: function(trainingId, callback){
+        var q = new Parse.Query('Session');
+        q.equalTo('trainingId', trainingId);
+        q.limit(1000);
+        var self = this;
+        q.find(function(results){
+            if (results == undefined){
+                results = [];
+            }
+            var sessions = results.map(function(r){return self.transformSession(r)});
+            if (sessions.length == 0){
+                callback([]);
+                return;
+            }
+
+            var arr = [];
+            var sessionsIds = sessions.map(function(s){return s.id});
+            self.loadCachePointsOfSessionsIdsRecursively(sessionsIds, 0, undefined, function(points){
+
+                self.loadChunkPointsMapOfSessionsIds(sessionsIds, function(chunkPointsSessionsMap){
+                    var map = {};
+                    for (var i in points){
+                        var p = points[i];
+                        if (map[p.sessionId] == undefined){
+                            map[p.sessionId] = [];
+                        }
+                        map[p.sessionId].push(p);
+                    }
+
+                    for (var i in sessions){
+                        var session = sessions[i];
+                        arr.push({
+                            id: session.id,
+                            trainingId: session.trainingId,
+                            session: session,
+                            points: chunkPointsSessionsMap[session.id].concat(map[session.id])
+                        });
+                    }
+                    callback(arr);
+
+                    //var usersIds = arr.map(function(s){return s.session.userId});
+                    //UsersModule.loadUsersMapByIds(usersIds, function(usersMap){
+                    //    for (var i in arr){
+                    //        arr[i].session.user = usersMap[arr[i].session.userId];
+                    //    }
+                    //    callback(arr);
+                    //});
 
                 });
 
