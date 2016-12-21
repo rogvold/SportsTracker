@@ -29,3 +29,17 @@ export function getTrainingSessions(trainingId, state) {
     }
     return arr;
 }
+
+export function getUserTrainings(userId, state) {
+    let arr = [];
+    const sessionsMap = state.trainings.sessionsMap;
+    const trainingsMap = state.trainings.trainingsMap;
+    for (var key in sessionsMap){
+        let s = sessionsMap[key];
+        if (s == undefined || s.trainingId != trainingId){
+            continue;
+        }
+        arr.push(s);
+    }
+    return arr;
+}

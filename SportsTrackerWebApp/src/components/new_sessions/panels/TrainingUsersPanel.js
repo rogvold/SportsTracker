@@ -71,7 +71,6 @@ class TrainingUsersPanel extends React.Component {
 
                 <TrainingSessionsTabbedPanel trainingId={this.props.trainingId} />
 
-
                 <div className={'shots_placeholder'} >
                     <UserShotsPanel />
                 </div>

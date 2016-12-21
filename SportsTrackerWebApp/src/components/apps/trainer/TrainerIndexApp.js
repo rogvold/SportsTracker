@@ -9,6 +9,8 @@ import * as actions from '../../../redux/actions/OrganizationActions.js'
 
 import SimpleUserTemplate from '../../templates/redux/SimpleUserTemplate.js'
 
+import ReduxUserPagePanel from '../../profile_page/ReduxUserPagePanel.js'
+
 class TrainerIndexApp extends React.Component {
 
     static defaultProps = {
@@ -44,7 +46,9 @@ class TrainerIndexApp extends React.Component {
 
         return (
             <div className={'user_index_app_content'} >
-                this is trainer index app
+
+                <ReduxUserPagePanel userId={user.id} />
+
             </div>
         )
     }

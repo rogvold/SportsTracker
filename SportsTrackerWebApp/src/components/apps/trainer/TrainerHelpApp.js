@@ -10,6 +10,8 @@ import * as actions from '../../../redux/actions/OrganizationActions.js'
 
 import SimpleUserTemplate from '../../templates/redux/SimpleUserTemplate.js'
 
+import UnderConstructionPanel from '../../under_construction/UnderConstructionPanel.js'
+
 class TrainerHelpApp extends React.Component {
 
     static defaultProps = {
@@ -45,7 +47,9 @@ class TrainerHelpApp extends React.Component {
 
         return (
             <div className={'user_index_app_content'} >
-                this is trainer help app
+
+                <UnderConstructionPanel />
+
             </div>
         )
     }

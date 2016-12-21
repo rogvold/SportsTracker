@@ -61,7 +61,8 @@ const TrainingsReducer =  (state = initialState, action = {}) => {
             return {
                 ...state,
                 loading: false,
-                trainingsMap: consumeTrainings(state, action.trainings)
+                trainingsMap: consumeTrainings(state, action.trainings),
+                sessionsMap: consumeSessions(state, action.sessions)
             }
 
 

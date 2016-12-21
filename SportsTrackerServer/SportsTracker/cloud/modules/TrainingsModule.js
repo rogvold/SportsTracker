@@ -621,8 +621,9 @@ var TrainingsModule = {
                 if (trainings == undefined){
                     trainings = [];
                 }
+                var sessions = results.map(function(sess){return {id: sess.id, trainingId: sess.trainingId, points: [], session: sess}})
                 trainings = trainings.map(function(m){return self.transformTraining(m)});
-                success({trainings: trainings, sessions: results});
+                success({trainings: trainings, sessions: sessions});
             });
         });
     }

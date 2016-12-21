@@ -13,6 +13,8 @@ class TrainingsList extends React.Component {
     static defaultProps = {
         trainings: [],
 
+        showDate: false,
+
         onTrainingClick: function(tr){
 
         }
@@ -43,6 +45,14 @@ class TrainingsList extends React.Component {
         const {trainings} = this.props;
         const {usersMap, fieldsMap} = this.props;
 
+        if (trainings == undefined || trainings.length == 0){
+            return (
+                <div style={{padding: 20, opacity: 0.4, textAlign: 'center'}} >
+                    Еще нет тренировок...
+                </div>
+            );
+        }
+
         return (
             <div  className={'trainings_list'} >
                 {trainings.map((tr, k) => {
@@ -55,9 +65,13 @@ class TrainingsList extends React.Component {
                         <div onClick={onClick} key={key} className={'training_item'} >
 
                             <div>
-                                <div className={'field_name'} >
-                                    {field.name}
-                                </div>
+                                {field && <div className={'field_name'} >
+                                    {this.props.showDate == false ? null :
+                                        <span>{moment(tr.startTimestamp).format('DD.MM.YYYY')} {' - '}</span>
+                                    }
+                                    {field.name} {' '}
+                                    {field.deleted == true ? <span style={{opacity: 0.4}} >(поле удалено)</span> : null}
+                                </div> }
 
                                 <div className={'time'}>
 
@@ -65,7 +79,7 @@ class TrainingsList extends React.Component {
                                     <span style={{marginRight: 5}}>
                                          {moment(tr.startTimestamp).format('HH:mm')}
                                     </span>
-                                    -
+                                    {' - '}
                                     <span style={{marginRight: 5, marginRight: 5}}>
                                         {moment(tr.endTimestamp).format('HH:mm')}
                                     </span>

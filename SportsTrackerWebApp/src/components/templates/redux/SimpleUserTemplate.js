@@ -142,6 +142,16 @@ class SimpleUserTemplate extends React.Component {
         let user = this.props.currentUser;
         let isEmptyName = (user.firstName == undefined && user.lastName == undefined);
         let links = this.getHeaderLinks();
+        let org = this.props.organization;
+        let name = this.getNameString();
+        if (user.userRole == 'admin'){
+            if (org != undefined){
+                name = org.name;
+            }else {
+                name = '';
+            }
+
+        }
 
         return (
             <div className={'simple_user_template'} >
@@ -186,7 +196,7 @@ class SimpleUserTemplate extends React.Component {
                                 <div className={'name_placeholder'} >
                                     {isEmptyName == true ?
                                         <span><i className={'icon user'} ></i> {user.email}</span> :
-                                        <span>{this.getNameString()}</span>
+                                        <span>{name}</span>
                                     }
                                 </div>
                                 <div className={'avatar_placeholder'} >
@@ -212,6 +222,7 @@ class SimpleUserTemplate extends React.Component {
 const mapStateToProps = (state) => {
     return {
         currentUser: state.users.currentUser,
+        organization: state.organization.organization,
         loading: state.users.loading
     }
 }

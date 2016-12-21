@@ -45,7 +45,12 @@ class PlayerUsersSelectorPanel extends React.Component {
         let usersMap = store.users.usersMap;
         for (var i in sessions){
             let userId = sessions[i].session.userId;
-            arr.push(usersMap[userId]);
+            if (userId == undefined){continue;}
+            let u = usersMap[userId];
+            if (u == undefined){
+                continue;
+            }
+            arr.push(u);
         }
         return arr;
     }

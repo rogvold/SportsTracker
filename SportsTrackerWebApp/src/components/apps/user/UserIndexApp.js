@@ -10,6 +10,8 @@ import * as actions from '../../../redux/actions/OrganizationActions.js'
 
 import SimpleUserTemplate from '../../templates/redux/SimpleUserTemplate.js'
 
+import ReduxUserPagePanel from '../../profile_page/ReduxUserPagePanel.js'
+
 class UserIndexApp extends React.Component {
 
     static defaultProps = {
@@ -45,7 +47,9 @@ class UserIndexApp extends React.Component {
 
         return (
             <div className={'user_index_app_content'} >
-                this is user index app
+
+                <ReduxUserPagePanel userId={user.id} />
+
             </div>
         )
     }
@@ -70,8 +74,6 @@ const mapDispatchToProps = (dispatch) => {
         loadOrganization: (id) => dispatch(actions.loadOrganization(id))
     }
 }
-
-
 
 
 UserIndexApp = connect(mapStateToProps, mapDispatchToProps)(UserIndexApp)

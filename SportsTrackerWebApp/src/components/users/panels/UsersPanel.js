@@ -10,6 +10,10 @@ import SearchableUsersList from '../../organization/users/SearchableUsersList.js
 
 import CreateUserWrapper from '../buttons/CreateUserWrapper.js'
 
+import Dialog from '../../dialog/Dialog.js'
+
+import ReduxUserPagePanel from '../../profile_page/ReduxUserPagePanel.js'
+
 class UsersPanel extends React.Component {
 
     static defaultProps = {
@@ -62,8 +66,15 @@ class UsersPanel extends React.Component {
         )
     }
 
+    onUserClick = (u) => {
+        this.setState({
+            selectedUserId: u.id
+        });
+    }
+
     render = () => {
         let users = this.getUsers();
+        let {selectedUserId} = this.state;
 
         return (
             <div className={'users_panel'} >
@@ -71,6 +82,7 @@ class UsersPanel extends React.Component {
 
                 {this.props.organizationLoading == true ? null :
                     <SearchableUsersList
+                        onUserClick={this.onUserClick}
                         topRightContent={this.getRightContent()}
                         users={users} />
                 }
@@ -80,6 +92,14 @@ class UsersPanel extends React.Component {
                     <div className={'simple_loading_placeholder'} >
                         загрузка...
                     </div>
+                }
+
+                {selectedUserId == undefined ? null :
+                    <Dialog
+                        content={<ReduxUserPagePanel userId={selectedUserId} />}
+                        onClose={this.setState.bind(this, {selectedUserId: undefined})}
+                        dialogPanelStyle={{width: 840, padding: 10}}
+                        />
                 }
 
             </div>

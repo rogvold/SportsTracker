@@ -24,13 +24,16 @@ import TrainingSessionsPanel from '../../new_sessions/panels/TrainingSessionsPan
 
 class TrainingsCalendarPanel extends React.Component {
 
-    static defaultProps = {}
+    static defaultProps = {
+        className: 'trainings_calendar_panel'
+    }
 
     static propTypes = {
         trainings: PropTypes.array.isRequired,
         selectedTrainingId: PropTypes.string,
         selectTraining: PropTypes.func.isRequired,
-        unselectTraining: PropTypes.func.isRequired
+        unselectTraining: PropTypes.func.isRequired,
+        currentUser: PropTypes.object
     }
 
     state = {
@@ -43,7 +46,13 @@ class TrainingsCalendarPanel extends React.Component {
     }
 
     componentDidMount() {
-        this.props.loadOrganizationTrainings();
+        let {currentUser} = this.props;
+        if (currentUser.userRole == 'user'){
+            this.props.loadUserTrainings(currentUser.id);
+        }else {
+            this.props.loadOrganizationTrainings();
+        }
+
     }
 
     componentWillReceiveProps() {
@@ -121,10 +130,10 @@ class TrainingsCalendarPanel extends React.Component {
     }
 
     render = () => {
-        const {trainings} = this.props;
+        const {trainings, className} = this.props;
 
         return (
-            <div className={'trainings_calendar_panel'} >
+            <div className={className} >
 
                 <CalendarPanel
                     selectedTimestamp={this.state.selectedTimestamp}
@@ -165,7 +174,8 @@ const mapStateToProps = (state) => {
     return {
         trainings: TrainingsHelper.getAllTrainings(state.trainings.trainingsMap),
         loading: state.trainings.loading || state.organization.loading,
-        selectedTrainingId: state.player.selectedTrainingId
+        selectedTrainingId: state.player.selectedTrainingId,
+        currentUser: state.users.currentUser
     }
 }
 
@@ -173,6 +183,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         loadOrganizationTrainings: (id) => {
             return dispatch(actions.loadOrganizationTrainings(id))
+        },
+        loadUserTrainings: (userId) => {
+            return dispatch(actions.loadUserTrainings(userId))
         },
         selectTraining: (id) => {
             return dispatch(playerActions.selectTraining(id))

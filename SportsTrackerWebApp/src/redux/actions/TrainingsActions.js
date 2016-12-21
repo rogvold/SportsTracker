@@ -9,10 +9,12 @@ let loadTrainings_ = () => {
         type: types.LOAD_TRAININGS
     }
 }
-let loadTrainingsSuccess = (trainings) => {
+let loadTrainingsSuccess = (trainings, sessions) => {
+    if (sessions == undefined){sessions = []}
     return {
         type: types.LOAD_TRAININGS_SUCCESS,
-        trainings: trainings
+        trainings: trainings,
+        sessions: sessions
     }
 }
 let loadTrainingsFail = (error) => {
@@ -35,6 +37,20 @@ export function loadOrganizationTrainings(id){
         return ParseAPI.runCloudFunctionAsPromise("loadOrganizationTrainings", {organizationId: id}).then(
             trainings => dispatch(loadTrainingsSuccess(trainings)),
             error => dispatch(loadTrainingsFail(error))
+        )
+    }
+}
+
+export function loadUserTrainings(userId){
+    return (dispatch, getState) => {
+        if (getState().trainings.loading == true || getState().organization.organization == undefined){return;}
+        //if (Object.keys(getState().trainings.trainingsMap).length > 0){
+        //    return;
+        //}
+        dispatch(loadTrainings_())
+        return ParseAPI.runCloudFunctionAsPromise("loadUserTrainings", {id: userId}).then(
+                d => dispatch(loadTrainingsSuccess(d.trainings, d.sessions)),
+                error => dispatch(loadTrainingsFail(error))
         )
     }
 }
@@ -72,3 +88,4 @@ export function loadTrainingSessions(id){
         )
     }
 }
+

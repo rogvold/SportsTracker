@@ -59,6 +59,13 @@ class LoginForm extends React.Component {
         return true;
     }
 
+    onKeyUp = (event) => {
+        if(event.keyCode == 13){
+            var val = event.target.value;
+            this.onSubmit();
+        }
+    }
+
      render(){
          let canSubmit = this.canSubmit();
 
@@ -78,7 +85,7 @@ class LoginForm extends React.Component {
                      <label>
                          Password
                      </label>
-                     <input value={this.state.password}
+                     <input value={this.state.password}  onKeyUp={this.onKeyUp}
                             placeholder={'Password'} type={'password'}
                             onChange={(evt) => {this.setState({password: evt.target.value})}} />
                  </div>

@@ -125,7 +125,9 @@ var FieldsModule = {
         q.limit(1000);
         q.addDescending('createdAt');
         q.equalTo('organizationId', orgId);
-        q.equalTo('deleted', false);
+
+        //q.equalTo('deleted', false);
+
         var self = this;
         q.find(function(results){
             if (results == undefined){

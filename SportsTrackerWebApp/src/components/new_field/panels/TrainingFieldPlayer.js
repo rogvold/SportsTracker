@@ -92,7 +92,7 @@ class TrainingFieldPlayer extends React.Component {
             if (pts == undefined || pts.length == 0){
                 continue;
             }
-            pts = pts.filter((p)=>{return (p.t <= time)})
+            pts = pts.filter((p)=>{return (p && (p.t <= time))})
             if (pts.length == 0){
                 continue;
             }
@@ -120,14 +120,18 @@ class TrainingFieldPlayer extends React.Component {
     }
 
     getMaxT = () => {
+        console.log('TrainingsFieldPlayer: getMaxT occured');
         let sessions = this.getSessions(false);
+        console.log('sessions = ', sessions);
         let max = 0;
         for (var i in sessions){
+            console.log('i = ', i);
             let pts = sessions[i].points;
+            console.log('pts = ', pts);
             if (pts == undefined || pts.length == 0){
                 continue;
             }
-            if (max < pts[pts.length - 1].t){
+            if (pts[pts.length - 1] && (max < pts[pts.length - 1].t)){
                 max = pts[pts.length - 1].t;
             }
         }

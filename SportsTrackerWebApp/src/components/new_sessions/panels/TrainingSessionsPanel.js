@@ -55,9 +55,10 @@ class TrainingSessionsPanel extends React.Component {
                 <div className={'date'} >
                     {moment(tr.startTimestamp).format('DD.MM.YYYY HH:mm')}
                 </div>
-                <div className={'field_name'} >
+
+                {field && <div className={'field_name'} >
                     {field.name}
-                </div>
+                </div> }
 
                 <TrainingUsersPanel trainingId={this.props.trainingId} />
 
