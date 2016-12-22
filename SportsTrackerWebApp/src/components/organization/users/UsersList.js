@@ -14,7 +14,11 @@ var UsersList = React.createClass({
 
             onUserClick: function(user){
 
-            }
+            },
+
+            showSignUpDate: true,
+            showTableHeader: true
+
         }
     },
 
@@ -86,17 +90,21 @@ var UsersList = React.createClass({
         return (
             <div style={this.componentStyle.placeholder}>
 
-                <div style={this.componentStyle.headerPlaceholder}>
+                {this.props.showTableHeader == false ? null :
+                    <div style={this.componentStyle.headerPlaceholder}>
 
-                    <div style={assign({}, this.componentStyle.namePlaceholder, {fontWeight: 'bold'})}>
-                        Имя, Фамилия
+                        <div style={assign({}, this.componentStyle.namePlaceholder, {fontWeight: 'bold'})}>
+                            Имя, Фамилия
+                        </div>
+
+                        {this.props.showSignUpDate == false ? null :
+                            <div style={assign({}, this.componentStyle.signupDatePlaceholder, {fontWeight: 'bold'})}>
+                                Дата регистрации
+                            </div>
+                        }
                     </div>
+                }
 
-                    <div style={assign({}, this.componentStyle.signupDatePlaceholder, {fontWeight: 'bold'})}>
-                        Дата регистрации
-                    </div>
-
-                </div>
 
                 <div style={this.componentStyle.listPlaceholder}>
                     {users.map(function(u, k){
@@ -107,13 +115,15 @@ var UsersList = React.createClass({
                             <div style={this.componentStyle.item} className={'hoverYellowBackground'}
                                  key={key} onClick={onClick} >
 
-                                <div style={this.componentStyle.namePlaceholder}>
+                                <div style={assign({}, this.componentStyle.namePlaceholder, (this.props.showSignUpDate == true ? {} : {width: '100%'}))}>
                                     {u.firstName + ' ' + u.lastName}
                                 </div>
 
-                                <div style={this.componentStyle.signupDatePlaceholder}>
-                                    {moment(u.timestamp).format('DD.MM.YYYY')}
-                                </div>
+                                {this.props.showSignUpDate == false ? null :
+                                    <div style={this.componentStyle.signupDatePlaceholder}>
+                                        {moment(u.timestamp).format('DD.MM.YYYY')}
+                                    </div>
+                                }
 
                             </div>
                         );

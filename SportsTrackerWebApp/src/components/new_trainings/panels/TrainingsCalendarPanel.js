@@ -70,6 +70,9 @@ class TrainingsCalendarPanel extends React.Component {
             //}
             return ((t > startTimestamp) && (t < endTimestamp));
         });
+        arr.sort((a, b) => {
+            return (b.startTimestamp - a.startTimestamp)
+        });
         return arr;
     }
 

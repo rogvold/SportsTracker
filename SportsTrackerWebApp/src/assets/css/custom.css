@@ -1309,11 +1309,11 @@ body{
 
 }
 
-.training_sessions_tabbed_panel .tabs_placeholder {
+.tabs_placeholder {
     text-align: center;
 }
 
-.training_sessions_tabbed_panel .tabs_placeholder .tab{
+.tabs_placeholder .tab{
     padding: 7px;
     margin-left: 15px;
     margin-right: 15px;
@@ -1322,7 +1322,7 @@ body{
     cursor: pointer;
 }
 
-.training_sessions_tabbed_panel .tabs_placeholder .tab.active{
+.tabs_placeholder .tab.active{
     padding-bottom: 4px;
     border-bottom: 3px solid #57BE85;
     cursor: default;
@@ -1365,4 +1365,62 @@ body{
 .update_user_panel{
     position: relative;
     min-height: 200px;
+}
+
+.update_group_links_panel{
+    position: relative;
+    padding: 10px;
+}
+
+.update_group_links_panel > .left_placeholder{
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    padding-right: 5px;
+}
+
+.update_group_links_panel > .right_placeholder{
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    padding-left: 5px;
+}
+
+.update_group_links_panel .group_users_panel{
+
+}
+
+.update_group_links_panel .group_users_panel .group_user_item{
+    padding: 5px;
+    background-color: white;
+    margin-bottom: 5px;
+    position: relative;
+    border-radius: 3px;
+    border: 1px solid rgb(239, 240, 241);
+}
+
+.update_group_links_panel .group_users_panel .group_user_item:hover{
+    background-color: lightgoldenrodyellow;
+}
+
+.update_group_links_panel .group_users_panel .group_user_item .name{
+    font-weight: bold;
+}
+
+.update_group_links_panel .group_users_panel .group_user_item .remove_placeholder{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 3px;
+}
+
+.update_group_links_panel .group_users_panel .group_user_item .remove_placeholder i{
+    margin-right: 0px !important;
+    color: firebrick;
+    cursor: pointer;
+}
+
+.update_group_links_panel .header{
+    font-weight: bold;
+    margin-bottom: 10px;
 }

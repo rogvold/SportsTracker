@@ -42,6 +42,13 @@ const consumeFields = (state, fields) => {
     return Object.assign({}, state.fieldsMap, fieldsMap);
 }
 
+const consumeUserGroupLinks = (state, links) => {
+    let additionalMap = {};
+    for (let i in links){
+        additionalMap[links[i].id] = links[i];
+    }
+    return Object.assign({}, state.userGroupLinksMap, additionalMap);
+}
 
 const removeGroupLinks = (state, groupId) => {
     let newUserGroupLinksMap = Object.assign({}, state.userGroupLinksMap);
@@ -62,6 +69,9 @@ const removeLink = (state, userId, groupId) => {
     let newUserGroupLinksMap = Object.assign({}, state.userGroupLinksMap);
     for (var key in newUserGroupLinksMap){
         var l = newUserGroupLinksMap[key];
+        if (l == undefined){
+            continue;
+        }
         if (l.groupId == groupId && l.userId == userId){
             newUserGroupLinksMap[key] = undefined;
         }
@@ -108,6 +118,17 @@ const OrganizationReducer =  (state = initialState, action = {}) => {
                 ...state,
                 groupsMap: newGroupsMap,
                 userGroupLinksMap: removeGroupLinks(state, action.id),
+                loading: false
+            }
+
+        case types.LOAD_GROUP_USERS_LINKS:
+            return startLoading(state, action)
+        case types.LOAD_GROUP_USERS_LINKS_FAIL:
+            return stopLoading(state, action)
+        case types.LOAD_GROUP_USERS_LINKS_SUCCESS:
+            return {
+                ...state,
+                userGroupLinksMap: consumeUserGroupLinks(state, action.links),
                 loading: false
             }
 

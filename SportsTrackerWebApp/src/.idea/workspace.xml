@@ -21,61 +21,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TrainingFieldPlayer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/new_field/panels/TrainingFieldPlayer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="130" column="45" selection-start-line="130" selection-start-column="45" selection-end-line="130" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UpdateUserWrapper.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/profile/user/UpdateUserWrapper.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="62" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UpdateUserReduxWrapper.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/profile/user/UpdateUserReduxWrapper.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="73" column="55" selection-start-line="73" selection-start-column="55" selection-end-line="73" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UpdateUserReduxPanel.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/profile/user/UpdateUserReduxPanel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="69" column="37" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="custom.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/css/custom.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38758388">
-              <caret line="863" column="16" selection-start-line="863" selection-start-column="16" selection-end-line="863" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="1402" column="43" selection-start-line="1402" selection-start-column="43" selection-end-line="1402" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserForm.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/users/forms/UserForm.js">
+      <file leaf-file-name="OrganizationActions.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/redux/actions/OrganizationActions.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="28" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="28" />
+              <caret line="167" column="12" selection-start-line="167" selection-start-column="12" selection-end-line="167" selection-end-column="12" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -83,21 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CreateUserPanel.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/users/panels/CreateUserPanel.js">
+      <file leaf-file-name="OrganizationReducer.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/redux/reducers/OrganizationReducer.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="55" column="16" selection-start-line="55" selection-start-column="16" selection-end-line="55" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserIndexApp.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/apps/user/UserIndexApp.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="66" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="66" />
+              <caret line="75" column="50" selection-start-line="75" selection-start-column="50" selection-end-line="75" selection-end-column="50" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -105,21 +55,75 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReduxUserPagePanel.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/profile_page/ReduxUserPagePanel.js">
+      <file leaf-file-name="UpdateGroupLinksPanel.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/new_groups/panels/UpdateGroupLinksPanel.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="29" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="29" />
+              <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrainingsActions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/redux/actions/TrainingsActions.js">
+      <file leaf-file-name="TeamsPanel.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/teams/panels/TeamsPanel.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="80" column="29" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="29" />
+              <caret line="98" column="55" selection-start-line="98" selection-start-column="55" selection-end-line="98" selection-end-column="55" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UpdateTeamPanel.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/teams/panels/UpdateTeamPanel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="71" selection-start-line="16" selection-start-column="71" selection-end-line="16" selection-end-column="71" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TabbedUpdateTeamPanel.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/teams/panels/TabbedUpdateTeamPanel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="73" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsersList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/organization/users/UsersList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="117" column="126" selection-start-line="117" selection-start-column="126" selection-end-line="117" selection-end-column="126" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchableUsersList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/organization/users/SearchableUsersList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PagedUsersList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/organization/users/PagedUsersList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -137,25 +141,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/components/new_calendar/panels/CalendarHeader.js" />
-        <option value="$PROJECT_DIR$/components/new_calendar/panels/MonthPanel.js" />
-        <option value="$PROJECT_DIR$/components/new_calendar/panels/WeekRow.js" />
-        <option value="$PROJECT_DIR$/components/new_calendar/panels/MothSwitcher.js" />
-        <option value="$PROJECT_DIR$/components/new_calendar/panels/MonthSwitcher.js" />
-        <option value="$PROJECT_DIR$/components/apps/DevApp.js" />
-        <option value="$PROJECT_DIR$/components/new_calendar/panels/CalendarPanel.js" />
-        <option value="$PROJECT_DIR$/components/apps/admin/AdminIndexApp.js" />
-        <option value="$PROJECT_DIR$/components/fields/panels/FieldsPanel.js" />
         <option value="$PROJECT_DIR$/apps/admin/AdminHelpApp.js" />
         <option value="$PROJECT_DIR$/components/under_construction/UnderConstructionPanel.js" />
         <option value="$PROJECT_DIR$/components/apps/admin/AdminHelpApp.js" />
         <option value="$PROJECT_DIR$/components/preloader/BallPreloader.js" />
         <option value="$PROJECT_DIR$/redux/actions/PlayerReducer.js" />
         <option value="$PROJECT_DIR$/redux/reducers/index.js" />
-        <option value="$PROJECT_DIR$/redux/ReduxConstants.js" />
         <option value="$PROJECT_DIR$/redux/actions/PlayerActions.js" />
         <option value="$PROJECT_DIR$/redux/reducers/PlayerReducer.js" />
-        <option value="$PROJECT_DIR$/redux/reducers/OrganizationReducer.js" />
         <option value="$PROJECT_DIR$/components/new_field/panels/SimplePoint.js" />
         <option value="$PROJECT_DIR$/components/field/FieldPoint.js" />
         <option value="$PROJECT_DIR$/components/new_field/panels/TrainingField.js" />
@@ -171,7 +164,6 @@
         <option value="$PROJECT_DIR$/components/apps/user/UserIndexApp.js" />
         <option value="$PROJECT_DIR$/components/templates/redux/SimpleUserTemplate.js" />
         <option value="$PROJECT_DIR$/components/users/panels/UsersPanel.js" />
-        <option value="$PROJECT_DIR$/components/new_trainings/panels/TrainingsCalendarPanel.js" />
         <option value="$PROJECT_DIR$/redux/reducers/TrainingsReducer.js" />
         <option value="$PROJECT_DIR$/helpers/TrainingsHelper.js" />
         <option value="$PROJECT_DIR$/components/new_trainings/panels/TrainingsPanel.js" />
@@ -187,7 +179,19 @@
         <option value="$PROJECT_DIR$/components/users/forms/UserForm.js" />
         <option value="$PROJECT_DIR$/components/profile/user/UpdateUserReduxPanel.js" />
         <option value="$PROJECT_DIR$/components/profile/user/UpdateUserReduxWrapper.js" />
+        <option value="$PROJECT_DIR$/components/new_trainings/panels/TrainingsCalendarPanel.js" />
+        <option value="$PROJECT_DIR$/redux/ReduxConstants.js" />
+        <option value="$PROJECT_DIR$/apps/new_groups/panels/UpdateGroupLinksPanel.js" />
+        <option value="$PROJECT_DIR$/components/teams/panels/UpdateTeamPanel.js" />
+        <option value="$PROJECT_DIR$/components/teams/panels/TeamsPanel.js" />
+        <option value="$PROJECT_DIR$/components/teams/panels/TabbedUpdateTeamPanel.js" />
+        <option value="$PROJECT_DIR$/redux/actions/OrganizationActions.js" />
+        <option value="$PROJECT_DIR$/components/organization/users/SearchableUsersList.js" />
+        <option value="$PROJECT_DIR$/components/organization/users/PagedUsersList.js" />
         <option value="$PROJECT_DIR$/assets/css/custom.css" />
+        <option value="$PROJECT_DIR$/components/new_groups/panels/UpdateGroupLinksPanel.js" />
+        <option value="$PROJECT_DIR$/components/organization/users/UsersList.js" />
+        <option value="$PROJECT_DIR$/redux/reducers/OrganizationReducer.js" />
       </list>
     </option>
   </component>
@@ -199,9 +203,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="30" />
+    <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="716" />
+    <option name="height" value="724" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -226,8 +230,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -676,157 +680,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="fields" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="panels" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fields" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="list" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="field" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="field" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="slider" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="field" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="heatmap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="panels" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auth" />
+              <option name="myItemId" value="groups" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -845,50 +699,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trainer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -956,6 +766,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -968,7 +796,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SportsTrackerServer/SportsTracker" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="JavaScriptLanguageLevel" value="JSX" />
-    <property name="SearchEverywhereHistoryKey" value="cust&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/assets/css/custom.css&#10;userform&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/users/forms/UserForm.js&#10;updateuser&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/profile/user/UpdateUserWrapper.js&#10;simpl&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/new_field/panels/SimpleUserPoint.js&#10;sabir.c&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/assets/css/sabir.css&#10;logi&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/auth/forms/LoginForm.js&#10;trainingspa&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/new_trainings/panels/TrainingsPanel.js&#10;trainingsred&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/reducers/TrainingsReducer.js&#10;userinde&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/apps/user/UserIndexApp.js&#10;adminindexapp&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/apps/admin/AdminIndexApp.js&#10;adminindex&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/apps/admin/AdminIndexApp.js&#10;trainingsa&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/actions/TrainingsActions.js&#10;adminusersapp&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/apps/admin/AdminUsersApp.js&#10;red&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/profile_page/ReduxUserPagePanel.js&#10;simple&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/templates/redux/SimpleUserTemplate.js&#10;PlayerUsersSelectorPanel&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/player_tools/panels/PlayerUsersSelectorPanel.js&#10;logina&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/apps/guest/LoginApp.js&#10;userse&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/player_tools/panels/PlayerUsersSelectorPanel.js&#10;sport&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/helpers/SportHelper.js&#10;trainingsre&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/reducers/TrainingsReducer.js&#10;adminin&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/apps/admin/AdminIndexApp.js&#10;calendarp&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/new_calendar/panels/CalendarPanel.js&#10;slider&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/field/slider/FieldSlider.js&#10;point&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/field/FieldPoint.js&#10;custom.&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/assets/css/custom.css&#10;organiza&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/reducers/OrganizationReducer.js&#10;training&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/new_trainings/panels/TrainingsCalendarPanel.js&#10;playerac&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/actions/PlayerActions.js&#10;pla&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/actions/PlayerActions.js&#10;sabir.&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/assets/css/sabir.css&#10;custom&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/assets/css/custom.css&#10;trainingshe&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/helpers/TrainingsHelper.js&#10;trainings&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/new_trainings/panels/TrainingsPanel.js&#10;ballp&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/preloader/BallPreloader.js&#10;backgroundim&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/image/BackgroundImageContainer.js&#10;adminhelp&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/apps/admin/AdminHelpApp.js&#10;deva&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/apps/DevApp.js&#10;sabirc&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/assets/css/sabir.css&#10;usersac&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/actions/UsersActions.js&#10;userre&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/reducers/UsersReducer.js&#10;userspa&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/users/panels/UsersPanel.js&#10;adminusers&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/apps/admin/AdminUsersApp.js&#10;sabir&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/assets/css/sabir.css&#10;userslist&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/organization/users/UsersList.js&#10;custo&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/assets/css/custom.css&#10;userred&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/reducers/UsersReducer.js&#10;app.&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/apps/App.js&#10;fieldspa&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/fields/panels/FieldsPanel.js&#10;orga&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/actions/OrganizationActions.js&#10;admin&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/apps/admin/AdminSettingsApp.js" />
+    <property name="SearchEverywhereHistoryKey" value="organizationred&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/reducers/OrganizationReducer.js&#10;usersl&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/organization/users/PagedUsersList.js&#10;organiza&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/actions/OrganizationActions.js&#10;sea&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/organization/users/SearchableUsersList.js&#10;orga&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/actions/OrganizationActions.js&#10;organiz&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/reducers/OrganizationReducer.js&#10;updateg&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/new_groups/panels/UpdateGroupLinksPanel.js&#10;organization&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/actions/OrganizationActions.js&#10;trainingslist&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/new_trainings/list/TrainingsList.js&#10;cust&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/assets/css/custom.css&#10;userform&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/users/forms/UserForm.js&#10;updateuser&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/profile/user/UpdateUserWrapper.js&#10;simpl&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/new_field/panels/SimpleUserPoint.js&#10;sabir.c&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/assets/css/sabir.css&#10;logi&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/auth/forms/LoginForm.js&#10;trainingspa&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/new_trainings/panels/TrainingsPanel.js&#10;trainingsred&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/reducers/TrainingsReducer.js&#10;userinde&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/apps/user/UserIndexApp.js&#10;adminindexapp&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/apps/admin/AdminIndexApp.js&#10;adminindex&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/apps/admin/AdminIndexApp.js&#10;trainingsa&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/actions/TrainingsActions.js&#10;adminusersapp&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/apps/admin/AdminUsersApp.js&#10;red&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/profile_page/ReduxUserPagePanel.js&#10;simple&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/templates/redux/SimpleUserTemplate.js&#10;PlayerUsersSelectorPanel&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/player_tools/panels/PlayerUsersSelectorPanel.js&#10;logina&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/apps/guest/LoginApp.js&#10;userse&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/player_tools/panels/PlayerUsersSelectorPanel.js&#10;sport&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/helpers/SportHelper.js&#10;trainingsre&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/reducers/TrainingsReducer.js&#10;adminin&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/apps/admin/AdminIndexApp.js&#10;calendarp&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/new_calendar/panels/CalendarPanel.js&#10;slider&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/field/slider/FieldSlider.js&#10;point&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/field/FieldPoint.js&#10;custom.&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/assets/css/custom.css&#10;training&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/new_trainings/panels/TrainingsCalendarPanel.js&#10;playerac&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/actions/PlayerActions.js&#10;pla&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/actions/PlayerActions.js&#10;sabir.&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/assets/css/sabir.css&#10;custom&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/assets/css/custom.css&#10;trainingshe&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/helpers/TrainingsHelper.js&#10;trainings&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/new_trainings/panels/TrainingsPanel.js&#10;ballp&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/preloader/BallPreloader.js&#10;backgroundim&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/image/BackgroundImageContainer.js&#10;adminhelp&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/apps/admin/AdminHelpApp.js&#10;deva&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/apps/DevApp.js&#10;sabirc&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/assets/css/sabir.css&#10;usersac&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/actions/UsersActions.js&#10;userre&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/redux/reducers/UsersReducer.js&#10;userspa&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/users/panels/UsersPanel.js&#10;adminusers&#9;FILE&#9;file:///Users/sabir/Documents/GitHub/SportsTracker/SportsTrackerWebApp/src/components/apps/admin/AdminUsersApp.js" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
@@ -982,6 +810,7 @@
       <recent name="$PROJECT_DIR$/apps/user" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components" />
       <recent name="$PROJECT_DIR$/components/users/forms" />
       <recent name="$PROJECT_DIR$/flux/actions" />
       <recent name="$PROJECT_DIR$/components/trainers/update" />
@@ -1042,27 +871,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="30" width="1280" height="716" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1280" height="724" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.49676898" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30533117" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3101777" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.503231" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.49676898" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1080,9 +909,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26979" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1101,123 +930,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/components/new_field/panels/SimpleField.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/trainings/calendar/TrainingsCalendar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.3017902">
-          <caret line="71" column="54" selection-start-line="71" selection-start-column="54" selection-end-line="71" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/new_calendar/panels/CalendarPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/SportHelper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32214764">
-          <caret line="199" column="0" selection-start-line="199" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/field/users/UserTrainingPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="29" selection-start-line="60" selection-start-column="12" selection-end-line="63" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/redux/reducers/PlayerReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03836317">
-          <caret line="6" column="20" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/field/FieldPlayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="87" column="25" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/field/heatmap/HeatMap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/field/heatmap/HeatMapPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="53" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/field/slider/HeatMapRangeSlider.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/new_heatmap/panels/TrainingHeatmapPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/field/gate/UserShotsPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/new_sessions/panels/TrainingSessionsTabbedPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="67" column="48" selection-start-line="67" selection-start-column="48" selection-end-line="67" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/new_sessions/panels/TrainingUsersPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="22" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/guest/LoginApp.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="49" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1225,7 +941,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1233,7 +948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="165" column="116" selection-start-line="165" selection-start-column="93" selection-end-line="165" selection-end-column="116" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1241,9 +955,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="87" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1251,9 +962,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1261,9 +969,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="50" column="42" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1271,9 +976,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="213" column="18" selection-start-line="91" selection-start-column="12" selection-end-line="213" selection-end-column="18" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1281,7 +983,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1289,7 +990,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="59" column="21" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1297,7 +997,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1305,9 +1004,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="59" column="5" selection-start-line="43" selection-start-column="4" selection-end-line="59" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1315,9 +1011,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="146" column="38" selection-start-line="146" selection-start-column="38" selection-end-line="146" selection-end-column="38" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1325,17 +1018,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/organization/users/SearchableUsersList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1343,9 +1025,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="84" column="54" selection-start-line="84" selection-start-column="54" selection-end-line="84" selection-end-column="54" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1353,7 +1032,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.5922819">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1361,9 +1039,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="74" selection-start-line="11" selection-start-column="74" selection-end-line="11" selection-end-column="74" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1371,7 +1046,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="6" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1379,27 +1053,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
-          <folding>
-            <element signature="n#!!doc;n#getAllTrainings#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/new_trainings/panels/TrainingsCalendarPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/new_trainings/panels/TrainingsPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="70" column="36" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1407,9 +1060,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="64" column="40" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="40" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1417,9 +1067,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="93" column="70" selection-start-line="93" selection-start-column="70" selection-end-line="93" selection-end-column="70" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1427,9 +1074,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="114" column="75" selection-start-line="114" selection-start-column="75" selection-end-line="114" selection-end-column="75" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1437,15 +1081,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="228" column="0" selection-start-line="228" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/new_trainings/list/TrainingsList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="89" column="37" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1453,7 +1088,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="74" column="55" selection-start-line="74" selection-start-column="55" selection-end-line="74" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1461,7 +1095,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="80" column="29" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1469,7 +1102,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="130" column="45" selection-start-line="130" selection-start-column="45" selection-end-line="130" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1477,7 +1109,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="55" column="16" selection-start-line="55" selection-start-column="16" selection-end-line="55" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1485,7 +1116,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="62" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1493,9 +1123,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="66" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="66" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1503,7 +1130,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="29" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1511,9 +1137,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="28" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="28" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1521,7 +1144,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="69" column="37" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1529,15 +1151,157 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="73" column="55" selection-start-line="73" selection-start-column="55" selection-end-line="73" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/new_trainings/list/TrainingsList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/new_trainings/panels/TrainingsPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="111" column="16" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/new_trainings/panels/TrainingsCalendarPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="76" column="5" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flux/actions/OrganizationActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/redux/ReduxConstants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="54" column="35" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/groups/GroupsPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/AdminGroupsApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42785236">
+          <caret line="17" column="57" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/apps/admin/AdminTeamsApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/new_sessions/panels/TrainingSessionsTabbedPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="15" selection-start-line="49" selection-start-column="15" selection-end-line="57" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/teams/panels/TeamsPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="98" column="55" selection-start-line="98" selection-start-column="55" selection-end-line="98" selection-end-column="55" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/teams/panels/TabbedUpdateTeamPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="73" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/custom.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38758388">
-          <caret line="863" column="16" selection-start-line="863" selection-start-column="16" selection-end-line="863" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1402" column="43" selection-start-line="1402" selection-start-column="43" selection-end-line="1402" selection-end-column="43" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/teams/panels/UpdateTeamPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="71" selection-start-line="16" selection-start-column="71" selection-end-line="16" selection-end-column="71" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/new_groups/panels/UpdateGroupLinksPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/organization/users/PagedUsersList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/organization/users/SearchableUsersList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/organization/users/UsersList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="117" column="126" selection-start-line="117" selection-start-column="126" selection-end-line="117" selection-end-column="126" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/redux/actions/OrganizationActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="167" column="12" selection-start-line="167" selection-start-column="12" selection-end-line="167" selection-end-column="12" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/redux/reducers/OrganizationReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="75" column="50" selection-start-line="75" selection-start-column="50" selection-end-line="75" selection-end-column="50" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

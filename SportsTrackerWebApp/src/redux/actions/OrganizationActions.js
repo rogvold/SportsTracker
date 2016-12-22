@@ -129,13 +129,13 @@ let addUserToGroup_ = () => {
 }
 let addUserToGroupFail = (error) => {
     return {
-        type: ADD_USER_TO_GROUP_FAIL,
+        type: types.ADD_USER_TO_GROUP_FAIL,
         error: error
     }
 }
 let addUserToGroupSuccess = (link) => {
     return {
-        type: ADD_USER_TO_GROUP_SUCCESS,
+        type: types.ADD_USER_TO_GROUP_SUCCESS,
         link: link
     }
 }
@@ -166,7 +166,7 @@ let deleteUserFromGroupFail = (error) => {
 }
 let deleteUserFromGroupSuccess = (data) => {
     return {
-        type: types.DELETE_USER_FROM_GROUP_FAIL,
+        type: types.DELETE_USER_FROM_GROUP_SUCCESS,
         groupId: data.groupId,
         userId: data.userId
     }
@@ -177,11 +177,42 @@ export function deleteUserFromGroup(userId, groupId){
     return (dispatch, getState) => {
         dispatch(deleteUserFromGroup_());
         return ParseAPI.runCloudFunctionAsPromise('deleteUserFromGroup()', {userId: userId, groupId: groupId}).then(
-            () => dispatch(deleteGroupSuccess({userId: userId, groupId: groupId})),
-            error => dispatch(deleteGroupFail(error))
+            () => dispatch(deleteUserFromGroupSuccess({userId: userId, groupId: groupId})),
+            error => dispatch(deleteUserFromGroupFail(error))
         )
     }
 }
+
+let loadGroupUsersLinks_ = () => {
+    return {
+        type: types.LOAD_GROUP_USERS_LINKS
+    }
+}
+let loadGroupUsersLinksFail = (error) => {
+    return {
+        type: types.LOAD_GROUP_USERS_LINKS_FAIL,
+        error: error
+    }
+}
+let loadGroupUsersLinksSuccess = (links) => {
+    return {
+        type: types.LOAD_GROUP_USERS_LINKS_SUCCESS,
+        links: links
+    }
+}
+//thunk
+export function loadGroupUsersLinks(groupId){
+    if (groupId == undefined){return;}
+    return (dispatch, getState) => {
+        dispatch(loadGroupUsersLinks_());
+        return ParseAPI.runCloudFunctionAsPromise("loadGroupUserLinks", {groupId: groupId}).then(
+            links => dispatch(loadGroupUsersLinksSuccess(links)),
+            error => dispatch(loadGroupUsersLinksFail(error))
+        )
+    }
+}
+
+//loadGroupUserLinks
 
 
 // ---   FIELDS   ---

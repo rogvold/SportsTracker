@@ -313,6 +313,15 @@ Parse.Cloud.define("getGroupUsers", function(request, response) {
     });
 });
 
+Parse.Cloud.define("loadGroupUserLinks", function(request, response) {
+    var data = request.params.data;
+    GroupsModule.loadGroupUserLinks(data.groupId, function(links){
+        response.success(links);
+    }, true);
+});
+
+//loadGroupUserLinks
+
 Parse.Cloud.define("addUserToGroup", function(request, response) {
     var data = request.params.data;
     GroupsModule.addUserToGroup(data, function(link){

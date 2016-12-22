@@ -16,7 +16,10 @@ var SearchableUsersList = React.createClass({
 
             },
 
-            topRightContent: null
+            topRightContent: null,
+
+            showSignUpDate: true,
+            showTableHeader: true
 
         }
     },
@@ -141,7 +144,9 @@ var SearchableUsersList = React.createClass({
                         </div>
                     </div> :
                     <div style={this.componentStyle.listPlaceholder}>
-                        <PagedUsersList users={users} onUserClick={this.props.onUserClick} />
+                        <PagedUsersList
+                            showTableHeader={this.props.showTableHeader}
+                            showSignUpDate={this.props.showSignUpDate} users={users} onUserClick={this.props.onUserClick} />
                     </div>
                 }
 

@@ -11,6 +11,7 @@ import TeamsList from '../list/TeamsList.js'
 import Dialog from '../../dialog/Dialog.js'
 
 import UpdateTeamPanel from './UpdateTeamPanel.js'
+import TabbedUpdateTeamPanel from './TabbedUpdateTeamPanel.js'
 
 import BallPreloader from '../../preloader/BallPreloader.js'
 
@@ -95,7 +96,7 @@ class TeamsPanel extends React.Component {
                 {this.state.selectedTeamId == undefined ? null :
                     <Dialog
                         dialogPanelStyle={{padding: 10, width: 520}}
-                        content={<UpdateTeamPanel teamId={this.state.selectedTeamId}
+                        content={<TabbedUpdateTeamPanel teamId={this.state.selectedTeamId}
                         onTeamDeleted={this.setState.bind(this, {selectedTeamId: undefined})}
                         onTeamUpdated={this.setState.bind(this, {selectedTeamId: undefined})} />}
                         onClose={this.setState.bind(this, {selectedTeamId: undefined})} />

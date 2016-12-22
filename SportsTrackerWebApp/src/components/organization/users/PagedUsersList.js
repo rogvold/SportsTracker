@@ -15,7 +15,10 @@ var PagedUsersList = React.createClass({
 
             onUserClick: function(user){
 
-            }
+            },
+
+            showSignUpDate: true,
+            showTableHeader: true
 
         }
     },
@@ -141,7 +144,10 @@ var PagedUsersList = React.createClass({
             <div style={this.componentStyle.placeholder} >
 
                 <div style={this.componentStyle.listPlaceholder}>
-                    <UsersList users={users} onUserClick={this.onUserClick} />
+                    <UsersList
+                        showTableHeader={this.props.showTableHeader}
+                        showSignUpDate={this.props.showSignUpDate}
+                        users={users} onUserClick={this.onUserClick} />
                 </div>
 
                 {paginatorIsVisible == false ? null :
