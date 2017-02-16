@@ -2,9 +2,9 @@
  * Created by sabir on 12.07.16.
  */
 
-var ECR = require('cloud/helpers/ErrorCodesRegistry');
-var CommonHelper = require('cloud/helpers/CommonHelper');
-var UsersModule = require('cloud/modules/UsersModule');
+var ECR = require('../helpers/ErrorCodesRegistry');
+var CommonHelper = require('../helpers/CommonHelper');
+var UsersModule = require('../modules/UsersModule');
 
 var FieldsModule = {
 
@@ -57,7 +57,7 @@ var FieldsModule = {
         if (data.description != undefined){
             f.set('description', data.description);
         }
-        f.save().then(function(savedField){
+        f.save(null, {useMasterKey: true}).then(function(savedField){
             success(self.transformField(savedField));
         });
     },
@@ -81,7 +81,7 @@ var FieldsModule = {
                     }
                     f.set(key, data[key]);
                 }
-                f.save().then(function(savedField){
+                f.save(null, {useMasterKey: true}).then(function(savedField){
                     success(self.transformField(savedField));
                 });
             }
@@ -102,7 +102,7 @@ var FieldsModule = {
         q.get(data.id, {
              success: function(field){
                  field.set('deleted', true);
-                 field.save().then(function(savedField){
+                 field.save(null, {useMasterKey: true}).then(function(savedField){
                      success(self.transformField(savedField));
                  });
                  //field.destroy({
@@ -129,7 +129,7 @@ var FieldsModule = {
         //q.equalTo('deleted', false);
 
         var self = this;
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }

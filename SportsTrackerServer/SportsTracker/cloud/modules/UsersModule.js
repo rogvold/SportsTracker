@@ -1,8 +1,8 @@
 /**
  * Created by sabir on 21.06.16.
  */
-var ECR = require('cloud/helpers/ErrorCodesRegistry');
-var CommonHelper = require('cloud/helpers/CommonHelper');
+var ECR = require('../helpers/ErrorCodesRegistry');
+var CommonHelper = require('../helpers/CommonHelper');
 
 var UsersModule = {
 
@@ -20,10 +20,65 @@ var UsersModule = {
             phone: u.get('phone'),
             organizationId: u.get('organizationId'),
             birthdayTimestamp: new Date(u.get('birthdayTimestamp')).getTime(),
-            avatar: u.get('avatar')
+            avatar: u.get('avatar'),
+            sessionToken: u.getSessionToken()
         }
     },
 
+    logIn: function(data, success, error){
+        console.log('logIn: data = ' + JSON.stringify(data));
+
+        if (data == undefined){
+            error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'data is not defined'});
+            return;
+        }
+        if (data.email == undefined){
+            error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'email is not defined'});
+            return;
+        }
+        if (data.password == undefined){
+            error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'password is not defined'});
+            return;
+        }
+        var self = this;
+        Parse.User.logIn(data.email.toLowerCase(), data.password, {
+            useMasterKey: true,
+            success: function(user){
+                success(self.transformUser(user));
+            },
+            error: function(){
+                error({code: ECR.INCORRECT_LOGIN_CREDENTIALS.code, message: 'cannot login'});
+            }
+        });
+    },
+
+    signUp: function(data, success, error){
+        if (data == undefined){
+            error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'data is not defined'});
+            return;
+        }
+        if (data.email == undefined){
+            error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'email is not defined'});
+            return;
+        }
+        if (data.password == undefined){
+            error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'password is not defined'});
+            return;
+        }
+        var user = new Parse.User();
+        user.set("username", data.email.toLowerCase());
+        user.set("password", data.password);
+        user.set("email", data.email.toLowerCase());
+        var self = this;
+        user.signUp(null, {
+            success: function(user) {
+                self.logIn(data, success, error);
+            },
+            error: function(user, err) {
+                error({code: ECR.INCORRECT_SIGNUP_CREDENTIALS.code, message: 'cannot sign up'});
+            }
+        });
+    },
 
 
     loadUser: function(userId, success, error, shouldTransform){
@@ -51,14 +106,12 @@ var UsersModule = {
         var q = new Parse.Query(Parse.User);
         q.equalTo('email', email);
         var self = this;
-        q.find({
-            success: function(results){
-                if (results == undefined || results.length == 0){
-                    notFoundCallback();
-                    return;
-                }
-                callback(self.transformUser(results[0]));
+        q.find({useMasterKey: true}).then(function(results){
+            if (results == undefined || results.length == 0){
+                notFoundCallback();
+                return;
             }
+            callback(self.transformUser(results[0]));
         });
     },
 
@@ -138,7 +191,7 @@ var UsersModule = {
                 }
                 u.set(key, data[key]);
             }
-            u.save().then(function(updatedUser){
+            u.save(null, {useMasterKey: true}).then(function(updatedUser){
                 success(self.transformUser(updatedUser));
             });
         }, function(){});
@@ -149,7 +202,7 @@ var UsersModule = {
         q.limit(1000);
         q.equalTo('organizationId', orgId);
         var self = this;
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }
@@ -178,7 +231,7 @@ var UsersModule = {
         q.equalTo('organizationId', orgId);
         q.equalTo('userRole', userRole);
         var self = this;
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }
@@ -197,7 +250,7 @@ var UsersModule = {
         q.limit(1000);
         var map = {};
         var self = this;
-        q.find(function(users){
+        q.find({useMasterKey: true}).then(function(users){
             users = users.map(function(u){return self.transformUser(u)});
             for (var i in users){
                 map[users[i].id] = users[i];

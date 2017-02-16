@@ -11,6 +11,8 @@ const ParseAPI = {
 
     initParse (){
         Parse.initialize(constants.PARSE_APP_ID, constants.PARSE_JS_KEY);
+        Parse.serverURL = constants.PARSE_SERVER_URL;
+
         //var currentUser = Parse.User.current();
         //if (currentUser != undefined){
         //    currentUser.fetch();

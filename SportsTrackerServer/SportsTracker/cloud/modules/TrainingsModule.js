@@ -2,9 +2,9 @@
  * Created by sabir on 12.07.16.
  */
 
-var ECR = require('cloud/helpers/ErrorCodesRegistry');
-var CommonHelper = require('cloud/helpers/CommonHelper');
-var UsersModule = require('cloud/modules/UsersModule');
+var ECR = require('../helpers/ErrorCodesRegistry');
+var CommonHelper = require('../helpers/CommonHelper');
+var UsersModule = require('../modules/UsersModule');
 
 var TrainingsModule = {
 
@@ -77,7 +77,7 @@ var TrainingsModule = {
         q.equalTo('sessionId', sessionId);
         q.limit(1000);
         var self = this;
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }
@@ -105,7 +105,7 @@ var TrainingsModule = {
         q.equalTo('sessionId', sessionId);
         var self = this;
         var self = this;
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }
@@ -153,6 +153,7 @@ var TrainingsModule = {
             arr.push(chunk);
         }
         Parse.Object.saveAll(arr, {
+            useMasterKey: true,
             success: function(savedChunks){
                 var chunks = savedChunks.map(function(ch){return self.transformDataChunk(ch)});
                 success(chunks);
@@ -185,6 +186,7 @@ var TrainingsModule = {
             arr.push(cp);
         }
         Parse.Object.saveAll(arr, {
+            useMasterKey: true,
             success: function(savedCachedPoints){
                 if (savedCachedPoints == undefined){
                     savedCachedPoints = [];
@@ -247,6 +249,7 @@ var TrainingsModule = {
 
                     if (numberOfChunks > 0){ //then delete old cached points
                         Parse.Object.destroyAll(parseCachedPoints, { // 1 req
+                            useMasterKey: true,
                             success: function(){
                                 //total: 4 req
                                 success(newLastPointTime, newLastChunkNumber, newCachePointsNumber);
@@ -268,13 +271,13 @@ var TrainingsModule = {
     },
 
     loadSession: function(trainingId, userId, callback, shouldTransform){
-        var q = new Parse.Query('Session');
+        var q = new Parse.Query('SportSession');
         q.equalTo('trainingId', trainingId);
         q.equalTo('userId', userId);
         var self = this;
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined || results.length == 0){
-                var Session = Parse.Object.extend('Session');
+                var Session = Parse.Object.extend('SportSession');
                 var session = new Session();
                 session.set('userId', userId);
                 session.set('trainingId', trainingId);
@@ -284,7 +287,7 @@ var TrainingsModule = {
                 session.set('cachePointsNumber', 0);
 
 
-                session.save().then(function(savedSession){
+                session.save(null, {useMasterKey: true}).then(function(savedSession){
                     if (shouldTransform == true){
                         savedSession = self.transformSession(savedSession);
                     }
@@ -310,7 +313,7 @@ var TrainingsModule = {
                 session.set('lastPointTime', newLPT);
                 session.set('lastChunkNumber', newLCN);
                 session.set('cachePointsNumber', newCPN);
-                session.save().then(function(savedSession){
+                session.save(null, {useMasterKey: true}).then(function(savedSession){
                     success();
                 });
             }, function(err){
@@ -347,7 +350,7 @@ var TrainingsModule = {
         if (data.name != undefined){
             tr.set('name', data.name);
         }
-        tr.save().then(function(savedTraining){
+        tr.save(null, {useMasterKey: true}).then(function(savedTraining){
             success(self.transformTraining(savedTraining));
         });
     },
@@ -370,7 +373,7 @@ var TrainingsModule = {
         q.get(data.id, {
             success: function(tr){
                 tr.set('endTimestamp', data.endTimestamp);
-                tr.save().then(function(savedTraining){
+                tr.save(null, {useMasterKey: true}).then(function(savedTraining){
                     success(self.transformTraining(savedTraining));
                 });
             },
@@ -400,7 +403,7 @@ var TrainingsModule = {
                     }
                     tr.set(key, data[key]);
                 }
-                tr.save().then(function(updatedTraining){
+                tr.save(null, {useMasterKey: true}).then(function(updatedTraining){
                     success(self.transformTraining(updatedTraining));
                 });
             },
@@ -428,7 +431,7 @@ var TrainingsModule = {
             var q = new Parse.Query('Training');
             q.containedIn('trainerId', trainersIds);
             q.limit(1000);
-            q.find(function(results){
+            q.find({useMasterKey: true}).then(function(results){
                 results = (results == undefined) ? [] : results;
                 results = results.map(function(r){return self.transformTraining(r)});
                 success(results);
@@ -448,7 +451,7 @@ var TrainingsModule = {
         var q = new Parse.Query('Training');
         q.equalTo('trainerId', data.trainerId);
         q.limit(1000);
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             results = (results == undefined) ? [] : results;
             results = results.map(function(r){return self.transformTraining(r)});
             success(results);
@@ -463,7 +466,7 @@ var TrainingsModule = {
         var q = new Parse.Query('Training');
         q.containedIn('trainerId', trainersIds);
         q.limit(1000);
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             results = (results == undefined) ? [] : results;
             results = results.map(function(r){return self.transformTraining(r)});
             success(results);
@@ -480,7 +483,7 @@ var TrainingsModule = {
         q.addAscending('number');
         q.containedIn('sessionId', sessionsIds);
         var self = this;
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }
@@ -508,7 +511,7 @@ var TrainingsModule = {
             q.lessThan('t', to);
         }
         var self = this;
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }
@@ -545,11 +548,11 @@ var TrainingsModule = {
     },
 
     loadTrainingSessions: function(trainingId, callback){
-        var q = new Parse.Query('Session');
+        var q = new Parse.Query('SportSession');
         q.equalTo('trainingId', trainingId);
         q.limit(1000);
         var self = this;
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }
@@ -593,11 +596,11 @@ var TrainingsModule = {
     },
 
     loadTrainingSessionsOptimized: function(trainingId, callback){
-        var q = new Parse.Query('Session');
+        var q = new Parse.Query('SportSession');
         q.equalTo('trainingId', trainingId);
         q.limit(1000);
         var self = this;
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }
@@ -656,10 +659,10 @@ var TrainingsModule = {
             return;
         }
         var self = this;
-        var q = new Parse.Query('Session');
+        var q = new Parse.Query('SportSession');
         q.equalTo('userId', data.id);
-        q.limit(1000);
-        q.find(function(results){
+        q.limit(10000);
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }

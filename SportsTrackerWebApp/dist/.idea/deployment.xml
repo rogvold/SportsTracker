@@ -9,6 +9,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="sport.sabir.pro">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/var/www/sport.sabir.pro" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
   </component>
 </project>

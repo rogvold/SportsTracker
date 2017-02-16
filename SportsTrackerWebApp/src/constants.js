@@ -19,9 +19,14 @@ var constants = {
     PARSE_APP_ID: 'DY9RPeNTtxZoi4rkuHU5VQpx6iZiqVj0EPdTPUDE',
     PARSE_JS_KEY: '3L4hHQ7Hh1yqrOnIJ04pEXs4QqzduGg4lcJN4CbG',
 
+    PARSE_SERVER_URL: 'https://sportstrackerparse.sabir.pro/parse',
+    // PARSE_SERVER_URL: 'https://sportstrackerapi.sabir.pro/',
+
+    SERVER_DOMAIN: 'https://sportstrackerapi.sabir.pro',
+
+    PARSE_REST_API_KEY: 'nXBiK8HpMx3I0cheUm41WMEKKWUpoKV0QOhqy7VN'
 
 
-    PARSE_REST_API_KEY: ''
 
 }
 

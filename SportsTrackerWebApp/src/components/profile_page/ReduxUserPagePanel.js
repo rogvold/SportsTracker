@@ -19,7 +19,8 @@ class ReduxUserPagePanel extends React.Component {
 
     static defaultProps = {
         userId: undefined,
-        defaultAvatar: 'http://app.flytrack.net/assets/images/empty_ava_pilot.jpg'
+        // defaultAvatar: 'http://app.flytrack.net/assets/images/empty_ava_pilot.jpg'
+        defaultAvatar: 'assets/images/empty_ava.png'
     }
 
     static propTypes = {

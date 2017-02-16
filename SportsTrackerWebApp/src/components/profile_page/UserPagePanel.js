@@ -25,7 +25,8 @@ var UserPagePanel = React.createClass({
         return {
             organization: undefined,
             user: undefined,
-            defaultAvatar: 'http://app.flytrack.net/assets/images/empty_ava_pilot.jpg'
+            // defaultAvatar: 'http://app.flytrack.net/assets/images/empty_ava_pilot.jpg'
+            defaultAvatar: 'assets/images/empty_ava.png'
 
         }
     },

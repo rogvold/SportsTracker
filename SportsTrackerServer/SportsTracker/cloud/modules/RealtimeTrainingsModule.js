@@ -78,7 +78,7 @@ var RealtimeTrainingsModule = {
             callback([]);
             return;
         }
-        var q = new Parse.Query('Session');
+        var q = new Parse.Query('SportSession');
         var self = this;
         q.limit(1000);
         var trainingIds = arr.map(function(a){
@@ -90,7 +90,7 @@ var RealtimeTrainingsModule = {
         var map = {};
         q.containedIn('trainingId', trainingIds);
         var resArr = [];
-        q.find(function(sessions){
+        q.find({useMasterKey: true}).then(function(sessions){
             if (sessions == undefined){
                 sessions = [];
             }
@@ -119,7 +119,7 @@ var RealtimeTrainingsModule = {
             return;
         }
         var res = [];
-        var Session = Parse.Object.extend('Session');
+        var Session = Parse.Object.extend('SportSession');
         var self = this;
         for (var i in arr){
             var a = arr[i];
@@ -135,6 +135,7 @@ var RealtimeTrainingsModule = {
             res.push(sess);
         }
         Parse.Object.saveAll(res, {
+            useMasterKey: true,
             success: function(savedSessions){
                 if (savedSessions  == undefined){
                     savedSessions = [];
@@ -232,8 +233,12 @@ var RealtimeTrainingsModule = {
             return;
         }
         Parse.Object.destroyAll(notTransformedCachePoints, {
+            useMasterKey: true,
             success: function(){
                 callback();
+            },
+            error: function(eee){
+                console.log('destroyCachePoints: error  =  ' + JSON.stringify(eee));
             }
         });
     },
@@ -295,10 +300,14 @@ var RealtimeTrainingsModule = {
                 }
             }
             Parse.Object.saveAll(chunksArray, {
+                useMasterKey: true,
                 success: function(savedChunks){
                     self.destroyCachePoints(allNotTransformedCachePoints, function(){
                         callback(fulfilledSessions);
                     });
+                },
+                error: function(eee){
+                    console.log('saveAll(chunksArray: eee = ' + JSON.stringify(eee));
                 }
             });
 
@@ -321,10 +330,10 @@ var RealtimeTrainingsModule = {
                 //var t = times[i];
                 var point = new CachePoint();
 
-                point.set('t', d.t[i]);
-                point.set('x', d.x[i]);
-                point.set('y', d.y[i]);
-                point.set('step', d.step[i]);
+                point.set('t', +d.t[i]);
+                point.set('x', +d.x[i]);
+                point.set('y', +d.y[i]);
+                point.set('step', +d.step[i]);
                 //point.set('rr', rr);
 
 
@@ -333,8 +342,13 @@ var RealtimeTrainingsModule = {
             }
         }
         Parse.Object.saveAll(cpApp, {
+            useMasterKey: true,
             success: function(savedCachePoints){
+                console.log('savePointsToCachePoints: SUCCESS');
                 callback(savedCachePoints);
+            },
+            error: function(eee){
+                console.log('savePointsToCachePoints: eee = ' + JSON.stringify(eee));
             }
         });
     },
@@ -342,6 +356,8 @@ var RealtimeTrainingsModule = {
 
     uploadPoints: function(arr, callback){
         var self = this;
+        console.log('uploadPoints: arr = ' + JSON.stringify(arr));
+
         this.loadLazySessionsUsersData(arr, function(sessionsData){ //sessionsMap: userId - ParseCardioSession
             console.log('sessionData = ', sessionsData);
             var totalCachePointsNumber = 0;
@@ -377,36 +393,49 @@ var RealtimeTrainingsModule = {
             }
             if (totalCachePointsNumber > self.MAX_QUERY_REQUEST_LIMIT - arr.length * self.MAX_POINTS_NUMBER){
                 self.saveCachePointsToChunks(sessions, function(fulfilledSessions){
+                    console.log('saveCachePointsToChunks: success');
                     //fulfilledSessions - chunk number is updated
                     self.savePointsToCachePoints(sessionsMap, function(savedCachePoints){
+                        console.log('savePointsToCachePoints: success: savedCachePoints = ' + JSON.stringify(savedCachePoints));
                         for (var i in fulfilledSessions){
                             var oldCachePointsNumber = (fulfilledSessions[i].get('cachePointsNumber') == undefined) ? 0 : fulfilledSessions[i].get('cachePointsNumber');
                             var deltaN = sessionsMap[fulfilledSessions[i].get('userId')].x.length;
                             var newNum = oldCachePointsNumber + deltaN;
                             fulfilledSessions[i].set('cachePointsNumber', deltaN);
-                            fulfilledSessions[i].set('lastPointTime', sessionsMap[fulfilledSessions[i].get('userId')].lastPointTime);
+                            fulfilledSessions[i].set('lastPointTime', +sessionsMap[fulfilledSessions[i].get('userId')].lastPointTime);
                         }
                         Parse.Object.saveAll(fulfilledSessions, {
+                            useMasterKey: true,
                             success: function(savedSessions){
                                 savedSessions = savedSessions.map(function(s){return self.transformSession(s)});
                                 callback(savedSessions);
+                            },
+                            error: function(eee){
+                                console.log('saveAll(fulfilledSessions: eee = ' + JSON.stringify(eee));
                             }
                         });
                     });
                 });
             }else {
                 self.savePointsToCachePoints(sessionsMap, function(savedCachePoints){
+                    console.log('savePointsToCachePoints: SUCCESS');
                     for (var i in sessions){
                         var oldCachePointsNumber = (sessions[i].get('cachePointsNumber') == undefined) ? 0 : sessions[i].get('cachePointsNumber');
                         var deltaN = sessionsMap[sessions[i].get('userId')].x.length;
                         var newNum = oldCachePointsNumber + deltaN;
                         sessions[i].set('cachePointsNumber', newNum);
-                        sessions[i].set('lastPointTime', sessionsMap[sessions[i].get('userId')].lastPointTime);
+                        sessions[i].set('lastPointTime', +sessionsMap[sessions[i].get('userId')].lastPointTime);
                     }
+                    console.log('trying to save sessions');
                     Parse.Object.saveAll(sessions, {
+                        useMasterKey: true,
                         success: function(savedSessions){
+                            console.log('sessions saved');
                             savedSessions = savedSessions.map(function(s){return self.transformSession(s)});
                             callback(savedSessions);
+                        },
+                        error: function(eee){
+                            console.log('FAILED saving sessions: eee = ' + JSON.stringify(eee));
                         }
                     });
                 });

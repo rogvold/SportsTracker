@@ -2,10 +2,10 @@
  * Created by sabir on 05.07.16.
  */
 
-var ECR = require('cloud/helpers/ErrorCodesRegistry');
-var CommonHelper = require('cloud/helpers/CommonHelper');
-var UsersModule = require('cloud/modules/UsersModule');
-var TrainingsModule = require('cloud/modules/TrainingsModule');
+var ECR = require('../helpers/ErrorCodesRegistry');
+var CommonHelper = require('../helpers/CommonHelper');
+var UsersModule = require('../modules/UsersModule');
+var TrainingsModule = require('../modules/TrainingsModule');
 
 var OrganizationsModule = {
 
@@ -23,20 +23,42 @@ var OrganizationsModule = {
     },
 
     loadOrganization: function(organizationId, success, error){
+        console.log('loadOrganization: organizationId = ' + organizationId);
+
         if (organizationId == undefined){
+            console.log('oops organizationId is not defined');
             error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'organizationId is not defined'});
             return;
         }
-        var q = new Parse.Query('Organization');
+        var q = new Parse.Query(Parse.Object.extend('Organization'));
         var self = this;
-        q.get(organizationId, {
-            success: function(org){
-                success(self.transformOrganization(org));
+
+        q.containedIn('objectId', [organizationId]);
+
+        q.find({useMasterKey: true}).then(
+            function(orgs){
+                console.log('loaded orgs: orgs = ' + JSON.stringify(orgs));
+                if (orgs == undefined || orgs.length == 0){
+                    error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'organization with specified organizationId (' + organizationId + ') is not found'});
+                }
+                else {
+                    success(self.transformOrganization(orgs[0]));
+                }
+                // success: function(org){
+                //     console.log('organization loaded = ' + JSON.stringify(org));
+                //     success(self.transformOrganization(org));
+                // },
+                // error: function(){
+                //     error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'organization with specified organizationId is not found'});
+                // }
             },
-            error: function(){
-                error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'organization with specified organizationId is not found'});
+            function(err){
+                console.log('error occured: err = ' + JSON.stringify(err));
+                error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'organization with specified organizationId (' + organizationId + ') is not found'});
             }
-        });
+        );
+
+
     },
 
     createOrganization: function(data, success, error){
@@ -63,7 +85,7 @@ var OrganizationsModule = {
         org.set('adminId', adminId);
         org.set('name', data.name);
         org.set('address', data.address);
-        org.save().then(function(savedOrg){
+        org.save(null, {useMasterKey: true}).then(function(savedOrg){
             success(self.transformOrganization(savedOrg));
         });
     },
@@ -88,7 +110,7 @@ var OrganizationsModule = {
                     }
                     org.set(key, data[key]);
                 }
-                org.save().then(function(updatedOrg){
+                org.save(null, {useMasterKey: true}).then(function(updatedOrg){
                     success(self.transformOrganization(updatedOrg));
                 });
             },
@@ -102,7 +124,7 @@ var OrganizationsModule = {
         var q = new Parse.Query('Organization');
         q.equalTo('adminId', adminId);
         var self = this;
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined || results.length == 0){
                 callback(undefined);
                 return;

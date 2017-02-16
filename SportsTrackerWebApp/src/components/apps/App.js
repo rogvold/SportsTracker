@@ -30,6 +30,8 @@ import TrainerHelpApp from './trainer/TrainerHelpApp.js';
 import TrainerTeamsApp from './trainer/TrainerTeamsApp.js';
 import TrainerUsersApp from './trainer/TrainerUsersApp.js';
 
+import APIApp from './APIApp'
+
 class App extends React.Component {
 
     static defaultProps = {}
@@ -69,6 +71,10 @@ class App extends React.Component {
                     <IndexRoute component={DevApp} />
                 </Route>
 
+                <Route useAutoKeys={false} path="/api" component={APIApp} >
+                    <IndexRoute component={APIApp} />
+                </Route>
+
             </Router>
         );
     }
@@ -91,6 +97,10 @@ class App extends React.Component {
 
                 <Route useAutoKeys={false} path="/users" component={AdminUsersApp} >
                     <IndexRoute component={AdminUsersApp} />
+                </Route>
+
+                <Route useAutoKeys={false} path="/api" component={APIApp} >
+                    <IndexRoute component={APIApp} />
                 </Route>
 
                 <Route useAutoKeys={false} path="/trainers" component={AdminTrainersApp} >
@@ -117,6 +127,10 @@ class App extends React.Component {
                     <IndexRoute component={TrainerIndexApp} />
                 </Route>
 
+                <Route useAutoKeys={false} path="/api" component={APIApp} >
+                    <IndexRoute component={APIApp} />
+                </Route>
+
                 <Route useAutoKeys={false} path="/help" component={TrainerHelpApp} >
                     <IndexRoute component={TrainerHelpApp} />
                 </Route>
@@ -139,6 +153,39 @@ class App extends React.Component {
         );
     }
 
+    getGuestRoute() {
+        return (
+            <Router history={hashHistory} >
+
+                <Route useAutoKeys={false} path="/api" component={APIApp} >
+                    <IndexRoute component={APIApp} />
+                </Route>
+
+                <Route useAutoKeys={false} path="/" component={LoginApp} >
+                    <IndexRoute component={LoginApp} />
+                </Route>
+
+                <Route useAutoKeys={false} path="/help" component={LoginApp} >
+                    <IndexRoute component={LoginApp} />
+                </Route>
+
+                <Route useAutoKeys={false} path="/users" component={LoginApp} >
+                    <IndexRoute component={LoginApp} />
+                </Route>
+
+                <Route useAutoKeys={false} path="/teams" component={LoginApp} >
+                    <IndexRoute component={LoginApp} />
+                </Route>
+
+                <Route useAutoKeys={false} path="/dev" component={LoginApp} >
+                    <IndexRoute component={LoginApp} />
+                </Route>
+
+            </Router>
+        );
+    }
+
+
     render() {
 
         if (this.props.initialized == false){
@@ -152,9 +199,10 @@ class App extends React.Component {
 
         var user = this.props.currentUser;
         if (user == undefined){
-            return (
-                <LoginApp />
-            );
+            return this.getGuestRoute();
+            // return (
+            //     <LoginApp />
+            // );
         }
         let role = user.userRole;
         if (role == 'admin'){

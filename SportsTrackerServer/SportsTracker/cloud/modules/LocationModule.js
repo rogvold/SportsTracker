@@ -2,8 +2,8 @@
  * Created by sabir on 06.07.16.
  */
 
-var ECR = require('cloud/helpers/ErrorCodesRegistry');
-var CommonHelper = require('cloud/helpers/CommonHelper');
+var ECR = require('../helpers/ErrorCodesRegistry');
+var CommonHelper = require('../helpers/CommonHelper');
 
 
 //Session, LocationDataChunk, GpsCachePoint
@@ -74,7 +74,7 @@ var LocationModule = {
         q.equalTo('sessionId', sessionId);
         q.addAscending('number');
         var self = this;
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }
@@ -115,7 +115,7 @@ var LocationModule = {
         q.addAscending('t');
         q.equalTo('sessionId', sessionId);
         var self = this;
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }
@@ -139,13 +139,17 @@ var LocationModule = {
         chunk.set('acc', points.map(function(p){return p.acc}));
         chunk.set('bea', points.map(function(p){return p.bea}));
         chunk.set('vel', points.map(function(p){return p.vel}));
-        chunk.save().then(function(savedChunk){
+
+        console.log('saveChunk: sessionId, points, chunkNumber = ' + JSON.stringify(sessionId) + '|' + JSON.stringify(points) + '|' + JSON.stringify(chunkNumber) );
+
+        chunk.save(null, {useMasterKey: true}).then(function(savedChunk){
             callback(self.transformLocationDataChunk(savedChunk));
         });
     },
 
     saveCachedPointsToChunk: function(sessionId, chunkNumber, callback){
         var self = this;
+        console.log('saveCachedPointsToChunk occured: sessionId, chunkNumber = ' + sessionId + '|' + JSON.stringify(chunkNumber) );
         this.loadCachedPoints(sessionId, function(cachedPoints){
             if (cachedPoints.length == 0){
                 callback();
@@ -155,8 +159,12 @@ var LocationModule = {
             self.saveChunk(sessionId, points, chunkNumber, function(savedChunk){
                 //remove cached points
                 Parse.Object.destroyAll(cachedPoints, {
+                    useMasterKey: true,
                     success: function(){
                         callback();
+                    },
+                    error: function(eee){
+                        console.log('saveCachedPointsToChunk: eee = ' + JSON.stringify(eee));
                     }
                 });
             });
@@ -169,10 +177,10 @@ var LocationModule = {
             return;
         }
         var self = this;
-        var q = new Parse.Query('Session');
+        var q = new Parse.Query('SportSession');
         q.equalTo('startTimestamp', startTimestamp);
         q.equalTo('userId', userId);
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }
@@ -192,14 +200,14 @@ var LocationModule = {
         var self = this;
         self.loadSessionByUserIdAndStartTimestamp(userId, startTimestamp, function(session){
             if (session == undefined){
-                var Session = Parse.Object.extend('Session');
+                var Session = Parse.Object.extend('SportSession');
                 var s = new Session();
                 s.set('userId', userId);
                 s.set('startTimestamp', startTimestamp);
                 s.set('lastPointTime', -1);
                 s.set('lastChunkNumber', -1);
                 s.set('cachePointsNumber', 0);
-                s.save().then(function(savedSession){
+                s.save(null, {useMasterKey: true}).then(function(savedSession){
                     if (shouldTransform == true){
                         savedSession = self.transformSession(savedSession);
                         success(savedSession);
@@ -219,7 +227,7 @@ var LocationModule = {
             error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'loadSessionPoints: sessionId is undefined'});
             return;
         }
-        var q = new Parse.Query('Session');
+        var q = new Parse.Query('SportSession');
         var self = this;
         q.get(sessionId, {
             success: function(session){
@@ -241,11 +249,11 @@ var LocationModule = {
             error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'loadUserSessions: userId is undefined'});
             return;
         }
-        var q = new Parse.Query('Session');
+        var q = new Parse.Query('SportSession');
         var self = this;
         q.equalTo('userId', userId);
         q.addDescending('startTimestamp');
-        q.find(function(results){
+        q.find({useMasterKye: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }
@@ -272,12 +280,13 @@ var LocationModule = {
             p.set('t', point.t);
             arr.push(p);
         }
-        Parse.Object.saveAll(arr, {
-            success: function(savedPoints){
+        Parse.Object.saveAll(arr, {useMasterKey: true}).then(function(savedPoints){
                 var arr = savedPoints.map(function(r){return self.transformCachePoint(r)});
                 callback(arr);
+            }, function(err){
+                console.log('saveCachePoints: error: err = ' + JSON.stringify(err));
             }
-        });
+        );
     },
 
     savePoints: function(data, success, error){
@@ -304,7 +313,7 @@ var LocationModule = {
             var filteredPoints = [];
             for (var i in points){
                 var p = points[i];
-                if (p.t > lastPointTime){
+                if (+p.t > +lastPointTime){
                     filteredPoints.push(p)
                 }
             }
@@ -321,7 +330,7 @@ var LocationModule = {
                         session.set('lastChunkNumber', lastChunkNumber + 1);
                         session.set('cachePointsNumber', points.length);
                         session.set('lastPointTime', points[points.length - 1].t);
-                        session.save().then(function(sSession){ // 1 req
+                        session.save(null, {useMasterKey: true}).then(function(sSession){ // 1 req
                             //total requests number is 6
                             success(self.transformSession(sSession));
                         });
@@ -333,7 +342,7 @@ var LocationModule = {
                 self.saveCachePoints(session.id, points, points, function(savedCachePoints){ // 1 req
                     session.set('cachePointsNumber', cachePointsNumber + points.length);
                     session.set('lastPointTime', points[points.length - 1].t);
-                    session.save().then(function(sSession){ // 1 req
+                    session.save(null, {useMasterKey: true}).then(function(sSession){ // 1 req
                         //total requests number is 3
                         success(self.transformSession(sSession));
                     });

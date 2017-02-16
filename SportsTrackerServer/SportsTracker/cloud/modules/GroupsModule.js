@@ -2,9 +2,9 @@
  * Created by sabir on 12.07.16.
  */
 
-var ECR = require('cloud/helpers/ErrorCodesRegistry');
-var CommonHelper = require('cloud/helpers/CommonHelper');
-var UsersModule = require('cloud/modules/UsersModule');
+var ECR = require('../helpers/ErrorCodesRegistry');
+var CommonHelper = require('../helpers/CommonHelper');
+var UsersModule = require('../modules/UsersModule');
 
 var GroupsModule = {
 
@@ -42,7 +42,7 @@ var GroupsModule = {
         q.equalTo('groupId', groupId);
         q.limit(1000);
         var self = this;
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }
@@ -77,7 +77,7 @@ var GroupsModule = {
             g.set('description', data.description);
         }
         var self = this;
-        g.save().then(function(savedGroup){
+        g.save(null, {useMasterKey: true}).then(function(savedGroup){
             success(self.transformGroup(savedGroup));
         });
     },
@@ -107,7 +107,7 @@ var GroupsModule = {
                         g.set(key, data[key]);
                     }
                 }
-                g.save().then(function(saveGroup){
+                g.save(null, {useMasterKey: true}).then(function(saveGroup){
                     success(self.transformGroup(saveGroup));
                 });
             },
@@ -133,8 +133,10 @@ var GroupsModule = {
             success: function(g){
                 self.loadGroupUserLinks(id, function(links){
                     Parse.Object.destroyAll(links, {
+                        useMasterKey: true,
                         success: function(){
                             g.destroy({
+                                useMasterKey: true,
                                 success: function(){
                                     success({groupId: data.id});
                                 },
@@ -160,7 +162,7 @@ var GroupsModule = {
         q.equalTo('groupId', groupId);
         q.equalTo('userId', userId);
         var self = this;
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }
@@ -234,7 +236,7 @@ var GroupsModule = {
             lnk.set('groupId', data.groupId);
             lnk.set('userId', data.userId);
             lnk.set('organizationId', data.organizationId);
-            lnk.save().then(function(savedLink){
+            lnk.save(null, {useMasterKey: true}).then(function(savedLink){
                 success(self.transformGroupUserLink(savedLink));
             });
         }, true);
@@ -256,7 +258,7 @@ var GroupsModule = {
             q.limit(1000);
             q.addDescending('createdAt');
             q.containedIn('objectId', usersIds);
-            q.find(function(users){
+            q.find({useMasterKey: true}).then(function(users){
                 if (users == undefined){
                     users = [];
                 }
@@ -280,7 +282,7 @@ var GroupsModule = {
         q.limit(1000);
         q.addDescending('createdAt');
         q.equalTo('organizationId', data.organizationId);
-        q.find(function(results){
+        q.find({useMasterKey: true}).then(function(results){
             if (results == undefined){
                 results = [];
             }
@@ -327,7 +329,7 @@ var GroupsModule = {
         var q2 = new Parse.Query('GroupUserLink');
         q2.equalTo('userId', userId);
         q2.limit(1000);
-        q2.find(function(results){
+        q2.find({useMasterKey: true}).then(function(results){
             var links = results.map(function(r){return self.transformGroupUserLink(r)});
             var ids = links.map(function(link){return link.groupId});
             var q = new Parse.Query('Group');

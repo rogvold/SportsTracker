@@ -22,6 +22,14 @@ var ErrorCodesRegistry = {
 
     USER_WITH_SPECIFIED_ID_IS_NOT_FOUND: {
         code: 707
+    },
+
+    INCORRECT_SIGNUP_CREDENTIALS: {
+        code: 782
+    },
+
+    INCORRECT_LOGIN_CREDENTIALS: {
+        code: 783
     }
 
 };

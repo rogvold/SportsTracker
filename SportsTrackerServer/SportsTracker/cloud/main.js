@@ -1,15 +1,15 @@
-var ECR = require('cloud/helpers/ErrorCodesRegistry');
+var ECR = require('./helpers/ErrorCodesRegistry');
 
-var OrganizationsModule = require('cloud/modules/OrganizationsModule');
-var UsersModule = require('cloud/modules/UsersModule');
-var FieldsModule = require('cloud/modules/FieldsModule');
-var GroupsModule = require('cloud/modules/GroupsModule');
-var TrainingsModule = require('cloud/modules/TrainingsModule');
-var RealtimeTrainingsModule = require('cloud/modules/RealtimeTrainingsModule');
+var OrganizationsModule = require('./modules/OrganizationsModule');
+var UsersModule = require('./modules/UsersModule');
+var FieldsModule = require('./modules/FieldsModule');
+var GroupsModule = require('./modules/GroupsModule');
+var TrainingsModule = require('./modules/TrainingsModule');
+var RealtimeTrainingsModule = require('./modules/RealtimeTrainingsModule');
 
 var crypto = require('crypto');
 
-require('cloud/app.js');
+// require('./app.js');
 
 //WEB
 
@@ -19,6 +19,57 @@ Parse.Cloud.define("testAPI", function(request, response) {
 });
 
 //user
+
+
+Parse.Cloud.define("login", function(request, response) {
+    var data = request.params.data;
+    UsersModule.logIn(data, function(user){
+        response.success(user);
+    }, function(err){
+        response.error(err);
+    }, true);
+});
+
+Parse.Cloud.define("logout", function(request, response) {
+    var data = request.params.data;
+    Parse.Cloud.useMasterKey();
+    var user = request.user;
+    if (user == undefined){
+        response.error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'You are not authorized to perform this logout.'});
+        return;
+    }
+    var q = new Parse.Query(Parse.Session);
+    q.equalTo('user', user);
+    q.find({useMasterKey: true}).then(function(results){
+        if (results == undefined){
+            results = [];
+        }
+        if (results.length == 0){
+            response.error({code: ECR.UNKNOWN_ERROR.code, message: "no session found"});
+        }else {
+            Parse.Object.destroyAll(results, {
+                useMasterKey: true,
+                success: function(){
+                    response.success({userId: user.id});
+                },
+                error: function(){
+                    response.error({code: ECR.UNKNOWN_ERROR.code, message: "can not destroy session"});
+                }
+            });
+        }
+    });
+});
+
+Parse.Cloud.define("signup", function(request, response) {
+    var data = request.params.data;
+    UsersModule.signUp(data, function(user){
+        response.success(user);
+    }, function(err){
+        response.error(err);
+    }, true);
+});
+
+
 Parse.Cloud.define("loadUser", function(request, response) {
     var data = request.params.data;
     if (data == undefined || data.userId == undefined){
@@ -34,7 +85,6 @@ Parse.Cloud.define("loadUser", function(request, response) {
 
 Parse.Cloud.define("createUser", function(request, response) {
     var data = request.params.data;
-    Parse.Cloud.useMasterKey();
     if (data == undefined){
         response.error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'createUser: data is undefined'});
         return;
@@ -49,7 +99,6 @@ Parse.Cloud.define("createUser", function(request, response) {
 
 Parse.Cloud.define("updateUser", function(request, response) {
     var data = request.params.data;
-    Parse.Cloud.useMasterKey()
     if (data == undefined){
         response.error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'updateUser: data is undefined'});
         return;
@@ -122,10 +171,13 @@ Parse.Cloud.define("loadTotalOrganizationByAdminId", function(request, response)
 
 Parse.Cloud.define("loadTotalOrganization", function(request, response) {
     var data = request.params.data;
+    console.log('loadTotalOrganization: data = ' + JSON.stringify(data));
+
     if (data == undefined || data.id == undefined){
         response.error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'loadTotalOrganization: incorrect input data'});
         return;
     }
+    var orgId = data.id;
     //var adminId = data.adminId;
     OrganizationsModule.loadOrganization(data.id, function(org){
         UsersModule.loadAllOrganizationUsers(org.id, function(d){
@@ -222,9 +274,16 @@ Parse.Cloud.define("loadOrganizationFields", function(request, response) {
 
 Parse.Cloud.define("loadTrainerFields", function(request, response) {
     var data = request.params.data;
-    if (data == undefined || data.trainerId == undefined){
+    if (data == undefined){
         response.error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'loadTrainerFields: data or trainerId is undefined'});
         return;
+    }
+    if (request.user == undefined){
+        response.error({code: ECR.PERMISSION_DENIED.code, message: 'Unauthorized'});
+        return;
+    }
+    if (data.trainerId == undefined){
+        data.trainerId = request.user.id;
     }
     FieldsModule.loadTrainerFields(data.trainerId, function(field){
         response.success(field);
@@ -248,6 +307,12 @@ Parse.Cloud.define("getOrganizationGroups", function(request, response) {
 
 Parse.Cloud.define("getTrainerGroups", function(request, response) {
     var data = request.params.data;
+    var user = request.user;
+    if (data != undefined && data.trainerId == undefined){
+        if (user != undefined){
+            data.trainerId = user.id;
+        }
+    }
     GroupsModule.loadTrainerGroups(data, function(groups){
         response.success(groups);
     }, function(err){
@@ -372,6 +437,13 @@ Parse.Cloud.define("loadOrganizationTrainings", function(request, response) {
 
 Parse.Cloud.define("createTraining", function(request, response) {
     var data = request.params.data;
+    if (request.user == undefined){
+        response.error({code: ECR.PERMISSION_DENIED.code, message: 'Unauthorized'});
+        return;
+    }
+    if (data.trainerId == undefined){
+        data.trainerId = request.user.id;
+    }
     TrainingsModule.createTraining(data, function(training){
         response.success(training);
     }, function(err){
@@ -381,6 +453,13 @@ Parse.Cloud.define("createTraining", function(request, response) {
 
 Parse.Cloud.define("finishTraining", function(request, response) {
     var data = request.params.data;
+    if (request.user == undefined){
+        response.error({code: ECR.PERMISSION_DENIED.code, message: 'Unauthorized'});
+        return;
+    }
+    if (data.trainerId == undefined){
+        data.trainerId = request.user.id;
+    }
     TrainingsModule.finishTraining(data, function(training){
         response.success(training);
     }, function(err){
@@ -417,6 +496,14 @@ Parse.Cloud.define("savePoints", function(request, response) {
         response.error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'savePoints: data is not defined'});
         return;
     }
+    if (request.user == undefined){
+        response.error({code: ECR.PERMISSION_DENIED.code, message: 'Unauthorized'});
+        return;
+    }
+    if (data.trainerId == undefined){
+        data.trainerId = request.user.id;
+    }
+
     if (data.trainingId == undefined || data.userId == undefined ||
         data.x == undefined || data.x.length == 0 ||
         data.y == undefined || data.y.length != data.x.length ||
@@ -429,6 +516,7 @@ Parse.Cloud.define("savePoints", function(request, response) {
     var points = data.x.map(function(x, i){return {t: data.t[i], x: data.x[i], y: data.y[i], step: data.step[i]}});
 
     TrainingsModule.saveUserTrainingPoints(data.trainingId, data.userId, points, function(training){
+        console.log('HURAAAAAAAYYYYY');
         response.success();
     }, function(err){
         response.error(err);
@@ -446,7 +534,10 @@ Parse.Cloud.define("saveUsersPoints", function(request, response) {
         return;
     }
 
+    console.log('main: saveUsersPoints occured. data = ' + JSON.stringify(data));
+
     RealtimeTrainingsModule.uploadPoints(data, function(sessions){
+        console.log('HURAYYYYYY');
         response.success(sessions);
     });
 });

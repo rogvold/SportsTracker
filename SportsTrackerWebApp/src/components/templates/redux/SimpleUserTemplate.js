@@ -126,6 +126,9 @@ class SimpleUserTemplate extends React.Component {
 
     getNameString = () => {
         var user = this.props.currentUser;
+        if (user == undefined){
+            return '';
+        }
         return (user.firstName + ' ' +user.lastName[0] + '.');
     }
 
@@ -144,6 +147,9 @@ class SimpleUserTemplate extends React.Component {
         let links = this.getHeaderLinks();
         let org = this.props.organization;
         let name = this.getNameString();
+        if (user == undefined){
+            return null;
+        }
         if (user.userRole == 'admin'){
             if (org != undefined){
                 name = org.name;
