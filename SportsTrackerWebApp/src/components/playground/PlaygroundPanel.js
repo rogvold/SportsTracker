@@ -188,6 +188,9 @@ var PlaygroundPanel = React.createClass({
                                           parameters={APIFactory.SIGN_IN.parameters} headers={defaultHeaders.concat(APIFactory.SIGN_IN.headers)}
                         />
 
+                        <APIFunctionPanel name={APIFactory.TOKEN.name} description={APIFactory.TOKEN.description}
+                                          parameters={APIFactory.TOKEN.parameters} headers={defaultHeaders.concat(APIFactory.TOKEN.headers)}
+                        />
 
 
                     </div>

@@ -46,6 +46,26 @@ var APIFactory = {
         ]
     },
 
+    TOKEN: {
+        name: 'token',
+        description: 'get access_token',
+        requestType: 'GET',
+        headers: [],
+        parameters: [{
+            name: 'email',
+            description: 'email of user',
+            isRequired: true,
+            paramType: 'string'
+        },
+            {
+                name: 'password',
+                description: 'password of user',
+                isRequired: true,
+                paramType: 'string'
+            }
+        ]
+    },
+
 
 
     SIGN_UP: {

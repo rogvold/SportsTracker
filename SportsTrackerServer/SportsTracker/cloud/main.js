@@ -20,6 +20,15 @@ Parse.Cloud.define("testAPI", function(request, response) {
 
 //user
 
+Parse.Cloud.define("token", function(request, response) {
+    var data = request.params.data;
+    UsersModule.logIn(data, function(user){
+        var tokenData = {sessionToken: user.sessionToken}
+        response.success(tokenData);
+    }, function(err){
+        response.error(err);
+    }, true);
+});
 
 Parse.Cloud.define("login", function(request, response) {
     var data = request.params.data;
@@ -274,9 +283,12 @@ Parse.Cloud.define("loadOrganizationFields", function(request, response) {
 
 Parse.Cloud.define("loadTrainerFields", function(request, response) {
     var data = request.params.data;
+    // if (data == undefined){
+    //     response.error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'loadTrainerFields: data or trainerId is undefined'});
+    //     return;
+    // }
     if (data == undefined){
-        response.error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'loadTrainerFields: data or trainerId is undefined'});
-        return;
+        data = {};
     }
     if (request.user == undefined){
         response.error({code: ECR.PERMISSION_DENIED.code, message: 'Unauthorized'});
@@ -308,7 +320,10 @@ Parse.Cloud.define("getOrganizationGroups", function(request, response) {
 Parse.Cloud.define("getTrainerGroups", function(request, response) {
     var data = request.params.data;
     var user = request.user;
-    if (data != undefined && data.trainerId == undefined){
+    if (data == undefined){
+        data = {};
+    }
+    if (data.trainerId == undefined){
         if (user != undefined){
             data.trainerId = user.id;
         }
@@ -437,6 +452,9 @@ Parse.Cloud.define("loadOrganizationTrainings", function(request, response) {
 
 Parse.Cloud.define("createTraining", function(request, response) {
     var data = request.params.data;
+    if (data == undefined){
+        data = request.params;
+    }
     if (request.user == undefined){
         response.error({code: ECR.PERMISSION_DENIED.code, message: 'Unauthorized'});
         return;
