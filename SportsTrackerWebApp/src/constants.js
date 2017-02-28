@@ -3,29 +3,12 @@
  */
 
 var constants = {
-    //PARSE_APP_ID: 'SSzU4YxI6Z6SwvfNc2vkZhYQYl86CvBpd3P2wHF1', //CardioMood
-    //PARSE_JS_KEY: '0ppjIVaWy3aqHyGEA95InejakxRELOMrePgRfREt', //CardioMood
-    //PARSE_REST_API_KEY: '',
 
-    //PARSE_APP_ID: 'ObwhmD2UAqXA9CkFfEAsOToHAIgp4kcTGuQNxUds', //FlyTrackNetDev
-    //PARSE_JS_KEY: 'OwoK9BPWoxFWCKJgIDlUlgIn72mk9Y5p88olwhIO', //FlyTrackNetDev
+    // SERVER_URL: 'https://education-erp.com/token'
+    GET_TOKEN_URL: 'https://education-erp.com/token',
 
-    //PARSE_APP_ID: 'ZhlYHr1uAjC7CJB7l1QVfuzsJIwpp51J5KpQYOco',
-    //PARSE_JS_KEY: 'kQpPbPSSJwvfnT9pJ2ZoxtEfbDdzr1bZQzxJGbzN',
-
-    //PARSE_APP_ID: 'k9TLT5Ia6vAwmKksB3UDwfKbhEsFbtcPiQ22Bwee', //CardioFirstDev
-    //PARSE_JS_KEY: 'lDWo2WesqG9QDFFbmFujl8lfKUnmrAy15EOKDdla', //CardioFirstDev
-
-    PARSE_APP_ID: 'DY9RPeNTtxZoi4rkuHU5VQpx6iZiqVj0EPdTPUDE',
-    PARSE_JS_KEY: '3L4hHQ7Hh1yqrOnIJ04pEXs4QqzduGg4lcJN4CbG',
-
-    PARSE_SERVER_URL: 'https://sportstrackerparse.sabir.pro/parse',
-    // PARSE_SERVER_URL: 'https://sportstrackerapi.sabir.pro/',
-
-    SERVER_DOMAIN: 'https://sportstrackerapi.sabir.pro',
-
-    PARSE_REST_API_KEY: 'nXBiK8HpMx3I0cheUm41WMEKKWUpoKV0QOhqy7VN'
-
+    API_FUNCTIONS_BASE: 'https://education-erp.com/api/SportTracker/v1/',
+    API_FUNCTIONS_BASE_WEB: 'https://education-erp.com/api/SportTrackerWeb/v1/'
 
 
 }

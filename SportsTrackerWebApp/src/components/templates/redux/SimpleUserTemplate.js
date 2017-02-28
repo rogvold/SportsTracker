@@ -19,7 +19,8 @@ import CommonHelper from '../../../helpers/CommonHelper.js'
 class SimpleUserTemplate extends React.Component {
 
     static defaultProps = {
-        logo: 'assets/images/sport_logo.png',
+        // logo: 'assets/images/sport_logo.png',
+        logo: 'assets/images/junior_logo.png',
         companyName: undefined,
 
         showCloseButton: true,

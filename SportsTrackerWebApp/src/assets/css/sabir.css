@@ -284,7 +284,8 @@
     display: inline-block;
     line-height: 40px;
     vertical-align: top;
-    margin-left: 170px;
+    /*margin-left: 170px;*/
+    margin-left: 70px;
 }
 
 .simple_user_template > .header .center_links_placeholder .link_item{

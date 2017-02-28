@@ -20,7 +20,8 @@ class ReduxUserPagePanel extends React.Component {
     static defaultProps = {
         userId: undefined,
         // defaultAvatar: 'http://app.flytrack.net/assets/images/empty_ava_pilot.jpg'
-        defaultAvatar: 'assets/images/empty_ava.png'
+        defaultAvatar: 'assets/images/empty_ava.png',
+        canEdit: false
     }
 
     static propTypes = {
@@ -54,15 +55,29 @@ class ReduxUserPagePanel extends React.Component {
 
     render = () => {
         let isMe = this.isMe();
-        let {usersMap, userId, defaultAvatar, currentUser} = this.props;
+        let {usersMap, userId, defaultAvatar, currentUser, canEdit} = this.props;
+        console.log('ReduxUserPagePanel: usersMap, userId, defaultAvatar, currentUser, canEdit = ', usersMap, userId, defaultAvatar, currentUser, canEdit);
+        console.log('ReduxUserPagePanel: usersMap = ', usersMap);
+
+        if (userId == undefined && currentUser != undefined){
+            userId = currentUser.id;
+        }
+
         let user = usersMap[userId];
-        let avatar = (user.avatar == undefined) ? defaultAvatar : user.avatar;
+        let avatar = (user == undefined || user.avatar == undefined) ? defaultAvatar : user.avatar;
         var org = this.props.organization;
         //if (org == undefined){
         //    org = {};
         //}
+        if (user == undefined){
+            return null;
+        }
+
         var role = user.userRole;
-        let canEdit = (isMe == true || currentUser.userRole == 'admin');
+        let canEditProfile = (isMe == true || currentUser.userRole == 'admin');
+        if (canEdit == false){
+            canEditProfile = false;
+        }
 
         return (
             <div className={'user_home_page'} >
@@ -73,7 +88,7 @@ class ReduxUserPagePanel extends React.Component {
                             <img src={avatar} />
                         </div>
 
-                        {canEdit == false ? null :
+                        {canEditProfile == false ? null :
                             <div className={'edit_user_button_placeholder'} >
                                 <UpdateUserReduxWrapper userId={userId} >
                                     <div className={'update_profile_button'} >

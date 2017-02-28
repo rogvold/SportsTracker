@@ -46,11 +46,11 @@ class TrainingsPanel extends React.Component {
 
         console.log('TrainingsPanel mounted: user = ', user);
 
-        if (role == 'user'){
-            this.props.loadUserTrainings(userId);
-        }else {
-            this.props.loadOrganizationTrainings();
-        }
+        // if (role == 'user'){
+        //     this.props.loadUserTrainings(userId);
+        // }else {
+        //     this.props.loadOrganizationTrainings();
+        // }
     }
 
     componentWillReceiveProps() {

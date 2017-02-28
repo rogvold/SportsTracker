@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 
 import UpdateTeamPanel from './UpdateTeamPanel.js'
 
-import UpdateGroupLinksPanel from '../../new_groups/panels/UpdateGroupLinksPanel.js'
+import GroupLinksPanel from '../../new_groups/panels/GroupLinksPanel.js'
 
 class TabbedUpdateTeamPanel extends React.Component {
 
@@ -46,25 +46,7 @@ class TabbedUpdateTeamPanel extends React.Component {
         return (
             <div className={'tabbed_update_team_panel'} >
 
-                <div  className={'tabs_placeholder'}>
-
-                    <div onClick={this.switchMode.bind(this, 'general')}
-                         className={' tab ' + (mode == 'general' ? ' active ' : '')} >Общая информация</div>
-
-                    <div onClick={this.switchMode.bind(this, 'users')}
-                         className={' tab ' + (mode == 'users' ? ' active ' : '')}>Игроки</div>
-                </div>
-
-                <div style={{marginTop: 15}} >
-                    {mode != 'general' ? null :
-                        <UpdateTeamPanel teamId={teamId} />
-                    }
-
-                    {mode != 'users' ? null :
-                        <UpdateGroupLinksPanel groupId={teamId} />
-                    }
-
-                </div>
+                <GroupLinksPanel groupId={teamId} />
 
             </div>
         )

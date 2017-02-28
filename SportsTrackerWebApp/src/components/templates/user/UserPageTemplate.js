@@ -21,7 +21,7 @@ var UserPageTemplate = React.createClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore')],
     getDefaultProps: function(){
         return {
-            logo: 'assets/images/sport_logo.png',
+            logo: 'assets/images/junior_logo.png',
             content: undefined,
             contentStyle: {
 

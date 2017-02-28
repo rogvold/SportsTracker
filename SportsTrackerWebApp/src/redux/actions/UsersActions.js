@@ -7,6 +7,7 @@
 
 import * as types from '../ReduxConstants.js'
 import ParseAPI from '../../api/ParseAPIEs6.js';
+import JuniorAPI from '../../api/JuniorAPI.js';
 
 //LOGIN
 let startLoggingIn = () => {
@@ -30,7 +31,7 @@ let onLoginFailed = (error) => {
 export function logIn(data){
     return (dispatch, getState) => {
         dispatch(startLoggingIn())
-        return ParseAPI.logInAsPromise(data.email, data.password).then(
+        return JuniorAPI.logIn(data.email, data.password).then(
                 user => dispatch(onLoggedIn(user)),
                 error => dispatch(onLoginFailed(error))
         )
@@ -92,7 +93,8 @@ export function logOut(){
             return Promise.resolve()
         }
         dispatch(startLoggingOut());
-        return ParseAPI.logOutAsPromise().then(
+        // return ParseAPI.logOutAsPromise().then(
+        return JuniorAPI.logOut().then(
             () => dispatch(onLoggedOut()),
             () => dispatch(onLogoutFail())
         )
@@ -111,6 +113,7 @@ let authInitFailed = () => {
     }
 }
 let authInitSuccess = (user) => {
+    console.log('authInitSuccess: user = ', user);
     return {
         type: types.INITIALIZE_AUTH_SUCCESS,
         user: user
@@ -123,7 +126,7 @@ export function initializeAuthorization(){
             return Promise.resolve()
         }
         dispatch(startAuthInit());
-        return ParseAPI.fetchCurrentUserAsPromise().then(
+        return JuniorAPI.authJunior().then(
                 user => dispatch(authInitSuccess(user)),
                 err => dispatch(authInitFailed())
         );

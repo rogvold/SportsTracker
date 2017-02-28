@@ -109,6 +109,7 @@ var GroupsPanel = React.createClass({
     render: function(){
         var groups = this.state.groups;
         var noGroups = (groups.length == 0);
+        var canAddTeam = false;
 
         return (
             <div style={this.componentStyle.placeholder} >
@@ -123,9 +124,11 @@ var GroupsPanel = React.createClass({
                         </div>
 
                         <div style={{textAlign: 'center', marginBottom: 20}} >
-                            <button style={{marginRight: 0}} className={'ui basic green button'} onClick={this.setState.bind(this, {createDialogVisible: true})} >
-                                <i className={'icon plus'} ></i> Создать команду
-                            </button>
+                            {canAddTeam == false ? null :
+                                <button style={{marginRight: 0}} className={'ui basic green button'} onClick={this.setState.bind(this, {createDialogVisible: true})} >
+                                    <i className={'icon plus'} ></i> Создать команду
+                                </button>
+                            }
                         </div>
 
                     </div>

@@ -11,7 +11,9 @@ import SignupForm from './SignupForm.js';
 
 class AuthForm extends React.Component {
 
-    static defaultProps = {}
+    static defaultProps = {
+        canSignUp: false
+    }
 
     static propTypes = {
         onLogin: PropTypes.func,
@@ -44,6 +46,7 @@ class AuthForm extends React.Component {
     }
 
     render() {
+        let {canSignUp} = this.props;
 
         return (
             <div className={'auth_form'} >
@@ -58,24 +61,26 @@ class AuthForm extends React.Component {
                     }
                 </div>
 
-                <div className={'switcher_placeholder'} >
+                {canSignUp == false ? null :
+                    <div className={'switcher_placeholder'} >
 
-                    {this.state.mode == 'login' ?
-                        <div className={' switcher '} >
-                            Нет аккаунта?
-                            <span className={'switcher_link'} onClick={() => {this.setState({mode: 'signup'})}} >
+                        {this.state.mode == 'login' ?
+                            <div className={' switcher '} >
+                                Нет аккаунта?
+                                <span className={'switcher_link'} onClick={() => {this.setState({mode: 'signup'})}} >
                                 Регистрация
                             </span>
-                        </div> :
-                        <div className={' switcher '} >
-                            Есть аккаунт?
-                            <span className={'switcher_link'} onClick={() => {this.setState({mode: 'login'})}} >
+                            </div> :
+                            <div className={' switcher '} >
+                                Есть аккаунт?
+                                <span className={'switcher_link'} onClick={() => {this.setState({mode: 'login'})}} >
                                 Войти
                             </span>
-                        </div>
-                    }
+                            </div>
+                        }
 
-                </div>
+                    </div>
+                }
 
             </div>
         )

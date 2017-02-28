@@ -16,7 +16,8 @@ var UsersList = React.createClass({
 
             },
 
-            showSignUpDate: true,
+            showSignUpDate: false,
+
             showTableHeader: true
 
         }

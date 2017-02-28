@@ -32,7 +32,7 @@ const store = createStore(
     applyMiddleware(thunkMiddleware, loggerMiddleware)
 )
 
-ParseAPI.initParse();
+// ParseAPI.initParse();
 
 class RootApp extends React.Component{
 

@@ -14,8 +14,6 @@ import BallPreloader from '../../preloader/BallPreloader.js'
 
 import DeleteButton from '../../button/DeleteButton.js'
 
-import UpdateGroupLinksPanel from '../../new_groups/panels/UpdateGroupLinksPanel.js'
-
 class UpdateTeamPanel extends React.Component {
 
     static defaultProps = {

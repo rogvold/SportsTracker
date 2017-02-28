@@ -14,7 +14,7 @@ const initialState = {
 
 const consumeUsers = (state, users) => {
     if (users == undefined){
-        return state;
+        users = [];
     }
     var usersMap = Object.assign({}, state.usersMap);
     for (let u of users){
@@ -101,7 +101,13 @@ const UsersReducer =  (state = initialState, action = {}) => {
 
         case types.INITIALIZE_AUTH_SUCCESS:
             var usersMap = Object.assign({}, state.usersMap, (action.user == undefined ) ? {} : {[action.user.id]: action.user});
-            return {...state, loading: false, initialized: true, currentUser: action.user, usersMap: usersMap}
+            console.log('INITIALIZE_AUTH_SUCCESS: new usersMap = ', usersMap);
+            return {...state,
+                loading: false,
+                initialized: true,
+                currentUser: action.user,
+                usersMap: usersMap
+            }
 
 
 
@@ -121,10 +127,17 @@ const UsersReducer =  (state = initialState, action = {}) => {
 
         case types.LOAD_ORGANIZATION_SUCCESS:
             let newUsersMap = Object.assign({}, consumeUsers(state, action.users), consumeUsers(state, action.trainers));
-
+            console.log('LOAD_ORGANIZATION_SUCCESS: newUsersMap = ', newUsersMap);
             return {
                 ...state,
                 usersMap: newUsersMap
+            }
+
+        case types.LOAD_GROUP_USERS_LINKS_SUCCESS:
+            let nUsersMap = Object.assign({}, consumeUsers(state, action.users));
+            return {
+                ...state,
+                usersMap: nUsersMap
             }
 
 

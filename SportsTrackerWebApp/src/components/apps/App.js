@@ -120,6 +120,7 @@ class App extends React.Component {
     }
 
     getTrainerRoute() {
+        console.log('getTrainerRoute occured');
         return (
             <Router history={hashHistory} >
 
@@ -177,8 +178,8 @@ class App extends React.Component {
                     <IndexRoute component={LoginApp} />
                 </Route>
 
-                <Route useAutoKeys={false} path="/dev" component={LoginApp} >
-                    <IndexRoute component={LoginApp} />
+                <Route useAutoKeys={false} path="/dev" component={DevApp} >
+                    <IndexRoute component={DevApp} />
                 </Route>
 
             </Router>
@@ -199,10 +200,10 @@ class App extends React.Component {
 
         var user = this.props.currentUser;
         if (user == undefined){
-            return this.getGuestRoute();
-            // return (
-            //     <LoginApp />
-            // );
+            // return this.getGuestRoute();
+            return (
+                <LoginApp />
+            );
         }
         let role = user.userRole;
         if (role == 'admin'){

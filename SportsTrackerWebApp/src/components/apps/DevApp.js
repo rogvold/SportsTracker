@@ -13,6 +13,10 @@ import CreateUserPanel from '../users/panels/CreateUserPanel.js'
 
 import CalendarPanel from '../new_calendar/panels/CalendarPanel.js'
 
+import JuniorAPI from '../../api/JuniorAPI'
+
+
+
 class DevApp extends React.Component {
 
     static defaultProps = {}
@@ -34,14 +38,53 @@ class DevApp extends React.Component {
 
     }
 
+    testGetToken(){
+        JuniorAPI.getNewToken('+7 999 999 99 99', '1qa2ws3ed');
+    }
+
+    testAuthJunior(){
+        JuniorAPI.authJunior();
+    }
+
+    testGetFields(){
+        JuniorAPI.getFields();
+    }
+
+    testLoadAllTrainerData() {
+        JuniorAPI.getAllTrainerData();
+    }
+
+    testLoadGroupUsersLinks() {
+        var groupId = "7263";
+        JuniorAPI.loadGroupUsersLinks(groupId)
+    }
+
     render() {
 
         return (
             <div className={'dev_app'} >
 
-                this is a dev app
+                <button onClick={this.testGetToken}>
+                    test get token
+                </button>
 
-                <CalendarPanel />
+                <button onClick={this.testAuthJunior}>
+                    test auth
+                </button>
+
+                <button onClick={this.testGetFields}>
+                    test getFields
+                </button>
+
+                <button onClick={this.testLoadAllTrainerData}>
+                    test testLoadAllTrainerData
+                </button>
+
+                <button onClick={this.testLoadGroupUsersLinks} >
+                    testLoadGroupUsersLinks
+                </button>
+
+
 
             </div>
         )

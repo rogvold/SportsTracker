@@ -53,7 +53,7 @@ class LoginForm extends React.Component {
 
     canSubmit () {
         let data = this.getData();
-        if (validator.isEmail(data.email) == false || data.password == undefined || data.password.trim() == ''){
+        if (data.email == undefined || data.email.trim() == '' || data.password == undefined || data.password.trim() == ''){
             return false;
         }
         return true;
@@ -74,10 +74,10 @@ class LoginForm extends React.Component {
 
                  <div className={'field'} >
                     <label>
-                        Email
+                        Номер телефона
                     </label>
                      <input value={this.state.email}
-                            placeholder={'Email'}
+                            placeholder={'Номер телефона'}
                             onChange={(evt) => {this.setState({email: evt.target.value})}} />
                  </div>
 

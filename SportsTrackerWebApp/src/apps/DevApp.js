@@ -43,6 +43,8 @@ var TrainingTeamFieldPanel = require('../components/field/TrainingTeamFieldPanel
 
 var VkTemplate = require('../components/templates/vk/VkTemplate');
 
+import JuniorAPI from '../api/JuniorAPI'
+
 var DevApp = React.createClass({
     mixins: [FluxMixin],
 
@@ -64,11 +66,21 @@ var DevApp = React.createClass({
         }
     },
 
+    testGetToken: function(){
+        JuniorAPI.getToken('+7 999 999 99 99', '1qa2ws3ed');
+    },
+
 
     render: function(){
 
         return (
-            <VkTemplate />
+            <div>
+
+                <button onClick={this.testGetToken}>
+                    test get token
+                </button>
+
+            </div>
         );
     }
 

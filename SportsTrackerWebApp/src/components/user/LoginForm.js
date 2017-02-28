@@ -3,12 +3,13 @@
  */
 var React = require('react');
 var UserAPI = require('../../api/UserAPI');
+var JuniorAPI = require('../../api/JuniorAPI');
 
 var LoginForm = React.createClass({
     getDefaultProps: function () {
         return {
             buttonText: 'Войти',
-            emailPlaceholder: 'Email',
+            emailPlaceholder: 'Номер телефона',
             passwordPlaceholder: 'Пароль',
             formName: 'Вход',
             onLogin: function(u){
@@ -113,17 +114,20 @@ var LoginForm = React.createClass({
         this.setState({
             loading: true
         });
-        UserAPI.logIn(email, password, function(u){
-            this.props.onLogin(u);
-            this.setState({
-                loading: false
-            });
-        }.bind(this), function(errorMessage){
-            this.setState({
-                errorMessage: errorMessage,
-                loading: false
-            });
-        }.bind(this));
+        // UserAPI.logIn(email, password, function(u){
+        //     this.props.onLogin(u);
+        //     this.setState({
+        //         loading: false
+        //     });
+        // }.bind(this), function(errorMessage){
+        //     this.setState({
+        //         errorMessage: errorMessage,
+        //         loading: false
+        //     });
+        // }.bind(this));
+        JuniorAPI.logIn(email, password).then(function(currentUser){
+            alert('success');
+        })
     },
 
     onClick: function(){

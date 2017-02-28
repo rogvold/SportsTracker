@@ -61,7 +61,7 @@ class AuthPanel extends React.Component {
 
                 {this.props.error == undefined ? null :
                     <div className={'error_placeholder ui red message'} >
-                        {this.props.error.message}
+                        {this.props.error.message == undefined ? this.props.error.error_description : this.props.error.message}
                     </div>
                 }
 

@@ -25,6 +25,9 @@ let loadTrainingsFail = (error) => {
 }
 //thunk
 export function loadOrganizationTrainings(id){
+    if (id == undefined){
+        return Promise.resolve();
+    }
     return (dispatch, getState) => {
         if (getState().trainings.loading == true || getState().organization.organization == undefined){return;}
         if (id == undefined){

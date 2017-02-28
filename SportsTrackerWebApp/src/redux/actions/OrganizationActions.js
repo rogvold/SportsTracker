@@ -4,6 +4,7 @@
 
 import * as types from '../ReduxConstants.js'
 import ParseAPI from '../../api/ParseAPIEs6.js';
+import JuniorAPI from '../../api/JuniorAPI.js';
 
 // --- ORGANIZATION ---
 
@@ -14,12 +15,14 @@ let loadOrganization_ = () => {
     }
 }
 let loadOrganizationFailed = (error) => {
+    console.log('loadOrganizationFailed: error = ', error);
     return {
         type: types.LOAD_ORGANIZATION_FAIL,
         error: error
     }
 }
 let loadOrganizationSuccess = (data) => {
+    console.log('loadOrganizationSuccess: data = ', data);
     return {
         type: types.LOAD_ORGANIZATION_SUCCESS,
         organization: data.organization,
@@ -33,15 +36,11 @@ let loadOrganizationSuccess = (data) => {
 //thunk
 export function loadOrganization(id){
     return (dispatch, getState) => {
-        let org = getState().organization.organization;
-        if (org != undefined || getState().loading == true){
-            return Promise.resolve();
-        }
         dispatch(loadOrganization_())
-        return ParseAPI.runCloudFunctionAsPromise('loadTotalOrganization', {id: id}).then(
-                data => dispatch(loadOrganizationSuccess(data)),
-                error => dispatch(loadOrganizationFailed(error))
-        )
+        return JuniorAPI.getAllTrainerData().then(
+            data => dispatch(loadOrganizationSuccess(data)),
+            error => dispatch(loadOrganizationFailed(error))
+        );
     }
 }
 
@@ -194,10 +193,11 @@ let loadGroupUsersLinksFail = (error) => {
         error: error
     }
 }
-let loadGroupUsersLinksSuccess = (links) => {
+let loadGroupUsersLinksSuccess = (links, users) => {
     return {
         type: types.LOAD_GROUP_USERS_LINKS_SUCCESS,
-        links: links
+        links: links,
+        users: users
     }
 }
 //thunk
@@ -205,8 +205,8 @@ export function loadGroupUsersLinks(groupId){
     if (groupId == undefined){return;}
     return (dispatch, getState) => {
         dispatch(loadGroupUsersLinks_());
-        return ParseAPI.runCloudFunctionAsPromise("loadGroupUserLinks", {groupId: groupId}).then(
-            links => dispatch(loadGroupUsersLinksSuccess(links)),
+        return JuniorAPI.loadGroupUsersLinks(groupId).then(
+            d => dispatch(loadGroupUsersLinksSuccess(d.links, d.users)),
             error => dispatch(loadGroupUsersLinksFail(error))
         )
     }

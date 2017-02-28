@@ -5,7 +5,9 @@ import * as types from '../ReduxConstants.js'
 
 const initialState = {
     loading: false,
-    organization: undefined,
+    organization: {
+        name: 'Юниор'
+    },
     fieldsMap: {},
     groupsMap: {},
     userGroupLinksMap: {},
@@ -90,7 +92,7 @@ const OrganizationReducer =  (state = initialState, action = {}) => {
         case types.LOAD_ORGANIZATION_SUCCESS:
             return {
                 ...state,
-                organization: action.organization,
+                organization: (action.organization == undefined ? state.organization : action.organization),
                 fieldsMap: consumeFields(state, action.fields),
                 groupsMap: consumeGroups(state, action.groups),
                 loading: false
