@@ -407,7 +407,53 @@ var APIFactory = {
         requestType: 'POST',
         headers: [],
         parameters: []
-    }
+    },
+
+    CREATE_SHOT: {
+        name: 'createShot',
+        description: 'create shot',
+        requestType: 'POST',
+        headers: [{name: 'access_token'}],
+        parameters: [{
+            name: 'trainingId',
+            isRequired: true,
+            paramType: 'string',
+            description: 'training id'
+        },
+            {
+                name: 'shotTimestamp',
+                isRequired: true,
+                paramType: 'number',
+                description: 'timestamp of the shot (in milliseconds)'
+            },
+
+            {
+                name: 'zone',
+                isRequired: true,
+                paramType: 'number',
+                description: 'zone number'
+            }
+
+        , {
+            name: 'userId',
+            isRequired: false,
+            paramType: 'string',
+            description: 'user id'
+        }]
+    },
+
+    GET_TRAINING_SHOTS: {
+        name: 'getTrainingShots',
+        description: 'get the list of training shots',
+        requestType: 'POST',
+        headers: [{name: 'access_token'}],
+        parameters: [{
+            name: 'trainingId',
+            isRequired: true,
+            paramType: 'string',
+            description: 'training id'
+        }]
+    },
 
 
 };

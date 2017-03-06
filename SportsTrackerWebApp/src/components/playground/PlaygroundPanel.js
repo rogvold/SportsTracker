@@ -57,6 +57,11 @@ var PlaygroundPanel = React.createClass({
                 <div className={'tab ' + (tab == 'trainings' ? 'active' : '') }  onClick={this.setState.bind(this, {tab: 'trainings'})}  >
                     Тренировки
                 </div>
+
+                <div className={'tab ' + (tab == 'shots' ? 'active' : '') }  onClick={this.setState.bind(this, {tab: 'shots'})}  >
+                    Удары
+                </div>
+
                 <div className={'tab ' + (tab == 'points' ? 'active' : '') }  onClick={this.setState.bind(this, {tab: 'points'})}  >
                     Данные
                 </div>
@@ -261,6 +266,29 @@ var PlaygroundPanel = React.createClass({
 
                         <APIFunctionPanel name={APIFactory.FINISH_TRAINING.name} description={APIFactory.FINISH_TRAINING.description}
                                           parameters={APIFactory.FINISH_TRAINING.parameters} headers={defaultHeaders.concat(APIFactory.FINISH_TRAINING.headers)}
+                        />
+
+                    </div>
+
+                    <div style={ (tab != 'shots' ? {display: 'none'} : {})} >
+
+                        <div className={'api_functionality_description'} >
+                            <h2>
+                                Удары по воротам
+                            </h2>
+
+                            <p>
+
+                            </p>
+                        </div>
+
+
+                        <APIFunctionPanel name={APIFactory.CREATE_SHOT.name} description={APIFactory.CREATE_SHOT.description}
+                                          parameters={APIFactory.CREATE_SHOT.parameters} headers={defaultHeaders.concat(APIFactory.CREATE_SHOT.headers)}
+                        />
+
+                        <APIFunctionPanel name={APIFactory.GET_TRAINING_SHOTS.name} description={APIFactory.GET_TRAINING_SHOTS.description}
+                                          parameters={APIFactory.GET_TRAINING_SHOTS.parameters} headers={defaultHeaders.concat(APIFactory.GET_TRAINING_SHOTS.headers)}
                         />
 
                     </div>
