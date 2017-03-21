@@ -71,7 +71,8 @@ class TrainingFieldPlayer extends React.Component {
         let sessions = TrainingsHelper.getTrainingSessions(training.id, store);
         //selected filtration
         if (withFiltering == true){
-            sessions = sessions.filter((s) => {return (selectedUsersMap[s.session.userId] != undefined)})
+            // sessions = sessions.filter((s) => {return (selectedUsersMap[s.session.userId] != undefined)})
+            sessions = sessions.filter((s) => {return (selectedUsersMap[s.userId] != undefined)})
         }
         return sessions;
     }
@@ -105,7 +106,8 @@ class TrainingFieldPlayer extends React.Component {
             //p.x = Math.min(100.0 * p.x / field.width, 100.0);
             //p.y = Math.min(100.0 * p.y / field.height, 100.0);
 
-            p.userId = s.session.userId;
+            // p.userId = s.session.userId;
+            p.userId = s.userId;
             points.push(p)
         }
         return points;

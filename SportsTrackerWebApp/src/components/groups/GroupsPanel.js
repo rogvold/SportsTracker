@@ -145,9 +145,11 @@ var GroupsPanel = React.createClass({
                             </div>
 
                             <div style={this.componentStyle.topRightPlaceholder}>
-                                <button style={{marginRight: 0}} className={'ui button basic mini'} onClick={this.setState.bind(this, {createDialogVisible: true})} >
-                                    <i className={'icon plus'} ></i> Добавить команду
-                                </button>
+                                {canAddTeam == false ? null :
+                                    <button style={{marginRight: 0}} className={'ui button basic mini'} onClick={this.setState.bind(this, {createDialogVisible: true})} >
+                                        <i className={'icon plus'} ></i> Добавить команду
+                                    </button>
+                                }
                             </div>
 
                         </div>

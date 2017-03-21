@@ -96,11 +96,12 @@ var JuniorAPI = {
     getFields: function(){
         var self = this;
         return this.runFunction('GetFields', {}, 'GET', true).then(function(junFields){
-            var fields = junFields.map(function(f){
-                return self.transformField(f);
-            })
+            // var fields = junFields.map(function(f){
+            //     return self.transformField(f);
+            // })
             return new Promise(function(resolve, reject){
-                resolve(fields)
+                // resolve(fields)
+                resolve(junFields)
             })
         });
     },
@@ -158,7 +159,8 @@ var JuniorAPI = {
     loadGroupUsersLinks: function(groupId){
         var self = this;
         //GET api/SportTracker/v1/GetGroupUsers?GroupId={GroupId}
-        return this.runFunction('GetGroupUsers', {GroupId: groupId}, 'GET', false).then(
+        // return this.runFunction('GetGroupUsers', {GroupId: groupId}, 'GET', false).then(
+        return this.runFunction('GetGroupUsers', {GroupId: groupId}, 'POST', false).then(
             function(dGroupUsers){
                 var groupUsers = dGroupUsers.result;
                 console.log('groupUsers = ', groupUsers);
@@ -183,6 +185,72 @@ var JuniorAPI = {
                 })
             }
         )
+    },
+
+    loadAllTrainings: function(loadedTrainings, callback){
+        if (loadedTrainings == undefined){
+            loadedTrainings = [];
+        }
+        var max = -100;
+        var self = this;
+        for (var i in loadedTrainings){
+            var tr = loadedTrainings[i];
+            if (tr.updatedAt > max){
+                max = tr.updatedAt;
+            }
+        }
+        return new Promise(function(resolve, reject){
+            self.runFunction("GetTrainings", {fromTimestamp: max, toTimestamp: +new Date()}, 'GET', true).then(
+                trainings => {
+                    loadedTrainings = loadedTrainings.concat(trainings);
+                    if (trainings.length == 1000){
+                        self.loadAllTrainings(loadedTrainings);
+                    }else {
+                        loadedTrainings = loadedTrainings.map(function(tr){return self.transformTraining(tr)})
+                        resolve(loadedTrainings);
+                    }
+                }
+            )
+        })
+    },
+
+    loadTrainingDataPoints: function(trainingId){
+        // api/SportTrackerWeb/v1/GetTrainingData?trainingId={trainingId}
+        var self = this;
+        return new Promise(function(resolve, reject){
+            self.runFunction("GetTrainingData", {trainingId: trainingId}, "GET", true).then(
+                dataList => {
+                    var res = dataList.map(function(d){
+                        let points = (d.t == undefined || d.t.length == 0) ? [] : d.t.map((tt, k) => {
+                                return {
+                                    x: d.x[k],
+                                    y: d.y[k],
+                                    t: d.t[k] - d.t[0],
+                                    step: d.step[k]
+                                }
+                            })
+                        return {
+                            id: trainingId + '_' + d.userId,
+                            userId: d.userId + '',
+                            trainingId: trainingId + '',
+                            step: d.step,
+                            t: d.t,
+                            x: d.x,
+                            y: d.y,
+                            points: points
+                        }
+                    });
+                    resolve(res);
+                },
+                err => {
+                    reject(err);
+                }
+            )
+        })
+    },
+
+    loadPlayersByIds: function(){
+        
     },
 
     runFunction: function(functionName, params, method, isWeb){
@@ -220,6 +288,8 @@ var JuniorAPI = {
         })
     },
 
+
+
     transformUser: function(junUser){
         //What the fuck! Alex, do your API more human
         var firstName = junUser.FirstName == undefined ? junUser.firstName : junUser.FirstName;
@@ -248,8 +318,8 @@ var JuniorAPI = {
 
     transformField: function(junField){
         return {
-            id: junField.Id + '',
-            name: junField.Name
+            id: junField.id + '',
+            name: junField.name,
         }
     },
 
@@ -258,6 +328,16 @@ var JuniorAPI = {
             id: junGroup.id + '',
             name: junGroup.name,
             description: junGroup.description
+        }
+    },
+
+    transformTraining: function(tr){
+        return {
+            id: tr.id + '',
+            startTimestamp: tr.startTimeStamp,
+            trainerId: tr.trainerId,
+            fieldId: tr.fieldId,
+            groupId: tr.groupId,
         }
     }
 

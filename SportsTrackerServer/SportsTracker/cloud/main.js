@@ -5,6 +5,7 @@ var UsersModule = require('./modules/UsersModule');
 var FieldsModule = require('./modules/FieldsModule');
 var GroupsModule = require('./modules/GroupsModule');
 var TrainingsModule = require('./modules/TrainingsModule');
+var ShotsModule = require('./modules/ShotsModule');
 var RealtimeTrainingsModule = require('./modules/RealtimeTrainingsModule');
 
 var crypto = require('crypto');
@@ -415,6 +416,35 @@ Parse.Cloud.define("deleteUserFromGroup", function(request, response) {
     var data = request.params.data;
     GroupsModule.deleteUserFromGroup(data, function(){
         response.success(data);
+    }, function(err){
+        response.error(err);
+    });
+});
+
+//shots
+
+Parse.Cloud.define("createShot", function(request, response) {
+    var data = request.params.data;
+    ShotsModule.createShot(data, function(shot){
+        response.success(shot);
+    }, function(err){
+        response.error(err);
+    });
+});
+
+Parse.Cloud.define("deleteShot", function(request, response) {
+    var data = request.params.data;
+    ShotsModule.deleteShot(data, function(){
+        response.success();
+    }, function(err){
+        response.error(err);
+    });
+});
+
+Parse.Cloud.define("getTrainingShots", function(request, response) {
+    var data = request.params.data;
+    ShotsModule.loadTrainingShots(data, function(shots){
+        response.success(shots);
     }, function(err){
         response.error(err);
     });

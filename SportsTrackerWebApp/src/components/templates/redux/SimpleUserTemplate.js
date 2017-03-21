@@ -62,30 +62,31 @@ class SimpleUserTemplate extends React.Component {
                     icon: '',
                     url: '/'
                 },
-                {
-                    name: 'users',
-                    displayName: 'Игроки',
-                    icon: '',
-                    url: '/users'
-                },
-                {
-                    name: 'trainers',
-                    displayName: 'Тренеры',
-                    icon: '',
-                    url: '/trainers'
-                },
-                {
-                    name: 'teams',
-                    displayName: 'Команды',
-                    icon: '',
-                    url: '/teams'
-                },
-                {
-                    name: 'settings',
-                    displayName: 'Настройки',
-                    icon: '',
-                    url: '/settings'
-                },
+                // {
+                //     name: 'users',
+                //     displayName: 'Игроки',
+                //     icon: '',
+                //     url: '/users'
+                // },
+                // {
+                //     name: 'trainers',
+                //     displayName: 'Тренеры',
+                //     icon: '',
+                //     url: '/trainers'
+                // },
+                // {
+                //     name: 'teams',
+                //     displayName: 'Команды',
+                //     icon: '',
+                //     url: '/teams'
+                // },
+                // {
+                //     name: 'settings',
+                //     displayName: 'Настройки',
+                //     icon: '',
+                //     url: '/settings'
+                // },
+
                 {
                     name: 'help',
                     displayName: 'Помощь',
@@ -108,12 +109,12 @@ class SimpleUserTemplate extends React.Component {
                     icon: '',
                     url: '/teams'
                 },
-                {
-                    name: 'users',
-                    displayName: 'Игроки ',
-                    icon: '',
-                    url: '/users'
-                },
+                // {
+                //     name: 'users',
+                //     displayName: 'Игроки ',
+                //     icon: '',
+                //     url: '/users'
+                // },
                 {
                     name: 'help',
                     displayName: 'Помощь',

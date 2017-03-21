@@ -185,9 +185,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         loadOrganizationTrainings: (id) => {
-            if (id == undefined){
-                return;
-            }
+            // if (id == undefined){
+            //     return;
+            // }
             return dispatch(actions.loadOrganizationTrainings(id))
         },
         loadUserTrainings: (userId) => {

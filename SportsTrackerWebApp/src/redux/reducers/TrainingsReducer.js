@@ -25,7 +25,7 @@ const consumeTrainings = (state, trainings) => {
         if (u == undefined || u.fieldId == undefined){
             continue;
         }
-        trainingsMap[u.id] = u;
+        trainingsMap[u.id + ''] = u;
     }
     return Object.assign({}, state.trainingsMap, trainingsMap);
 }

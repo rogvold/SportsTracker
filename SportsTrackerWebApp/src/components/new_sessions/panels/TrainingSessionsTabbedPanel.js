@@ -71,6 +71,8 @@ class TrainingSessionsTabbedPanel extends React.Component {
 
                 <PlayerUsersSelectorPanel trainingId={this.props.trainingId} />
 
+
+
             </div>
         )
     }

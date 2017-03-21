@@ -176,3 +176,32 @@ export function updateUser(data){
         )
     }
 }
+
+//load
+let loadUsers_ = () => {
+    return {
+        type: types.LOAD_USERS
+    }
+}
+
+let loadUsersFail = (err) => {
+    return {
+        type: types.LOAD_USERS_FAIL,
+        error: err
+    }
+}
+
+let loadUsersSuccess = (users) => {
+    return {
+        type: types.LOAD_USERS_SUCCESS,
+        users: users
+    }
+}
+
+//
+export function loadGroupUsers(groupId) {
+    return (dispatch, getState) => {
+        dispatch(loadUsers_())
+
+    }
+}

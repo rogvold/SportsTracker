@@ -51,10 +51,12 @@ class TrainingUsersPanel extends React.Component {
 
     getUsers = () => {
         let sessions = this.getSessions();
-        let usersMap = this.props.store.users.usersMap;
+        let {usersMap} = this.props;
+        // let usersMap = this.props.store.users.usersMap;
         let arr = [];
-        for (var i in sessions){
-            let s = sessions[i].session;
+        for (let i in sessions){
+            // let s = sessions[i].session;
+            let s = sessions[i];
             arr.push(usersMap[s.userId]);
         }
         return arr;
@@ -85,6 +87,7 @@ class TrainingUsersPanel extends React.Component {
 const mapStateToProps = (state) => {
     return {
         store: state,
+        usersMap: state.users.usersMap,
         loading: state.trainings.loading
     }
 }

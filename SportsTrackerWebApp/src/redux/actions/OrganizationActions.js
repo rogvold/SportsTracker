@@ -36,11 +36,15 @@ let loadOrganizationSuccess = (data) => {
 //thunk
 export function loadOrganization(id){
     return (dispatch, getState) => {
-        dispatch(loadOrganization_())
-        return JuniorAPI.getAllTrainerData().then(
-            data => dispatch(loadOrganizationSuccess(data)),
+        dispatch(loadOrganization_());
+        return JuniorAPI.getFields().then(
+            fields => dispatch(loadOrganizationSuccess({fields})),
             error => dispatch(loadOrganizationFailed(error))
-        );
+        )
+        // return JuniorAPI.getAllTrainerData().then(
+        //     data => dispatch(loadOrganizationSuccess(data)),
+        //     error => dispatch(loadOrganizationFailed(error))
+        // );
     }
 }
 

@@ -3,6 +3,9 @@
  */
 import * as types from '../ReduxConstants.js'
 import ParseAPI from '../../api/ParseAPIEs6.js';
+import JuniorAPI from '../../api/JuniorAPI.js';
+
+import * as orgActions from './OrganizationActions'
 
 let loadTrainings_ = () => {
     return {
@@ -25,9 +28,9 @@ let loadTrainingsFail = (error) => {
 }
 //thunk
 export function loadOrganizationTrainings(id){
-    if (id == undefined){
-        return Promise.resolve();
-    }
+    // if (id == undefined){
+    //     return Promise.resolve();
+    // }
     return (dispatch, getState) => {
         if (getState().trainings.loading == true || getState().organization.organization == undefined){return;}
         if (id == undefined){
@@ -37,7 +40,11 @@ export function loadOrganizationTrainings(id){
             return;
         }
         dispatch(loadTrainings_())
-        return ParseAPI.runCloudFunctionAsPromise("loadOrganizationTrainings", {organizationId: id}).then(
+        // return ParseAPI.runCloudFunctionAsPromise("loadOrganizationTrainings", {organizationId: id}).then(
+        //     trainings => dispatch(loadTrainingsSuccess(trainings)),
+        //     error => dispatch(loadTrainingsFail(error))
+        // )
+        return JuniorAPI.loadAllTrainings().then(
             trainings => dispatch(loadTrainingsSuccess(trainings)),
             error => dispatch(loadTrainingsFail(error))
         )
@@ -84,12 +91,22 @@ export function loadTrainingSessions(id){
         if (id == undefined){
             return;
         }
+        let training = getState().trainings.trainingsMap[id];
         dispatch(loadSessions_())
         //return ParseAPI.runCloudFunctionAsPromise("loadTrainingSessions", {trainingId: id}).then(
-        return ParseAPI.runCloudFunctionAsPromise("loadTrainingSessionsOptimized", {trainingId: id}).then(
-                sessions => dispatch(loadSessionsSuccess(sessions)),
-                error => dispatch(loadSessionsFail(error))
+        // return ParseAPI.runCloudFunctionAsPromise("loadTrainingSessionsOptimized", {trainingId: id}).then(
+        //         sessions => dispatch(loadSessionsSuccess(sessions)),
+        //         error => dispatch(loadSessionsFail(error))
+        // )
+        return JuniorAPI.loadTrainingDataPoints(id).then(
+            sessions => dispatch(loadSessionsSuccess(sessions)),
+            error => dispatch(loadSessionsFail(error))
+        ).then(
+            () => {
+                return dispatch(orgActions.loadGroupUsersLinks(training.groupId))
+            }
         )
     }
 }
+
 

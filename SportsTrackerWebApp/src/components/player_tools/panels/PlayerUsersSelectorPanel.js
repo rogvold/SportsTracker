@@ -43,8 +43,11 @@ class PlayerUsersSelectorPanel extends React.Component {
         let sessions = TrainingsHelper.getTrainingSessions(trainingId, store);
         let arr = [];
         let usersMap = store.users.usersMap;
+        console.log('getUsers: sessions, usersMap = ', sessions, usersMap);
+
         for (var i in sessions){
-            let userId = sessions[i].session.userId;
+            // let userId = sessions[i].session.userId;
+            let userId = sessions[i].userId;
             if (userId == undefined){continue;}
             let u = usersMap[userId];
             if (u == undefined){
@@ -52,6 +55,7 @@ class PlayerUsersSelectorPanel extends React.Component {
             }
             arr.push(u);
         }
+
         return arr;
     }
 
@@ -60,7 +64,8 @@ class PlayerUsersSelectorPanel extends React.Component {
         let sessions = TrainingsHelper.getTrainingSessions(trainingId, store);
         for (var i in sessions){
             let s = sessions[i];
-            if (s.session.userId != userId){
+            // if (s.session.userId != userId){
+            if (s.userId != userId){
                 continue;
             }
             let pts = s.points;

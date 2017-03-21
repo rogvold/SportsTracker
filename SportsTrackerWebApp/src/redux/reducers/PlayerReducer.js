@@ -60,7 +60,8 @@ const PlayerReducer =  (state = initialState, action = {}) => {
             let {sessions} = action;
             let selectedUsersMap = Object.assign({}, state.selectedUsersMap);
             for (var i in sessions){
-                let userId = sessions[i].session.userId;
+                // let userId = sessions[i].session.userId;
+                let userId = sessions[i].userId;
                 selectedUsersMap[userId] = 1;
             }
             return {

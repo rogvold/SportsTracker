@@ -52,6 +52,7 @@ class TeamsPanel extends React.Component {
 
     render = () => {
         const {teams} = this.props;
+        var canAddTeam = false;
 
         return (
             <div className={'teams_panel'} >
@@ -69,9 +70,11 @@ class TeamsPanel extends React.Component {
                             }
                         </div>
                         <div className={'add_team_placeholder'} >
-                            <button className={'ui basic mini button'} onClick={()=>{this.setState({createDialogVisible: true})}} >
-                                <i className={'icon plus'} ></i> Добавить команду
-                            </button>
+                            {canAddTeam == false ? null :
+                                <button className={'ui basic mini button'} onClick={()=>{this.setState({createDialogVisible: true})}} >
+                                    <i className={'icon plus'} ></i> Добавить команду
+                                </button>
+                            }
                         </div>
                     </div>
                 }

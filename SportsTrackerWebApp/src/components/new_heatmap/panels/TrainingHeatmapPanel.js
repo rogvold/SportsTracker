@@ -52,7 +52,9 @@ class TrainingHeatmapPanel extends React.Component {
             return undefined;
         }
         let {store} = this.props;
-        return store.organization.fieldsMap[training.fieldId];
+        let fld = store.organization.fieldsMap[training.fieldId];
+        console.log('TrainingHeatmapPanel: getField: returning ', fld);
+        return fld;
     }
 
     getTraining = () => {
@@ -66,11 +68,15 @@ class TrainingHeatmapPanel extends React.Component {
         let {store} = this.props;
         let training = this.getTraining();
         let selectedUsersMap = store.player.selectedUsersMap;
+        console.log('getSessions occured: selectedUsersMap = ', selectedUsersMap);
         let sessions = TrainingsHelper.getTrainingSessions(training.id, store);
+        console.log('sessions = ', sessions);
         //selected filtration
         if (withFiltering == true){
-            sessions = sessions.filter((s) => {return (selectedUsersMap[s.session.userId] != undefined)})
+            // sessions = sessions.filter((s) => {return (selectedUsersMap[s.session.userId] != undefined)})
+            sessions = sessions.filter((s) => {return (selectedUsersMap[s.userId] != undefined)})
         }
+        console.log('returning sessions = ', sessions);
         return sessions;
     }
 
@@ -145,7 +151,8 @@ class TrainingHeatmapPanel extends React.Component {
 
 
                 <div className={'heatmap'}>
-                    <ReactHeatmap data={data} max={this.props.maxHeatMapLevel} />
+                    <ReactHeatmap data={data}
+                                  max={this.props.maxHeatMapLevel} />
                 </div>
 
 

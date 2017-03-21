@@ -68,7 +68,8 @@ class TrainingsPanel extends React.Component {
 
         for (var key in sessionsMap){
             let s = sessionsMap[key];
-            if (s.session.userId == userId){
+            // if (s.session.userId == userId){
+            if (s.userId == userId){
                 //console.log('found user session  - ', s.session);
                 let tr = trainingsMap[s.trainingId];
                 if (tr != undefined){
