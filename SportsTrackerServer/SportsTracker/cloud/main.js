@@ -522,12 +522,18 @@ Parse.Cloud.define("savePoints", function(request, response) {
         data.trainerId = request.user.id;
     }
 
+    var hasNeg = function(arr){var f = false; for (var i in arr){if (arr[i] < 0){f = true;}} return f;}
+
     if (data.trainingId == undefined || data.userId == undefined ||
         data.x == undefined || data.x.length == 0 ||
         data.y == undefined || data.y.length != data.x.length ||
         data.step == undefined || data.step.length != data.x.length ||
         data.t == undefined || data.t.length != data.x.length){
         response.error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'savePoints: incorrect input data'});
+        return;
+    }
+    if (hasNeg(data.t) == true){
+        response.error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'savePoints: times array has negative value'});
         return;
     }
 
@@ -544,11 +550,29 @@ Parse.Cloud.define("savePoints", function(request, response) {
 Parse.Cloud.define("saveUsersPoints", function(request, response) {
     //var data = request.params.data;
     var data = request.params.data;
+    var hasNeg = function(data){
+        var f = false;
+        for (var i in data){
+            var times = data[i].t;
+            if (times != undefined){
+                for (var j in times){
+                    if (+times[j] < 0){
+                        f = true;
+                    }
+                }
+            }
+        }
+        return f;
+    }
     if (data == undefined){
         data = request.params;
     }
     if (data == undefined){
         response.error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'saveUsersPoints: data is not defined'});
+        return;
+    }
+    if (hasNeg(data) == true){
+        response.error({code: ECR.INCORRECT_INPUT_DATA.code, message: 'saveUsersPoints: times array has negative value'});
         return;
     }
 

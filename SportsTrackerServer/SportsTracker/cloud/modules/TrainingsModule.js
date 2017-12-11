@@ -596,6 +596,7 @@ var TrainingsModule = {
     },
 
     loadTrainingSessionsOptimized: function(trainingId, callback){
+        console.log('loadTrainingSessionsOptimized occured: trainingId = ', trainingId);
         var q = new Parse.Query('SportSession');
         q.equalTo('trainingId', trainingId);
         q.limit(1000);
