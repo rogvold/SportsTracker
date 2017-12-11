@@ -46,7 +46,13 @@ var RealtimeTrainingsModule = {
             x: p.get('x'),
             y: p.get('y'),
             t: p.get('t'),
+            //todo: uncomment
+            // ballRSSI: c.get('ballRSSI'),
+            //isOwnerBall: c.get('isOwnerBall'),
+
             step: p.get('step')
+
+
         }
     },
 
@@ -62,6 +68,11 @@ var RealtimeTrainingsModule = {
             x: (c.get('x') == undefined) ? [] : c.get('x'),
             y: (c.get('y') == undefined) ? [] : c.get('y'),
             t: (c.get('t') == undefined) ? [] : c.get('t'),
+
+            //todo: uncomment
+            // ballRSSI: (c.get('ballRSSI') == undefined) ? [] : c.get('ballRSSI'),
+            //isOwnerBall: (c.get('isOwnerBall') == undefined) ? [] : c.get('isOwnerBall'),
+
             step: (c.get('step') == undefined) ? [] : c.get('step')
         }
     },
@@ -269,13 +280,14 @@ var RealtimeTrainingsModule = {
                 chunk.set('sessionId', session.id);
                 chunk.set('number', chunkNumber);
 
-                //var rrs = cachePoints.map(function(cp){return +cp.get('rr')});
-                //var times = cachePoints.map(function(cp){return +cp.get('t')});
-
                 var xs = cachePoints.map(function(cp){return cp.get('x')});
                 var ys = cachePoints.map(function(cp){return cp.get('y')});
                 var ts = cachePoints.map(function(cp){return cp.get('t')});
                 var steps = cachePoints.map(function(cp){return cp.get('step')});
+
+                //todo: uncomment
+                //var ballRSSIs = cachePoints.map(function(cp){return cp.get('ballRSSI')});
+                //var isOwnerBalls = cachePoints.map(function(cp){return cp.get('isOwnerBall')});
 
 
                 chunk.set('x', xs);
@@ -283,9 +295,9 @@ var RealtimeTrainingsModule = {
                 chunk.set('t', ts);
                 chunk.set('step', steps);
 
-                //chunk.set('rrs', rrs);
-                //chunk.set('times', times);
-
+                //todo: uncomment
+                //chunk.set('ballRSSI', ballRSSIs);
+                //chunk.set('isOwnerBall', isOwnerBalls);
 
                 chunksArray.push(chunk);
                 sessionsMap[sessionId].set('lastChunkNumber', chunkNumber);
@@ -334,7 +346,11 @@ var RealtimeTrainingsModule = {
                 point.set('x', +d.x[i]);
                 point.set('y', +d.y[i]);
                 point.set('step', +d.step[i]);
-                //point.set('rr', rr);
+
+                //todo: uncomment when the client app is ready
+                //point.set('ballRSSI', +d.ballRSSI[i]);
+                //point.set('isOwnerBall', d.isOwnerBall);
+
 
 
                 point.set('sessionId', session.id);
@@ -369,20 +385,25 @@ var RealtimeTrainingsModule = {
                 var lastT = (sess.get('lastPointTime') == undefined) ? -1 : +sess.get('lastPointTime');
                 var cachePointsNumber = (sess.get('cachePointsNumber') == undefined) ? 0 : sess.get('cachePointsNumber');
 
-                //var rrs = a.rrs.filter(function(r, k){var t = a.times[k]; return (t > lastT)});
-                //var times = a.times.filter(function(t, k){return (t > lastT)});
                 var t = a.t.filter(function(time, k){return (time > lastT)});
                 var x = a.x.filter(function(r, k){var t = a.t[k]; return (t > lastT)});
                 var y = a.y.filter(function(r, k){var t = a.t[k]; return (t > lastT)});
                 var step = a.step.filter(function(r, k){var t = a.t[k]; return (t > lastT)});
 
+                //todo: uncomment when client app is ready
+                //var ballRSSI = a.step.filter(function(r, k){var t = a.t[k]; return (t > lastT)});
+                //var isOwnerBall = a.step.filter(function(r, k){var t = a.t[k]; return (t > lastT)});
 
-                //sessionsMap[a.userId].rrs = rrs;
-                //sessionsMap[a.userId].times = times;
+
+
                 sessionsMap[a.userId].t = t;
                 sessionsMap[a.userId].x = x;
                 sessionsMap[a.userId].y = y;
                 sessionsMap[a.userId].step = step;
+
+                //todo: uncomment when client app is ready
+                //sessionsMap[a.userId].ballRSSI = ballRSSI;
+                //sessionsMap[a.userId].isOwnerBall = isOwnerBall;
 
 
                 var lastPointTime = sess.get('lastPointTime') == undefined ? -1 : sess.get('lastPointTime');

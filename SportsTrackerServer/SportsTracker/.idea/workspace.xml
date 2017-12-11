@@ -19,21 +19,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cloud/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="578" column="81" lean-forward="false" selection-start-line="578" selection-start-column="81" selection-end-line="578" selection-end-column="81" />
+            <state relative-caret-position="266">
+              <caret line="580" column="34" lean-forward="false" selection-start-line="580" selection-start-column="34" selection-end-line="580" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RealtimeTrainingsModule.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RealtimeTrainingsModule.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cloud/modules/RealtimeTrainingsModule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="358" column="66" lean-forward="true" selection-start-line="358" selection-start-column="66" selection-end-line="358" selection-end-column="66" />
+            <state relative-caret-position="250">
+              <caret line="71" column="12" lean-forward="false" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
               <folding>
                 <element signature="e#0#40#0" expanded="false" />
               </folding>
@@ -45,7 +45,7 @@
         <entry file="file://$PROJECT_DIR$/cloud/modules/TrainingsModule.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="310" column="28" lean-forward="true" selection-start-line="310" selection-start-column="28" selection-end-line="310" selection-end-column="28" />
+              <caret line="310" column="28" lean-forward="false" selection-start-line="310" selection-start-column="28" selection-end-line="310" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -136,7 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&quot;savePoints&quot;</find>
       <find>sessions saved</find>
       <find>uploadPoints</find>
       <find>chunk</find>
@@ -166,6 +165,7 @@
       <find>filter</find>
       <find>lastT</find>
       <find>saveUser</find>
+      <find>'step</find>
     </findStrings>
     <replaceStrings>
       <replace>'SportSession'</replace>
@@ -178,12 +178,12 @@
         <option value="$PROJECT_DIR$/cloud/modules/OrganizationsModule.js" />
         <option value="$PROJECT_DIR$/cloud/modules/LocationModule.js" />
         <option value="$PROJECT_DIR$/cloud/modules/GroupsModule.js" />
-        <option value="$PROJECT_DIR$/cloud/modules/RealtimeTrainingsModule.js" />
         <option value="$PROJECT_DIR$/cloud/app.js" />
         <option value="$PROJECT_DIR$/cloud/modules/UsersModule.js" />
         <option value="$PROJECT_DIR$/cloud/helpers/ErrorCodesRegistry.js" />
         <option value="$PROJECT_DIR$/cloud/modules/TrainingsModule.js" />
         <option value="$PROJECT_DIR$/cloud/main.js" />
+        <option value="$PROJECT_DIR$/cloud/modules/RealtimeTrainingsModule.js" />
       </list>
     </option>
   </component>
@@ -192,9 +192,6 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
@@ -351,15 +348,16 @@
       <workItem from="1487236830150" duration="3687000" />
       <workItem from="1487310993995" duration="1270000" />
       <workItem from="1488226245846" duration="33000" />
-      <workItem from="1512989282491" duration="2418000" />
+      <workItem from="1512989282491" duration="3056000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36290000" />
+    <option name="totallyTimeSpent" value="36928000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="719" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2924071" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -370,7 +368,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -806,26 +804,26 @@
     <entry file="file://$PROJECT_DIR$/cloud/modules/TrainingsModule.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="310" column="28" lean-forward="true" selection-start-line="310" selection-start-column="28" selection-end-line="310" selection-end-column="28" />
+          <caret line="310" column="28" lean-forward="false" selection-start-line="310" selection-start-column="28" selection-end-line="310" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="580" column="34" lean-forward="false" selection-start-line="580" selection-start-column="34" selection-end-line="580" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cloud/modules/RealtimeTrainingsModule.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="358" column="66" lean-forward="true" selection-start-line="358" selection-start-column="66" selection-end-line="358" selection-end-column="66" />
+        <state relative-caret-position="250">
+          <caret line="71" column="12" lean-forward="false" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cloud/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="578" column="81" lean-forward="false" selection-start-line="578" selection-start-column="81" selection-end-line="578" selection-end-column="81" />
-          <folding />
         </state>
       </provider>
     </entry>
