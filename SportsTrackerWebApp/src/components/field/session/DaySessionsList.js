@@ -18,8 +18,9 @@ var Dialog = require('../../dialog/Dialog');
 
 var BackgroundImageContainer = require('../../image/BackgroundImageContainer');
 
+var createReactClass = require('create-react-class');
 
-var DaySessionsList = React.createClass({
+var DaySessionsList= createReactClass({
 
     mixins: [FluxMixin],
 

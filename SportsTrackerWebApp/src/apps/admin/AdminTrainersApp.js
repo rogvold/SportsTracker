@@ -18,8 +18,8 @@ var ClubAdminHeaderLinks = require('../../components/templates/header/ClubAdminH
 var TrainersPanel = require('../../components/trainers/TrainersPanel');
 
 var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
-
-var AdminTrainersApp = React.createClass({
+var createReactClass = require('create-react-class');
+var AdminTrainersApp= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore', 'OrganizationStore')],
 
     getDefaultProps: function(){

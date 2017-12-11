@@ -14,8 +14,6 @@ class AuthForm extends React.Component {
     static defaultProps = {}
 
     static propTypes = {
-        onLogin: PropTypes.func,
-        onSignUp: PropTypes.func
     }
 
     state = {

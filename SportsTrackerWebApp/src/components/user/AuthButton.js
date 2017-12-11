@@ -5,8 +5,8 @@ var React = require('react');
 var AuthOverlay = require('./AuthOverlay');
 
 var assign = require('object-assign');
-
-var AuthButton = React.createClass({
+var createReactClass = require('create-react-class');
+var AuthButton= createReactClass({
     getDefaultProps: function () {
         return {
             iconClassName: 'ui sign in icon',

@@ -12,8 +12,8 @@ var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 var BallPreloader = require('../../preloader/BallPreloader');
 
 var CalendarPanel = require('../../field/calendar/CalendarPanel');
-
-var TrainingsCalendar = React.createClass({
+var createReactClass = require('create-react-class');
+var TrainingsCalendar= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

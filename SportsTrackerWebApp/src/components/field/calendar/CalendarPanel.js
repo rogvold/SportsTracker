@@ -14,8 +14,8 @@ var Dialog = require('../../dialog/Dialog');
 var moment = require('moment');
 
 var DaySessionsList = require('../session/DaySessionsList');
-
-var CalendarPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var CalendarPanel= createReactClass({
     getDefaultProps: function () {
         return {
             sessions: SportHelper.generateRandomSessions(new Date().getTime() - 200 * 24 * 3600 * 1000, 300),

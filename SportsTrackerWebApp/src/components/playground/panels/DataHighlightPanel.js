@@ -5,8 +5,8 @@
 var React = require('react');
 var assign = require('object-assign');
 
-
-var DataHighlightPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var DataHighlightPanel= createReactClass({
     getDefaultProps: function () {
         return {
 

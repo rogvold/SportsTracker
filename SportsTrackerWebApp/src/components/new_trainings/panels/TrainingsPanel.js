@@ -24,8 +24,6 @@ class TrainingsPanel extends React.Component {
     static defaultProps = {}
 
     static propTypes = {
-        userId: PropTypes.string,
-        currentUser: PropTypes.object
     }
 
     state = {}

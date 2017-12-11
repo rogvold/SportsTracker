@@ -12,6 +12,7 @@
 import ParseACL from './ParseACL';
 import ParseFile from './ParseFile';
 import ParseGeoPoint from './ParseGeoPoint';
+import ParsePolygon from './ParsePolygon';
 import ParseObject from './ParseObject';
 import { Op } from './ParseOp';
 import ParseRelation from './ParseRelation';
@@ -30,7 +31,7 @@ function encode(value, disallowObjects, forcePointers, seen) {
     seen = seen.concat(seenEntry);
     return value._toFullJSON(seen);
   }
-  if (value instanceof Op || value instanceof ParseACL || value instanceof ParseGeoPoint || value instanceof ParseRelation) {
+  if (value instanceof Op || value instanceof ParseACL || value instanceof ParseGeoPoint || value instanceof ParsePolygon || value instanceof ParseRelation) {
     return value.toJSON();
   }
   if (value instanceof ParseFile) {

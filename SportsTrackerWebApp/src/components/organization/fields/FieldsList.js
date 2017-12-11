@@ -14,8 +14,8 @@ var FieldsItem = require('./FieldsItem');
 var Dialog = require('../../dialog/Dialog');
 
 var UpdateFieldButton = require('./update/UpdateFieldButton');
-
-var FieldsList = React.createClass({
+var createReactClass = require('create-react-class');
+var FieldsList= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

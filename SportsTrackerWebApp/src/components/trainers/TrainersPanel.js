@@ -16,8 +16,8 @@ var Dialog = require('../dialog/Dialog');
 var CoolPreloader = require('../preloader/CoolPreloader');
 
 var CreateTrainerPanel = require('./CreateTrainerPanel');
-
-var TrainersListPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var TrainersListPanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

@@ -42,8 +42,8 @@ var SuperLineChart = require('../components/chart/SuperLineChart');
 var TrainingTeamFieldPanel = require('../components/field/TrainingTeamFieldPanel');
 
 var VkTemplate = require('../components/templates/vk/VkTemplate');
-
-var DevApp = React.createClass({
+var createReactClass = require('create-react-class');
+var DevApp= createReactClass({
     mixins: [FluxMixin],
 
     getDefaultProps: function () {

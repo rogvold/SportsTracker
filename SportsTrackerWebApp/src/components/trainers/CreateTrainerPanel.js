@@ -12,8 +12,8 @@ var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 var CoolPreloader = require('../preloader/CoolPreloader');
 
 var TrainerForm = require('./TrainerForm');
-
-var CreateTrainerPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var CreateTrainerPanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

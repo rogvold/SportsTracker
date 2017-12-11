@@ -27,8 +27,6 @@ class AdminTeamsApp extends React.Component {
     }
 
     static propTypes = {
-        currentUser: PropTypes.object.isRequired,
-        loadOrganization: PropTypes.func
     }
 
     state = {

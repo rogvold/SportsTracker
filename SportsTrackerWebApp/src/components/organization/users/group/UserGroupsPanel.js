@@ -12,8 +12,8 @@ var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 var CoolPreloader = require('../../../preloader/CoolPreloader');
 
 var Dialog = require('../../../dialog/Dialog');
-
-var UserGroupsPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var UserGroupsPanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

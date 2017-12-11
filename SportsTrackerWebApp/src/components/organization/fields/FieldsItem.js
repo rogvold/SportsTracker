@@ -8,8 +8,8 @@ var assign = require('object-assign');
 var Fluxxor = require('fluxxor');
 var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
-
-var FieldsItem = React.createClass({
+var createReactClass = require('create-react-class');
+var FieldsItem= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

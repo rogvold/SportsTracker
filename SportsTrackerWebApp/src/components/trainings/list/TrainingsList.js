@@ -10,8 +10,8 @@ var moment = require('moment');
 var Fluxxor = require('fluxxor');
 var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
-
-var TrainingsList = React.createClass({
+var createReactClass = require('create-react-class');
+var TrainingsList= createReactClass({
     mixins: [FluxMixin],
     getDefaultProps: function () {
         return {

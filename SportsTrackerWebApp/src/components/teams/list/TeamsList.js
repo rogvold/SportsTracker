@@ -17,8 +17,6 @@ class TeamsList extends React.Component {
     }
 
     static propTypes = {
-        teams: PropTypes.array.isRequired,
-        onTeamClick: PropTypes.func.isRequired
     }
 
     state = {

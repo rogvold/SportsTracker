@@ -29,11 +29,6 @@ class TrainingsCalendarPanel extends React.Component {
     }
 
     static propTypes = {
-        trainings: PropTypes.array.isRequired,
-        selectedTrainingId: PropTypes.string,
-        selectTraining: PropTypes.func.isRequired,
-        unselectTraining: PropTypes.func.isRequired,
-        currentUser: PropTypes.object
     }
 
     state = {

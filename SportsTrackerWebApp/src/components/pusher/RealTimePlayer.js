@@ -16,8 +16,8 @@ var ReactSlider = require('react-slider');
 var CoolPreloader = require('../preloader/CoolPreloader');
 
 var SportHelper = require('../../helpers/SportHelper');
-
-var RealTimePlayer = React.createClass({
+var createReactClass = require('create-react-class');
+var RealTimePlayer= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('PusherStore')],
     getDefaultProps: function(){
         return {

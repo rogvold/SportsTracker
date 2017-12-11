@@ -14,8 +14,8 @@ var RealTimeHeartRateChart = require('../chart/RealTimeHeartRateChart');
 var AnimatedHeart = require('../heart/AnimatedHeart');
 
 var BackgroundImageContainer = require('../image/BackgroundImageContainer');
-
-var HeartPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var HeartPanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('RealTimeStore')],
     getDefaultProps: function(){
         return {

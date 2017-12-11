@@ -9,7 +9,7 @@ var ParseAPI = require('../../api/ParseAPI');
 
 var CoolPreloader = require('../preloader/CoolPreloader');
 
-var LoadSessionPointsComponent = React.createClass({
+var LoadSessionPointsComponent= createReactClass({
     getDefaultProps: function () {
         return {}
     },

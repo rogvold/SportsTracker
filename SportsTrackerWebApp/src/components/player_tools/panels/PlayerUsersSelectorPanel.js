@@ -19,8 +19,6 @@ class PlayerUsersSelectorPanel extends React.Component {
     static defaultProps = {}
 
     static propTypes = {
-        toggle: PropTypes.func.isRequired,
-        store: PropTypes.object.isRequired
     }
 
     state = {}

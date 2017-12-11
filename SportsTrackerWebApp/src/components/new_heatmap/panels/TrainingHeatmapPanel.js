@@ -21,7 +21,6 @@ class TrainingHeatmapPanel extends React.Component {
     }
 
     static propTypes = {
-        store: PropTypes.object.isRequired
 
     }
 

@@ -83,10 +83,14 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onLogin: (data) => {
-            dispatch(actions.logIn(data))
+            dispatch(actions.logIn(data)).then(
+                window.location.reload()
+            )
         },
         onSignUp: (data) => {
-            dispatch(actions.signUp(data))
+            dispatch(actions.signUp(data)).then(
+                window.location.reload()
+            )
         }
     }
 }

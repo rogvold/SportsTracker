@@ -6,7 +6,9 @@ var assign = require('object-assign');
 
 var moment = require('moment');
 
-var MonthSwitcher = React.createClass({
+var createReactClass = require('create-react-class');
+
+var MonthSwitcher = createReactClass({
     getDefaultProps: function () {
         return {
             monthTimestamp: undefined,

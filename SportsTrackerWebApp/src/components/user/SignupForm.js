@@ -7,8 +7,8 @@ var UserAPI = require('../../api/UserAPI');
 var RoleSelector = require('./RoleSelector');
 
 var assign = require('object-assign');
-
-var SignupForm = React.createClass({
+var createReactClass = require('create-react-class');
+var SignupForm= createReactClass({
     getDefaultProps: function () {
         return {
             buttonText: 'Sign up',

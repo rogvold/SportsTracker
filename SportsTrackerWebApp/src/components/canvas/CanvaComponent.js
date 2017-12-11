@@ -18,9 +18,9 @@ var Group = ReactART.Group;
 var Shape = ReactART.Shape;
 var Surface = ReactART.Surface;
 var Transform = ReactART.Transform;
+var createReactClass = require('create-react-class');
 
-
-var CanvaComponent = React.createClass({
+var CanvaComponent= createReactClass({
     /**
      * Initialize state members.
      */

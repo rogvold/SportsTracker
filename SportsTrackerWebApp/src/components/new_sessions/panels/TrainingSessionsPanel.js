@@ -21,8 +21,6 @@ class TrainingSessionsPanel extends React.Component {
     }
 
     static propTypes = {
-        loading: PropTypes.bool.isRequired,
-        trainingId: PropTypes.string.isRequired
     }
 
     state = {}

@@ -22,7 +22,6 @@ class CreateUserPanel extends React.Component {
     }
 
     static propTypes = {
-        userRole: PropTypes.string.isRequired
     }
 
     state = {}

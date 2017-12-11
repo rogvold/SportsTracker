@@ -6,8 +6,8 @@ var React = require('react');
 var assign = require('object-assign');
 
 var FieldPoint = require('./FieldPoint');
-
-var Field = React.createClass({
+var createReactClass = require('create-react-class');
+var Field= createReactClass({
     getDefaultProps: function () {
         return {
             style: {

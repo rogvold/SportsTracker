@@ -6,8 +6,8 @@ var React = require('react');
 var assign = require('object-assign');
 
 var RecoverPasswordDialog = require('./RecoverPasswordDialog');
-
-var RecoverPasswordButton = React.createClass({
+var createReactClass = require('create-react-class');
+var RecoverPasswordButton= createReactClass({
     getDefaultProps: function () {
         return {
             buttonClassName: '',

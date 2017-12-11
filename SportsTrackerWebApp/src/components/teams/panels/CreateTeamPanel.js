@@ -19,7 +19,6 @@ class CreateTeamPanel extends React.Component {
     }
 
     static propTypes = {
-        createTeam: PropTypes.func.isRequired
     }
 
     state = {}

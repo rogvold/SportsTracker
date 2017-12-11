@@ -18,7 +18,6 @@ class SimpleField extends React.Component {
     }
 
     static propTypes = {
-        points: PropTypes.array.isRequired
     }
 
     state = {}

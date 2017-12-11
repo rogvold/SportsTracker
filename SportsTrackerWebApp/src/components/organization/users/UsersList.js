@@ -6,8 +6,8 @@ var React = require('react');
 var assign = require('object-assign');
 
 var moment = require('moment');
-
-var UsersList = React.createClass({
+var createReactClass = require('create-react-class');
+var UsersList= createReactClass({
     getDefaultProps: function () {
         return {
             users: [],

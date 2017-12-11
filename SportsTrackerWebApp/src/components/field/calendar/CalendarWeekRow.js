@@ -8,8 +8,8 @@ var assign = require('object-assign');
 var CalendarDayPanel = require('./CalendarDayPanel');
 
 var moment = require('moment');
-
-var CalendarWeekRow = React.createClass({
+var createReactClass = require('create-react-class');
+var CalendarWeekRow= createReactClass({
     getDefaultProps: function () {
         return {
             days: [],

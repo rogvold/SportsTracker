@@ -20,7 +20,7 @@ var OrganizationBootstrap = require('../../components/organization/OrganizationB
 
 var OrganizationUsersPanel = require('../../components/organization/users/OrganizationUsersPanel');
 
-var TrainerUsersApp = React.createClass({
+var TrainerUsersApp= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore', 'OrganizationStore')],
 
     getDefaultProps: function(){

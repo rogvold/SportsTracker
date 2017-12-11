@@ -23,8 +23,8 @@ var UpdateUserComponent = require('../../components/api_playground/UpdateUserCom
 var LoadUserSessionsComponent = require('../../components/api_playground/LoadUserSessionsComponent');
 var LoadSessionPointsComponent = require('../../components/api_playground/LoadSessionPointsComponent');
 var SavePointsComponent = require('../../components/api_playground/SavePointsComponent');
-
-var APIPlaygroundApp = React.createClass({
+var createReactClass = require('create-react-class');
+var APIPlaygroundApp= createReactClass({
     mixins: [FluxMixin],
 
     getDefaultProps: function(){

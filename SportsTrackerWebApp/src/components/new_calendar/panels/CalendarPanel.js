@@ -14,7 +14,9 @@ var MonthPanel = require('./MonthPanel');
 var CalendarHeader = require('./CalendarHeader');
 var MonthSwitcher = require('./MonthSwitcher');
 
-var CalendarPanel = React.createClass({
+var createReactClass = require('create-react-class');
+
+var CalendarPanel = createReactClass({
     getDefaultProps: function () {
         return {
 

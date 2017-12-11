@@ -5,7 +5,9 @@
 var React = require('react');
 var assign = require('object-assign');
 
-var BallPreloader = React.createClass({
+var createReactClass = require('create-react-class');
+
+var BallPreloader = createReactClass({
     getDefaultProps: function () {
         return {
             text: 'Загрузкa...'

@@ -22,7 +22,7 @@ var UserPagePanel = require('../../components/profile_page/UserPagePanel');
 var GroupsPanel = require('../../components/groups/GroupsPanel');
 var BallPreloader = require('../../components/preloader/BallPreloader');
 
-var TrainerGroupsApp = React.createClass({
+var TrainerGroupsApp= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore', 'OrganizationStore')],
 
     getDefaultProps: function(){

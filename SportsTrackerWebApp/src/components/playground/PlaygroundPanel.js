@@ -10,8 +10,8 @@ var APIFunctionPanel = require('./panels/APIFunctionPanel');
 var APIFactory = require('../../data/APIFactory');
 
 var constants = require('../../constants');
-
-var PlaygroundPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var PlaygroundPanel= createReactClass({
     getDefaultProps: function () {
         return {}
     },
@@ -313,8 +313,8 @@ var PlaygroundPanel = React.createClass({
 
                                 <code dangerouslySetInnerHTML={{__html: JSON.stringify(
                                     [
-                                        {"userId": "Go04d5cLvM","trainingId":"iIxABaSiF6", "t": [0, 0.1, 0.2], "x":[9.1,9.2,9.3], "y": [1,2,3], "step": [1,2,3]},
-                                        {"userId": "wretwrtwet","trainingId":"iIxABaSiF6", "t": [0, 0.1, 0.2], "x":[2.1,7.2,10.3], "y": [0.4,6.7,3], "step": [1,2,3]}
+                                        {"userId": "Go04d5cLvM","trainingId":"iIxABaSiF6", "t": [0, 0.1, 0.2], "x":[9.1,9.2,9.3], "y": [1,2,3], "step": [1,2,3], "ballRSSI": [4, 23, 53], "isOwnerBall": [true, true, false]},
+                                        {"userId": "wretwrtwet","trainingId":"iIxABaSiF6", "t": [0, 0.1, 0.2], "x":[2.1,7.2,10.3], "y": [0.4,6.7,3], "step": [1,2,3],  "ballRSSI": [4, 23, 53], "isOwnerBall": [true, true, false]}
                                     ]
                                     , null, '\t' )  }}  />
                             </pre>

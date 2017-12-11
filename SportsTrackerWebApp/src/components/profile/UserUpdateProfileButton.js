@@ -7,8 +7,8 @@ var assign = require('object-assign');
 var Dialog = require('../dialog/Dialog');
 
 var UserUpdateProfilePanel = require('./UserUpdateProfilePanel');
-
-var UserUpdateProfileButton = React.createClass({
+var createReactClass = require('create-react-class');
+var UserUpdateProfileButton= createReactClass({
     getDefaultProps: function () {
         return {
             userId: undefined,

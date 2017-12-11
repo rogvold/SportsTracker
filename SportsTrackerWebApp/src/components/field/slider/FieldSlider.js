@@ -6,8 +6,8 @@ var React = require('react');
 var assign = require('object-assign');
 
 var ReactSlider = require('react-slider');
-
-var FieldSlider = React.createClass({
+var createReactClass = require('create-react-class');
+var FieldSlider= createReactClass({
     getDefaultProps: function () {
         return {
             maxT: 100,

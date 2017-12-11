@@ -21,7 +21,6 @@ class UsersPanel extends React.Component {
     }
 
     static propTypes = {
-        loading: PropTypes.bool.isRequired
     }
 
     state = {}

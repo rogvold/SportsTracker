@@ -18,8 +18,6 @@ class SimpleUserPoint extends React.Component {
     }
 
     static propTypes = {
-        userId: PropTypes.string.isRequired,
-        usersMap: PropTypes.object
     }
 
     state = {}

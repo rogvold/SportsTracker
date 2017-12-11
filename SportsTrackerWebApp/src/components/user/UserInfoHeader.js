@@ -16,8 +16,8 @@ var moment = require('moment');
 var BackgroundImageContainer = require('../image/BackgroundImageContainer');
 
 var UserUpdateProfileButton = require('../profile/UserUpdateProfileButton');
-
-var UserInfoHeader = React.createClass({
+var createReactClass = require('create-react-class');
+var UserInfoHeader= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore')],
     getDefaultProps: function(){
         return {

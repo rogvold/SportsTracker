@@ -8,8 +8,8 @@ var assign = require('object-assign');
 var Dialog = require('../../../dialog/Dialog');
 
 var UserUpdatePanel = require('./UserUpdatePanel');
-
-var UserUpdateButton = React.createClass({
+var createReactClass = require('create-react-class');
+var UserUpdateButton= createReactClass({
     getDefaultProps: function () {
         return {
 

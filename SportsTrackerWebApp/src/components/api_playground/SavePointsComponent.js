@@ -11,7 +11,7 @@ var CoolPreloader = require('../preloader/CoolPreloader');
 
 var LocationHelper = require('../../helpers/LocationHelper');
 
-var SavePointsComponent = React.createClass({
+var SavePointsComponent= createReactClass({
     getDefaultProps: function () {
         return {}
     },

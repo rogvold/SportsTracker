@@ -12,8 +12,8 @@ var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 var BackgroundImageContainer = require('../image/BackgroundImageContainer');
 
 var UserInfoHeader = require('../user/UserInfoHeader');
-
-var UserProfilePanel = React.createClass({
+var createReactClass = require('create-react-class');
+var UserProfilePanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore')],
     getDefaultProps: function(){
         return {

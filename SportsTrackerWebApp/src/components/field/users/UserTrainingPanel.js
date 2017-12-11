@@ -14,8 +14,8 @@ var BackgroundImageContainer = require('../../image/BackgroundImageContainer');
 var SportHelper = require('../../../helpers/SportHelper');
 
 var UserShotsPanel = require('../gate/UserShotsPanel');
-
-var UserTrainingPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var UserTrainingPanel= createReactClass({
     getDefaultProps: function () {
         return {
 

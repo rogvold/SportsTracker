@@ -5,7 +5,9 @@
 var React = require('react');
 var assign = require('object-assign');
 
-var BackgroundImageContainer = React.createClass({
+var createReactClass = require('create-react-class');
+
+var BackgroundImageContainer = createReactClass({
     getDefaultProps: function () {
         return {
             //image: undefined,

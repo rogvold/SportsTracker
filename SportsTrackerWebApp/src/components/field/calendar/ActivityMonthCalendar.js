@@ -13,8 +13,8 @@ var MonthSwitcherPanel = require('./MonthSwitcherPanel');
 
 var SportHelper = require('../../../helpers/SportHelper');
 var CalendarHelper = require('../../../helpers/CalendarHelper');
-
-var ActivityMonthCalendar = React.createClass({
+var createReactClass = require('create-react-class');
+var ActivityMonthCalendar= createReactClass({
     getDefaultProps: function () {
         return {
             sessions: [],

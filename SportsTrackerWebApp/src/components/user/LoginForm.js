@@ -3,8 +3,8 @@
  */
 var React = require('react');
 var UserAPI = require('../../api/UserAPI');
-
-var LoginForm = React.createClass({
+var createReactClass = require('create-react-class');
+var LoginForm= createReactClass({
     getDefaultProps: function () {
         return {
             buttonText: 'Войти',

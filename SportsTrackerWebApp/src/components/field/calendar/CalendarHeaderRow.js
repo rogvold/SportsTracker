@@ -4,8 +4,8 @@
 
 var React = require('react');
 var assign = require('object-assign');
-
-var CalendarHeaderRow = React.createClass({
+var createReactClass = require('create-react-class');
+var CalendarHeaderRow= createReactClass({
     getDefaultProps: function () {
         return {}
     },

@@ -17,7 +17,7 @@ var CreateGroupPanel = require('./new/CreateGroupPanel');
 
 var Dialog = require('../dialog/Dialog');
 
-var GroupsPanel = React.createClass({
+var GroupsPanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

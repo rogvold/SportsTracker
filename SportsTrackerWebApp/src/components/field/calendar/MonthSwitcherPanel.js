@@ -8,8 +8,8 @@ var assign = require('object-assign');
 var moment = require('moment');
 
 var CalendarHelper = require('../../../helpers/CalendarHelper');
-
-var MonthSwitcherPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var MonthSwitcherPanel= createReactClass({
     getDefaultProps: function () {
         return {
             timestamp: new Date(),

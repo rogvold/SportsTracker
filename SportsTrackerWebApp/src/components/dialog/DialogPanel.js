@@ -4,7 +4,9 @@
 var React = require('react');
 var assign = require('object-assign');
 
-var DialogPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var createReactClass = require('create-react-class');
+var DialogPanel = createReactClass({
     mixins: [
         //require('react-onclickoutside')
     ],

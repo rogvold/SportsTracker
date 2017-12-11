@@ -4,8 +4,8 @@
 var React = require('react');
 var assign = require('object-assign');
 const enhanceWithClickOutside = require('react-click-outside');
-
-var TopbarSettingsMenu = React.createClass({
+var createReactClass = require('create-react-class');
+var TopbarSettingsMenu= createReactClass({
     mixins: [
         //require('react-onclickoutside')
     ],

@@ -13,7 +13,9 @@ var FieldForm = require('./FieldForm');
 
 var DeleteButton = require('../../../button/DeleteButton');
 
-var UpdateFieldPanel = React.createClass({
+var createReactClass = require('create-react-class');
+
+var UpdateFieldPanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

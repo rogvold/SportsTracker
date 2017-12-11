@@ -14,8 +14,8 @@ var SportHelper = require('../../helpers/SportHelper');
 var UserTrainingPanel = require('./users/UserTrainingPanel');
 
 var Dialog = require('../dialog/Dialog');
-
-var FieldTeamPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var FieldTeamPanel= createReactClass({
     getDefaultProps: function () {
         return {
 

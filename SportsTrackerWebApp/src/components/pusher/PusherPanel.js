@@ -11,7 +11,7 @@ var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var ReactPlayer = require('react-player');
 
-var PusherPanel = React.createClass({
+var PusherPanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('PusherStore')],
     getDefaultProps: function(){
         return {

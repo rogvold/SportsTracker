@@ -9,8 +9,8 @@ var LineChart = rd3.LineChart;
 
 var React = require('react');
 var assign = require('object-assign');
-
-var SuperLineChart = React.createClass({
+var createReactClass = require('create-react-class');
+var SuperLineChart= createReactClass({
     getDefaultProps: function () {
         return {}
     },

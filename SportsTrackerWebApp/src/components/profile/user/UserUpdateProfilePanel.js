@@ -12,8 +12,8 @@ var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 var UserUpdateProfileForm = require('./UserUpdateProfileForm');
 
 var CoolPreloader = require('../../preloader/CoolPreloader');
-
-var UserUpdateProfilePanel = React.createClass({
+var createReactClass = require('create-react-class');
+var UserUpdateProfilePanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore')],
     getDefaultProps: function(){
         return {

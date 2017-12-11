@@ -14,7 +14,7 @@ var DeleteButton = require('../button/DeleteButton');
 
 var CoolPreloader = require('../preloader/CoolPreloader');
 
-var UpdateGroupPanel = React.createClass({
+var UpdateGroupPanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

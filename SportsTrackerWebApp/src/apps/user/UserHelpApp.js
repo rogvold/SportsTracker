@@ -18,8 +18,8 @@ var ClubAdminHeaderLinks = require('../../components/templates/header/ClubAdminH
 var TrainerHeaderLinks = require('../../components/templates/header/TrainerHeaderLinks');
 
 var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
-
-var UserHelpApp = React.createClass({
+var createReactClass = require('create-react-class');
+var UserHelpApp= createReactClass({
 
     getDefaultProps: function(){
         return {

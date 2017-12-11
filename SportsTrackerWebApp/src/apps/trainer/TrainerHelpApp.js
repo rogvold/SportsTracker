@@ -19,7 +19,7 @@ var TrainerHeaderLinks = require('../../components/templates/header/TrainerHeade
 
 var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
 
-var TrainerHelpApp = React.createClass({
+var TrainerHelpApp= createReactClass({
 
     getDefaultProps: function(){
         return {

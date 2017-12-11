@@ -4,8 +4,8 @@
 
 var React = require('react');
 var assign = require('object-assign');
-
-var UserUpdateProfileForm = React.createClass({
+var createReactClass = require('create-react-class');
+var UserUpdateProfileForm= createReactClass({
     getDefaultProps: function () {
         return {
             firstName: undefined,

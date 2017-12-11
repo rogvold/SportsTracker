@@ -6,8 +6,8 @@ var React = require('react');
 var assign = require('object-assign');
 
 var ParametersPanel = require('./ParametersPanel');
-
-var HeadersPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var HeadersPanel= createReactClass({
     getDefaultProps: function () {
         return {
             headers: [],

@@ -14,8 +14,8 @@ var TrainerForm = require('../TrainerForm');
 var CoolPreloader = require('../../preloader/CoolPreloader');
 
 var TrainerGroupsPanel = require('../group/TrainerGroupsPanel');
-
-var UpdateTrainerPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var UpdateTrainerPanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore', 'UsersStore')],
     getDefaultProps: function(){
         return {

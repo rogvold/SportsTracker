@@ -21,7 +21,6 @@ class TrainingFieldPlayer extends React.Component {
     }
 
     static propTypes = {
-        store: PropTypes.object.isRequired
     }
 
     state = {

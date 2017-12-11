@@ -6,7 +6,9 @@ var assign = require('object-assign');
 
 var moment = require('moment');
 
-var WeekRow = React.createClass({
+var createReactClass = require('create-react-class');
+
+var WeekRow = createReactClass({
     getDefaultProps: function () {
         return {
             monthTimestamp: undefined,

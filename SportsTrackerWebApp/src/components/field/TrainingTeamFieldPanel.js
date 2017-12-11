@@ -14,8 +14,8 @@ var BallPreloader = require('../preloader/BallPreloader');
 var FieldTeamPanel = require('./FieldTeamPanel');
 
 var SportHelper = require('../../helpers/SportHelper');
-
-var TrainingTeamFieldPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var TrainingTeamFieldPanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

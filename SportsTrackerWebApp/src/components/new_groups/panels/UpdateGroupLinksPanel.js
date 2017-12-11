@@ -16,11 +16,6 @@ class UpdateGroupLinksPanel extends React.Component {
     static defaultProps = {}
 
     static propTypes = {
-        groupId: PropTypes.string.isRequired,
-        loadGroupLinks: PropTypes.func,
-        addUser: PropTypes.func,
-        deleteUser: PropTypes.func,
-        loading: PropTypes.bool
     }
 
     state = {}

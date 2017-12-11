@@ -8,8 +8,8 @@ var assign = require('object-assign');
 var DropzoneComponent = require('react-dropzone-component');
 
 var ReactDOMServer = require('react-dom/server');
-
-var FileUploader = React.createClass({
+var createReactClass = require('create-react-class');
+var FileUploader= createReactClass({
     getDefaultProps: function () {
         return {
             containerClassName: 'ui brown message',

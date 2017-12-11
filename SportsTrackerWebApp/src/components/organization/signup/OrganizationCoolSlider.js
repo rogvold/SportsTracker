@@ -7,7 +7,7 @@ var assign = require('object-assign');
 
 var BackgroundImageContainer = require('../../image/BackgroundImageContainer');
 
-var ClubCoolSlider = React.createClass({
+var ClubCoolSlider= createReactClass({
     getDefaultProps: function () {
         return {
 

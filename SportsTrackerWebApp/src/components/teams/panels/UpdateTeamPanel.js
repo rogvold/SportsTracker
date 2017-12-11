@@ -32,11 +32,6 @@ class UpdateTeamPanel extends React.Component {
     }
 
     static propTypes = {
-        teamsMap: PropTypes.object.isRequired,
-        teamId: PropTypes.string.isRequired,
-        updateTeam: PropTypes.func.isRequired,
-        deleteTeam: PropTypes.func.isRequired,
-        loading: PropTypes.bool.isRequired
     }
 
     state = {}

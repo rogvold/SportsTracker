@@ -19,7 +19,6 @@ class LoginForm extends React.Component {
      }
 
      static propTypes = {
-        onSubmit: PropTypes.func
      }
 
      state = {

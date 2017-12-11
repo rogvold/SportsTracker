@@ -10,8 +10,8 @@ var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var TrainingsList = require('../list/TrainingsList');
-
-var UserTrainingsPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var UserTrainingsPanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore', 'OrganizationStore')],
     getDefaultProps: function(){
         return {

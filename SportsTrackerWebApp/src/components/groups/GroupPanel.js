@@ -11,7 +11,7 @@ var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var UpdateGroupButton = require('./UpdateGroupButton');
 
-var GroupPanel = React.createClass({
+var GroupPanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

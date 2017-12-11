@@ -9,8 +9,8 @@ var rd3 = require('react-d3');
 
 var AreaChart = rd3.AreaChart;
 var LineChart = rd3.LineChart;
-
-var RealTimeHeartRateChart = React.createClass({
+var createReactClass = require('create-react-class');
+var RealTimeHeartRateChart= createReactClass({
     getDefaultProps: function () {
         return {
             points: [],

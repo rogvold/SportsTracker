@@ -6,8 +6,8 @@ var React = require('react');
 var assign = require('object-assign');
 
 var ReactHeatmap = require('react-heatmap');
-
-var HeatMap = React.createClass({
+var createReactClass = require('create-react-class');
+var HeatMap= createReactClass({
     getDefaultProps: function () {
         return {
             width: 720,

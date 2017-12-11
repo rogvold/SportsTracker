@@ -18,9 +18,6 @@ class AdminIndexApp extends React.Component {
     }
 
     static propTypes = {
-        currentUser: PropTypes.object.isRequired,
-        loadOrganization: PropTypes.func,
-        organization: PropTypes.object
     }
 
     state = {

@@ -6,8 +6,8 @@ var React = require('react');
 var assign = require('object-assign');
 
 var PagedUsersList = require('./PagedUsersList');
-
-var SearchableUsersList = React.createClass({
+var createReactClass = require('create-react-class');
+var SearchableUsersList= createReactClass({
     getDefaultProps: function () {
         return {
             users: [],

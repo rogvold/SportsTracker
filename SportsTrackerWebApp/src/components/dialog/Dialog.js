@@ -7,7 +7,9 @@ var assign = require('object-assign');
 var DialogOverlay = require('./DialogOverlay');
 var DialogPanel = require('./DialogPanel');
 
-var Dialog = React.createClass({
+var createReactClass = require('create-react-class');
+
+var Dialog = createReactClass({
     getDefaultProps: function () {
         return {
             visible: true,

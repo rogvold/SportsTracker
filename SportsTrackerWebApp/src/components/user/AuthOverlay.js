@@ -5,8 +5,8 @@ var React = require('react');
 var assign = require('object-assign');
 
 var AuthForm = require('./AuthForm');
-
-var AuthOverlay = React.createClass({
+var createReactClass = require('create-react-class');
+var AuthOverlay= createReactClass({
     getDefaultProps: function () {
         return {
             isVisible: false,

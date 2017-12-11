@@ -8,8 +8,8 @@ var assign = require('object-assign');
 var BackgroundImageContainer = require('../../image/BackgroundImageContainer');
 
 var moment = require('moment');
-
-var CalendarDayPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var CalendarDayPanel= createReactClass({
     getDefaultProps: function () {
         return {
             isVoid: false,

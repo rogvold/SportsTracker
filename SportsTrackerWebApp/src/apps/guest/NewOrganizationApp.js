@@ -14,8 +14,8 @@ var UserPageTemplate = require('../../components/templates/user/UserPageTemplate
 var UserHeaderLinks = require('../../components/templates/header/UserHeaderLinks');
 
 var OrganizationSignUpPanel = require('../../components/organization/signup/OrganizationSignUpPanel');
-
-var NewOrganizationApp = React.createClass({
+var createReactClass = require('create-react-class');
+var NewOrganizationApp= createReactClass({
     mixins: [FluxMixin],
 
     getDefaultProps: function(){

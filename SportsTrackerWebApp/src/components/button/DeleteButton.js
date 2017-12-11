@@ -8,8 +8,8 @@
 
 var React = require('react');
 var assign = require('object-assign');
-
-var DeleteButton = React.createClass({
+var createReactClass = require('create-react-class');
+var DeleteButton= createReactClass({
     getDefaultProps: function () {
         return {
             buttonText: 'Удалить',

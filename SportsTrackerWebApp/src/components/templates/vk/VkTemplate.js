@@ -8,8 +8,8 @@ var assign = require('object-assign');
 var Fluxxor = require('fluxxor');
 var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
-
-var VkTemplate = React.createClass({
+var createReactClass = require('create-react-class');
+var VkTemplate= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore')],
     getDefaultProps: function(){
         return {

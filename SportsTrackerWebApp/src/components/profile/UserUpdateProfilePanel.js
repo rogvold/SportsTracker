@@ -14,8 +14,8 @@ var BackgroundImageContainer = require('../image/BackgroundImageContainer');
 var FileUploadButton = require('../file/FileUploadButton');
 
 var CoolPreloader = require('../preloader/CoolPreloader');
-
-var UserUpdateProfilePanel = React.createClass({
+var createReactClass = require('create-react-class');
+var UserUpdateProfilePanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore')],
     getDefaultProps: function(){
         return {

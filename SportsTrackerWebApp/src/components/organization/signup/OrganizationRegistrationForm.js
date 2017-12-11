@@ -15,7 +15,7 @@ var CoolPreloader = require('../../preloader/CoolPreloader');
 
 var UserAPI = require('../../../api/UserAPI');
 
-var ClubRegistrationForm = React.createClass({
+var ClubRegistrationForm= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
 
     getDefaultProps: function () {

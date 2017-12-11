@@ -17,7 +17,6 @@ class UpdateUserReduxWrapper extends React.Component {
     }
 
     static propTypes = {
-        userId: PropTypes.string
     }
 
     state = {

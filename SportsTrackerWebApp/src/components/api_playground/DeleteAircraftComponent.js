@@ -9,7 +9,7 @@ var ParseAPI = require('../../api/ParseAPI');
 
 var CoolPreloader = require('../preloader/CoolPreloader');
 
-var DeleteAircraftComponent = React.createClass({
+var DeleteAircraftComponent= createReactClass({
     getDefaultProps: function () {
         return {}
     },

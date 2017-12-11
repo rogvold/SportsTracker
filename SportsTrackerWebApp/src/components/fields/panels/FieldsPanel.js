@@ -22,7 +22,6 @@ class FieldsPanel extends React.Component {
     }
 
     static propTypes = {
-        fields: PropTypes.array.isRequired
     }
 
     state = {

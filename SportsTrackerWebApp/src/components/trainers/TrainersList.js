@@ -14,8 +14,8 @@ var TrainersItem = require('./TrainersItem');
 var Dialog = require('../dialog/Dialog');
 
 var TrainerPanel = require('./TrainerPanel');
-
-var TrainersList = React.createClass({
+var createReactClass = require('create-react-class');
+var TrainersList= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

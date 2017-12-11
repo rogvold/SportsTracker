@@ -4,8 +4,8 @@
 
 var React = require('react');
 var assign = require('object-assign');
-
-var FieldPoint = React.createClass({
+var createReactClass = require('create-react-class');
+var FieldPoint= createReactClass({
     getDefaultProps: function () {
         return {
             radius: 12,

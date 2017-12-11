@@ -18,8 +18,8 @@ var TrainerHeaderLinks = require('../../components/templates/header/TrainerHeade
 var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
 
 var UserPagePanel = require('../../components/profile_page/UserPagePanel');
-
-var TrainerIndexApp = React.createClass({
+var createReactClass = require('create-react-class');
+var TrainerIndexApp= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore', 'OrganizationStore')],
 
     getDefaultProps: function(){

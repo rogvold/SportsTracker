@@ -18,8 +18,8 @@ var CalendarPanel = require('../../components/field/calendar/CalendarPanel');
 var TrainingsCalendar = require('../../components/trainings/calendar/TrainingsCalendar');
 
 var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
-
-var AdminIndexApp = React.createClass({
+var createReactClass = require('create-react-class');
+var AdminIndexApp= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore', 'OrganizationStore')],
 
     getDefaultProps: function(){

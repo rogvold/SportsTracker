@@ -4,8 +4,8 @@
 
 var React = require('react');
 var assign = require('object-assign');
-
-var CoolPreloader = React.createClass({
+var createReactClass = require('create-react-class');
+var CoolPreloader= createReactClass({
     getDefaultProps: function () {
         return {
             text: 'Загрузка'

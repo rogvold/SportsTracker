@@ -13,8 +13,9 @@ var UserHeaderLinks = require('../../components/templates/header/UserHeaderLinks
 
 var UserProfilePanel = require('../../components/profile/UserProfilePanel');
 
+var createReactClass = require('create-react-class');
 
-var UserDocsApp = React.createClass({
+var UserDocsApp= createReactClass({
 
     getDefaultProps: function(){
         return {

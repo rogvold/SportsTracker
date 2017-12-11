@@ -21,7 +21,6 @@ class SignupForm extends React.Component {
     }
 
     static propTypes = {
-        onSubmit: PropTypes.func
     }
 
     state = {

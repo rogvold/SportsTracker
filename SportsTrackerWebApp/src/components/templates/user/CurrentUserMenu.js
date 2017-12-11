@@ -12,8 +12,8 @@ var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var UserUpdateProfileButton = require('../../profile/UserUpdateProfileButton');
-
-var CurrentUserMenu = React.createClass({
+var createReactClass = require('create-react-class');
+var CurrentUserMenu= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore')],
     getDefaultProps: function () {
         return {

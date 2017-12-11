@@ -19,7 +19,7 @@ var GroupsPanel = require('../../components/groups/GroupsPanel');
 
 var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
 
-var AdminGroupsApp = React.createClass({
+var AdminGroupsApp= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore', 'OrganizationStore')],
 
     getDefaultProps: function(){

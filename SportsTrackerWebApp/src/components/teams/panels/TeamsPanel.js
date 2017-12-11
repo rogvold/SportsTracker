@@ -22,8 +22,6 @@ class TeamsPanel extends React.Component {
     static defaultProps = {}
 
     static propTypes = {
-        loading: PropTypes.bool.isRequired,
-        teams: PropTypes.array.isRequired
     }
 
     state = {

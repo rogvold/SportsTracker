@@ -78,9 +78,9 @@ flux.on("dispatch", function(type, payload) {
         console.log("[Dispatch]", type, payload);
     }
 });
+var createReactClass = require('create-react-class');
 
-
-var App = React.createClass({
+var App= createReactClass({
     mixins: [FluxMixin],
 
     getDefaultProps: function () {

@@ -8,8 +8,8 @@ var assign = require('object-assign');
 var BackgroundImageContainer = require('../../image/BackgroundImageContainer');
 
 var SportHelper = require('../../../helpers/SportHelper');
-
-var UserItem = React.createClass({
+var createReactClass = require('create-react-class');
+var UserItem= createReactClass({
     getDefaultProps: function () {
         return {
 

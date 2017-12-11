@@ -11,7 +11,7 @@ var HeatMapRangeSlider = require('../slider/HeatMapRangeSlider');
 
 var SportHelper = require('../../../helpers/SportHelper');
 
-var HeatMapPanel = React.createClass({
+var HeatMapPanel= createReactClass({
     getDefaultProps: function () {
         return {
 

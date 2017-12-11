@@ -10,8 +10,8 @@ var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var UserAPI = require('../../api/UserAPI');
-
-var UserNameSpan = React.createClass({
+var createReactClass = require('create-react-class');
+var UserNameSpan= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore')],
     getDefaultProps: function(){
         return {

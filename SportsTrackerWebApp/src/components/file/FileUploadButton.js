@@ -6,8 +6,8 @@ var React = require('react');
 var assign = require('object-assign');
 
 var FileUploader = require('./FileUploader');
-
-var FileUploadButton = React.createClass({
+var createReactClass = require('create-react-class');
+var FileUploadButton= createReactClass({
     getDefaultProps: function () {
         return {
             className: 'ui button fluid basic',

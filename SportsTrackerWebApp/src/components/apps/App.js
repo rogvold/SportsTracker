@@ -37,8 +37,6 @@ class App extends React.Component {
     static defaultProps = {}
 
     static propTypes = {
-        currentUser: PropTypes.object,
-        initialized: PropTypes.bool
     }
 
     state = {}

@@ -6,8 +6,8 @@ var React = require('react');
 var assign = require('object-assign');
 
 var UserMixin = require('../../mixins/UserMixin');
-
-var SelfLoadingUserSpan = React.createClass({
+var createReactClass = require('create-react-class');
+var SelfLoadingUserSpan= createReactClass({
     getDefaultProps: function () {
         return {
             userId: undefined

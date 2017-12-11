@@ -18,7 +18,9 @@ var UpdateUserWrapper = require('../profile/user/UpdateUserWrapper');
 
 var TrainingsCalendar = require('../../components/trainings/calendar/TrainingsCalendar');
 
-var UserPagePanel = React.createClass({
+var createReactClass = require('create-react-class');
+
+var UserPagePanel = createReactClass({
     mixins: [FluxMixin],
 
     getDefaultProps: function () {

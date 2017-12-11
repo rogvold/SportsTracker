@@ -7,8 +7,8 @@ var LoginForm = require('./LoginForm');
 var SignupForm = require('./SignupForm');
 
 var RecoverPasswordButton = require('./RecoverPasswordButton');
-
-var AuthForm = React.createClass({
+var createReactClass = require('create-react-class');
+var AuthForm= createReactClass({
     getDefaultProps: function () {
         return {
             topText: undefined,

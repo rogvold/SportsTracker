@@ -14,7 +14,9 @@ var CreateFieldPanel = require('./update/CreateFieldPanel');
 
 var Dialog = require('../../dialog/Dialog');
 
-var FieldsPanel = React.createClass({
+var createReactClass = require('create-react-class');
+
+var FieldsPanel = createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

@@ -24,9 +24,6 @@ class ReduxUserPagePanel extends React.Component {
     }
 
     static propTypes = {
-        usersMap: PropTypes.object,
-        organization: PropTypes.object,
-        currentUser: PropTypes.object
     }
 
     state = {}

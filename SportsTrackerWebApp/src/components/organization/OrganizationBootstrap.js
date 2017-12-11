@@ -10,8 +10,8 @@ var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var BallPreloader = require('../preloader/BallPreloader');
-
-var OrganizationBootstrap = React.createClass({
+var createReactClass = require('create-react-class');
+var OrganizationBootstrap= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore', 'UsersStore')],
     getDefaultProps: function(){
         return {

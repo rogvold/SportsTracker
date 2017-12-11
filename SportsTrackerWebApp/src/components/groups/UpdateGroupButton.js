@@ -9,7 +9,7 @@ var Dialog = require('../dialog/Dialog');
 
 var UpdateGroupPanel = require('./UpdateGroupPanel');
 
-var UpdateGroupButton = React.createClass({
+var UpdateGroupButton= createReactClass({
     getDefaultProps: function () {
         return {
 

@@ -19,7 +19,9 @@ var CreateNewUserPanel = require('./CreateNewUserPanel');
 
 var UserUpdateButton = require('./update/UserUpdateButton');
 
-var OrganizationUsersPanel = React.createClass({
+var createReactClass = require('create-react-class');
+
+var OrganizationUsersPanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

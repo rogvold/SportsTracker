@@ -4,8 +4,8 @@
 
 var React = require('react');
 var assign = require('object-assign');
-
-var RoleSelector = React.createClass({
+var createReactClass = require('create-react-class');
+var RoleSelector= createReactClass({
     getDefaultProps: function () {
         return {
             onChange: function(role){

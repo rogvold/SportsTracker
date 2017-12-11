@@ -9,7 +9,7 @@ var Dialog = require('../../../dialog/Dialog');
 
 var UpdateFieldPanel = require('./UpdateFieldPanel');
 
-var UpdateFieldButton = React.createClass({
+var UpdateFieldButton= createReactClass({
     getDefaultProps: function () {
         return {
 

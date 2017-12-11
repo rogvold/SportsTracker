@@ -11,7 +11,7 @@ var ParseAPI = require('../../api/ParseAPI');
 
 var CoolPreloader = require('../preloader/CoolPreloader');
 
-var UpdateUserComponent = React.createClass({
+var UpdateUserComponent= createReactClass({
     getDefaultProps: function () {
         return {}
     },

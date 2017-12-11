@@ -8,8 +8,8 @@ var assign = require('object-assign');
 var Gate = require('./Gate');
 
 var SportHelper = require('../../../helpers/SportHelper');
-
-var UserShotsPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var UserShotsPanel= createReactClass({
     getDefaultProps: function () {
         return {
             shots: SportHelper.generateRandomShots(Math.floor(15 * Math.random()) + 10)

@@ -13,9 +13,9 @@ var AnimatedHeart = require('../../components/heart/AnimatedHeart');
 var HeartPanel = require('../../components/heart/HeartPanel');
 
 
+var createReactClass = require('create-react-class');
 
-
-var RealTimeApp = React.createClass({
+var RealTimeApp= createReactClass({
     mixins: [FluxMixin],
 
     getDefaultProps: function(){

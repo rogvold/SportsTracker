@@ -18,8 +18,6 @@ class TrainerIndexApp extends React.Component {
     }
 
     static propTypes = {
-        currentUser: PropTypes.object.isRequired,
-        loadOrganization: PropTypes.func
     }
 
     state = {

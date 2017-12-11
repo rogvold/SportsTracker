@@ -9,7 +9,7 @@ var sass = require('gulp-sass');
 gulp.task('build', function () {
     return browserify({entries: './src/index.js', extensions: ['.js'], debug: true})
         .transform('babelify', {presets: ['es2015', 'react'],
-            plugins: ["transform-decorators", "transform-object-rest-spread", "transform-class-properties"]})
+            plugins: ["babel-plugin-transform-decorators-legacy", "transform-object-rest-spread", "transform-class-properties"]})
         .bundle()
         .pipe(source('app.js'))
         .pipe(gulp.dest('dist/js'));

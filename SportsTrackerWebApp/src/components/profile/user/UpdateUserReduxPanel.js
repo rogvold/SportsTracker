@@ -21,10 +21,6 @@ class UpdateUserReduxPanel extends React.Component {
     }
 
     static propTypes = {
-        updateUser: PropTypes.func,
-        usersMap: PropTypes.object,
-        currentUser: PropTypes.object,
-        userId: PropTypes.string
     }
 
     state = {}

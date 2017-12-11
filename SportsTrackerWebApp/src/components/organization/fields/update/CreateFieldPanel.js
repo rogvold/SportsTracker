@@ -13,7 +13,7 @@ var FieldForm = require('./FieldForm');
 
 var CoolPreloader = require('../../../preloader/CoolPreloader');
 
-var CreateFieldPanel = React.createClass({
+var CreateFieldPanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

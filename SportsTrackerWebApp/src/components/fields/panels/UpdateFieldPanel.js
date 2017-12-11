@@ -23,8 +23,6 @@ class UpdateFieldPanel extends React.Component {
     }
 
     static propTypes = {
-        updateField: PropTypes.func.isRequired,
-        fieldId: PropTypes.string.isRequired
     }
 
     state = {}

@@ -17,8 +17,8 @@ var APIHelper = require('../../../helpers/APIHelper');
 var constants = require('../../../constants');
 
 import APIFactory from '../../../data/APIFactory'
-
-var APIFunctionPanel = React.createClass({
+var createReactClass = require('create-react-class');
+var APIFunctionPanel= createReactClass({
     getDefaultProps: function () {
         return {
 

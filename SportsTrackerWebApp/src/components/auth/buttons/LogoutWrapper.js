@@ -13,7 +13,7 @@ class LogoutWrapper extends React.Component {
     static defaultProps = {}
 
     static propTypes = {
-        logOut: PropTypes.func
+        
     }
 
     state = {}

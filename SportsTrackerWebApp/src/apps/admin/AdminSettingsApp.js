@@ -19,8 +19,8 @@ var TrainersPanel = require('../../components/trainers/TrainersPanel');
 var FieldsPanel = require('../../components/organization/fields/FieldsPanel');
 
 var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
-
-var AdminSettingsApp = React.createClass({
+var createReactClass = require('create-react-class');
+var AdminSettingsApp= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore', 'OrganizationStore')],
 
     getDefaultProps: function(){

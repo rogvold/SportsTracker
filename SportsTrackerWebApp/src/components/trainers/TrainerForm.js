@@ -6,8 +6,8 @@ var React = require('react');
 var assign = require('object-assign');
 
 var CommonHelper = require('../../helpers/CommonHelper');
-
-var TrainerForm = React.createClass({
+var createReactClass = require('create-react-class');
+var TrainerForm= createReactClass({
     getDefaultProps: function () {
         return {
 

@@ -7,8 +7,8 @@ var assign = require('object-assign');
 var History = require('react-router').History;
 
 var CommonHelper = require('../../../helpers/CommonHelper');
-
-var HeaderLinks = React.createClass({
+var createReactClass = require('create-react-class');
+var HeaderLinks= createReactClass({
     mixins:  [History],
     getDefaultProps: function () {
         return {

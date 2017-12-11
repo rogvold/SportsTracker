@@ -9,8 +9,8 @@ var React = require('react');
 var assign = require('object-assign');
 
 var HeaderLinks = require('./HeaderLinks');
-
-var TrainerHeaderLinks = React.createClass({
+var createReactClass = require('create-react-class');
+var TrainerHeaderLinks= createReactClass({
     getDefaultProps: function () {
         return {
             active: undefined

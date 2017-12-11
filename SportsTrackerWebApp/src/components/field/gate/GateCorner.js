@@ -6,8 +6,8 @@ var React = require('react');
 var assign = require('object-assign');
 
 var GatePoint = require('./GatePoint');
-
-var GateCorner = React.createClass({
+var createReactClass = require('create-react-class');
+var GateCorner= createReactClass({
     getDefaultProps: function () {
         return {
             direction: 'left',

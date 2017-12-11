@@ -11,9 +11,9 @@ var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var moment = require('moment');
 var BackgroundImageContainer = require('../image/BackgroundImageContainer');
+var createReactClass = require('create-react-class');
 
-
-var TrainersItem = React.createClass({
+var TrainersItem= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

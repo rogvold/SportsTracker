@@ -9,7 +9,7 @@ var Fluxxor = require('fluxxor');
 var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
-var GroupItem = React.createClass({
+var GroupItem= createReactClass({
     mixins: [FluxMixin],
     getDefaultProps: function () {
         return {

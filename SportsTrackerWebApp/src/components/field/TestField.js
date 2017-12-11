@@ -8,8 +8,8 @@ var assign = require('object-assign');
 var Field = require('./Field');
 
 var FieldSlider = require('./slider/FieldSlider');
-
-var TestField = React.createClass({
+var createReactClass = require('create-react-class');
+var TestField= createReactClass({
     getDefaultProps: function () {
         return {
             dt: 500,

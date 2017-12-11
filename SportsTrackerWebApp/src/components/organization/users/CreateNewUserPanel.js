@@ -13,7 +13,7 @@ var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var CoolPreloader = require('../../preloader/CoolPreloader');
 
-var CreateNewUserPanel = React.createClass({
+var CreateNewUserPanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function () {
         return {

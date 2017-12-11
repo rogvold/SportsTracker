@@ -8,7 +8,7 @@ var assign = require('object-assign');
 var OrganizationCoolSlider = require('./OrganizationCoolSlider');
 var OrganizationRegistrationForm = require('./OrganizationRegistrationForm');
 
-var ClubSignUpPanel = React.createClass({
+var ClubSignUpPanel= createReactClass({
     getDefaultProps: function () {
         return {
 

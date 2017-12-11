@@ -9,7 +9,7 @@ var ParseAPI = require('../../api/ParseAPI');
 
 var CoolPreloader = require('../preloader/CoolPreloader');
 
-var LoadAllOrganizationsComponent = React.createClass({
+var LoadAllOrganizationsComponent= createReactClass({
     getDefaultProps: function () {
         return {}
     },

@@ -7,7 +7,9 @@ var assign = require('object-assign');
 
 var UsersList = require('./UsersList');
 
-var PagedUsersList = React.createClass({
+var createReactClass = require('create-react-class');
+
+var PagedUsersList= createReactClass({
     getDefaultProps: function () {
         return {
             users: [],

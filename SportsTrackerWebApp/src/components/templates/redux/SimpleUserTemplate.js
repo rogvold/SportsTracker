@@ -29,11 +29,6 @@ class SimpleUserTemplate extends React.Component {
     }
 
     static propTypes = {
-        loading: PropTypes.bool,
-        currentUser: PropTypes.object,
-        companyName: PropTypes.string,
-
-        content: PropTypes.element
     }
 
     state = {}

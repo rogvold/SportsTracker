@@ -13,7 +13,7 @@ var GroupForm = require('./GroupForm');
 
 var CoolPreloader = require('../../preloader/CoolPreloader');
 
-var CreateGroupPanel = React.createClass({
+var CreateGroupPanel= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
     getDefaultProps: function(){
         return {

@@ -5,7 +5,9 @@
 var React = require('react');
 var assign = require('object-assign');
 
-var GroupForm = React.createClass({
+var createReactClass = require('create-react-class');
+
+var GroupForm= createReactClass({
     getDefaultProps: function () {
         return {
             name: '',

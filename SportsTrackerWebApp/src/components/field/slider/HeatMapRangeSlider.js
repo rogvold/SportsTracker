@@ -7,7 +7,9 @@ var assign = require('object-assign');
 
 var ReactSlider = require('react-slider');
 
-var HeatMapRangeSlider = React.createClass({
+var createReactClass = require('create-react-class');
+
+var HeatMapRangeSlider= createReactClass({
     getDefaultProps: function () {
         return {
 

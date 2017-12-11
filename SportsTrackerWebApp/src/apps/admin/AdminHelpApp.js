@@ -16,8 +16,8 @@ var UserHeaderLinks = require('../../components/templates/header/UserHeaderLinks
 var ClubAdminHeaderLinks = require('../../components/templates/header/ClubAdminHeaderLinks');
 
 var OrganizationBootstrap = require('../../components/organization/OrganizationBootstrap');
-
-var AdminHelpApp = React.createClass({
+var createReactClass = require('create-react-class');
+var AdminHelpApp= createReactClass({
 
     getDefaultProps: function(){
         return {

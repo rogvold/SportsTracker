@@ -13,8 +13,8 @@ var FieldSlider = require('./slider/FieldSlider');
 var SportHelper = require('../../helpers/SportHelper');
 
 var moment = require('moment');
-
-var FieldPlayer = React.createClass({
+var createReactClass = require('create-react-class');
+var FieldPlayer= createReactClass({
     getDefaultProps: function () {
         return {
 

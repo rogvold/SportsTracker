@@ -8,8 +8,8 @@ var assign = require('object-assign');
 var CoolPreloader = require('../preloader/CoolPreloader');
 
 var UserAPI = require('../../api/UserAPI');
-
-var RecoverPasswordDialog = React.createClass({
+var createReactClass = require('create-react-class');
+var RecoverPasswordDialog= createReactClass({
     getDefaultProps: function () {
         return {
 

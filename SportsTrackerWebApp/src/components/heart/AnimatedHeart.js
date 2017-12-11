@@ -8,8 +8,8 @@ var assign = require('object-assign');
 //var mo = require('mo-js');
 
 var MoJS = require('mo-js');
-
-var AnimatedHeart = React.createClass({
+var createReactClass = require('create-react-class');
+var AnimatedHeart= createReactClass({
     getDefaultProps: function () {
         return {
 

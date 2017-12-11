@@ -12,8 +12,8 @@ var CommonHelper = require('../../helpers/CommonHelper');
 
 var Fluxxor = require('fluxxor');
 var FluxMixin = Fluxxor.FluxMixin(React);
-
-var LoginApp = React.createClass({
+var createReactClass = require('create-react-class');
+var LoginApp= createReactClass({
     mixins: [FluxMixin],
     getDefaultProps: function () {
         return {

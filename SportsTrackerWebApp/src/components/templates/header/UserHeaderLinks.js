@@ -5,8 +5,8 @@ var React = require('react');
 var assign = require('object-assign');
 
 var HeaderLinks = require('./HeaderLinks');
-
-var UserHeaderLinks = React.createClass({
+var createReactClass = require('create-react-class');
+var UserHeaderLinks= createReactClass({
     getDefaultProps: function () {
         return {
             active: undefined

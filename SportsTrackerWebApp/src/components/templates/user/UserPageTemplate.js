@@ -16,8 +16,8 @@ var CurrentUserMenu = require('./CurrentUserMenu');
 var UserNameSpan = require('../../profile/UserNameSpan');
 
 var UserAPI = require('../../../api/UserAPI');
-
-var UserPageTemplate = React.createClass({
+var createReactClass = require('create-react-class');
+var UserPageTemplate= createReactClass({
     mixins: [FluxMixin, StoreWatchMixin('UsersStore')],
     getDefaultProps: function(){
         return {

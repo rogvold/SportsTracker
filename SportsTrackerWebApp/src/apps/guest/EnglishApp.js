@@ -10,8 +10,8 @@ var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var PusherPanel = require('../../components/pusher/PusherPanel');
 var RealTimePlayer = require('../../components/pusher/RealTimePlayer');
-
-var EnglishApp = React.createClass({
+var createReactClass = require('create-react-class');
+var EnglishApp= createReactClass({
     mixins: [FluxMixin],
 
     getDefaultProps: function(){

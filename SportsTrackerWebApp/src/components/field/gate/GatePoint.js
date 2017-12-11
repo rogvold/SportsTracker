@@ -4,8 +4,8 @@
 
 var React = require('react');
 var assign = require('object-assign');
-
-var GatePoint = React.createClass({
+var createReactClass = require('create-react-class');
+var GatePoint= createReactClass({
     getDefaultProps: function () {
         return {
             shotsNumber: 0,
